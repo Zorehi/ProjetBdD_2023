@@ -1,0 +1,422 @@
+* ::after ::before {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.formLogin {
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.listTournoi {
+  background-color: white;
+  border-radius: 1rem;
+  border: 1px solid #707070;
+  width: 25%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.listTournoi h1 {
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+.listTournoi ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.listTournoi ul li {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem;
+}
+.listTournoi ul a {
+  font-size: 1.4rem;
+  border-radius: 2rem;
+  border: 1px solid #707070;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+.listTournoi .listTournoi__list {
+  background-color: #F1F1F1;
+  height: 85%;
+  width: 85%;
+  border-radius: 1rem;
+  border: 1px solid #707070;
+  padding: 1rem;
+  overflow: auto;
+}
+.listTournoi .listTournoi__list::-webkit-scrollbar {
+  width: 6px;
+}
+.listTournoi .listTournoi__list::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #bcc0c4;
+}
+.listTournoi--admin ul li {
+  justify-content: space-around;
+}
+.listTournoi--admin ul a {
+  width: 42%;
+}
+.listTournoi--admin ul button {
+  width: 42%;
+  font-size: 1.4rem;
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid #707070;
+  cursor: pointer;
+}
+
+.formCreateTournament {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 85%;
+}
+.formCreateTournament .formCreateTournament__data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #707070;
+  border-radius: 1rem;
+  height: 80%;
+  width: 100%;
+}
+.formCreateTournament .formCreateTournament__data div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #707070;
+  padding: 1rem;
+  width: 70%;
+  height: 10%;
+}
+.formCreateTournament .formCreateTournament__data input {
+  width: 42%;
+  font-size: 1.4rem;
+  height: 66.6%;
+}
+.formCreateTournament .formCreateTournament__data label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42%;
+  height: 70%;
+  font-size: 1.4rem;
+  border: 1px solid #707070;
+  border-radius: 2rem;
+}
+.formCreateTournament .formCreateTournament__data select {
+  font-size: 1.4rem;
+  width: 42%;
+  height: 73.5%;
+}
+.formCreateTournament .formCreateTournament__buttons {
+  width: 50%;
+  height: 20%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.formCreateTournament .formCreateTournament__buttons button {
+  font-size: 1.4rem;
+  width: 45%;
+  height: 35%;
+}
+
+.recapTournament {
+  height: 10%;
+  width: 90%;
+  background-color: white;
+  border: 1px solid #707070;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 3rem 0px 1rem 0px;
+}
+.recapTournament label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 40%;
+  font-size: 1.4rem;
+  border: 1px solid #707070;
+  border-radius: 2rem;
+  padding: 0px 1rem;
+}
+
+.TournamentTree {
+  height: 75%;
+  width: 90%;
+  background-color: white;
+  border: 1px solid #707070;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.listTeams {
+  background-color: white;
+  border: 1px solid #707070;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  height: 80%;
+  width: 55%;
+  padding: 1.5rem;
+}
+.listTeams label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 10%;
+  font-size: 1.4rem;
+  border: 1px solid #707070;
+  border-radius: 1rem;
+  padding: 0px 1rem;
+}
+
+.signInTeam {
+  background-color: white;
+  border: 1px solid #707070;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 7%;
+  width: 20%;
+}
+.signInTeam button {
+  font-size: 1.4rem;
+  width: 70%;
+}
+
+.signinteams {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.signinteams :nth-child(1) {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signinteams :nth-child(2) {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signinteams :nth-child(2) .signInTeam button {
+  width: 80%;
+}
+.signinteams .listTeams {
+  width: 90%;
+  margin: 0px 0px 1rem 0px;
+  justify-content: flex-start;
+}
+
+.formAddTeam {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.formAddTeam .formAddTeam__data {
+  background-color: white;
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid #707070;
+  border-radius: 1.5rem;
+}
+.formAddTeam .formAddTeam__data label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 55%;
+  width: 40%;
+  font-size: 1.4rem;
+  border: 1px solid #707070;
+  border-radius: 2rem;
+  padding: 0px 1rem;
+}
+.formAddTeam .formAddTeam__data input {
+  width: 43%;
+  height: 51.6%;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.formAddTeam .formAddTeam__data select {
+  width: 43.9%;
+  height: 58.5%;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.formAddTeam .formAddTeam__cadre {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid #707070;
+  width: 75%;
+  height: 10%;
+}
+.formAddTeam .formAddTeam__cadreListplayer {
+  display: flex;
+  justify-content: flex-start;
+  border: 1px solid #707070;
+  width: 75%;
+  height: 60%;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0px;
+}
+.formAddTeam .formAddTeam__cadreListplayer label {
+  height: 10%;
+}
+.formAddTeam .formAddTeam__listPlayer {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0px 0px 0px;
+  height: 80%;
+}
+.formAddTeam .formAddTeam__listPlayer div {
+  display: flex;
+  width: 100%;
+  height: 20%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.formAddTeam .formAddTeam__listPlayer input {
+  width: 30%;
+  height: 70%;
+  text-align: center;
+}
+.formAddTeam .formAddTeam__buttons {
+  width: 60%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.formAddTeam .formAddTeam__buttons div:nth-child(1) {
+  margin-right: 6rem;
+}
+.formAddTeam .formAddTeam__buttons button {
+  width: 80%;
+  height: 70%;
+  font-size: 1.4rem;
+}
+.formAddTeam .formAddTeam__cadreButtons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #707070;
+  width: 22%;
+  height: 80%;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.head {
+  height: 8%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #550606;
+}
+.head div {
+  margin: 0px 2rem;
+}
+.head a {
+  font-size: 1.6rem;
+  color: black;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 0.7rem 1.5rem;
+}
+.head input {
+  font-size: 1.6rem;
+  margin: 0 1rem 0 0;
+  text-align: center;
+}
+.head button {
+  font-size: 1.6rem;
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #C4C4C4;
+  height: 92%;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.container--space-evenly {
+  justify-content: space-evenly;
+}
+
+/*# sourceMappingURL=style.css.map */
