@@ -10,10 +10,10 @@ class Database extends PDO {
     private static $instance;
 
     // Propriétés de la base de données
-    private const DBHOST = "77.196.65.135";
-    private const DBNAME = "CSGOTournamenentMaker";
-    private const DBUSER = "admin";
-    private const DBPASS = "valentin";
+    private const DBHOST = "localhost";
+    private const DBNAME = "projetbdd";
+    private const DBUSER = "root";
+    private const DBPASS = "";
 
     private function __construct() {
         // DSN de connexion
