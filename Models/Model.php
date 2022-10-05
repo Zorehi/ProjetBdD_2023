@@ -96,12 +96,13 @@
             // On boucle pour éclater le tableau
             foreach($this as $champ => $valeur) {
                 // UPDATE annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
-                if($valeur !== null && $champ != 'db' && $champ != 'table'){
+                if($valeur !== null && $champ != 'db' && $champ != 'table' && $champ != 'idName'){
                     $champs[] = "$champ = ?";
                     $valeurs[] = $valeur;
                 }
             }
-            $valeurs[] = $this->$this->idName;
+            $idName = $this->idName;
+            $valeurs[] = $this->$idName;
 
             // On transforme le tableau "champs" en une chaine de caractères
             $liste_champs = implode(', ', $champs);

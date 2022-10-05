@@ -55,8 +55,14 @@ class LoginController extends Controller
                         // format the date to 'year-month-day'
 			            $dateofbirth = date("Y-m-d", mktime(0, 0, 0, $month, $day, $year));
 
-                        $user->setEmail($email)
-                            ->setPassword($pass)
+                        // On check si c'est un email ou numéro de téléphone
+                        if (strstr($email, "@")) {
+                            $user->setEmail($email);
+                        } else {
+                            $user->setTel($email);
+                        }
+
+                        $user->setPassword($pass)
                             ->setFirstname($firstname)
                             ->setLastname($lastname)
                             ->setDateofbirth($dateofbirth)
@@ -83,23 +89,12 @@ class LoginController extends Controller
             $user->hydrate($userArray);
 
             if ($userArray) {
-                header("Location: /login/recover/".$user->getId());
+                header("Location: /recover/initiate/".$user->getId());
             }
 
         }
 
         $this->render('/login/identify');
-    }
-
-    public function recover($id) {
-        $user = new UsersModel;
-        $userArray = $user->findById($id);
-
-        $user->hydrate($userArray);
-
-        $fullname = $user->getFirstname() . " " . $user->getLastname();
-
-        $this->render('/login/recover', compact("fullname"));
     }
 
     /**
