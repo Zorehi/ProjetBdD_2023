@@ -45,7 +45,7 @@
         position: relative;
         display: inline-block;
         vertical-align: baseline;
-        padding: 6px 0;
+        padding: 6px 6px;
         
         input {
             height: 20px;
@@ -87,7 +87,7 @@
         border-radius: 50%;
         border: none;
         align-self: center;
-        padding-bottom: 16px;
+        margin-bottom: 16px;
     }
 
     div {
@@ -141,5 +141,12 @@
         font-weight: bold;
         color: #fff;
         cursor: pointer;
+        transition-property: background-color;
+        transition-duration: 200ms;
+        transition-timing-function: cubic-bezier(.08,.52,.52,1);
+    
+        &:hover {
+            background-color: #166FE5;
+        }
     }
 }

@@ -1,4 +1,4 @@
-.identify-box {
+.code-box {
     border: none;
     border-radius: 8px;
     box-shadow: 0 1px 2px rgb(0 0 0 / 10%), 0 2px 4px rgb(0 0 0 / 10%);
@@ -10,7 +10,7 @@
     background-color: #fff;
 }
 
-.identify-head {
+.code-head {
     border-bottom: 1px solid rgba(0, 0, 0, .1);
 
     h2 {
@@ -21,32 +21,66 @@
     }
 }
 
-.identify-info {
+.code-info {
     padding: 16px;
 
-    div {
+    .text {
         font-size: 17px;
         line-height: 20px;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
     }
 
-    input {
-        border-radius: 6px;
-        color: #8a8d91;
-        font-size: 16px;
-        padding: 16px 0 16px 16px;
-        width: 444px;
-        border: 1px solid #ccd0d5;
-        margin: 0 3px;
+    .inline {
+        display: flex;
     }
 }
 
-.identify-button {
+.code-input {
+    width: 50%;
+
+    input {
+        border-radius: 6px;
+        font-size: 16px;
+        padding: 16px 0 16px 16px;
+        max-width: 90%;
+        color: #8a8d91;
+        border: 1px solid #ccd0d5;
+        width: 444px;
+    }
+}
+
+.code-email {
+    padding-left: 12px;
+    max-width: 45%;
+    
+    div {
+        font-size: 15px;
+        line-height: 20px;
+        margin-bottom: 10px;
+        word-wrap: break-word;
+    }
+
+    .email {
+        font-size: 13px;
+        line-height: 16px;
+        text-align: left;
+    }
+    
+}
+
+.code-button {
     padding: 16px;
     border-top: 1px solid rgba(0, 0, 0, .1);
     text-align: end;
+    position: relative;
 
-    a {
+    .left {
+        position: absolute;
+        left: 16px;
+        top: 25px;
+    }
+
+    .a-button {
         padding: 0 20px;
         background-color: #e4e6eb;
         border: none;
