@@ -1,11 +1,12 @@
 <?php
     namespace App\Core;
 
+use App\Controllers\LoginController;
 use App\Controllers\MainController;
 
     class Main
     {
-        public function start()
+        /*public function start()
         {
             // On démarre la session
             session_start();
@@ -51,9 +52,9 @@ use App\Controllers\MainController;
                 // On appelle la méthode index
                 $controller->index();
             }
-        }
+        }*/
 
-        public function ancien_start()
+        public function start()
         {
             // On démarre la session
             session_start();
