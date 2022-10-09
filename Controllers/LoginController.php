@@ -94,6 +94,10 @@ class LoginController extends Controller
 
         }
 
+        if (isset($_SESSION["recover"])) {
+            unset($_SESSION["recover"]);
+        }
+
         $this->render('/login/identify');
     }
 

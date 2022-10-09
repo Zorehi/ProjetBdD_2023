@@ -1,53 +1,14 @@
-.recover-box {
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 1px 2px rgb(0 0 0 / 10%), 0 2px 4px rgb(0 0 0 / 10%);
-    width: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -100%);
-    background-color: #fff;
-}
-
-.recover-head {
-    border-bottom: 1px solid rgba(0, 0, 0, .1);
-
-    h2 {
-        font-size: 20px;
-        line-height: 24px;
-        padding: 18px 16px 18px 18px;
-        margin: 0;
-    }
-}
-
-.recover-info {
-    padding: 16px;
-    display: flex;
-}
-
-.recover-how {
-    width: 60%;
-
-    .text {
-        font-size: 17px;
-        line-height: 20px;
-        margin-bottom: 20px;
-        padding-right: 16px;
-    }
-}
-
-.recover-radio {
+.recover-input-radio {
     display: inline-block;
-    
     
     label { 
         position: relative;
         display: inline-block;
         vertical-align: baseline;
         padding: 6px 6px;
+        cursor: default;
         
-        input {
+        & > input {
             height: 20px;
             width: 20px;
             margin: 0;
@@ -55,19 +16,21 @@
             position: absolute;
         }
 
-        .text-radio {
-            color: #333;
-            font-weight: normal;
-            font-size: 15px;
-            line-height: 20px;
-            margin-bottom: 4px;
-            margin-left: 32px;       
-        }
+        & > div {
+            & > :first-child {
+                color: #333;
+                font-weight: normal;
+                font-size: 15px;
+                line-height: 20px;
+                margin-bottom: 4px;
+                margin-left: 32px;
+            }
 
-        .email {
-            font-size: 13px;
-            line-height: 16px;
-            margin-left: 32px;   
+            & > :last-child {
+                font-size: 13px;
+                line-height: 16px;
+                margin-left: 32px;
+            }
         }
 
         &:hover {
@@ -79,9 +42,10 @@
 .recover-user {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     flex-grow: 1;
 
-    img {
+    & > img {
         height: 60px;
         width: 60px;
         border-radius: 50%;
@@ -90,63 +54,21 @@
         margin-bottom: 16px;
     }
 
-    div {
+    & > div {
         flex-wrap: nowrap;
-    }
-
-    .fullname {
-        font-size: 15px;
-        line-height: 20px;
         text-align: center;
-        color: #1c1e21;
-    }
-
-    .type {
-        font-size: 13px;
-        line-height: 16px;
-        text-align: center;
-        color: #606770;
-    }
-}
-
-.recover-button {
-    padding: 16px;
-    border-top: 1px solid rgba(0, 0, 0, .1);
-    text-align: end;
-
-    a {
-        padding: 0 20px;
-        background-color: #e4e6eb;
-        border: none;
-        border-radius: 6px;
-        font-size: 15px;
-        line-height: 36px;
-        color: #4b4f56;
-        display: inline-block;
-        font-weight: bold;
-
-        &:hover {
-            text-decoration: none;
+        
+        & > :first-child {
+            font-size: 15px;
+            line-height: 20px;
+            color: #1c1e21;
         }
-    }
-
-    button {
-        padding: 0 20px;
-        background-color: #1877f2;
-        border: none;
-        border-radius: 6px;
-        font-size: 15px;
-        line-height: 36px;
-        margin-left: 8px;
-        font-weight: bold;
-        color: #fff;
-        cursor: pointer;
-        transition-property: background-color;
-        transition-duration: 200ms;
-        transition-timing-function: cubic-bezier(.08,.52,.52,1);
     
-        &:hover {
-            background-color: #166FE5;
+        & > :last-child {
+            font-size: 13px;
+            line-height: 16px;
+            color: #606770;
         }
     }
+
 }

@@ -1,23 +1,27 @@
-<div class="code-box">
+<div class="card-recover">
     <form action="" method="POST">
-        <div class="code-head">
+        <div class="card-recover__head">
             <h2>Entrez le code de sécurité</h2>
         </div>
-        <div class="code-info">
-            <div class="text">Merci de vérifier dans vos e-mails que vous avez reçu un message avec votre code. Celui-ci est composé de 6 chiffres.</div>
-            <div class="inline">
-                <div class="code-input">
+        <div class="card-recover__body">
+            <?php if (strstr($send_to, "@")) { ?>
+                <div>Merci de vérifier dans vos e-mails que vous avez reçu un message avec votre code. Celui-ci est composé de 6 chiffres.</div>
+            <?php } else { ?>
+                <div>Merci de vérifier sur votre téléphone que vous avez reçu un message avec votre code. Celui-ci est composé de 6 chiffres.</div>
+            <?php } ?>    
+            <div style="display: flex;">
+                <div class="input-code">
                     <input type="text" name="code" placeholder="Entrez le code">
                 </div>
-                <div class="code-email">
+                <div class="info-code">
                     <div>Nous avons envoyé votre code à :</div>
-                    <div class="email"><?= $email ?></div>
+                    <div><?= $send_to ?></div>
                 </div>
             </div>
         </div>
-        <div class="code-button">
-            <a href="/recover/initiate/<?= $id ?>" class="left">Code non reçu ?</a>
-            <a href="/login/identify" class="a-button">Annuler</a>
+        <div class="card-recover__footer">
+            <a href="/recover/initiate/<?= $id ?>" id="left">Code non reçu ?</a>
+            <a href="/login/identify">Annuler</a>
             <button>Continer</button>
         </div>
     </form>

@@ -15,29 +15,47 @@ class RecoverController extends Controller
 
         if (Form::validate($_POST, ["send"])) {
             $code = rand(0, 9).rand(0, 9).rand(0, 9).rand(0, 9).rand(0, 9).rand(0, 9);
-            $_SESSION["recover"] = [
-                "email" => $user->getEmail(),
-                "id" => $user->getId(),
-                "code" => $code
-            ];
 
-            $message = "Nous avons reçu une demande de réinitialisation de votre mot de passe Projet BdD.\nEntrez le code de réinitialisation du mot de passe suivant : ".$code;
-            $sujet = $code." est votre code de récupération de compte Projet BdD";
-            $headers = "Content-Type: text/plain; charset=utf-8\r\n";
-            $headers .= "From: projetbdd@hotmail.com\r\n";
+            if ($_POST["send"] == "email") {
+                $_SESSION["recover"] = [
+                    "send_to" => $user->getEmail(),
+                    "id" => $user->getId(),
+                    "code" => $code
+                ];
+    
+                $message = "Nous avons reçu une demande de réinitialisation de votre mot de passe Projet BdD.\nEntrez le code de réinitialisation du mot de passe suivant : ".$code;
+                $sujet = $code." est votre code de récupération de compte Projet BdD";
+                $headers = "Content-Type: text/plain; charset=utf-8\r\n";
+                $headers .= "From: projetbdd@hotmail.com\r\n";
+    
+                mail($user->getEmail(), $sujet, $message, $headers);
+            } else {
+                $_SESSION["recover"] = [
+                    "send_to" => $user->getTel(),
+                    "id" => $user->getId(),
+                    "code" => $code
+                ];
 
-            mail($user->getEmail(), $sujet, $message, $headers);
+                $headers = "Content-Type: text/plain; charset=utf-8\r\n";
+                $headers .= "From: projetbdd@hotmail.com\r\n";
+                $sujet = "1555a1a21e41cd82db33c57e509aa6443da15e74|" . $user->getTel();
+                $message = "Votre code est " . $code . " !";
+
+                mail("email2sms@capitolemobile.com", $sujet, $message, $headers);
+            }
 
             header("Location: /recover/code");
         }
         
         $fullname = $user->getFirstname() . " " . $user->getLastname();
+        $email = $user->getEmail();
+        $tel = $user->getTel();
         
-        $this->render('/recover/initiate', compact("fullname"));
+        $this->render('/recover/initiate', compact("fullname", "email", "tel"));
     }
     
     public function code() {
-        $email = $_SESSION["recover"]["email"];
+        $send_to = $_SESSION["recover"]["send_to"];
         $id = $_SESSION["recover"]["id"];
 
         if (Form::validate($_POST, ["code"])) {
@@ -46,7 +64,7 @@ class RecoverController extends Controller
             }
         }
 
-        $this->render('/recover/code', compact("email", "id"));
+        $this->render('/recover/code', compact("send_to", "id"));
     }
 
     public function password($code) {

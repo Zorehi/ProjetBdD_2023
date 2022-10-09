@@ -22,9 +22,37 @@ span {
 
 input {
   outline: none;
+  text-rendering: auto;
+  appearance: auto;
+  text-align: start;
 }
 
-.login-box {
+::placeholder {
+  color: #616161 !important;
+}
+
+:focus::placeholder {
+  color: #8D949E !important;
+}
+
+select {
+  border: 1px solid #ccd0d5;
+  align-items: center;
+  text-align: start;
+  -webkit-appearance: none;
+  background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/Yrq8Y9PlN02.png);
+  background-repeat: no-repeat;
+  background-size: 14px;
+  background-position: right 5px center;
+}
+
+button {
+  transition-property: background-color;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1);
+}
+
+.card-login {
   display: flex;
   flex-direction: column;
   width: 396px;
@@ -41,30 +69,28 @@ input {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-.login-input {
+.card-login__id {
   width: 364px;
   padding: 6px 0;
   border: none;
   text-align: start;
   position: relative;
 }
-.login-input input {
+.card-login__id input {
   border: 1px solid #dddfe2;
-  height: 22px;
-  width: 330px;
+  display: inline-block;
+  width: 364px;
   font-size: 17px;
   border-radius: 6px;
   line-height: 16px;
   padding: 14px 16px;
 }
-.login-input input:focus {
+.card-login__id input:focus {
   border-color: #1b74e4;
   box-shadow: 0 0 0 2px #e7f3ff;
   caret-color: #1b74e4;
 }
-.login-input input[type=password] {
-  width: 300px;
+.card-login__id input[type=password] {
   padding-right: 46px;
 }
 
@@ -189,16 +215,19 @@ input {
 .register-input {
   border: 1px solid #ccd0d5;
   background-color: #f5f6f7;
-  width: 170px;
+  width: 194px;
   font-size: 15px;
   border-radius: 5px;
   line-height: 16px;
   padding: 11px;
   outline: none;
 }
+.register-input::placeholder {
+  color: #8D949E !important;
+}
 
 .long {
-  width: 375px;
+  width: 400px;
 }
 
 .little-text {
@@ -294,138 +323,35 @@ input {
   border-radius: 4px;
 }
 
-.identify-box {
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  background-color: #fff;
-}
-
-.identify-head {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-.identify-head h2 {
-  font-size: 20px;
-  line-height: 24px;
-  padding: 18px 16px 18px 18px;
-  margin: 0;
-}
-
-.identify-info {
-  padding: 16px;
-}
-.identify-info div {
-  font-size: 17px;
-  line-height: 20px;
-  margin-bottom: 16px;
-}
-.identify-info input {
+.identify-input {
   border-radius: 6px;
   color: #8a8d91;
   font-size: 16px;
   padding: 16px 0 16px 16px;
-  width: 444px;
   border: 1px solid #ccd0d5;
+  display: inline-block;
+  width: 462px;
   margin: 0 3px;
 }
 
-.identify-button {
-  padding: 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  text-align: end;
-}
-.identify-button a {
-  padding: 0 20px;
-  background-color: #e4e6eb;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  line-height: 36px;
-  color: #4b4f56;
-  display: inline-block;
-  font-weight: bold;
-}
-.identify-button a:hover {
-  text-decoration: none;
-}
-.identify-button button {
-  padding: 0 20px;
-  background-color: #1877f2;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  line-height: 36px;
-  margin-left: 8px;
-  font-weight: bold;
-  color: #fff;
-  cursor: pointer;
-  transition-property: background-color;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1);
-}
-.identify-button button:hover {
-  background-color: #166FE5;
-}
-
-.recover-box {
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  background-color: #fff;
-}
-
-.recover-head {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-.recover-head h2 {
-  font-size: 20px;
-  line-height: 24px;
-  padding: 18px 16px 18px 18px;
-  margin: 0;
-}
-
-.recover-info {
-  padding: 16px;
-  display: flex;
-}
-
-.recover-how {
-  width: 60%;
-}
-.recover-how .text {
-  font-size: 17px;
-  line-height: 20px;
-  margin-bottom: 20px;
-  padding-right: 16px;
-}
-
-.recover-radio {
+.recover-input-radio {
   display: inline-block;
 }
-.recover-radio label {
+.recover-input-radio label {
   position: relative;
   display: inline-block;
   vertical-align: baseline;
   padding: 6px 6px;
+  cursor: default;
 }
-.recover-radio label input {
+.recover-input-radio label > input {
   height: 20px;
   width: 20px;
   margin: 0;
   margin-top: 2px;
   position: absolute;
 }
-.recover-radio label .text-radio {
+.recover-input-radio label > div > :first-child {
   color: #333;
   font-weight: normal;
   font-size: 15px;
@@ -433,21 +359,22 @@ input {
   margin-bottom: 4px;
   margin-left: 32px;
 }
-.recover-radio label .email {
+.recover-input-radio label > div > :last-child {
   font-size: 13px;
   line-height: 16px;
   margin-left: 32px;
 }
-.recover-radio label:hover {
+.recover-input-radio label:hover {
   background-color: #E9EBEE;
 }
 
 .recover-user {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   flex-grow: 1;
 }
-.recover-user img {
+.recover-user > img {
   height: 60px;
   width: 60px;
   border-radius: 50%;
@@ -455,98 +382,40 @@ input {
   align-self: center;
   margin-bottom: 16px;
 }
-.recover-user div {
+.recover-user > div {
   flex-wrap: nowrap;
+  text-align: center;
 }
-.recover-user .fullname {
+.recover-user > div > :first-child {
   font-size: 15px;
   line-height: 20px;
-  text-align: center;
   color: #1c1e21;
 }
-.recover-user .type {
+.recover-user > div > :last-child {
   font-size: 13px;
   line-height: 16px;
-  text-align: center;
   color: #606770;
 }
 
-.recover-button {
-  padding: 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  text-align: end;
-}
-.recover-button a {
-  padding: 0 20px;
-  background-color: #e4e6eb;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  line-height: 36px;
-  color: #4b4f56;
-  display: inline-block;
-  font-weight: bold;
-}
-.recover-button a:hover {
-  text-decoration: none;
-}
-.recover-button button {
-  padding: 0 20px;
-  background-color: #1877f2;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  line-height: 36px;
-  margin-left: 8px;
-  font-weight: bold;
-  color: #fff;
+#left {
+  float: left;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  transition-property: background-color;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1);
-}
-.recover-button button:hover {
-  background-color: #166FE5;
-}
-
-.code-box {
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -100%);
+  text-decoration: none;
   background-color: #fff;
+  padding: 0;
+  color: #1877f2;
+}
+#left:hover {
+  text-decoration: underline;
 }
 
-.code-head {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-.code-head h2 {
-  font-size: 20px;
-  line-height: 24px;
-  padding: 18px 16px 18px 18px;
-  margin: 0;
-}
-
-.code-info {
-  padding: 16px;
-}
-.code-info .text {
-  font-size: 17px;
-  line-height: 20px;
-  margin-bottom: 20px;
-}
-.code-info .inline {
-  display: flex;
-}
-
-.code-input {
+.input-code {
   width: 50%;
 }
-.code-input input {
+.input-code input {
   border-radius: 6px;
   font-size: 16px;
   padding: 16px 0 16px 16px;
@@ -556,123 +425,32 @@ input {
   width: 444px;
 }
 
-.code-email {
+.info-code {
   padding-left: 12px;
   max-width: 45%;
 }
-.code-email div {
+.info-code > :first-child {
   font-size: 15px;
   line-height: 20px;
   margin-bottom: 10px;
   word-wrap: break-word;
 }
-.code-email .email {
+.info-code > :last-child {
   font-size: 13px;
   line-height: 16px;
   text-align: left;
 }
 
-.code-button {
-  padding: 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  text-align: end;
-  position: relative;
-}
-.code-button .left {
-  position: absolute;
-  left: 16px;
-  top: 25px;
-}
-.code-button .a-button {
-  padding: 0 20px;
-  background-color: #e4e6eb;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  line-height: 36px;
-  color: #4b4f56;
-  display: inline-block;
-  font-weight: bold;
-}
-.code-button .a-button:hover {
-  text-decoration: none;
-}
-.code-button button {
-  padding: 0 20px;
-  background-color: #1877f2;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  line-height: 36px;
-  margin-left: 8px;
-  font-weight: bold;
-  color: #fff;
-  cursor: pointer;
-  transition-property: background-color;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1);
-}
-.code-button button:hover {
-  background-color: #166FE5;
-}
-
-.password-box {
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  background-color: #fff;
-}
-
-.password-head {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-.password-head h2 {
-  font-size: 20px;
-  line-height: 24px;
-  padding: 18px 16px 18px 18px;
-  margin: 0;
-}
-
-.password-info {
-  padding: 16px;
-}
-.password-info .text {
-  font-size: 17px;
-  line-height: 20px;
-  margin-bottom: 20px;
-}
-.password-info .inline {
+.password-input {
   display: flex;
 }
-.password-info .inline .button {
-  background-color: #e4e6eb;
-  border: none;
-  border-radius: 6px;
-  font-size: 17px;
-  font-weight: bold;
-  line-height: 53px;
-  width: 54px;
-  padding: 0;
-  cursor: pointer;
-  margin-left: 5px;
-  color: #4b4f56;
-}
-.password-info .inline .button:hover {
-  background-color: #EBEDF0;
-}
-
-.password-input {
+.password-input > div {
   max-width: 416px;
   display: flex;
   border: 1px solid #dddfe2;
   border-radius: 6px;
 }
-.password-input input {
+.password-input > div > input {
   border-radius: 6px;
   font-size: 16px;
   padding: 16px 0 16px 16px;
@@ -682,60 +460,32 @@ input {
   width: 444px;
   max-width: 84%;
 }
-.password-input button {
+.password-input > div > :last-child {
   background-color: #fff;
   color: #216fdb;
   font-size: 16px;
-  padding: 0 8px;
   line-height: 22px;
+  color: #216fdb;
+}
+.password-input > :last-child {
+  background-color: #e4e6eb;
+  font-size: 17px;
+  line-height: 53px;
+  margin-left: 5px;
+  width: 44px;
+  color: #4b4f56;
+}
+.password-input button {
+  text-align: center;
+  padding: 0 8px;
+  border: none;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  border: none;
   display: inline-block;
-  color: #216fdb;
 }
 .password-input button:hover {
   background-color: #EBEDF0;
-}
-
-.password-button {
-  padding: 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  text-align: end;
-  position: relative;
-}
-.password-button a {
-  padding: 0 29px;
-  background-color: #e4e6eb;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  line-height: 36px;
-  color: #4b4f56;
-  display: inline-block;
-  font-weight: bold;
-}
-.password-button a:hover {
-  text-decoration: none;
-}
-.password-button button {
-  padding: 0 20px;
-  background-color: #1877f2;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  line-height: 36px;
-  margin-left: 8px;
-  font-weight: bold;
-  color: #fff;
-  cursor: pointer;
-  transition-property: background-color;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1);
-}
-.password-button button:hover {
-  background-color: #166FE5;
 }
 
 .password-cloud {
@@ -748,7 +498,7 @@ input {
   z-index: 400;
 }
 
-.help-box {
+.card-help {
   display: flex;
   flex-direction: column;
   width: 500px;
@@ -762,40 +512,38 @@ input {
   left: 50%;
   transform: translate(-50%, -60%);
 }
-
-.help-head {
+.card-help__head {
   padding: 10px 16px;
   border-bottom: 1px solid #dadde1;
   position: relative;
 }
-.help-head img {
+.card-help__head img {
   position: absolute;
   right: 10px;
   top: 12px;
 }
-.help-head div {
+.card-help__head div {
   font-size: 20px;
   line-height: 24px;
   text-align: start;
   color: #1c1e21;
   text-align: center;
 }
-
-.help-info {
+.card-help__body {
   padding: 12px 16px;
 }
-.help-info .help-text {
+.card-help__body > div {
   font-size: 17px;
   line-height: 20px;
   margin-bottom: 16px;
   text-align: left;
 }
-.help-info .help-text ul {
+.card-help__body > div ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-.help-info button {
+.card-help__body > button {
   background-color: #1877f2;
   border: none;
   border-radius: 6px;
@@ -806,11 +554,72 @@ input {
   padding: 0 40px;
   cursor: pointer;
   float: right;
-  transition-property: background-color;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1);
 }
-.help-info button:hover {
+.card-help__body > button:hover {
+  background-color: #166FE5;
+}
+
+.card-recover {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  background-color: #fff;
+}
+.card-recover__head {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.card-recover__head h2 {
+  font-size: 20px;
+  line-height: 24px;
+  padding: 18px 16px 18px 18px;
+  margin: 0;
+}
+.card-recover__body {
+  padding: 16px;
+}
+.card-recover__body > :first-child {
+  font-size: 17px;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+.card-recover__footer {
+  padding: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: end;
+  position: relative;
+}
+.card-recover__footer a {
+  padding: 0 20px;
+  background-color: #e4e6eb;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  line-height: 36px;
+  color: #4b4f56;
+  display: inline-block;
+  font-weight: bold;
+}
+.card-recover__footer a:hover {
+  text-decoration: none;
+}
+.card-recover__footer button {
+  padding: 0 20px;
+  background-color: #1877f2;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  line-height: 36px;
+  margin-left: 8px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
+.card-recover__footer button:hover {
   background-color: #166FE5;
 }
 

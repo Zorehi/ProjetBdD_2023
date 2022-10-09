@@ -1,11 +1,11 @@
-<div class="login-box">
+<div class="card-login">
     <form action="" method="POST">
         <input type="hidden" name="type" value="login">
         <div>
-            <div class="login-input">
+            <div class="card-login__id">
                 <input type="text" name="email" placeholder="Adresse e-mail ou numéro de tél.">
             </div>
-            <div class="login-input">
+            <div class="card-login__id">
                 <input type="password" name="password" placeholder="Mot de passe" id="pass">
                 <div class="iconPassword" onclick="pass_switch()">
                     <img class="img" src="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/je5FEJkU1_K.png" alt="" width="16" height="16" id="passIcon">
@@ -24,7 +24,7 @@
         </div>
     </form>
 </div>
-<div id="divCloud" class="cloud" hidden>
+<div id="divCloud" class="cloud">
     <div class="register-box">
         <div class="register-head">
             <img class="img" src="https://static.xx.fbcdn.net/rsrc.php/v3/yO/r/zgulV2zGm8t.png" onclick="stop()" alt="" width="24" height="24">

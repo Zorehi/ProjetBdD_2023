@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projet BdD 2023</title>
     <link rel="stylesheet" href="http://projetbdd/style.css">
+    <link rel="stylesheet" href="http://projetbdd/reset.css">
 </head>
 
 <body>    
