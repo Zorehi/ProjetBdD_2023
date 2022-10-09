@@ -18,22 +18,20 @@ class LoginController extends Controller
                 $user = new UsersModel;
                 $userArray = $user->findByEmailOrTel($email);
 
-                // Si l'utilisateur n'existe pas
-                if (!$userArray) {
-                    // On envoie un message d'erreur
+                if ($userArray) {
+                    // L'utilisateur existe
+                    $user->hydrate($userArray);
+    
+                    // On vérifie si le mot de passe est correct
+                    if (password_verify($_POST["password"], $user->getPassword())) {
+                        // Le mot de passe est bon
+                        $user->setSession();
+                        header("Location: /");
+                    } else {
+                        // Mauvais mot de passe
+                    }
                 }
 
-                // L'utilisateur existe
-                $user->hydrate($userArray);
-
-                // On vérifie si le mot de passe est correct
-                if (password_verify($_POST["password"], $user->getPassword())) {
-                    // Le mot de passe est bon
-                    $user->setSession();
-                    header("Location: /");
-                } else {
-                    // Mauvais mot de passe
-                }
 
             } else {
                 if (Form::validate($_POST, ["firstname", "lastname", "day", "month", "year", "sex"])) {
@@ -41,9 +39,9 @@ class LoginController extends Controller
 
                     // On check si l'user existe déjà
                     $user = new UsersModel();
-                    $requete = $user->findByEmailOrTel($email);
+                    $userArray = $user->findByEmailOrTel($email);
 
-                    if (!$requete) {
+                    if (!$userArray) {
                         // On chiffre le mot de passe
                         $pass = password_hash($_POST["password"], PASSWORD_ARGON2I);
                         $firstname = strip_tags($_POST["firstname"]);
