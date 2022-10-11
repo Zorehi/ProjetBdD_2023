@@ -84,9 +84,9 @@ class LoginController extends Controller
             $user = new UsersModel();
             $userArray = $user->findByEmailOrTel($email);
 
-            $user->hydrate($userArray);
-
+            
             if ($userArray) {
+                $user->hydrate($userArray);
                 header("Location: /recover/initiate/".$user->getId());
             }
 
