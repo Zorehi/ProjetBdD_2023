@@ -2,6 +2,7 @@
 @import "./_variables";
 @import "./_mixins";
 @import "./_components";
+@import "./_font-family";
 
 // Pages
 @import "./pages/_login";
@@ -12,3 +13,6 @@
 
 // Patterns
 @import "./patterns/_card-recover.scss";
+@import "./patterns/_card-profil.scss";
+@import "./patterns/_navTop.scss";
+@import "./patterns/_navLeft.scss";

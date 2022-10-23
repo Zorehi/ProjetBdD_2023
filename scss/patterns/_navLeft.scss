@@ -1,0 +1,69 @@
+.navLeft {
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 56px;
+
+    &__head {
+        padding: 16px 0 8px 0;
+
+        & > a {
+            height: 40px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 8px 20px;
+            position: relative;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            & > span {
+                margin-left: 14px;
+                font-size: 15px;
+                font-weight: 500;
+                color: var(--primary-text);
+                line-height: 1.33;
+                display: block;
+            }
+
+            & > :last-child {
+                position: absolute;
+                background-color: var(--hover-overlay);
+                border-radius: 8px;
+                height: 40px;
+                width: 284px;
+                opacity: 0;
+                inset: 0px 8px;
+            }
+
+        }
+
+        & > a.selected {
+            & > :first-child {
+                background-color: var(--accent);
+                height: 36px;
+                width: 4px;
+                border-radius: 8px;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: scaleY(1) translateY(-50%);
+                display: block;
+            }
+        
+            & > img {
+                -webkit-filter: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
+                filter: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
+            }
+        }
+
+        & > :first-child {
+            margin-bottom: 4px;
+        }
+        & > :last-child {
+            padding: 6px 18px;
+        }
+    }
+}

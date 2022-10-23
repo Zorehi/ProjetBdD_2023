@@ -1,0 +1,116 @@
+:root {
+    --wash: #E4E6EB;
+    --accent: hsl(214, 89%, 52%);
+    --primary-text: #050505;
+    --primary-icon: #050505;
+    --secondary-text: #65676B;
+    --secondary-icon: #65676B;
+    --background-color: #F0F2F5;
+    --navTop-background-color: #FFFFFF;
+    --navTop-logo-color: #1877F2;
+    --navTop-search-background: #F0F2F5;
+    --navTop-search-background-hover: #E4E6E9;
+    --secondary-button-background: #E4E6EB;
+    --hover-overlay: rgba(0, 0, 0, .05);
+    --press-overlay: rgba(0, 0, 0, .1);
+    --media-press: rgba(68, 73, 80, 0.35);
+    --card-background: #FFFFFF;
+    --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%) saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
+    --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
+    --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
+}
+
+html {
+    &.__pj-light-mode {
+        --wash: #E4E6EB;
+        --accent: hsl(214, 89%, 52%);
+        --primary-text: #050505;
+        --primary-icon: #050505;
+        --secondary-text: #65676B;
+        --secondary-icon: #65676B;
+        --background-color: #F0F2F5;
+        --navTop-background-color: #FFFFFF;
+        --navTop-logo-color: #1877F2;
+        --navTop-search-background: #F0F2F5;
+        --navTop-search-background-hover: #E4E6E9;
+        --secondary-button-background: #E4E6EB;
+        --hover-overlay: rgba(0, 0, 0, .05);
+        --press-overlay: rgba(0, 0, 0, .1);
+        --media-press: rgba(68, 73, 80, 0.35);
+        --card-background: #FFFFFF;
+        --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%) saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
+        --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
+        --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
+    }
+
+    &.__pj-dark-mode {
+        --wash: #3E4042;
+        --accent: hsl(214, 100%, 59%);
+        --primary-text: #E4E6EB;
+        --primary-icon: #E4E6EB;
+        --secondary-text: #B0B3B8;
+        --secondary-icon: #B0B3B8;
+        --background-color: #18191A;
+        --navTop-background-color: #242526;
+        --navTop-logo-color: #FFFFFF;
+        --navTop-search-background: #3A3B3C;
+        --navTop-search-background-hover: #4E4F50;
+        --secondary-button-background: rgba(255, 255, 255, .1);
+        --hover-overlay: rgba(255, 255, 255, .1);
+        --press-overlay: rgba(255, 255, 255, .1);
+        --media-press: rgba(68, 73, 80, 0.35);
+        --card-background: #242526;
+        --filter-primary-icon: invert(89%) sepia(6%) hue-rotate(185deg);
+        --filter-accent: invert(40%) sepia(52%) saturate(200%) saturate(200%) saturate(200%) saturate(189%) hue-rotate(191deg) brightness(103%) contrast(102%);
+        --filter-secondary-icon: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
+    }
+}
+
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --wash: #3E4042;
+        --accent: hsl(214, 100%, 59%);
+        --primary-text: #E4E6EB;
+        --primary-icon: #E4E6EB;
+        --secondary-text: #B0B3B8;
+        --secondary-icon: #B0B3B8;
+        --background-color: #18191A;
+        --navTop-background-color: #242526;
+        --navTop-logo-color: #FFFFFF;
+        --navTop-search-background: #3A3B3C;
+        --navTop-search-background-hover: #4E4F50;
+        --secondary-button-background: rgba(255, 255, 255, .1);
+        --hover-overlay: rgba(255, 255, 255, .1);
+        --press-overlay: rgba(255, 255, 255, .1);
+        --media-press: rgba(68, 73, 80, 0.35);
+        --card-background: #242526;
+        --filter-primary-icon: invert(89%) sepia(6%) hue-rotate(185deg);
+        --filter-accent: invert(40%) sepia(52%) saturate(200%) saturate(200%) saturate(200%) saturate(189%) hue-rotate(191deg) brightness(103%) contrast(102%);
+        --filter-secondary-icon: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --wash: #3E4042;
+        --accent: hsl(214, 89%, 52%);
+        --primary-text: #050505;
+        --primary-icon: #050505;
+        --secondary-text: #65676B;
+        --secondary-icon: #65676B;
+        --background-color: #F0F2F5;
+        --navTop-background-color: #FFFFFF;
+        --navTop-logo-color: #1877F2;
+        --navTop-search-background: #F0F2F5;
+        --navTop-search-background-hover: #E4E6E9;
+        --secondary-button-background: #E4E6EB;
+        --hover-overlay: rgba(0, 0, 0, .05);
+        --press-overlay: rgba(0, 0, 0, .1);
+        --media-press: rgba(68, 73, 80, 0.35);
+        --card-background: #FFFFFF;
+        --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%) saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
+        --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
+        --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
+    }
+}

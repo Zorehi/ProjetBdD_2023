@@ -1,0 +1,151 @@
+.navTop {
+    display: flex;
+    flex-direction: row;
+    height: 56px;
+    width: 100%;
+    position: fixed;
+    background-color: var(--navTop-background-color);
+    border-bottom: 1px solid var(--wash);
+
+    &__logo {
+        margin-left: 16px;
+        display: flex;
+        align-items: center;
+        
+        & > a {
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 0px;
+            padding: 4px 4px 2px 4px;
+            margin: 6px 0 4px 0;
+            color: var(--navTop-logo-color);
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    &__searchBar {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & > div {
+            max-width: 680px;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+
+        label {
+            width: 100%;
+            border-radius: 50px;
+            background-color: var(--navTop-search-background);
+            display: flex;
+            position: relative;
+            vertical-align: center;
+            cursor: text;
+
+            & > div {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                padding-left: 12px;
+                height: 100%;
+
+                & > svg {
+                    color: var(--secondary-icon);
+                }
+            }
+
+            & > input {
+                height: 40px;
+                padding: 7px 8px 9px 36px;
+                font-size: 15px;
+                width: 100%;
+
+                &::placeholder {
+                    color: var(--secondary-text);
+                }
+            }
+
+            &:hover {
+                background-color: var(--navTop-search-background-hover);
+            }
+        }
+    }
+
+    &__social {
+        padding: 0 16px 0 4px;
+        position: relative;
+
+        & > :first-child {
+            display: flex;
+            align-items: center;
+            height: 56px;
+            
+            & > div {
+                position: relative;
+                height: 40px;
+                width: 40px;
+                cursor: pointer;
+                
+                & > svg > g > circle.fill-none { fill: none; }
+                & > svg > g > circle.fill-media { fill: var(--media-press); }
+
+                &.scale-96 { transform: scale(.96); }
+                
+                & > div[id="down"] {
+                    position: absolute;
+                    bottom: 6px;
+                    right: 6px;
+                    transform: translate(50%, 50%);
+                    height: 12px;
+                    width: 12px;
+                    border-radius: 50%;
+                    background-color: var(--secondary-button-background);
+                    
+                    & > svg {
+                        color: var(--primary-icon);
+                    }
+
+                    & > div {
+                        position: absolute;
+                        bottom: 6px;
+                        right: 6px;
+                        transform: translate(50%, 50%);
+                        height: 12px;
+                        width: 12px;
+                        border-radius: 50%;
+                        background-color: var(--press-overlay);
+
+                        &.opacity-1 { opacity: 1; }
+                        &.opacity-0 { opacity: 0; }
+                    }
+                }
+
+                & > div[id="profilHover"] {
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                    border-radius: 50%;
+                    
+                    &.background-pressed { background-color: var(--press-overlay); }
+                    &.background-hover { background-color: var(--hover-overlay); }
+                    &.opacity-1 { opacity: 1; }
+                    &.opacity-0 { opacity: 0; }
+                }
+            }
+        }
+
+        & > :last-child {
+            position: absolute;
+            right: 16px;
+        }
+    }
+    
+}
