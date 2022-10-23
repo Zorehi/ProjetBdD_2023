@@ -24,7 +24,7 @@
         </div>
     </form>
 </div>
-<div id="divCloud" class="cloud">
+<div id="divCloud" class="cloud" hidden>
     <div class="register-box">
         <div class="register-head">
             <img class="img" src="https://static.xx.fbcdn.net/rsrc.php/v3/yO/r/zgulV2zGm8t.png" onclick="stop()" alt="" width="24" height="24">
