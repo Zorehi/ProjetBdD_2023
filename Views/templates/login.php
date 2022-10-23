@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" id="projetbdd" class="__pj-light-mode">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet BdD 2023</title>
+    <title><?= $pageName ?></title>
     <link rel="stylesheet" href="http://projetbdd/style.css">
     <link rel="stylesheet" href="http://projetbdd/reset.css">
 </head>
 
-<body>    
+<body class="system-fonts--body arial">    
     <?= $contenu ?>
 </body>
 
