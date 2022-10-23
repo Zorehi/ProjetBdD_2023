@@ -3,10 +3,14 @@ namespace App\Controllers;
 
 abstract class Controller
 {
-    public function render(string $fichier, array $donnees = [], $template = 'default')
+    public function render(string $fichier, array $donnees = [], string $template = 'default')
     {
         // On extrait le contenu de $donnes
         extract($donnees);
+
+        if (!isset($pageName)) {
+            $pageName = "Projet BdD";
+        }
 
         // On démarre le buffer de sortie
         ob_start();
@@ -17,6 +21,6 @@ abstract class Controller
 
         $contenu = ob_get_clean();
 
-        require_once ROOT.'/Views/'.$template.'.php';
+        require_once ROOT.'/Views/templates/'.$template.'.php';
     }
 }

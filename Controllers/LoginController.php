@@ -72,7 +72,9 @@ class LoginController extends Controller
             }
         }
 
-        $this->render('/login/index');
+        $pageName = "Projet BdD - Connexion ou inscription";
+
+        $this->render('/login/index', compact('pageName'), "login");
     }
 
     public function identify()
@@ -96,7 +98,9 @@ class LoginController extends Controller
             unset($_SESSION["recover"]);
         }
 
-        $this->render('/login/identify');
+        $pageName = "Mot de passe oublié - Projet BdD";
+
+        $this->render('/login/identify', compact('pageName'), "login");
     }
 
     /**
