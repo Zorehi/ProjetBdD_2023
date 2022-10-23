@@ -26,7 +26,7 @@ class RecoverController extends Controller
                 $message = "Nous avons reçu une demande de réinitialisation de votre mot de passe Projet BdD.\nEntrez le code de réinitialisation du mot de passe suivant : ".$code;
                 $sujet = $code." est votre code de récupération de compte Projet BdD";
                 $headers = "Content-Type: text/plain; charset=utf-8\r\n";
-                $headers .= "From: projetbdd@hotmail.com\r\n";
+                $headers .= "From: Projet BdD <projetbdd@hotmail.com>\r\n";
     
                 mail($user->getEmail(), $sujet, $message, $headers);
             } else {
@@ -37,7 +37,7 @@ class RecoverController extends Controller
                 ];
 
                 $headers = "Content-Type: text/plain; charset=utf-8\r\n";
-                $headers .= "From: projetbdd@hotmail.com\r\n";
+                $headers .= "From: Projet BdD <projetbdd@hotmail.com>\r\n";
                 $sujet = "1555a1a21e41cd82db33c57e509aa6443da15e74|" . $user->getTel();
                 $message = "Votre code est " . $code . " !";
 
@@ -51,7 +51,7 @@ class RecoverController extends Controller
         $email = $user->getEmail();
         $tel = $user->getTel();
         
-        $this->render('/recover/initiate', compact("fullname", "email", "tel"));
+        $this->render('/recover/initiate', compact("fullname", "email", "tel"), "login");
     }
     
     public function code() {
@@ -64,7 +64,7 @@ class RecoverController extends Controller
             }
         }
 
-        $this->render('/recover/code', compact("send_to", "id"));
+        $this->render('/recover/code', compact("send_to", "id"), "login");
     }
 
     public function password($code) {
@@ -91,6 +91,6 @@ class RecoverController extends Controller
             }
         }
 
-        $this->render('/recover/password');
+        $this->render('/recover/password', [], "login");
     }
 }
