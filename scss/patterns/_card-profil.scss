@@ -149,6 +149,8 @@
             & > :last-child  { 
                 padding: 6px;
                 width: 292px;
+                display: flex;
+                flex-direction: column;
 
                 & > :first-child {
                     font-size: 17px;
@@ -166,13 +168,19 @@
 
         & > :last-child {
             & > label[for="USE_SYSTEME"] {
-                div > :first-child {
-                    color: var(--primary-text);
-                }
+                div {
+                    display: flex;
+                    flex-direction: column;
 
-                div > :last-child {
-                    color: var(--secondary-text);
-                }
+                    & > :first-child {
+                        color: var(--primary-text);
+                    }
+
+                    & > :last-child {
+                        color: var(--secondary-text);
+                    }
+                } 
+
             }
 
             & > label {
@@ -213,6 +221,7 @@
 
 .card-profil > div {
     position: absolute;
+    width: 100%;
     transition-property: transform;
     transition-timing-function: cubic-bezier(.08,.52,.52,1);
     transition-duration: 200ms;

@@ -1,15 +1,19 @@
 :root {
   --wash: #E4E6EB;
   --accent: hsl(214, 89%, 52%);
+  --divider: #CED0D4;
+  --blue-link: #216FDB;
+  --base-blue: #1877F2;
   --primary-text: #050505;
   --primary-icon: #050505;
   --secondary-text: #65676B;
   --secondary-icon: #65676B;
   --background-color: #F0F2F5;
-  --navTop-background-color: #FFFFFF;
+  --nav-background-color: #FFFFFF;
   --navTop-logo-color: #1877F2;
-  --navTop-search-background: #F0F2F5;
-  --navTop-search-background-hover: #E4E6E9;
+  --comment-background: #F0F2F5;
+  --comment-background-hover: #E4E6E9;
+  --comment-placeholder-focus: #65676B;
   --secondary-button-background: #E4E6EB;
   --hover-overlay: rgba(0, 0, 0, .05);
   --press-overlay: rgba(0, 0, 0, .1);
@@ -18,20 +22,29 @@
   --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%) saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
   --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
   --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
+  --filter-always-white: invert(100%);
+  --primary-deemphasized-button-background: #E7F3FF;
+  --primary-deemphasized-button-text: #1877F2;
+  --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
+  --overlay-alpha-80: rgba(244, 244, 244, 0.8);
 }
 
 html.__pj-light-mode {
   --wash: #E4E6EB;
   --accent: hsl(214, 89%, 52%);
+  --divider: #CED0D4;
+  --blue-link: #216FDB;
+  --base-blue: #1877F2;
   --primary-text: #050505;
   --primary-icon: #050505;
   --secondary-text: #65676B;
   --secondary-icon: #65676B;
   --background-color: #F0F2F5;
-  --navTop-background-color: #FFFFFF;
+  --nav-background-color: #FFFFFF;
   --navTop-logo-color: #1877F2;
-  --navTop-search-background: #F0F2F5;
-  --navTop-search-background-hover: #E4E6E9;
+  --comment-background: #F0F2F5;
+  --comment-background-hover: #E4E6E9;
+  --comment-placeholder-focus: #65676B;
   --secondary-button-background: #E4E6EB;
   --hover-overlay: rgba(0, 0, 0, .05);
   --press-overlay: rgba(0, 0, 0, .1);
@@ -40,19 +53,28 @@ html.__pj-light-mode {
   --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%) saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
   --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
   --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
+  --filter-always-white: invert(100%);
+  --primary-deemphasized-button-background: #E7F3FF;
+  --primary-deemphasized-button-text: #1877F2;
+  --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
+  --overlay-alpha-80: rgba(244, 244, 244, 0.8);
 }
 html.__pj-dark-mode {
   --wash: #3E4042;
   --accent: hsl(214, 100%, 59%);
+  --divider: #3E4042;
+  --blue-link: #4599FF;
+  --base-blue: #1877F2;
   --primary-text: #E4E6EB;
   --primary-icon: #E4E6EB;
   --secondary-text: #B0B3B8;
   --secondary-icon: #B0B3B8;
   --background-color: #18191A;
-  --navTop-background-color: #242526;
+  --nav-background-color: #242526;
   --navTop-logo-color: #FFFFFF;
-  --navTop-search-background: #3A3B3C;
-  --navTop-search-background-hover: #4E4F50;
+  --comment-background: #3A3B3C;
+  --comment-background-hover: #4E4F50;
+  --comment-placeholder-focus: #8A8D91;
   --secondary-button-background: rgba(255, 255, 255, .1);
   --hover-overlay: rgba(255, 255, 255, .1);
   --press-overlay: rgba(255, 255, 255, .1);
@@ -61,21 +83,29 @@ html.__pj-dark-mode {
   --filter-primary-icon: invert(89%) sepia(6%) hue-rotate(185deg);
   --filter-accent: invert(40%) sepia(52%) saturate(200%) saturate(200%) saturate(200%) saturate(189%) hue-rotate(191deg) brightness(103%) contrast(102%);
   --filter-secondary-icon: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
+  --filter-always-white: invert(100%);
+  --primary-deemphasized-button-background: rgba(45, 136, 255, 0.2);
+  --primary-deemphasized-button-text: #2D88FF;
+  --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
+  --overlay-alpha-80: rgba(11, 11, 11, 0.8);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --wash: #3E4042;
     --accent: hsl(214, 100%, 59%);
+    --divider: #3E4042;
+    --blue-link: #216FDB;
     --primary-text: #E4E6EB;
     --primary-icon: #E4E6EB;
     --secondary-text: #B0B3B8;
     --secondary-icon: #B0B3B8;
     --background-color: #18191A;
-    --navTop-background-color: #242526;
+    --nav-background-color: #242526;
     --navTop-logo-color: #FFFFFF;
-    --navTop-search-background: #3A3B3C;
-    --navTop-search-background-hover: #4E4F50;
+    --comment-background: #3A3B3C;
+    --comment-background-hover: #4E4F50;
+    --comment-placeholder-focus: #8A8D91;
     --secondary-button-background: rgba(255, 255, 255, .1);
     --hover-overlay: rgba(255, 255, 255, .1);
     --press-overlay: rgba(255, 255, 255, .1);
@@ -84,21 +114,30 @@ html.__pj-dark-mode {
     --filter-primary-icon: invert(89%) sepia(6%) hue-rotate(185deg);
     --filter-accent: invert(40%) sepia(52%) saturate(200%) saturate(200%) saturate(200%) saturate(189%) hue-rotate(191deg) brightness(103%) contrast(102%);
     --filter-secondary-icon: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
+    --filter-always-white: invert(100%);
+    --primary-deemphasized-button-background: rgba(45, 136, 255, 0.2);
+    --primary-deemphasized-button-text: #2D88FF;
+    --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
+    --overlay-alpha-80: rgba(11, 11, 11, 0.8);
   }
 }
 @media (prefers-color-scheme: light) {
   :root {
-    --wash: #3E4042;
+    --wash: #E4E6EB;
     --accent: hsl(214, 89%, 52%);
+    --divider: #CED0D4;
+    --blue-link: #216FDB;
+    --base-blue: #1877F2;
     --primary-text: #050505;
     --primary-icon: #050505;
     --secondary-text: #65676B;
     --secondary-icon: #65676B;
     --background-color: #F0F2F5;
-    --navTop-background-color: #FFFFFF;
+    --nav-background-color: #FFFFFF;
     --navTop-logo-color: #1877F2;
-    --navTop-search-background: #F0F2F5;
-    --navTop-search-background-hover: #E4E6E9;
+    --comment-background: #F0F2F5;
+    --comment-background-hover: #E4E6E9;
+    --comment-placeholder-focus: #65676B;
     --secondary-button-background: #E4E6EB;
     --hover-overlay: rgba(0, 0, 0, .05);
     --press-overlay: rgba(0, 0, 0, .1);
@@ -107,6 +146,11 @@ html.__pj-dark-mode {
     --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%) saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
     --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
     --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
+    --filter-always-white: invert(100%);
+    --primary-deemphasized-button-background: #E7F3FF;
+    --primary-deemphasized-button-text: #1877F2;
+    --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
+    --overlay-alpha-80: rgba(244, 244, 244, 0.8);
   }
 }
 body {
@@ -123,11 +167,6 @@ a {
 }
 a:hover {
   text-decoration: underline;
-}
-
-span {
-  display: flex;
-  justify-content: space-between;
 }
 
 input {
@@ -897,6 +936,8 @@ button {
 .card-profil__display-body > :first-child > :last-child {
   padding: 6px;
   width: 292px;
+  display: flex;
+  flex-direction: column;
 }
 .card-profil__display-body > :first-child > :last-child > :first-child {
   font-size: 17px;
@@ -907,6 +948,10 @@ button {
   font-size: 14px;
   font-weight: 400;
   color: var(--primary-text);
+}
+.card-profil__display-body > :last-child > label[for=USE_SYSTEME] div {
+  display: flex;
+  flex-direction: column;
 }
 .card-profil__display-body > :last-child > label[for=USE_SYSTEME] div > :first-child {
   color: var(--primary-text);
@@ -945,6 +990,7 @@ button {
 
 .card-profil > div {
   position: absolute;
+  width: 100%;
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1);
   transition-duration: 200ms;
@@ -956,8 +1002,9 @@ button {
   height: 56px;
   width: 100%;
   position: fixed;
-  background-color: var(--navTop-background-color);
+  background-color: var(--nav-background-color);
   border-bottom: 1px solid var(--wash);
+  z-index: 9999;
 }
 .navTop__logo {
   margin-left: 16px;
@@ -989,7 +1036,7 @@ button {
 .navTop__searchBar label {
   width: 100%;
   border-radius: 50px;
-  background-color: var(--navTop-search-background);
+  background-color: var(--comment-background);
   display: flex;
   position: relative;
   vertical-align: center;
@@ -1010,12 +1057,13 @@ button {
   padding: 7px 8px 9px 36px;
   font-size: 15px;
   width: 100%;
+  color: var(--primary-text);
 }
 .navTop__searchBar label > input::placeholder {
   color: var(--secondary-text);
 }
 .navTop__searchBar label:hover {
-  background-color: var(--navTop-search-background-hover);
+  background-color: var(--comment-background-hover);
 }
 .navTop__social {
   padding: 0 16px 0 4px;
@@ -1097,43 +1145,71 @@ button {
 }
 
 .navLeft {
-  width: 300px;
+  overflow: hidden;
   height: 100%;
   position: fixed;
   top: 56px;
+  z-index: 0;
+}
+.navLeft.small {
+  width: 60px;
+  background-color: var(--nav-background-color);
+}
+.navLeft.extended {
+  width: 300px;
+  background-color: none;
 }
 .navLeft__head {
   padding: 16px 0 8px 0;
 }
 .navLeft__head > a {
+  height: 36px;
+}
+.navLeft__head > a > :last-child {
+  inset: -2px 8px;
+}
+.navLeft__head > :first-child {
+  margin-bottom: 8px;
+}
+.navLeft__head > :last-child {
+  margin-top: 4px;
+  padding: 6px 18px;
+}
+.navLeft__button {
   height: 40px;
-  width: 100%;
+  min-width: 60px;
+  max-width: 100%;
   display: flex;
   align-items: center;
   padding: 8px 20px;
   position: relative;
+  cursor: pointer;
 }
-.navLeft__head > a:hover {
+.navLeft__button:hover {
   text-decoration: none;
 }
-.navLeft__head > a > span {
+.navLeft__button > span {
   margin-left: 14px;
   font-size: 15px;
   font-weight: 500;
   color: var(--primary-text);
   line-height: 1.33;
   display: block;
+  min-width: 0;
 }
-.navLeft__head > a > :last-child {
+.navLeft__button > :last-child {
   position: absolute;
+  transition: opacity 100ms cubic-bezier(0, 0, 1, 1);
   background-color: var(--hover-overlay);
   border-radius: 8px;
-  height: 40px;
-  width: 284px;
   opacity: 0;
   inset: 0px 8px;
 }
-.navLeft__head > a.selected > :first-child {
+.navLeft__button i {
+  -webkit-filter: var(--filter-primary-icon);
+  filter: var(--filter-primary-icon);
+}
+.navLeft__button.selected > :first-child {
   background-color: var(--accent);
   height: 36px;
   width: 4px;
@@ -1144,15 +1220,331 @@ button {
   transform: scaleY(1) translateY(-50%);
   display: block;
 }
-.navLeft__head > a.selected > img {
-  -webkit-filter: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
-  filter: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
+.navLeft__button.selected > div.icon {
+  background-color: var(--primary-deemphasized-button-background);
 }
-.navLeft__head > :first-child {
-  margin-bottom: 4px;
+.navLeft__button.selected > div.icon img, .navLeft__button.selected > div.icon i {
+  -webkit-filter: var(--filter-accent);
+  filter: var(--filter-accent);
 }
-.navLeft__head > :last-child {
-  padding: 6px 18px;
+.navLeft__button.selected img, .navLeft__button.selected i {
+  -webkit-filter: var(--filter-accent);
+  filter: var(--filter-accent);
+}
+.navLeft__houses {
+  padding: 8px 0;
+}
+.navLeft__houses > :first-child {
+  padding: 4px 14px;
+}
+.navLeft__houses > :first-child > span {
+  margin-left: 8px;
+  font-size: 17px;
+  font-weight: 600;
+}
+.navLeft__houses > :first-child > .icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-button-background);
+}
+.navLeft__houses > :first-child > .icon > i {
+  -webkit-filter: var(--filter-primary-icon);
+  filter: var(--filter-primary-icon);
+}
+
+.navLeft-cloud {
+  top: 56px;
+  left: 60px;
+  right: 0;
+  bottom: 0;
+  background-color: var(--overlay-alpha-80);
+  position: fixed;
+}
+
+.navLeft-border {
+  width: 1px;
+  position: absolute;
+  top: 56px;
+  z-index: 2;
+  bottom: 0;
+  left: 60px;
+  display: block;
+  background-color: var(--wash);
+}
+
+.housesPanel {
+  top: 56px;
+  left: 60px;
+  width: 360px;
+  bottom: 0;
+  background-color: var(--card-background);
+  position: fixed;
+}
+.housesPanel__title {
+  margin: 19px 16px 8px 16px;
+  display: flex;
+  align-items: center;
+}
+.housesPanel__title > h1 {
+  color: var(--primary-text);
+  text-align: left;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  display: flex;
+}
+.housesPanel__search {
+  padding: 4px 16px 8px 16px;
+}
+.housesPanel__search-button {
+  padding: 0 8px;
+}
+.housesPanel__search-button.display-none {
+  display: none;
+}
+.housesPanel__search-button.display-true {
+  display: block;
+}
+.housesPanel__search > label {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--comment-background);
+  border-radius: 50px;
+  min-height: 36px;
+  width: 100%;
+  cursor: text;
+}
+.housesPanel__search > label > div {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+.housesPanel__search > label > div > svg {
+  color: var(--secondary-icon);
+}
+.housesPanel__search > label > input {
+  padding: 7px 6px 9px 6px;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--primary-text);
+  flex-grow: 1;
+}
+.housesPanel__search > label > input::placeholder {
+  color: var(--secondary-text);
+}
+.housesPanel__search > label > input:focus::placeholder {
+  color: var(--comment-placeholder-focus);
+}
+.housesPanel__create {
+  padding: 8px 16px 0 16px;
+}
+.housesPanel__create.display-none {
+  display: none;
+}
+.housesPanel__create.display-true {
+  display: block;
+}
+.housesPanel__create > a {
+  position: relative;
+  width: 100%;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-deemphasized-button-background);
+  height: 36px;
+}
+.housesPanel__create > a.scale-96 {
+  transform: scale(0.96);
+}
+.housesPanel__create > a:hover {
+  text-decoration: none;
+}
+.housesPanel__create > a > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.housesPanel__create > a > span > span {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--primary-deemphasized-button-text);
+  margin: 0 3px;
+}
+.housesPanel__create > a > span > i {
+  -webkit-filter: var(--filter-accent);
+  filter: var(--filter-accent);
+  margin: 0 3px;
+}
+.housesPanel__create > a > div {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.housesPanel__create > a > div.background-hover {
+  background-color: var(--hover-overlay);
+}
+.housesPanel__create > a > div.background-pressed {
+  background-color: var(--primary-deemphasized-button-pressed-overlay);
+}
+.housesPanel__create > a > div.opacity-1 {
+  opacity: 1;
+}
+.housesPanel__create > a > div.opacity-0 {
+  opacity: 0;
+}
+.housesPanel__separator {
+  padding-top: 12px;
+  margin: 0 16px;
+  border-bottom: 1px solid var(--divider);
+}
+.housesPanel__separator.display-none {
+  display: none;
+}
+.housesPanel__separator.display-true {
+  display: block;
+}
+.housesPanel__show > div {
+  padding-top: 16px;
+}
+.housesPanel__show > div.display-none {
+  display: none;
+}
+.housesPanel__show > div.display-true {
+  display: block;
+}
+.housesPanel__show > div > span {
+  padding: 0 16px;
+  color: var(--primary-text);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 20px;
+}
+.housesPanel__show > div > div {
+  padding: 8px 8px 0 8px;
+}
+.housesPanel__button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 2px;
+  height: 60px;
+  position: relative;
+}
+.housesPanel__button#searchHousesGlobal {
+  height: 56px;
+}
+.housesPanel__button#searchHousesGlobal > .img {
+  padding: 0;
+  margin: 6px;
+  background-color: var(--base-blue);
+  height: 36px;
+  width: 36px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.housesPanel__button#searchHousesGlobal > .img > i {
+  -webkit-filter: var(--filter-always-white);
+  filter: var(--filter-always-white);
+}
+.housesPanel__button#searchHousesGlobal > .text > :first-child {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--blue-link);
+}
+.housesPanel__button#searchHousesGlobal > .text > :first-child > strong {
+  font-size: inherit;
+  font-weight: 600;
+  line-height: inherit;
+  color: inherit;
+}
+.housesPanel__button:hover {
+  text-decoration: none;
+}
+.housesPanel__button > .img {
+  padding: 6px;
+  display: flex;
+  align-items: center;
+}
+.housesPanel__button > .text {
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  flex-grow: 1;
+}
+.housesPanel__button > .text > :first-child {
+  color: var(--primary-text);
+  line-height: 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.housesPanel__button > .text > :last-child {
+  color: var(--secondary-text);
+  line-height: 16px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.housesPanel__button > .pin-icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 99;
+}
+.housesPanel__button > .pin-icon.scale-96 {
+  transform: scale(0.96);
+}
+.housesPanel__button > .pin-icon > i {
+  -webkit-filter: var(--filter-primary-icon);
+  filter: var(--filter-primary-icon);
+}
+.housesPanel__button > .pin-icon > div {
+  position: absolute;
+  border-radius: 50px;
+  inset: 0;
+  transition: opacity 100ms cubic-bezier(0, 0, 1, 1);
+}
+.housesPanel__button > .pin-icon > div.opacity-1 {
+  opacity: 1;
+}
+.housesPanel__button > .pin-icon > div.opacity-0 {
+  opacity: 0;
+}
+.housesPanel__button > .pin-icon > div.background-hover {
+  background-color: var(--hover-overlay);
+}
+.housesPanel__button > .pin-icon > div.background-pressed {
+  background-color: var(--press-overlay);
+}
+.housesPanel__button > :last-child {
+  position: absolute;
+  border-radius: 8px;
+  inset: 0;
+  transition: opacity 100ms cubic-bezier(0, 0, 1, 1);
+}
+.housesPanel__button > :last-child.opacity-1 {
+  opacity: 1;
+}
+.housesPanel__button > :last-child.opacity-0 {
+  opacity: 0;
+}
+.housesPanel__button > :last-child.background-hover {
+  background-color: var(--hover-overlay);
+}
+.housesPanel__button > :last-child.background-pressed {
+  background-color: var(--press-overlay);
 }
 
 /*# sourceMappingURL=style.css.map */

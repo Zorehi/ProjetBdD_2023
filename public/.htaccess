@@ -1,8 +1,4 @@
-# On démarre le moteur de réécriture
-RewriteEngine On
-
-# Ne pas réecrir pour les fichier js
+Options +FollowSymlinks
+RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
-
-# Réecriture de l'url pour accéder a une page
-RewriteRule ^([a-zA-Z0-9\/]*)$ index.php?p=$1 [L]
+RewriteRule ^(.*)$ index.php?p=$1

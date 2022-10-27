@@ -31,7 +31,7 @@
                         <path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path>
                     </mask>
                     <g mask="url(#jsc_c_f)">
-                        <image xlink:href="https://scontent.fbod1-1.fna.fbcdn.net/v/t39.30808-1/290213391_2326193007536388_4642470361414569553_n.jpg?stp=cp0_dst-jpg_p40x40&_nc_cat=109&ccb=1-7&_nc_sid=7206a8&_nc_ohc=Zu808cQMaSkAX-OfEQC&_nc_ht=scontent.fbod1-1.fna&oh=00_AT_UAdFZ5EX-F2HiKpBHBvv6xzNYMXyjgkkNvUsLYO96Dg&oe=6359F3F6" alt=""></image>
+                        <image style="width: 40px;height: 40px;" xlink:href="https://scontent.fbod1-1.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D4MkQJTW3IMAX9AQGAE&_nc_ht=scontent.fbod1-1.fna&oh=00_AT9MhxjvbOepN3BUs7ycUyYNL0ZFUPSJN4QuN_ZmovoBdw&oe=6364B778" alt=""></image>
                         <circle class="fill-none" id="circle" cx="20" cy="20" r="20"></circle>
                     </g>
                 </svg>
@@ -56,7 +56,7 @@
                                     <circle cx="18" cy="18" fill="white" r="18"></circle>
                                 </mask>
                                 <g mask="url(#jsc_c_6h)">
-                                    <image x="0" y="0" height="100%" preserveAspectRatio="xMidYMid slice" width="100%" xlink:href="https://scontent.fbod1-1.fna.fbcdn.net/v/t39.30808-1/290213391_2326193007536388_4642470361414569553_n.jpg?stp=cp0_dst-jpg_p60x60&amp;_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=7206a8&amp;_nc_ohc=Zu808cQMaSkAX-OfEQC&amp;_nc_ht=scontent.fbod1-1.fna&amp;oh=00_AT_YKEL3hHIyotQFs0zn8CDOhHFWdrjEipiYJIvG_uow2g&amp;oe=6355FF76" style="height: 36px; width: 36px;"></image>
+                                    <image x="0" y="0" height="100%" preserveAspectRatio="xMidYMid slice" width="100%" xlink:href="https://scontent.fbod1-1.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D4MkQJTW3IMAX9AQGAE&_nc_ht=scontent.fbod1-1.fna&oh=00_AT9MhxjvbOepN3BUs7ycUyYNL0ZFUPSJN4QuN_ZmovoBdw&oe=6364B778" style="height: 36px; width: 36px;"></image>
                                     <circle fill="none" cx="18" cy="18" r="18"></circle>
                                 </g>
                             </svg>
