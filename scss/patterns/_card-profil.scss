@@ -7,6 +7,8 @@
     padding-top: 8px;
     overflow: hidden;
 
+    &[data-status="hidden"] { visibility: hidden; }
+
     &__users {
         margin: 4px 16px 16px 16px;
         box-shadow: 0 2px 12px rgba(0, 0, 0, .2);
@@ -219,10 +221,16 @@
     }
 }
 
-.card-profil > div {
-    position: absolute;
-    width: 100%;
-    transition-property: transform;
-    transition-timing-function: cubic-bezier(.08,.52,.52,1);
-    transition-duration: 200ms;
+.card-profil {
+    & > div {
+        position: absolute;
+        width: 100%;
+        transition-property: transform;
+        transition-timing-function: cubic-bezier(.08,.52,.52,1);
+        transition-duration: 200ms;
+
+        &[data-status="active"] { transform: translateX(0%) translateZ(1px); }
+        &[data-status="after"] { transform: translateX(100%) translateZ(1px); }
+        &[data-status="before"] { transform: translateX(-100%) translateZ(1px); }
+    }
 }

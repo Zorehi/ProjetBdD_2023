@@ -81,23 +81,14 @@ const removeListener = (element, listener, eventName) => {
 }
 
 /**
- * Permet de savoir si un element est affiché
- * 
- * @param {HTMLElement} elem Element HTML à tester
- * @returns Booleen
- */
-const isVisible = elem => elem.style.visibility == "visible" ? true : false;
-
-
-/**
  * Permet de revenir sur le menu principal
  * 
  * @param {Event} event 
  */
 const goBackListener = event => {
     card.style.height = card.children[0].clientHeight + 8 + "px";
-    card.children[1].style.transform = ("translateX(100%) translateZ(1px)");
-    card.children[0].style.transform = ("translateX(0%) translateZ(1px)");
+    card.children[0].dataset.status = "active";
+    card.children[1].dataset.status = "after";
 
     removeListener(displayButton, goBackListener, "click");
     inputKeys.forEach(input => {
@@ -114,8 +105,8 @@ const goBackListener = event => {
  */
 const showDisplayListener = event => {
     card.style.height = card.children[1].clientHeight + 8 + "px";
-    card.children[0].style.transform = ("translateX(-100%) translateZ(1px)");
-    card.children[1].style.transform = ("translateX(0%) translateZ(1px)");
+    card.children[0].dataset.status = "before";
+    card.children[1].dataset.status = "active";
 
     goBack.addEventListener("click", goBackListener);
     inputKeys.forEach(input => {
@@ -130,9 +121,9 @@ const showDisplayListener = event => {
  */
 const outsideClickListener = event => {
     if (!profil.contains(event.target) && !card.contains(event.target) && isVisible(card)) {
-        card.style.visibility = "hidden";
-        card.children[1].style.transform = ("translateX(100%) translateZ(1px)");
-        card.children[0].style.transform = ("translateX(0%) translateZ(1px)");
+        card.dataset.status = "hidden";
+        card.children[0].dataset.status = "active";
+        card.children[1].dataset.status = "after";
 
         removeListener(document, outsideClickListener, "click");
         removeListener(displayButton, showDisplayListener, "click");
@@ -150,7 +141,7 @@ profil.addEventListener("click", function(event) {
     
     // Affiche le menu principal
     card.style.height = card.children[0].clientHeight + 8 + "px";
-    card.style.visibility = "visible";
+    card.dataset.status = "visible";
 })
 
 /**

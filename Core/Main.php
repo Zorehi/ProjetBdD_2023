@@ -59,6 +59,16 @@ use App\Controllers\MainController;
             // On démarre la session
             session_start();
 
+            if (!isset($_COOKIE['color-scheme'])) {
+                setcookie(
+                    'color-scheme',
+                    '__pj-light-mode',
+                    [
+                        'expires'=> time() + 365*24*60*60
+                    ]
+                );
+            }
+
             // On retire le "trailing slash" (dernier slash) éventuel de l'URL
             // On récupère l'URL
             $uri = $_SERVER['REQUEST_URI'];

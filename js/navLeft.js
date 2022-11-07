@@ -1,53 +1,37 @@
-const navbar_buttons = document.getElementsByClassName("navLeft__button");
+const navbar_buttons = document.getElementsByClassName("navLeft-button");
 const btnHouses = document.getElementById("Maisons");
 const navLeft = document.getElementById("navLeft");
 const panel = document.getElementById("panel");
-const housesPanel = document.getElementById("housesPanel");
+const panelHouse = document.getElementById("panelHouse");
 const btnCreateHouse = document.getElementById("btnCreateHouse");
 const search_houses = document.getElementById("search_houses");
-const searchHousesGlobal = document.getElementById("searchHousesGlobal");
+const searchHousesButton = document.getElementById("searchHousesButton");
 const myHouses = document.getElementById("myHouses");
-const pinHouses = document.getElementById("pinHouses");
-const separator = document.getElementById("separator");
-const searchGlobalContainer = document.getElementById("searchGlobalContainer");
-const createContainer = document.getElementById("createContainer");
-const housesPanel_buttons = document.getElementsByClassName("housesPanel__button");
+const panelHouse_button = document.getElementsByClassName("panelHouse-button");
+const panelHouse_scroll = document.getElementById("panelHouse-scroll");
 const pin_icons = document.getElementsByClassName("pin-icon");
 
 for (var i = 0; i < navbar_buttons.length; i++) {
-    navbar_buttons[i].addEventListener("mouseenter", function(event) { event.target.children[3].style.opacity = "1"; });
-    navbar_buttons[i].addEventListener("mouseleave", function(event) { event.target.children[3].style.opacity = "0"; });
+    navbar_buttons[i].addEventListener("mouseenter", function(event) { event.target.children[3].setAttribute("data-status", "visible"); });
+    navbar_buttons[i].addEventListener("mouseleave", function(event) { event.target.children[3].setAttribute("data-status", "hidden"); });
 }
-
-/**
- * Permet de savoir si un element est affiché
- * 
- * @param {HTMLElement} elem Element HTML à tester
- * @returns Booleen
- */
-const isVisible = elem => elem.style.visibility == "visible" ? true : false;
 
 /**
  * Permet de cacher le menu en cliquant à coté
  * 
  * @param {Event} event 
  */
-const outsideClickListener = event => {
-    if (!btnHouses.contains(event.target) && !housesPanel.contains(event.target) && isVisible(panel)) {
-        panel.style.visibility = "hidden";
-        for (let button of navbar_buttons) {
-            button.classList.remove("selected");
-            button.children[2].style.display = "block";
-        }
-        navLeft.classList.replace("small", "extended");
-        navbar_buttons[0].classList.add("selected");
-        btnHouses.children[3].style.borderRadius = "";
-        btnHouses.children[3].style.inset = "";
+const outsidePanelClickListener = event => {
+    if (!btnHouses.contains(event.target) && !panelHouse.contains(event.target) && isVisible(panel)) {
+        panel.setAttribute("data-status", "hidden");
+        panelHouse.setAttribute("data-status", "hidden");
+        navLeft.querySelector('[data-status="selected"]').setAttribute("data-status", "unselected")
+        navLeft.setAttribute("data-status", "extended");
+        navbar_buttons[0].setAttribute("data-status", "selected");
 
         search_houses.value = "";
-        hideSearch();
 
-        document.removeEventListener("click", outsideClickListener);
+        document.removeEventListener("click", outsidePanelClickListener);
         removeAllEventForPanelHouses();
     }
 }
@@ -57,16 +41,12 @@ btnHouses.addEventListener("click", function(event) {
         document.dispatchEvent(new Event("click"));
         return;
     }
-    document.addEventListener("click", outsideClickListener);
-    for (var i = 0; i < navbar_buttons.length; i++) {
-        navbar_buttons[i].classList.remove("selected");
-        navbar_buttons[i].children[2].style.display = "none";
-    }
-    this.children[3].style.borderRadius = "16px";
-    this.children[3].style.inset = "4px 14px";
-    this.classList.add("selected");
-    navLeft.classList.replace("extended", "small");
-    panel.style.visibility = "visible";
+    document.addEventListener("click", outsidePanelClickListener);
+    navLeft.querySelector('[data-status="selected"]').setAttribute("data-status", "unselected")
+    this.setAttribute("data-status", "selected");
+    navLeft.setAttribute("data-status", "small");
+    panel.setAttribute("data-status", "visible");
+    panelHouse.setAttribute("data-status", "visible");
 
     addAllEventForPanelHouses();
 })
@@ -83,7 +63,7 @@ const addAllEventForPanelHouses = function() {
 
     search_houses.addEventListener("keydown", animateSearch);
     
-    for (let button of housesPanel_buttons) {
+    for (let button of panelHouse_button) {
         button.addEventListener("mouseenter", animateButtons);
         button.addEventListener("mouseleave", animateButtons);
         button.addEventListener("mousedown", animateButtons);
@@ -108,7 +88,7 @@ const removeAllEventForPanelHouses = function() {
     
     search_houses.removeEventListener("keydown", animateSearch);
     
-    for (let button of housesPanel_buttons) {
+    for (let button of panelHouse_button) {
         button.removeEventListener("mouseenter", animateButtons);
         button.removeEventListener("mouseleave", animateButtons);
         button.removeEventListener("mousedown", animateButtons);
@@ -202,32 +182,28 @@ const animateSearch = function(event) {
     if (timeoutID.length > 0) { clearTimeout(timeoutID.shift()); }
     timeoutID.push(setTimeout(() => {
         timeoutID = [];
-        searchHousesGlobal.children[1].children[0].children[0].textContent = this.value;
-        searchHousesGlobal.setAttribute("href", "/houses/search?s"+this.value);
+        searchHousesButton.children[1].children[0].children[0].textContent = this.value;
+        searchHousesButton.setAttribute("href", "/houses/search?s"+this.value);
         if (this.value == "") {
-            hideSearch();
+            panelHouse_scroll.dataset.status = "show";
         } else {
-            searchGlobalContainer.classList.replace("display-none", "display-true");
-            pinHouses.classList.replace("display-true", "display-none");
-            separator.classList.replace("display-true", "display-none");
-            createContainer.classList.replace("display-true", "display-none");
+            panelHouse_scroll.dataset.status = "search";
             searchHouse(this.value);
         }
     }, 500));
 }
 
-const hideSearch = function() {
-    searchGlobalContainer.classList.replace("display-true", "display-none");
-    pinHouses.classList.replace("display-none", "display-true");
-    separator.classList.replace("display-none", "display-true");
-    createContainer.classList.replace("display-none", "display-true");
-    for (let button of myHouses.children[1].children) { button.style.display = "flex" }
-}
-
+/**
+ * Permet de ne pas afficher les Maisons qui ne correspondent pas à la recherche
+ * 
+ * @param {String} value 
+ */
 const searchHouse = function(value) {
     for (let button of myHouses.children[1].children) {
         if (!isMatch(button, value)) {
             button.style.display = "none";
+        } else {
+            button.style.display = "flex";
         }
     }
 }
@@ -239,6 +215,3 @@ const searchHouse = function(value) {
  * @returns 
  */
 const isMatch = (button, test) => button.children[1].children[0].textContent.toLocaleLowerCase().includes(test.toLowerCase());
-
-//btnHouses.dispatchEvent(new Event("click"));
-
