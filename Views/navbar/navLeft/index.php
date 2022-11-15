@@ -8,7 +8,7 @@
         </a>
         <a href="" class="navLeft-button profil" data-status="unselected">
             <div class="show-selected" data-status="unselected"></div>
-            <img src="image?file=user.png" style="height: 24px;width: 24px;border-radius: 50%;">
+            <img src="assets/image/user.png" style="height: 24px;width: 24px;border-radius: 50%;">
             <span style="margin-left: 12px;"><?= $_SESSION["user"]["prenom"] . " " . $_SESSION["user"]["nom"] ?></span>
             <div class="button-hover" data-status="hidden"></div>
         </a>

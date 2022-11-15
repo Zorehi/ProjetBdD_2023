@@ -31,7 +31,7 @@
                         <path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path>
                     </mask>
                     <g mask="url(#jsc_c_f)">
-                        <image style="width: 40px;height: 40px;" xlink:href="image?file=user.png" alt=""></image>
+                        <image style="width: 40px;height: 40px;" xlink:href="assets/image/user.png" alt=""></image>
                         <circle class="fill-none" id="circle" cx="20" cy="20" r="20"></circle>
                     </g>
                 </svg>

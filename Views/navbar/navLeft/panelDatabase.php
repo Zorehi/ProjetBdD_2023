@@ -1,9 +1,9 @@
-<div class="housesPanel" id="databasePanel" data-status="hidden">
-    <div class="housesPanel__title">
+<div class="panelHouse" id="databasePanel" data-status="hidden">
+    <div class="panelHouse-title">
         <h1>Base de données</h1>
     </div>
     <div>
-        <div class="housesPanel__search">
+        <div class="panelHouse-search">
             <label for="search_tables">
                 <div>
                     <svg fill="currentColor" viewBox="0 0 16 16" width="1em" height="1em">
