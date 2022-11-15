@@ -2,7 +2,7 @@
     use App\Autoloader;
     use App\Core\Main;
 
-    define('ROOT', dirname(__DIR__));
+    define('ROOT', dirname(__FILE__));
 
     require_once ROOT.'/Autoloader.php';
     Autoloader::register();

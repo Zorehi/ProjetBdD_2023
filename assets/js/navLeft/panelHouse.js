@@ -1,61 +1,11 @@
-const navbar_buttons = document.getElementsByClassName("navLeft-button");
-const btnHouses = document.getElementById("Maisons");
-const navLeft = document.getElementById("navLeft");
-const panel = document.getElementById("panel");
-const panelHouse = document.getElementById("panelHouse");
-const btnCreateHouse = document.getElementById("btnCreateHouse");
-const search_houses = document.getElementById("search_houses");
-const searchHousesButton = document.getElementById("searchHousesButton");
-const myHouses = document.getElementById("myHouses");
-const panelHouse_button = document.getElementsByClassName("panelHouse-button");
-const panelHouse_scroll = document.getElementById("panelHouse-scroll");
-const pin_icons = document.getElementsByClassName("pin-icon");
-
-for (var i = 0; i < navbar_buttons.length; i++) {
-    navbar_buttons[i].addEventListener("mouseenter", function(event) { event.target.children[3].setAttribute("data-status", "visible"); });
-    navbar_buttons[i].addEventListener("mouseleave", function(event) { event.target.children[3].setAttribute("data-status", "hidden"); });
-}
-
 /**
- * Permet de cacher le menu en cliquant à coté
- * 
- * @param {Event} event 
+ * File panelHouse.js
  */
-const outsidePanelClickListener = event => {
-    if (!btnHouses.contains(event.target) && !panelHouse.contains(event.target) && isVisible(panel)) {
-        panel.setAttribute("data-status", "hidden");
-        panelHouse.setAttribute("data-status", "hidden");
-        navLeft.querySelector('[data-status="selected"]').setAttribute("data-status", "unselected")
-        navLeft.setAttribute("data-status", "extended");
-        navbar_buttons[0].setAttribute("data-status", "selected");
-
-        search_houses.value = "";
-
-        document.removeEventListener("click", outsidePanelClickListener);
-        removeAllEventForPanelHouses();
-    }
-}
-
-btnHouses.addEventListener("click", function(event) {
-    if (isVisible(panel)) {
-        document.dispatchEvent(new Event("click"));
-        return;
-    }
-    document.addEventListener("click", outsidePanelClickListener);
-    navLeft.querySelector('[data-status="selected"]').setAttribute("data-status", "unselected")
-    this.setAttribute("data-status", "selected");
-    navLeft.setAttribute("data-status", "small");
-    panel.setAttribute("data-status", "visible");
-    panelHouse.setAttribute("data-status", "visible");
-
-    addAllEventForPanelHouses();
-})
-
 
 /**
  * Ajoute tous les évenement liés au panel maisons
  */
-const addAllEventForPanelHouses = function() {
+ const addAllEventForPanelHouses = function() {
     btnCreateHouse.addEventListener("mouseup", animateBtnCreateHouse);
     btnCreateHouse.addEventListener("mouseleave", animateBtnCreateHouse);
     btnCreateHouse.addEventListener("mouseenter", animateBtnCreateHouse);
@@ -186,6 +136,9 @@ const animateSearch = function(event) {
         searchHousesButton.setAttribute("href", "/houses/search?s"+this.value);
         if (this.value == "") {
             panelHouse_scroll.dataset.status = "show";
+            for (let button of myHouses.children[1].children) {
+                button.style.display = "flex";
+            }
         } else {
             panelHouse_scroll.dataset.status = "search";
             searchHouse(this.value);
