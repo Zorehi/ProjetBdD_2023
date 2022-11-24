@@ -1,0 +1,114 @@
+.panel-section {
+    top: 56px;
+    left: 60px;
+    width: 360px;
+    bottom: 0;
+    background-color: var(--card-background);
+    position: fixed;
+
+    &[data-status="hidden"] {
+        display: none;
+    }
+
+    .panel-section-title {
+        margin: 19px 16px 8px 16px;
+        display: flex;
+        align-items: center;
+
+        & > h1 {
+            color: var(--primary-text);
+            text-align: left;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 28px;
+            display: flex;
+        }
+    }
+
+    .panel-section-search {
+        padding: 4px 16px 8px 16px;
+
+        & > label {
+            display: flex;
+            flex-direction: row;
+            background-color: var(--comment-background);
+            border-radius: 50px;
+            min-height: 36px;
+            width: 100%;
+            cursor: text;
+
+            & > div {
+                padding-left: 10px;
+                display: flex;
+                align-items: center;
+
+                & > svg {
+                    color: var(--secondary-icon);
+                }
+            }
+
+            & > input {
+                padding: 7px 6px 9px 6px;
+                font-size: 15px;
+                font-weight: 400;
+                color: var(--primary-text);
+                flex-grow: 1;
+
+                &::placeholder {
+                    color: var(--secondary-text);
+                }
+
+                &:focus::placeholder {
+                    color: var(--comment-placeholder-focus);
+                }
+            }
+        }
+    }
+
+    .panel-section-separator {
+        padding-top: 12px;
+        margin: 0 16px;
+        border-bottom: 1px solid var(--divider);
+    }
+
+    .panel-section-list {
+        & > div {
+            padding-top: 16px;
+
+            & > span {
+                padding: 0 16px;
+                color: var(--primary-text);
+                font-size: 17px;
+                font-weight: 600;
+                line-height: 20px;
+            }
+    
+            & > div {
+                padding: 8px 8px 0 8px;
+            }
+        }
+    }
+
+    .panel-section-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 6px 2px;
+        height: 60px;
+        position: relative;
+
+        & > .hover {
+            position: absolute;
+            border-radius: 8px;
+            inset: 0;
+            transition: background-color 100ms cubic-bezier(0, 0, 1, 1);
+
+            &:hover {
+                background-color: var(--hover-overlay);
+            }
+            &:active {
+                background-color: var(--press-overlay);
+            }
+        }
+    }
+}

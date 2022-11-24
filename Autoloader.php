@@ -17,7 +17,7 @@
             $fichier = __DIR__ . '/' . $class . '.php';
 
             if (file_exists($fichier)) {
-                require_once $fichier;                
+                require_once $fichier;
             }
         }
     }

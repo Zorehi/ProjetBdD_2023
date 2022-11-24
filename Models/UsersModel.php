@@ -8,10 +8,10 @@ class UsersModel extends Model
     protected $lastname;
     protected $email;
     protected $password;
-    protected $sex;
-    protected $dateofbirth;
+    protected $sex_id;
+    protected $born_date;
     protected $tel;
-    protected $createat;
+    protected $create_time;
 
     public function __construct()
     {
@@ -134,41 +134,41 @@ class UsersModel extends Model
     }
 
     /**
-     * Get the value of sex
+     * Get the value of sex_id
      */ 
-    public function getSex()
+    public function getSex_id()
     {
-        return $this->sex;
+        return $this->sex_id;
     }
 
     /**
-     * Set the value of sex
+     * Set the value of sex_id
      *
      * @return  self
      */ 
-    public function setSex($sex)
+    public function setSex_id($sex_id)
     {
-        $this->sex = $sex;
+        $this->sex_id = $sex_id;
 
         return $this;
     }
 
     /**
-     * Get the value of dateofbirth
+     * Get the value of born_date
      */ 
-    public function getDateofbirth()
+    public function getBorn_date()
     {
-        return $this->dateofbirth;
+        return $this->born_date;
     }
 
     /**
-     * Set the value of dateofbirth
+     * Set the value of born_date
      *
      * @return  self
      */ 
-    public function setDateofbirth($dateofbirth)
+    public function setBorn_date($born_date)
     {
-        $this->dateofbirth = $dateofbirth;
+        $this->born_date = $born_date;
 
         return $this;
     }
@@ -194,21 +194,21 @@ class UsersModel extends Model
     }
 
     /**
-     * Get the value of createat
+     * Get the value of create_time
      */ 
-    public function getCreateat()
+    public function getCreate_time()
     {
-        return $this->createat;
+        return $this->create_time;
     }
 
     /**
-     * Set the value of createat
+     * Set the value of create_time
      *
      * @return  self
      */ 
-    public function setCreateat($createat)
+    public function setCreate_time($create_time)
     {
-        $this->createat = $createat;
+        $this->create_time = $create_time;
 
         return $this;
     }

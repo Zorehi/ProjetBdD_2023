@@ -1086,22 +1086,25 @@ button {
   align-items: center;
   height: 56px;
 }
-.navTop .navTop-social > :first-child > div {
+.navTop .navTop-social > :first-child > .btn-profil {
   position: relative;
   height: 40px;
   width: 40px;
   cursor: pointer;
 }
-.navTop .navTop-social > :first-child > div > svg > g > circle.fill-none {
-  fill: none;
-}
-.navTop .navTop-social > :first-child > div > svg > g > circle.fill-media {
-  fill: var(--media-press);
-}
-.navTop .navTop-social > :first-child > div.scale-96 {
+.navTop .navTop-social > :first-child > .btn-profil:active {
   transform: scale(0.96);
 }
-.navTop .navTop-social > :first-child > div > div[id=down] {
+.navTop .navTop-social > :first-child > .btn-profil:active .circlePP {
+  fill: var(--media-press);
+}
+.navTop .navTop-social > :first-child > .btn-profil:active .hover {
+  background-color: var(--press-overlay);
+}
+.navTop .navTop-social > :first-child > .btn-profil .circlePP {
+  fill: none;
+}
+.navTop .navTop-social > :first-child > .btn-profil > .icon-down {
   position: absolute;
   bottom: 6px;
   right: 6px;
@@ -1111,10 +1114,10 @@ button {
   border-radius: 50%;
   background-color: var(--secondary-button-background);
 }
-.navTop .navTop-social > :first-child > div > div[id=down] > svg {
+.navTop .navTop-social > :first-child > .btn-profil > .icon-down > svg {
   color: var(--primary-icon);
 }
-.navTop .navTop-social > :first-child > div > div[id=down] > div {
+.navTop .navTop-social > :first-child > .btn-profil > .icon-down > .hover {
   position: absolute;
   bottom: 6px;
   right: 6px;
@@ -1122,34 +1125,18 @@ button {
   height: 12px;
   width: 12px;
   border-radius: 50%;
-  background-color: var(--press-overlay);
 }
-.navTop .navTop-social > :first-child > div > div[id=down] > div.opacity-1 {
-  opacity: 1;
-}
-.navTop .navTop-social > :first-child > div > div[id=down] > div.opacity-0 {
-  opacity: 0;
-}
-.navTop .navTop-social > :first-child > div > div[id=profilHover] {
+.navTop .navTop-social > :first-child > .btn-profil > .hover {
   position: absolute;
   display: block;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
+  inset: 0;
   border-radius: 50%;
 }
-.navTop .navTop-social > :first-child > div > div[id=profilHover].background-pressed {
-  background-color: var(--press-overlay);
-}
-.navTop .navTop-social > :first-child > div > div[id=profilHover].background-hover {
+.navTop .navTop-social > :first-child > .btn-profil > .hover:hover {
   background-color: var(--hover-overlay);
 }
-.navTop .navTop-social > :first-child > div > div[id=profilHover].opacity-1 {
-  opacity: 1;
-}
-.navTop .navTop-social > :first-child > div > div[id=profilHover].opacity-0 {
-  opacity: 0;
+.navTop .navTop-social > :first-child > .btn-profil > .hover:active {
+  background-color: var(--press-overlay);
 }
 .navTop .navTop-social > :last-child {
   position: absolute;
@@ -1163,15 +1150,18 @@ button {
   top: 56px;
   z-index: 0;
 }
-.navLeft[data-status=small] {
+.navLeft#navLeft[data-always=small] {
+  border-right: 1px solid var(--wash);
+}
+.navLeft[data-status=small], .navLeft#navLeft[data-always=small] {
   width: 60px;
   background-color: var(--nav-background-color);
 }
-.navLeft[data-status=small] .navLeft-section > :first-child > .button-hover {
+.navLeft[data-status=small] .navLeft-section > :first-child > .button-hover, .navLeft#navLeft[data-always=small] .navLeft-section > :first-child > .button-hover {
   inset: 4px 14px;
   border-radius: 16px;
 }
-.navLeft[data-status=small] .navLeft-button > span {
+.navLeft[data-status=small] .navLeft-button > span, .navLeft#navLeft[data-always=small] .navLeft-button > span {
   display: none;
 }
 .navLeft[data-status=extended] {
@@ -1239,16 +1229,12 @@ button {
 }
 .navLeft .navLeft-button > .button-hover {
   position: absolute;
-  transition: opacity 100ms cubic-bezier(0, 0, 1, 1);
-  background-color: var(--hover-overlay);
+  transition: background-color 100ms cubic-bezier(0, 0, 1, 1);
   border-radius: 8px;
   inset: 0px 8px;
 }
-.navLeft .navLeft-button > .button-hover[data-status=hidden] {
-  opacity: 0;
-}
-.navLeft .navLeft-button > .button-hover[data-status=visible] {
-  opacity: 1;
+.navLeft .navLeft-button > .button-hover:hover {
+  background-color: var(--hover-overlay);
 }
 .navLeft .navLeft-button i {
   -webkit-filter: var(--filter-primary-icon);
@@ -1295,65 +1281,9 @@ button {
 
 #panel[data-status=hidden] {
   display: none;
+  z-index: 999;
 }
 
-.panelHouse {
-  top: 56px;
-  left: 60px;
-  width: 360px;
-  bottom: 0;
-  background-color: var(--card-background);
-  position: fixed;
-}
-.panelHouse[data-status=hidden] {
-  display: none;
-}
-.panelHouse .panelHouse-title {
-  margin: 19px 16px 8px 16px;
-  display: flex;
-  align-items: center;
-}
-.panelHouse .panelHouse-title > h1 {
-  color: var(--primary-text);
-  text-align: left;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 28px;
-  display: flex;
-}
-.panelHouse .panelHouse-search {
-  padding: 4px 16px 8px 16px;
-}
-.panelHouse .panelHouse-search > label {
-  display: flex;
-  flex-direction: row;
-  background-color: var(--comment-background);
-  border-radius: 50px;
-  min-height: 36px;
-  width: 100%;
-  cursor: text;
-}
-.panelHouse .panelHouse-search > label > div {
-  padding-left: 10px;
-  display: flex;
-  align-items: center;
-}
-.panelHouse .panelHouse-search > label > div > svg {
-  color: var(--secondary-icon);
-}
-.panelHouse .panelHouse-search > label > input {
-  padding: 7px 6px 9px 6px;
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--primary-text);
-  flex-grow: 1;
-}
-.panelHouse .panelHouse-search > label > input::placeholder {
-  color: var(--secondary-text);
-}
-.panelHouse .panelHouse-search > label > input:focus::placeholder {
-  color: var(--comment-placeholder-focus);
-}
 .panelHouse .panelHouse-create {
   padding: 8px 16px 0 16px;
 }
@@ -1368,11 +1298,8 @@ button {
   background-color: var(--primary-deemphasized-button-background);
   height: 36px;
 }
-.panelHouse .panelHouse-create > a.scale-96 {
+.panelHouse .panelHouse-create > a:active {
   transform: scale(0.96);
-}
-.panelHouse .panelHouse-create > a:hover {
-  text-decoration: none;
 }
 .panelHouse .panelHouse-create > a > span {
   display: flex;
@@ -1396,35 +1323,11 @@ button {
   inset: 0;
   border-radius: inherit;
 }
-.panelHouse .panelHouse-create > a > div.background-hover {
+.panelHouse .panelHouse-create > a > div:hover {
   background-color: var(--hover-overlay);
 }
-.panelHouse .panelHouse-create > a > div.background-pressed {
+.panelHouse .panelHouse-create > a > div:active {
   background-color: var(--primary-deemphasized-button-pressed-overlay);
-}
-.panelHouse .panelHouse-create > a > div.opacity-1 {
-  opacity: 1;
-}
-.panelHouse .panelHouse-create > a > div.opacity-0 {
-  opacity: 0;
-}
-.panelHouse .panelHouse-separator {
-  padding-top: 12px;
-  margin: 0 16px;
-  border-bottom: 1px solid var(--divider);
-}
-.panelHouse .panelHouse-show > div {
-  padding-top: 16px;
-}
-.panelHouse .panelHouse-show > div > span {
-  padding: 0 16px;
-  color: var(--primary-text);
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 20px;
-}
-.panelHouse .panelHouse-show > div > div {
-  padding: 8px 8px 0 8px;
 }
 .panelHouse #searchHousesButton {
   height: 56px;
@@ -1456,17 +1359,6 @@ button {
   line-height: inherit;
   color: inherit;
 }
-.panelHouse .panelHouse-button {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 6px 2px;
-  height: 60px;
-  position: relative;
-}
-.panelHouse .panelHouse-button:hover {
-  text-decoration: none;
-}
 .panelHouse .panelHouse-button > .img {
   padding: 6px;
   display: flex;
@@ -1478,13 +1370,13 @@ button {
   padding: 6px;
   flex-grow: 1;
 }
-.panelHouse .panelHouse-button > .text > :first-child {
+.panelHouse .panelHouse-button > .text > .primary {
   color: var(--primary-text);
   line-height: 20px;
   font-size: 15px;
   font-weight: 500;
 }
-.panelHouse .panelHouse-button > .text > :last-child {
+.panelHouse .panelHouse-button > .text > .secondary {
   color: var(--secondary-text);
   line-height: 16px;
   font-size: 12px;
@@ -1513,51 +1405,148 @@ button {
   inset: 0;
   transition: opacity 100ms cubic-bezier(0, 0, 1, 1);
 }
-.panelHouse .panelHouse-button > .pin-icon > div.opacity-1 {
-  opacity: 1;
-}
-.panelHouse .panelHouse-button > .pin-icon > div.opacity-0 {
-  opacity: 0;
-}
-.panelHouse .panelHouse-button > .pin-icon > div.background-hover {
+.panelHouse .panelHouse-button > .pin-icon > div:hover {
   background-color: var(--hover-overlay);
 }
-.panelHouse .panelHouse-button > .pin-icon > div.background-pressed {
-  background-color: var(--press-overlay);
-}
-.panelHouse .panelHouse-button > :last-child {
-  position: absolute;
-  border-radius: 8px;
-  inset: 0;
-  transition: opacity 100ms cubic-bezier(0, 0, 1, 1);
-}
-.panelHouse .panelHouse-button > :last-child.opacity-1 {
-  opacity: 1;
-}
-.panelHouse .panelHouse-button > :last-child.opacity-0 {
-  opacity: 0;
-}
-.panelHouse .panelHouse-button > :last-child.background-hover {
-  background-color: var(--hover-overlay);
-}
-.panelHouse .panelHouse-button > :last-child.background-pressed {
+.panelHouse .panelHouse-button > .pin-icon > div:active {
   background-color: var(--press-overlay);
 }
 
-.panelHouse .panelHouse-scroll #containerSearchHouseButton {
+.panelHouse .panel-section-scroll #containerSearchHouseButton {
   display: none;
 }
-.panelHouse .panelHouse-scroll[data-status=search] #containerSearchHouseButton {
+.panelHouse .panel-section-scroll[data-status=search] #containerSearchHouseButton {
   display: block;
 }
-.panelHouse .panelHouse-scroll[data-status=search] .panelHouse-create {
+.panelHouse .panel-section-scroll[data-status=search] .panelHouse-create {
   display: none;
 }
-.panelHouse .panelHouse-scroll[data-status=search] .panelHouse-separator {
+.panelHouse .panel-section-scroll[data-status=search] .panel-section-separator {
   display: none;
 }
-.panelHouse .panelHouse-scroll[data-status=search] .panelHouse-show > #pinHouses {
+.panelHouse .panel-section-scroll[data-status=search] .panel-section-list > #pinHouses {
   display: none;
+}
+
+.panel-section {
+  top: 56px;
+  left: 60px;
+  width: 360px;
+  bottom: 0;
+  background-color: var(--card-background);
+  position: fixed;
+}
+.panel-section[data-status=hidden] {
+  display: none;
+}
+.panel-section .panel-section-title {
+  margin: 19px 16px 8px 16px;
+  display: flex;
+  align-items: center;
+}
+.panel-section .panel-section-title > h1 {
+  color: var(--primary-text);
+  text-align: left;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  display: flex;
+}
+.panel-section .panel-section-search {
+  padding: 4px 16px 8px 16px;
+}
+.panel-section .panel-section-search > label {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--comment-background);
+  border-radius: 50px;
+  min-height: 36px;
+  width: 100%;
+  cursor: text;
+}
+.panel-section .panel-section-search > label > div {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+.panel-section .panel-section-search > label > div > svg {
+  color: var(--secondary-icon);
+}
+.panel-section .panel-section-search > label > input {
+  padding: 7px 6px 9px 6px;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--primary-text);
+  flex-grow: 1;
+}
+.panel-section .panel-section-search > label > input::placeholder {
+  color: var(--secondary-text);
+}
+.panel-section .panel-section-search > label > input:focus::placeholder {
+  color: var(--comment-placeholder-focus);
+}
+.panel-section .panel-section-separator {
+  padding-top: 12px;
+  margin: 0 16px;
+  border-bottom: 1px solid var(--divider);
+}
+.panel-section .panel-section-list > div {
+  padding-top: 16px;
+}
+.panel-section .panel-section-list > div > span {
+  padding: 0 16px;
+  color: var(--primary-text);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 20px;
+}
+.panel-section .panel-section-list > div > div {
+  padding: 8px 8px 0 8px;
+}
+.panel-section .panel-section-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 2px;
+  height: 60px;
+  position: relative;
+}
+.panel-section .panel-section-button > .hover {
+  position: absolute;
+  border-radius: 8px;
+  inset: 0;
+  transition: background-color 100ms cubic-bezier(0, 0, 1, 1);
+}
+.panel-section .panel-section-button > .hover:hover {
+  background-color: var(--hover-overlay);
+}
+.panel-section .panel-section-button > .hover:active {
+  background-color: var(--press-overlay);
+}
+
+.panelSettings .panel-section-button {
+  width: 344px;
+  height: 44px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.panelSettings .panel-section-button .icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+.panelSettings .panel-section-button .icon img {
+  filter: var(--filter-primary-icon);
+}
+.panelSettings .panel-section-button .text span {
+  font-family: inherit;
+  color: var(--primary-text);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 20px;
+}
+.panelSettings .panel-section-scroll {
+  padding: 0 8px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -87,18 +87,22 @@
             align-items: center;
             height: 56px;
             
-            & > div {
+            & > .btn-profil {
                 position: relative;
                 height: 40px;
                 width: 40px;
                 cursor: pointer;
-                
-                & > svg > g > circle.fill-none { fill: none; }
-                & > svg > g > circle.fill-media { fill: var(--media-press); }
 
-                &.scale-96 { transform: scale(.96); }
+                &:active {
+                    transform: scale(.96);
+
+                    .circlePP { fill: var(--media-press); }
+                    .hover { background-color: var(--press-overlay); }
+                }
+
+                .circlePP { fill: none; }
                 
-                & > div[id="down"] {
+                & > .icon-down {
                     position: absolute;
                     bottom: 6px;
                     right: 6px;
@@ -112,7 +116,7 @@
                         color: var(--primary-icon);
                     }
 
-                    & > div {
+                    & > .hover {
                         position: absolute;
                         bottom: 6px;
                         right: 6px;
@@ -120,26 +124,21 @@
                         height: 12px;
                         width: 12px;
                         border-radius: 50%;
-                        background-color: var(--press-overlay);
-
-                        &.opacity-1 { opacity: 1; }
-                        &.opacity-0 { opacity: 0; }
                     }
                 }
 
-                & > div[id="profilHover"] {
+                & > .hover {
                     position: absolute;
                     display: block;
-                    top: 0;
-                    right: 0;
-                    left: 0;
-                    bottom: 0;
+                    inset: 0;
                     border-radius: 50%;
                     
-                    &.background-pressed { background-color: var(--press-overlay); }
-                    &.background-hover { background-color: var(--hover-overlay); }
-                    &.opacity-1 { opacity: 1; }
-                    &.opacity-0 { opacity: 0; }
+                    &:hover {
+                        background-color: var(--hover-overlay);
+                    }
+                    &:active {
+                        background-color: var(--press-overlay);
+                    }
                 }
             }
         }

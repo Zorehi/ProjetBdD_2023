@@ -1,9 +1,9 @@
-<div class="panelHouse" id="panelHouse" data-status="hidden">
-    <div class="panelHouse-title">
+<div class="panel-section panelHouse" id="panelHouse" data-status="hidden">
+    <div class="panel-section-title">
         <h1>Maisons</h1>
     </div>
     <div>
-        <div class="panelHouse-search">
+        <div class="panel-section-search">
             <label for="search_houses">
                 <div>
                     <svg fill="currentColor" viewBox="0 0 16 16" width="1em" height="1em">
@@ -20,80 +20,80 @@
                 <input type="text" id="search_houses" placeholder="Rechercher des Maisons">
             </label>
         </div>
-        <div class="panelHouse-scroll" id="panelHouse-scroll" data-status="show">
+        <div class="panel-section-scroll" id="panelHouse-scroll" data-status="show">
             <div style="padding: 0 8px;" id="containerSearchHouseButton">
-                <a class="panelHouse-button" href="#" id="searchHousesButton">
+                <a class="panel-section-button panelHouse-button" href="#" id="searchHousesButton">
                     <div class="img">
-                        <i data-visualcompletion="css-img" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/QouyfNuGrAZ.png&quot;); background-position: -170px -187px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
+                        <i style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/QouyfNuGrAZ.png&quot;); background-position: -170px -187px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                     </div>
                     <div class="text">
                         <span>Rechercher <strong></strong> dans les maisons</span>
                     </div>
-                    <div class="opacity-0 background-hover"></div>
+                    <div class="hover"></div>
                 </a>
             </div>
             <div class="panelHouse-create">
                 <a href="/houses/create" id="btnCreateHouse">
                     <span>
-                        <i data-visualcompletion="css-img" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yT/r/i14dpO3gzZZ.png&quot;); background-position: 0px -1659px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
+                        <i style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yT/r/i14dpO3gzZZ.png&quot;); background-position: 0px -1659px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         <span>Créer une nouvelle maison</span>
                     </span>
                     <div class="background-hover opacity-0"></div>
                 </a>
             </div>
-            <div class="panelHouse-separator"></div>
-            <div class="panelHouse-show">
+            <div class="panel-section-separator"></div>
+            <div class="panel-section-list">
                 <div id="pinHouses">
                     <span>Epinglés</span>
                     <div>
-                        <a class="panelHouse-button" href="#">
+                        <a class="panel-section-button panelHouse-button" href="#">
                             <div class="img">
-                                <svg aria-hidden="true" class="" data-visualcompletion="ignore-dynamic" role="none" style="height: 36px; width: 36px;">
-                                    <mask id="jsc_c_34x">
+                                <svg aria-hidden="true" class="" role="none" style="height: 36px; width: 36px;">
+                                    <mask id="jsc_c_1x">
                                         <rect cy="18" fill="white" height="36" rx="8" ry="8" width="36" x="0" y="0"></rect>
                                     </mask>
-                                    <g mask="url(#jsc_c_34x)">
-                                        <image x="0" y="0" style="width: 36px;height: 36px;" xlink:href="https://scontent.fbod1-1.fna.fbcdn.net/v/t1.6435-9/42087349_1865028706923568_966827946130014208_n.jpg?stp=c12.0.50.50a_cp0_dst-jpg_p50x50&amp;_nc_cat=100&amp;ccb=1-7&amp;_nc_sid=70495d&amp;_nc_ohc=j9Ie4DhMcswAX8c63W3&amp;_nc_ht=scontent.fbod1-1.fna&amp;oh=00_AT-dDh0bys5IxfaCbVQ1w004BvdRsCANmJuB-YCYlw-5Tg&amp;oe=637B716D" style="height: 36px; width: 36px;"></image>
+                                    <g mask="url(#jsc_c_1x)">
+                                        <image x="0" y="0" style="width: 36px;height: 36px;" xlink:href="assets/image/house-default-min-photo.png" style="height: 36px; width: 36px;"></image>
                                         <rect class="" cy="18" fill="none" height="36" rx="8" ry="8" width="36" x="0" y="0"></rect>
                                     </g>
                                 </svg>
                             </div>
                             <div class="text">
-                                <span>Pharmatech</span>
-                                <span>En ligne il y a 6 heures</span>
+                                <span class="primary">Pharmatech</span>
+                                <span class="secondary">En ligne il y a 6 heures</span>
                             </div>
                             <div class="pin-icon">
-                                <i data-visualcompletion="css-img" class="" style="background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/XwHPmbqCLP0.png);background-position: 0px -373px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
+                                <i class="" style="background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/XwHPmbqCLP0.png);background-position: 0px -373px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                                 <div class="opacity-0 background-hover"></div>
                             </div>
-                            <div class="opacity-0 background-hover"></div>
+                            <div class="hover"></div>
                         </a>
                     </div>
                 </div>
                 <div id="myHouses" class="display-true"> 
                     <span>Maisons dont vous êtes propriétaire</span>
                     <div>
-                        <a class="panelHouse-button" href="#">
+                        <a class="panel-section-button panelHouse-button" href="#">
                             <div class="img">
                                 <svg style="height: 36px; width: 36px;">
-                                    <mask id="jsc_c_35x">
+                                    <mask id="jsc_c_2x">
                                         <rect cy="18" fill="white" height="36" rx="8" ry="8" width="36" x="0" y="0"></rect>
                                     </mask>
-                                    <g mask="url(#jsc_c_35x)">
-                                        <image style="width: 36px;height: 36px;" xlink:href="https://scontent.fbod1-1.fna.fbcdn.net/v/t1.6435-9/42087349_1865028706923568_966827946130014208_n.jpg?stp=c12.0.50.50a_cp0_dst-jpg_p50x50&amp;_nc_cat=100&amp;ccb=1-7&amp;_nc_sid=70495d&amp;_nc_ohc=j9Ie4DhMcswAX8c63W3&amp;_nc_ht=scontent.fbod1-1.fna&amp;oh=00_AT-dDh0bys5IxfaCbVQ1w004BvdRsCANmJuB-YCYlw-5Tg&amp;oe=637B716D" style="height: 36px; width: 36px;"></image>
+                                    <g mask="url(#jsc_c_2x)">
+                                        <image style="width: 36px;height: 36px;" xlink:href="assets/image/house-default-min-photo.png" style="height: 36px; width: 36px;"></image>
                                         <rect class="" cy="18" fill="none" height="36" rx="8" ry="8" width="36" x="0" y="0"></rect>
                                     </g>
                                 </svg>
                             </div>
                             <div class="text">
-                                <span>Pharmatech</span>
-                                <span>En ligne il y a 6 heures</span>
+                                <span class="primary">Pharmatech</span>
+                                <span class="secondary">En ligne il y a 6 heures</span>
                             </div>
                             <div class="pin-icon">
-                                <i data-visualcompletion="css-img" class="" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yT/r/lM3wJmRoC7j.png&quot;); background-position: 0px -38px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
+                                <i class="" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yT/r/lM3wJmRoC7j.png&quot;); background-position: 0px -38px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                                 <div class="opacity-0 background-hover"></div>
                             </div>
-                            <div class="opacity-0 background-hover"></div>
+                            <div class="hover"></div>
                         </a>
                     </div>
                 </div>

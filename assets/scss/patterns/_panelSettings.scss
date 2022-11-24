@@ -1,0 +1,32 @@
+.panelSettings {
+    .panel-section-button {
+        width: 344px;
+        height: 44px;
+        padding-left: 8px;
+        padding-right: 8px;
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+
+            img {
+                filter: var(--filter-primary-icon);
+            }
+        }
+
+        .text {
+            span {
+                font-family: inherit;
+                color: var(--primary-text);
+                font-weight: 500;
+                font-size: 17px;
+                line-height: 20px;
+            }
+        }
+    }
+
+    .panel-section-scroll {
+        padding: 0 8px;
+    }
+}

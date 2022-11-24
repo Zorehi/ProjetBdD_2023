@@ -11,16 +11,10 @@ const btnCreateHouse = document.getElementById("btnCreateHouse");
 const search_houses = document.getElementById("search_houses");
 const searchHousesButton = document.getElementById("searchHousesButton");
 const myHouses = document.getElementById("myHouses");
-const panelHouse_button = document.getElementsByClassName("panelHouse-button");
 const panelHouse_scroll = document.getElementById("panelHouse-scroll");
 const pin_icons = document.getElementsByClassName("pin-icon");
 const databasePanel = document.getElementById("databasePanel");
 const btnDatabase = document.getElementById("Database");
-
-for (var i = 0; i < navbar_buttons.length; i++) {
-    navbar_buttons[i].addEventListener("mouseenter", function(event) { event.target.children[3].dataset.status = "visible"; });
-    navbar_buttons[i].addEventListener("mouseleave", function(event) { event.target.children[3].dataset.status = "hidden"; });
-}
 
 /**
  * Permet de cacher le menu en cliquant à coté
@@ -32,16 +26,16 @@ const outsidePanelHouseClickListener = event => {
         panelHouse.dataset.status = "hidden";
 
         document.removeEventListener("click", outsidePanelHouseClickListener);
-        removeAllEventForPanelHouses();
     } else if (!btnHouses.contains(event.target) && !panelHouse.contains(event.target) && isVisible(panel)) {
         panel.dataset.status = "hidden";
         panelHouse.dataset.status = "hidden";
         navLeft.querySelector('[data-status="selected"]').dataset.status = "unselected";
         navLeft.dataset.status = "extended";
-        navbar_buttons[0].dataset.status = "selected";
+        if (navLeft.dataset.always != 'small') {
+            navbar_buttons[0].dataset.status = "selected";
+        }
         
         document.removeEventListener("click", outsidePanelHouseClickListener);
-        removeAllEventForPanelHouses();
     }
 }
 
@@ -51,7 +45,10 @@ btnHouses.addEventListener("click", function(event) {
         return;
     }
     document.addEventListener("click", outsidePanelHouseClickListener);
-    navLeft.querySelector('[data-status="selected"]').dataset.status = "unselected";
+    selected = navLeft.querySelector('[data-status="selected"]');
+    if (selected) {
+        selected.dataset.status = "unselected";
+    }
     this.dataset.status = "selected";
     navLeft.dataset.status = "small";
     panel.dataset.status = "visible";
@@ -61,8 +58,6 @@ btnHouses.addEventListener("click", function(event) {
     for (let button of myHouses.children[1].children) {
         button.style.display = "flex";
     }
-
-    addAllEventForPanelHouses();
 })
 
 /**
@@ -80,7 +75,9 @@ btnHouses.addEventListener("click", function(event) {
         databasePanel.dataset.status = "hidden";
         navLeft.querySelector('[data-status="selected"]').dataset.status = "unselected";
         navLeft.dataset.status = "extended";
-        navbar_buttons[0].dataset.status = "selected";
+        if (navLeft.dataset.always != 'small') {
+            navbar_buttons[0].dataset.status = "selected";
+        }
         
         document.removeEventListener("click", outsidePanelDatabaseClickListener);
     }
@@ -92,11 +89,12 @@ btnDatabase.addEventListener("click", function(event) {
         return;
     }
     document.addEventListener("click", outsidePanelDatabaseClickListener);
-    navLeft.querySelector('[data-status="selected"]').dataset.status = "unselected";
-    this.dataset.status = "selected";
+    selected = navLeft.querySelector('[data-status="selected"]');
+    if (selected) {
+        selected.dataset.status = "unselected";
+    }
+    btnDatabase.dataset.status = "selected";
     navLeft.dataset.status = "small";
     panel.dataset.status = "visible";
     databasePanel.dataset.status = "visible";
-
-    //addAllEventForPanelHouses();
 })

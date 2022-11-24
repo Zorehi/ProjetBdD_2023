@@ -35,7 +35,7 @@
             <form action="" method="POST">
                 <input type="hidden" name="type" value="register">
                 <div class="_10pad">
-                    <span>
+                    <span style="display: flex;justify-content: space-between">
                         <div>
                             <input type="text" name="firstname" class="register-input" placeholder="Prénom" required>
                         </div>
@@ -54,7 +54,7 @@
                     <div class="little-text">
                         Date de naissance
                     </div>
-                    <span>
+                    <span style="display: flex;justify-content: space-between">
                         <select name="day" class="register-select">
                             <option disabled selected>Jour</option>
                             <?php
@@ -95,15 +95,15 @@
                     <span class="flex-wrap">
                         <span>
                             <label class="register-label" for="woman">Femme</label>
-                            <input type="radio" name="sex" value="woman" id="woman" class="register-radio">
+                            <input type="radio" name="sex" value="1" id="woman" class="register-radio">
                         </span>
                         <span>
                             <label class="register-label" for="man">Homme</label>
-                            <input type="radio" name="sex" value="man" id="man" class="register-radio">
+                            <input type="radio" name="sex" value="2" id="man" class="register-radio">
                         </span>
                         <span>
                             <label class="register-label" for="other">Personnalisé</label>
-                            <input type="radio" name="sex" value="other" id="other" class="register-radio">
+                            <input type="radio" name="sex" value="3" id="other" class="register-radio">
                         </span>
                     </span>
                 </div>

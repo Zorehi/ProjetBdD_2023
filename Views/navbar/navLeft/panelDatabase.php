@@ -1,9 +1,9 @@
-<div class="panelHouse" id="databasePanel" data-status="hidden">
-    <div class="panelHouse-title">
+<div class="panel-section" id="databasePanel" data-status="hidden">
+    <div class="panel-section-title">
         <h1>Base de données</h1>
     </div>
     <div>
-        <div class="panelHouse-search">
+        <div class="panel-section-search">
             <label for="search_tables">
                 <div>
                     <svg fill="currentColor" viewBox="0 0 16 16" width="1em" height="1em">
@@ -19,6 +19,19 @@
                 </div>
                 <input type="text" id="search_tables" placeholder="Rechercher des tables">
             </label>
+        </div>
+        <div class="panel-section-scroll" data-status="show">
+            <div class="panel-section-separator"></div>
+            <div class="panel-section-list">
+                <div id="db-table" class="display-true"> 
+                    <span>Tables de la base de données</span>
+                    <div>
+                        <a class="panel-section-button" href="#">
+                            <div class="hover opacity-0 background-hover"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

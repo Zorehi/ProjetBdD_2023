@@ -22,8 +22,8 @@
         </div>
     </div>
     <div class="navTop-social">
-        <div>
-            <div role="button" id="profil">
+        <div class="">
+            <div class="btn-profil" role="button" id="profil">
                 <svg style="width: 40px;height: 40px;">
                     <mask id="jsc_c_f">
                         <circle cx="20" cy="20" fill="white" r="20"></circle>
@@ -31,19 +31,19 @@
                         <path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path>
                     </mask>
                     <g mask="url(#jsc_c_f)">
-                        <image style="width: 40px;height: 40px;" xlink:href="assets/image/user.png" alt=""></image>
-                        <circle class="fill-none" id="circle" cx="20" cy="20" r="20"></circle>
+                        <image style="width: 40px;height: 40px;" xlink:href="assets/image/user-default-photo.png" alt=""></image>
+                        <circle class="circlePP" cx="20" cy="20" r="20"></circle>
                     </g>
                 </svg>
-                <div id="down" class="background-secondary">
+                <div class="icon-down">
                     <svg fill="currentColor" viewBox="0 0 16 16" width="1em" height="1em" style="width: 12px;height: 12px;display: block;">
                         <g fill-rule="evenodd" transform="translate(-448 -544)">
                             <path fill-rule="nonzero" d="M452.707 549.293a1 1 0 0 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L456 552.586l-3.293-3.293z"></path>
                         </g>
                     </svg>
-                    <div id="downHover" class="opacity-0"></div>
+                    <div class="hover"></div>
                 </div>
-                <div id="profilHover" class="opacity-0 background-hover"></div>
+                <div class="hover"></div>
             </div>
         </div>
         <div>

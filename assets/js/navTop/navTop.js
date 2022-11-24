@@ -1,8 +1,5 @@
 // Les éléments html qu'on a besoin
 const profil = document.getElementById("profil");
-const profilHover = document.getElementById("profilHover");
-const downHover = document.getElementById("downHover");
-const circle = document.getElementById("circle");
 const card = document.getElementById("card-profil");
 const displayButton = document.getElementById("displayButton");
 const goBack = document.getElementById("goBack");
@@ -143,34 +140,3 @@ profil.addEventListener("click", function(event) {
     card.style.height = card.children[0].clientHeight + 8 + "px";
     card.dataset.status = "visible";
 })
-
-/**
- * Permet d'animer le profil
- * 
- * @param {Event} event 
- */
-const animateProfil = function(event) {
-    switch (event.type) {
-        case "mouseleave":
-            profilHover.classList.replace("opacity-1", "opacity-0");
-            downHover.classList.replace("opacity-1", "opacity-0");
-        case "mouseup":
-            profil.classList.remove("scale-96");
-            profilHover.classList.replace("background-pressed", "background-hover");
-            circle.classList.replace("fill-media", "fill-none");
-            break;
-        case "mousedown":
-            profil.classList.add("scale-96");
-            profilHover.classList.replace("background-hover", "background-pressed");
-            circle.classList.replace("fill-none", "fill-media");
-            break;
-        case "mouseenter":
-            profilHover.classList.replace("opacity-0", "opacity-1");
-            break;
-    }
-}
-
-profil.addEventListener("mouseup", animateProfil);
-profil.addEventListener("mouseleave", animateProfil);
-profil.addEventListener("mouseenter", animateProfil);
-profil.addEventListener("mousedown", animateProfil);

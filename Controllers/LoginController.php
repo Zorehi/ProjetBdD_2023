@@ -51,7 +51,7 @@ class LoginController extends Controller
                         $month = strip_tags($_POST["month"]);
                         $year = strip_tags($_POST["year"]);
                         // format the date to 'year-month-day'
-			            $dateofbirth = date("Y-m-d", mktime(0, 0, 0, $month, $day, $year));
+			            $born_date = date("Y-m-d", mktime(0, 0, 0, $month, $day, $year));
 
                         // On check si c'est un email ou numéro de téléphone
                         if (strstr($email, "@")) {
@@ -63,10 +63,13 @@ class LoginController extends Controller
                         $user->setPassword($pass)
                             ->setFirstname($firstname)
                             ->setLastname($lastname)
-                            ->setDateofbirth($dateofbirth)
-                            ->setSex($sex);
+                            ->setBorn_date($born_date)
+                            ->setSex_id($sex);
 
                         $user->create();
+
+                        $user->setSession();
+                        header("Location: /");
                     }
                 }
             }
@@ -85,7 +88,6 @@ class LoginController extends Controller
             // On check si l'user existe
             $user = new UsersModel();
             $userArray = $user->findByEmailOrTel($email);
-
             
             if ($userArray) {
                 $user->hydrate($userArray);
