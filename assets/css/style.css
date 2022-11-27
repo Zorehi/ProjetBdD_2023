@@ -27,6 +27,22 @@
   --primary-deemphasized-button-text: #1877F2;
   --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
   --overlay-alpha-80: rgba(244, 244, 244, 0.8);
+  --settings-background-color: #FFFFFF;
+  --settings-list-border: #AAAAAA;
+  --settings-li-border: #EBEDF0;
+  --settings-content-background: #f2f2f2;
+  --settings-form-label-border: #CCD0D5;
+  --settings-form-label-text: #606770;
+  --settings-form-divider-background: #CCCCCC;
+  --settings-form-confirm-bg: #365899;
+  --settings-form-confirm-press: #223760;
+  --settings-form-confirm-hover: #2F4D86;
+  --settings-form-confirm-text: #fff;
+  --settings-form-cancel-bg: #f5f6f7;
+  --settings-form-cancel-press: #DDDFE2;
+  --settings-form-cancel-hover: #EBEDF0;
+  --settings-form-cancel-text: #4b4f56;
+  --settings-form-cancel-border: #ccd0d5;
 }
 
 html.__pj-light-mode {
@@ -58,6 +74,22 @@ html.__pj-light-mode {
   --primary-deemphasized-button-text: #1877F2;
   --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
   --overlay-alpha-80: rgba(244, 244, 244, 0.8);
+  --settings-background-color: #FFFFFF;
+  --settings-list-border: #AAAAAA;
+  --settings-li-border: #EBEDF0;
+  --settings-content-background: #f2f2f2;
+  --settings-form-label-border: #CCD0D5;
+  --settings-form-label-text: #606770;
+  --settings-form-divider-background: #CCCCCC;
+  --settings-form-confirm-bg: #365899;
+  --settings-form-confirm-press: #223760;
+  --settings-form-confirm-hover: #2F4D86;
+  --settings-form-confirm-text: #fff;
+  --settings-form-cancel-bg: #f5f6f7;
+  --settings-form-cancel-press: #DDDFE2;
+  --settings-form-cancel-hover: #EBEDF0;
+  --settings-form-cancel-text: #4b4f56;
+  --settings-form-cancel-border: #ccd0d5;
 }
 html.__pj-dark-mode {
   --wash: #3E4042;
@@ -88,6 +120,22 @@ html.__pj-dark-mode {
   --primary-deemphasized-button-text: #2D88FF;
   --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
   --overlay-alpha-80: rgba(11, 11, 11, 0.8);
+  --settings-background-color: #000000;
+  --settings-list-border: #555555;
+  --settings-li-border: #101215;
+  --settings-content-background: #0d0d0d;
+  --settings-form-label-border: #2C3035;
+  --settings-form-label-text: #939AA3;
+  --settings-form-divider-background: #333333;
+  --settings-form-confirm-bg: #365899;
+  --settings-form-confirm-press: #223760;
+  --settings-form-confirm-hover: #2F4D86;
+  --settings-form-confirm-text: #fff;
+  --settings-form-cancel-bg: #f5f6f7;
+  --settings-form-cancel-press: #DDDFE2;
+  --settings-form-cancel-hover: #EBEDF0;
+  --settings-form-cancel-text: #4b4f56;
+  --settings-form-cancel-border: #ccd0d5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -119,6 +167,22 @@ html.__pj-dark-mode {
     --primary-deemphasized-button-text: #2D88FF;
     --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
     --overlay-alpha-80: rgba(11, 11, 11, 0.8);
+    --settings-background-color: #000000;
+    --settings-list-border: #555555;
+    --settings-li-border: #101215;
+    --settings-content-background: #0d0d0d;
+    --settings-form-label-border: #2C3035;
+    --settings-form-label-text: #939AA3;
+    --settings-form-divider-background: #333333;
+    --settings-form-confirm-bg: #365899;
+    --settings-form-confirm-press: #223760;
+    --settings-form-confirm-hover: #2F4D86;
+    --settings-form-confirm-text: #fff;
+    --settings-form-cancel-bg: #f5f6f7;
+    --settings-form-cancel-press: #DDDFE2;
+    --settings-form-cancel-hover: #EBEDF0;
+    --settings-form-cancel-text: #4b4f56;
+    --settings-form-cancel-border: #ccd0d5;
   }
 }
 @media (prefers-color-scheme: light) {
@@ -151,6 +215,22 @@ html.__pj-dark-mode {
     --primary-deemphasized-button-text: #1877F2;
     --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
     --overlay-alpha-80: rgba(244, 244, 244, 0.8);
+    --settings-background-color: #FFFFFF;
+    --settings-list-border: #AAAAAA;
+    --settings-li-border: #EBEDF0;
+    --settings-content-background: #f2f2f2;
+    --settings-form-label-border: #CCD0D5;
+    --settings-form-label-text: #606770;
+    --settings-form-divider-background: #CCCCCC;
+    --settings-form-confirm-bg: #365899;
+    --settings-form-confirm-press: #223760;
+    --settings-form-confirm-hover: #2F4D86;
+    --settings-form-confirm-text: #fff;
+    --settings-form-cancel-bg: #f5f6f7;
+    --settings-form-cancel-press: #DDDFE2;
+    --settings-form-cancel-hover: #EBEDF0;
+    --settings-form-cancel-text: #4b4f56;
+    --settings-form-cancel-border: #ccd0d5;
   }
 }
 body {
@@ -189,6 +269,18 @@ button {
   transition-property: background-color;
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1);
+}
+
+.globalContainer {
+  position: absolute;
+  top: 55px;
+  left: 420px;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  background-color: var(--settings-background-color);
+  z-index: 0;
 }
 
 @font-face {
@@ -1266,6 +1358,7 @@ button {
   bottom: 0;
   background-color: var(--overlay-alpha-80);
   position: fixed;
+  z-index: 1;
 }
 
 .navLeft-border {
@@ -1281,7 +1374,7 @@ button {
 
 #panel[data-status=hidden] {
   display: none;
-  z-index: 999;
+  z-index: 1;
 }
 
 .panelHouse .panelHouse-create {
@@ -1435,6 +1528,7 @@ button {
   bottom: 0;
   background-color: var(--card-background);
   position: fixed;
+  z-index: 1;
 }
 .panel-section[data-status=hidden] {
   display: none;
@@ -1524,11 +1618,20 @@ button {
   background-color: var(--press-overlay);
 }
 
+.panelSettings {
+  border-right: 1px solid var(--wash);
+}
+.panelSettings .panel-section-title {
+  margin-bottom: 12px;
+}
 .panelSettings .panel-section-button {
   width: 344px;
   height: 44px;
   padding-left: 8px;
   padding-right: 8px;
+}
+.panelSettings .panel-section-button[aria-current=page] .hover {
+  background-color: var(--hover-overlay);
 }
 .panelSettings .panel-section-button .icon {
   width: 24px;
@@ -1547,6 +1650,186 @@ button {
 }
 .panelSettings .panel-section-scroll {
   padding: 0 8px;
+}
+
+.settings {
+  max-width: 960px;
+  min-width: 750px;
+  padding: 0 20px;
+  flex-grow: 1;
+  padding-top: 15px;
+  position: relative;
+}
+.settings .settings-title {
+  margin-bottom: 5px;
+  padding: 6px 0 16px 0;
+}
+.settings .settings-title h2 {
+  font-family: inherit;
+  color: var(--primary-text);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  padding-bottom: 2px;
+}
+.settings .settings-list {
+  border-top: 1px solid var(--settings-list-border);
+  border-bottom: 1px solid var(--settings-list-border);
+}
+.settings .settings-list li {
+  list-style-type: none;
+  padding: 8px 0;
+  border-top: 1px solid var(--settings-li-border);
+}
+.settings .settings-list li:first-child {
+  border: none;
+}
+.settings .settings-modify {
+  padding: 10px 5px;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+.settings .settings-modify[data-status=hidden] {
+  display: none;
+}
+.settings .settings-modify:hover {
+  background-color: var(--hover-overlay);
+}
+.settings .settings-modify:hover .settings-modify-action {
+  text-decoration: underline;
+}
+.settings .settings-modify .settings-modify-name {
+  display: inline-block;
+}
+.settings .settings-modify .settings-modify-name h3 {
+  color: var(--primary-text);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  padding-right: 5px;
+  padding-left: 5px;
+  width: 190px;
+}
+.settings .settings-modify .settings-modify-value {
+  display: inline-block;
+}
+.settings .settings-modify .settings-modify-value span {
+  color: var(--secondary-text);
+  font-size: 15px;
+  font-family: inherit;
+  line-height: 20px;
+  font-weight: 400;
+}
+.settings .settings-modify .settings-modify-value span strong {
+  font-size: inherit;
+  font-weight: 600;
+  color: inherit;
+  font-family: inherit;
+  line-height: inherit;
+}
+.settings .settings-modify .settings-modify-action {
+  text-decoration: none;
+  padding-right: 5px;
+  float: right;
+}
+.settings .settings-modify .settings-modify-action span {
+  color: var(--blue-link);
+  line-height: 20px;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: inherit;
+  text-align: right;
+}
+.settings .settings-content {
+  display: flex;
+  background-color: var(--settings-content-background);
+}
+.settings .settings-content[data-status=hidden] {
+  display: none;
+}
+.settings .settings-content .settings-content-name {
+  margin: 10px 5px;
+}
+.settings .settings-content .settings-content-name h3 {
+  color: var(--primary-text);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  padding-right: 5px;
+  padding-left: 5px;
+  width: 190px;
+}
+.settings .settings-form {
+  width: 400px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+.settings .settings-form .settings-form-label {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  cursor: default;
+  padding: 5px 0;
+}
+.settings .settings-form .settings-form-label span {
+  padding-right: 10px;
+  text-align: right;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--settings-form-label-text);
+}
+.settings .settings-form .settings-form-label input {
+  border-radius: 3px;
+  margin-right: 70px;
+  font-size: 16px;
+  height: 29px;
+  border: 1px solid var(--settings-form-label-border);
+  background-color: var(--settings-background-color);
+  color: var(--primary-text);
+  padding: 3px;
+  cursor: text;
+}
+.settings .settings-form .settings-form-divider {
+  height: 1px;
+  width: inherit;
+  margin: 13px 0;
+  background-color: var(--settings-form-divider-background);
+}
+.settings .settings-form .settings-form-confirm {
+  cursor: pointer;
+  padding: 2px 10px;
+  background-color: var(--settings-form-confirm-bg);
+  border: none;
+  border-radius: 2px;
+  line-height: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--settings-form-confirm-text);
+}
+.settings .settings-form .settings-form-confirm:hover {
+  background-color: var(--settings-form-confirm-hover);
+}
+.settings .settings-form .settings-form-confirm:active {
+  background-color: var(--settings-form-confirm-press);
+}
+.settings .settings-form .settings-form-cancel {
+  cursor: pointer;
+  padding: 2px 10px;
+  background-color: var(--settings-form-cancel-bg);
+  border: 1px solid var(--settings-form-cancel-border);
+  border-radius: 2px;
+  line-height: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--settings-form-cancel-text);
+}
+.settings .settings-form .settings-form-cancel:hover {
+  background-color: var(--settings-form-cancel-hover);
+}
+.settings .settings-form .settings-form-cancel:active {
+  background-color: var(--settings-form-cancel-press);
 }
 
 /*# sourceMappingURL=style.css.map */

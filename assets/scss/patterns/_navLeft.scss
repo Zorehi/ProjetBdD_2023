@@ -146,6 +146,7 @@
     bottom: 0;
     background-color: var(--overlay-alpha-80);
     position: fixed;
+    z-index: 1;
 }
 
 .navLeft-border {
@@ -161,5 +162,5 @@
 
 #panel[data-status="hidden"] {
     display: none;
-    z-index: 999;
+    z-index: 1;
 }

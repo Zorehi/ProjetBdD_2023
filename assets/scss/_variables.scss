@@ -27,6 +27,22 @@
     --primary-deemphasized-button-text: #1877F2;
     --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
     --overlay-alpha-80: rgba(244, 244, 244, 0.8);
+    --settings-background-color: #FFFFFF;
+    --settings-list-border: #AAAAAA;
+    --settings-li-border: #EBEDF0;
+    --settings-content-background: #f2f2f2;
+    --settings-form-label-border: #CCD0D5;
+    --settings-form-label-text: #606770;
+    --settings-form-divider-background: #CCCCCC;
+    --settings-form-confirm-bg: #365899;
+    --settings-form-confirm-press: #223760;
+    --settings-form-confirm-hover: #2F4D86;
+    --settings-form-confirm-text: #fff;
+    --settings-form-cancel-bg: #f5f6f7;
+    --settings-form-cancel-press: #DDDFE2;
+    --settings-form-cancel-hover: #EBEDF0;
+    --settings-form-cancel-text: #4b4f56;
+    --settings-form-cancel-border: #ccd0d5;
 }
 
 html {
@@ -59,6 +75,22 @@ html {
         --primary-deemphasized-button-text: #1877F2;
         --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
         --overlay-alpha-80: rgba(244, 244, 244, 0.8);
+        --settings-background-color: #FFFFFF;
+        --settings-list-border: #AAAAAA;
+        --settings-li-border: #EBEDF0;
+        --settings-content-background: #f2f2f2;
+        --settings-form-label-border: #CCD0D5;
+        --settings-form-label-text: #606770;
+        --settings-form-divider-background: #CCCCCC;
+        --settings-form-confirm-bg: #365899;
+        --settings-form-confirm-press: #223760;
+        --settings-form-confirm-hover: #2F4D86;
+        --settings-form-confirm-text: #fff;
+        --settings-form-cancel-bg: #f5f6f7;
+        --settings-form-cancel-press: #DDDFE2;
+        --settings-form-cancel-hover: #EBEDF0;
+        --settings-form-cancel-text: #4b4f56;
+        --settings-form-cancel-border: #ccd0d5;
     }
 
     &.__pj-dark-mode {
@@ -90,6 +122,22 @@ html {
         --primary-deemphasized-button-text: #2D88FF;
         --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
         --overlay-alpha-80: rgba(11, 11, 11, 0.8);
+        --settings-background-color: #000000;
+        --settings-list-border: #555555;
+        --settings-li-border: #101215;
+        --settings-content-background: #0d0d0d;
+        --settings-form-label-border: #2C3035;
+        --settings-form-label-text: #939AA3;
+        --settings-form-divider-background: #333333;
+        --settings-form-confirm-bg: #365899;
+        --settings-form-confirm-press: #223760;
+        --settings-form-confirm-hover: #2F4D86;
+        --settings-form-confirm-text: #fff;
+        --settings-form-cancel-bg: #f5f6f7;
+        --settings-form-cancel-press: #DDDFE2;
+        --settings-form-cancel-hover: #EBEDF0;
+        --settings-form-cancel-text: #4b4f56;
+        --settings-form-cancel-border: #ccd0d5;
     }
 }
 
@@ -123,6 +171,22 @@ html {
         --primary-deemphasized-button-text: #2D88FF;
         --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
         --overlay-alpha-80: rgba(11, 11, 11, 0.8);
+        --settings-background-color: #000000;
+        --settings-list-border: #555555;
+        --settings-li-border: #101215;
+        --settings-content-background: #0d0d0d;
+        --settings-form-label-border: #2C3035;
+        --settings-form-label-text: #939AA3;
+        --settings-form-divider-background: #333333;
+        --settings-form-confirm-bg: #365899;
+        --settings-form-confirm-press: #223760;
+        --settings-form-confirm-hover: #2F4D86;
+        --settings-form-confirm-text: #fff;
+        --settings-form-cancel-bg: #f5f6f7;
+        --settings-form-cancel-press: #DDDFE2;
+        --settings-form-cancel-hover: #EBEDF0;
+        --settings-form-cancel-text: #4b4f56;
+        --settings-form-cancel-border: #ccd0d5;
     }
 }
 
@@ -156,5 +220,21 @@ html {
         --primary-deemphasized-button-text: #1877F2;
         --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
         --overlay-alpha-80: rgba(244, 244, 244, 0.8);
+        --settings-background-color: #FFFFFF;
+        --settings-list-border: #AAAAAA;
+        --settings-li-border: #EBEDF0;
+        --settings-content-background: #f2f2f2;
+        --settings-form-label-border: #CCD0D5;
+        --settings-form-label-text: #606770;
+        --settings-form-divider-background: #CCCCCC;
+        --settings-form-confirm-bg: #365899;
+        --settings-form-confirm-press: #223760;
+        --settings-form-confirm-hover: #2F4D86;
+        --settings-form-confirm-text: #fff;
+        --settings-form-cancel-bg: #f5f6f7;
+        --settings-form-cancel-press: #DDDFE2;
+        --settings-form-cancel-hover: #EBEDF0;
+        --settings-form-cancel-text: #4b4f56;
+        --settings-form-cancel-border: #ccd0d5;
     }
 }

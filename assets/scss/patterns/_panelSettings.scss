@@ -1,9 +1,19 @@
 .panelSettings {
+    border-right: 1px solid var(--wash);
+
+    .panel-section-title {
+        margin-bottom: 12px;
+    }
+
     .panel-section-button {
         width: 344px;
         height: 44px;
         padding-left: 8px;
         padding-right: 8px;
+
+        &[aria-current="page"] {
+            .hover { background-color: var(--hover-overlay); }
+        }
 
         .icon {
             width: 24px;

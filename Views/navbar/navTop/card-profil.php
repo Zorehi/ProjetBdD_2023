@@ -1,7 +1,7 @@
 <div class="card-profil" id="card-profil" data-status="hidden">
     <div data-status="active" data-index="0">
         <div class="card-profil__users">
-            <a href="">
+            <a href="#">
                 <svg aria-hidden="true" data-visualcompletion="ignore-dynamic" role="none" style="height: 36px; width: 36px;">
                     <mask id="jsc_c_6h">
                         <circle cx="18" cy="18" fill="white" r="18"></circle>
