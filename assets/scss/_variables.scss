@@ -43,6 +43,7 @@
     --settings-form-cancel-hover: #EBEDF0;
     --settings-form-cancel-text: #4b4f56;
     --settings-form-cancel-border: #ccd0d5;
+    --filter-settings-icon: none;
 }
 
 html {
@@ -91,6 +92,7 @@ html {
         --settings-form-cancel-hover: #EBEDF0;
         --settings-form-cancel-text: #4b4f56;
         --settings-form-cancel-border: #ccd0d5;
+        --filter-settings-icon: none;
     }
 
     &.__pj-dark-mode {
@@ -138,6 +140,7 @@ html {
         --settings-form-cancel-hover: #EBEDF0;
         --settings-form-cancel-text: #4b4f56;
         --settings-form-cancel-border: #ccd0d5;
+        --filter-settings-icon: invert(1) hue-rotate(180deg);
     }
 }
 
@@ -187,6 +190,7 @@ html {
         --settings-form-cancel-hover: #EBEDF0;
         --settings-form-cancel-text: #4b4f56;
         --settings-form-cancel-border: #ccd0d5;
+        --filter-settings-icon: invert(1) hue-rotate(180deg);
     }
 }
 
@@ -236,5 +240,6 @@ html {
         --settings-form-cancel-hover: #EBEDF0;
         --settings-form-cancel-text: #4b4f56;
         --settings-form-cancel-border: #ccd0d5;
+        --filter-settings-icon: none;
     }
 }

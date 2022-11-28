@@ -1,7 +1,7 @@
 <?php include ROOT."/Views/settings/panelSettings.php"; ?>
 
 <div class="globalContainer">
-    <div class="settings">
+    <div class="settings account">
         <div class="settings-title">
             <h2>Paramètres généraux du compte</h2>
         </div>
@@ -25,11 +25,11 @@
                     <form action="" method="post" class="settings-form">
                         <label for="firstname" class="settings-form-label">
                             <span>Prénom</span>
-                            <input type="text" id="firstname">
+                            <input type="text" name="firstname" id="firstname">
                         </label>
                         <label for="lastname" class="settings-form-label">
                             <span>Nom de famille</span>
-                            <input type="text" id="lastname">
+                            <input type="text" name="lastname" id="lastname">
                         </label>
                         <div class="settings-form-divider"></div>
                         <div class="settings-form-button">
@@ -56,9 +56,9 @@
                         <h3>Nom d'utilisateur</h3>
                     </div>
                     <form action="" method="post" class="settings-form">
-                        <label for="firstname" class="settings-form-label">
+                        <label for="username" class="settings-form-label">
                             <span>Nom d'utilisateur</span>
-                            <input type="text" id="firstname">
+                            <input type="text" name="username" id="username">
                         </label>
                         <div class="settings-form-divider"></div>
                         <div class="settings-form-button">
@@ -85,9 +85,9 @@
                         <h3>Email</h3>
                     </div>
                     <form action="" method="post" class="settings-form">
-                        <label for="firstname" class="settings-form-label">
+                        <label for="email" class="settings-form-label">
                             <span>Email</span>
-                            <input type="text" id="firstname">
+                            <input type="text" name="email" id="email">
                         </label>
                         <div class="settings-form-divider"></div>
                         <div class="settings-form-button">
@@ -114,9 +114,9 @@
                         <h3>Numéro de téléphone</h3>
                     </div>
                     <form action="" method="post" class="settings-form">
-                        <label for="firstname" class="settings-form-label">
+                        <label for="tel" class="settings-form-label">
                             <span>Numéro de téléphone</span>
-                            <input type="text" id="firstname">
+                            <input type="text" name="tel" id="tel">
                         </label>
                         <div class="settings-form-divider"></div>
                         <div class="settings-form-button">
@@ -132,7 +132,7 @@
 
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
-    document.getElementById('account').setAttribute('aria-current', 'page');
+    document.getElementById('settings').setAttribute('aria-current', 'page');
     document.querySelector('[data-status=selected]').dataset.status = 'unselected';
 
     const modifyList = document.getElementsByClassName('settings-modify');

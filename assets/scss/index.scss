@@ -1,6 +1,5 @@
 // Global
 @import "./_variables";
-@import "./_mixins";
 @import "./_components";
 @import "./_font-family";
 
@@ -20,4 +19,7 @@
 @import "./patterns/_panelDatabase.scss";
 @import "./patterns/_panel-section.scss";
 @import "./patterns/_panelSettings.scss";
-@import "./patterns/_settings.scss";
+
+@import "./patterns/settings/_settings.scss";
+@import "./patterns/settings/_security.scss";
+@import "./patterns/settings/_account.scss";

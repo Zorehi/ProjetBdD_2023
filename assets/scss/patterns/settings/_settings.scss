@@ -11,96 +11,12 @@
         padding: 6px 0 16px 0;
 
         h2 {
-            font-family: inherit;
             color: var(--primary-text);
             font-size: 20px;
             font-weight: 600;
             line-height: 24px;
             padding-bottom: 2px;
             //letter-spacing: 0.5px;
-        }
-    }
-
-    .settings-list {
-        border-top: 1px solid var(--settings-list-border);
-        border-bottom: 1px solid var(--settings-list-border);
-
-        li {
-            list-style-type: none;
-            padding: 8px 0;
-            border-top: 1px solid var(--settings-li-border);
-
-            &:first-child {
-                border: none;
-            }
-        }
-    }
-
-    .settings-modify {
-        padding: 10px 5px;
-        display: block;
-        position: relative;
-        cursor: pointer;
-
-        &[data-status="hidden"] {
-            display: none;
-        }
-
-        &:hover {
-            background-color: var(--hover-overlay);
-
-            .settings-modify-action {
-                text-decoration: underline;
-            }
-        }
-
-        .settings-modify-name {
-            display: inline-block;
-
-            h3 {
-                color: var(--primary-text);
-                font-size: 15px;
-                font-weight: 600;
-                line-height: 20px;
-                padding-right: 5px;
-                padding-left: 5px;
-                width: 190px;
-            }
-        }
-
-        .settings-modify-value {
-            display: inline-block;
-
-            span {
-                color: var(--secondary-text);
-                font-size: 15px;
-                font-family: inherit;
-                line-height: 20px;
-                font-weight: 400;
-
-                strong {
-                    font-size: inherit;
-                    font-weight: 600;
-                    color: inherit;
-                    font-family: inherit;
-                    line-height: inherit;
-                }
-            }
-        }
-
-        .settings-modify-action {
-            text-decoration: none;
-            padding-right: 5px;
-            float: right;
-
-            span {
-                color: var(--blue-link);
-                line-height: 20px;
-                font-size: 15px;
-                font-weight: 400;
-                text-decoration: inherit;
-                text-align: right;
-            }
         }
     }
 
@@ -187,23 +103,24 @@
             }
         }
 
-        .settings-form-cancel {
-            cursor: pointer;
-            padding: 2px 10px;
-            background-color: var(--settings-form-cancel-bg);
-            border: 1px solid var(--settings-form-cancel-border);
-            border-radius: 2px;
-            line-height: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--settings-form-cancel-text);
-        
-            &:hover {
-                background-color: var(--settings-form-cancel-hover);
-            }
-            &:active {
-                background-color: var(--settings-form-cancel-press);
-            }
+    }
+    
+    .settings-form-cancel {
+        cursor: pointer;
+        padding: 2px 10px;
+        background-color: var(--settings-form-cancel-bg);
+        border: 1px solid var(--settings-form-cancel-border);
+        border-radius: 2px;
+        line-height: 20px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--settings-form-cancel-text);
+    
+        &:hover {
+            background-color: var(--settings-form-cancel-hover);
+        }
+        &:active {
+            background-color: var(--settings-form-cancel-press);
         }
     }
 }
