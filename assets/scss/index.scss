@@ -12,13 +12,15 @@
 
 // Patterns
 @import "./patterns/_card-recover.scss";
-@import "./patterns/_card-profil.scss";
-@import "./patterns/_navTop.scss";
-@import "./patterns/_navLeft.scss";
-@import "./patterns/_panelHouse.scss";
-@import "./patterns/_panelDatabase.scss";
-@import "./patterns/_panel-section.scss";
-@import "./patterns/_panelSettings.scss";
+
+@import "./patterns/navTop/_card-profil.scss";
+@import "./patterns/navTop/_navTop.scss";
+
+@import "./patterns/navLeft/_navLeft.scss";
+@import "./patterns/navLeft/_panelHouse.scss";
+@import "./patterns/navLeft/_panelDatabase.scss";
+@import "./patterns/navLeft/_panel-section.scss";
+@import "./patterns/navLeft/_panelSettings.scss";
 
 @import "./patterns/settings/_settings.scss";
 @import "./patterns/settings/_security.scss";
