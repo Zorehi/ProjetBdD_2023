@@ -1,7 +1,7 @@
 <?php include ROOT."/Views/settings/panelSettings.php"; ?>
 
 <div class="globalContainer">
-    <div class="settings security">
+    <div class="settings" id="security">
         <div class="settings-title">
             <h2>Sécurité et connexion</h2>
         </div>
@@ -26,17 +26,18 @@
                         </div>
                         <div class="settings-content">
                             <form action="" method="post" class="settings-form">
+                                <input type="hidden" name="type" value="password">
                                 <label for="old-password" class="settings-form-label">
                                     <span>Actuel</span>
-                                    <input type="password" name="old-password" id="old-password">
+                                    <input type="password" name="old-password" id="old-password" required>
                                 </label>
                                 <label for="new-password" class="settings-form-label">
                                     <span>Nouveau</span>
-                                    <input type="password" name="new-password" id="new-password">
+                                    <input type="password" name="new-password" id="new-password" required>
                                 </label>
                                 <label for="conf-new-password" class="settings-form-label">
                                     <span>Confirmer</span>
-                                    <input type="password" name="conf-new-password" id="conf-new-password">
+                                    <input type="password" name="conf-new-password" id="conf-new-password" required>
                                 </label>
                                 <div class="settings-form-divider"></div>
                                 <div class="settings-form-button">
@@ -53,30 +54,37 @@
 
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
-    document.getElementById('security').setAttribute('aria-current', 'page');
+    document.getElementById('btn-security').setAttribute('aria-current', 'page');
     document.querySelector('[data-status=selected]').dataset.status = 'unselected';
+    const security = document.getElementById('security');
 
     const modifyList = document.getElementsByClassName('settings-modify');
 
     for(const modify of modifyList) {
         const button = modify.getElementsByClassName('settings-form-cancel')[0];
 
-        button.addEventListener('click', function() {
-            if(modify.dataset.status == 'shown') {
-                modify.dataset.status = 'hidden'
-                button.textContent = "Modifier";
-            } else {
-                modify.dataset.status = 'shown'
-                button.textContent = "Fermer";
-            }
-        })
-
         modify.addEventListener('click', function(event) {
-            if(!button.contains(event.target)) {
-                modify.dataset.status = 'shown'
+            const elem = document.querySelector('[data-status="modifying"]');
+            if (elem) {
+                elem.removeAttribute('data-status');
+                button.textContent = "Modifier";
+            }
+
+            if(!button.contains(event.target) || (modify.dataset.status != 'modifying' && !elem)) {
+                modify.dataset.status = 'modifying'
                 button.textContent = "Fermer";
             }
         })
     }
+
+    const newPassword = document.getElementById('new-password');
+    const confNewPassword = document.getElementById('conf-new-password');
+
+    function checkNewPassword() {
+        if (newPassword.value != confNewPassword.value) {
+            confNewPassword.setCustomValidity('Les mots de passe ne sont pas identiques');
+        }
+    }
+    confNewPassword.oninput = checkNewPassword;
 
 </script>

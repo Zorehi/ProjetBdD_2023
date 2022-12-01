@@ -91,6 +91,9 @@ html.__pj-light-mode {
   --settings-form-cancel-hover: #EBEDF0;
   --settings-form-cancel-text: #4b4f56;
   --settings-form-cancel-border: #ccd0d5;
+  --settings-category-border: #dddfe2;
+  --settings-category-name-bg: #f5f6f7;
+  --settings-category-modify-border: #e5e5e5;
   --filter-settings-icon: none;
 }
 html.__pj-dark-mode {
@@ -133,11 +136,14 @@ html.__pj-dark-mode {
   --settings-form-confirm-press: #223760;
   --settings-form-confirm-hover: #2F4D86;
   --settings-form-confirm-text: #fff;
-  --settings-form-cancel-bg: #f5f6f7;
-  --settings-form-cancel-press: #DDDFE2;
-  --settings-form-cancel-hover: #EBEDF0;
-  --settings-form-cancel-text: #4b4f56;
-  --settings-form-cancel-border: #ccd0d5;
+  --settings-form-cancel-bg: #08090A;
+  --settings-form-cancel-press: #1E2023;
+  --settings-form-cancel-hover: #101215;
+  --settings-form-cancel-text: #9FA4AA;
+  --settings-form-cancel-border: #2C3035;
+  --settings-category-border: #1E2023;
+  --settings-category-name-bg: #08090A;
+  --settings-category-modify-border: #1A1A1A;
   --filter-settings-icon: invert(1) hue-rotate(180deg);
 }
 
@@ -181,11 +187,14 @@ html.__pj-dark-mode {
     --settings-form-confirm-press: #223760;
     --settings-form-confirm-hover: #2F4D86;
     --settings-form-confirm-text: #fff;
-    --settings-form-cancel-bg: #f5f6f7;
-    --settings-form-cancel-press: #DDDFE2;
-    --settings-form-cancel-hover: #EBEDF0;
-    --settings-form-cancel-text: #4b4f56;
-    --settings-form-cancel-border: #ccd0d5;
+    --settings-form-cancel-bg: #08090A;
+    --settings-form-cancel-press: #1E2023;
+    --settings-form-cancel-hover: #101215;
+    --settings-form-cancel-text: #9FA4AA;
+    --settings-form-cancel-border: #2C3035;
+    --settings-category-border: #1E2023;
+    --settings-category-name-bg: #08090A;
+    --settings-category-modify-border: #1A1A1A;
     --filter-settings-icon: invert(1) hue-rotate(180deg);
   }
 }
@@ -235,6 +244,9 @@ html.__pj-dark-mode {
     --settings-form-cancel-hover: #EBEDF0;
     --settings-form-cancel-text: #4b4f56;
     --settings-form-cancel-border: #ccd0d5;
+    --settings-category-border: #dddfe2;
+    --settings-category-name-bg: #f5f6f7;
+    --settings-category-modify-border: #e5e5e5;
     --filter-settings-icon: none;
   }
 }
@@ -913,7 +925,7 @@ button {
   overflow: hidden;
 }
 .card-profil[data-status=hidden] {
-  visibility: hidden;
+  display: none;
 }
 .card-profil__users {
   margin: 4px 16px 16px 16px;
@@ -1679,9 +1691,6 @@ button {
   display: flex;
   background-color: var(--settings-content-background);
 }
-.settings .settings-content[data-status=hidden] {
-  display: none;
-}
 .settings .settings-content .settings-content-name {
   margin: 10px 5px;
 }
@@ -1766,121 +1775,133 @@ button {
   background-color: var(--settings-form-cancel-press);
 }
 
-.settings.security .settings-category {
+.settings#security .settings-category {
   border-radius: 3px;
-  border: 1px solid #dddfe2;
+  border: 1px solid var(--settings-category-border);
+  margin-bottom: 10px;
 }
-.settings.security .settings-category .settings-category-name {
+.settings#security .settings-category .settings-category-name {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   padding: 12px;
-  background-color: #f5f6f7;
+  background-color: var(--settings-category-name-bg);
 }
-.settings.security .settings-category .settings-category-name h3 {
+.settings#security .settings-category .settings-category-name h3 {
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
   color: var(--primary-text);
 }
-.settings.security .settings-modify {
-  position: relative;
-  border-top: 1px solid #e5e5e5;
-  padding: 12px;
-  background-color: var(--settings-content-background);
+.settings#security .settings-category .settings-category-list:first-child {
+  border-top: none;
 }
-.settings.security .settings-modify[data-status=hidden] {
+.settings#security .settings-modify {
+  position: relative;
+  border-top: 1px solid var(--settings-category-modify-border);
+  padding: 12px;
   background-color: var(--settings-background-color);
 }
-.settings.security .settings-modify[data-status=hidden] > :first-child {
-  cursor: pointer;
+.settings#security .settings-modify[data-status=modifying] {
+  background-color: var(--settings-content-background);
 }
-.settings.security .settings-modify[data-status=hidden] .settings-content {
-  display: none;
-}
-.settings.security .settings-modify[data-status=hidden] .settings-modify-text h3,
-.settings.security .settings-modify[data-status=hidden] .settings-modify-text span {
-  cursor: pointer;
-}
-.settings.security .settings-modify > :first-child {
-  height: 40px;
+.settings#security .settings-modify[data-status=modifying] > :first-child {
   cursor: default;
+}
+.settings#security .settings-modify[data-status=modifying] .settings-content {
   display: flex;
 }
-.settings.security .settings-modify .settings-modify-icon {
+.settings#security .settings-modify[data-status=modifying] .settings-modify-text h3,
+.settings#security .settings-modify[data-status=modifying] .settings-modify-text span {
+  cursor: text;
+}
+.settings#security .settings-modify .settings-content {
+  display: none;
+}
+.settings#security .settings-modify > :first-child {
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+}
+.settings#security .settings-modify .settings-modify-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 44px;
   height: 40px;
 }
-.settings.security .settings-modify .settings-modify-icon img {
+.settings#security .settings-modify .settings-modify-icon img {
   height: 20px;
   width: 20px;
   filter: var(--filter-settings-icon);
 }
-.settings.security .settings-modify .settings-modify-text {
+.settings#security .settings-modify .settings-modify-text {
   display: flex;
   flex-direction: column;
 }
-.settings.security .settings-modify .settings-modify-text h3, .settings.security .settings-modify .settings-modify-text span {
+.settings#security .settings-modify .settings-modify-text h3, .settings#security .settings-modify .settings-modify-text span {
   font-size: 15px;
   font-weight: 400;
   line-height: 20px;
   text-align: left;
-  cursor: text;
   width: fit-content;
 }
-.settings.security .settings-modify .settings-modify-text h3 {
+.settings#security .settings-modify .settings-modify-text h3 {
   color: var(--primary-text);
 }
-.settings.security .settings-modify .settings-modify-text span {
+.settings#security .settings-modify .settings-modify-text span {
   color: var(--secondary-text);
 }
-.settings.security .settings-modify .settings-modify-button {
+.settings#security .settings-modify .settings-modify-button {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex-grow: 1;
 }
-.settings.security .settings-content {
+.settings#security .settings-content {
   border-top: 1px solid var(--settings-form-divider-background);
   margin-top: 10px;
 }
-.settings.security .settings-form {
+.settings#security .settings-form {
   margin-left: 111px;
 }
 
-.settings.account .settings-list {
+.settings#account .settings-list {
   border-top: 1px solid var(--settings-list-border);
   border-bottom: 1px solid var(--settings-list-border);
 }
-.settings.account .settings-list li {
+.settings#account .settings-list li {
   list-style-type: none;
   padding: 8px 0;
   border-top: 1px solid var(--settings-li-border);
 }
-.settings.account .settings-list li:first-child {
+.settings#account .settings-list li:first-child {
   border: none;
 }
-.settings.account .settings-modify {
+.settings#account .settings-list li[data-status=modifying] .settings-modify {
+  display: none;
+}
+.settings#account .settings-list li[data-status=modifying] .settings-content {
+  display: flex;
+}
+.settings#account .settings-list li .settings-content {
+  display: none;
+}
+.settings#account .settings-modify {
   padding: 10px 5px;
   display: block;
   position: relative;
   cursor: pointer;
 }
-.settings.account .settings-modify[data-status=hidden] {
-  display: none;
-}
-.settings.account .settings-modify:hover {
+.settings#account .settings-modify:hover {
   background-color: var(--hover-overlay);
 }
-.settings.account .settings-modify:hover .settings-modify-action {
+.settings#account .settings-modify:hover .settings-modify-action {
   text-decoration: underline;
 }
-.settings.account .settings-modify .settings-modify-name {
+.settings#account .settings-modify .settings-modify-name {
   display: inline-block;
 }
-.settings.account .settings-modify .settings-modify-name h3 {
+.settings#account .settings-modify .settings-modify-name h3 {
   color: var(--primary-text);
   font-size: 15px;
   font-weight: 600;
@@ -1889,27 +1910,27 @@ button {
   padding-left: 5px;
   width: 190px;
 }
-.settings.account .settings-modify .settings-modify-value {
+.settings#account .settings-modify .settings-modify-value {
   display: inline-block;
 }
-.settings.account .settings-modify .settings-modify-value span {
+.settings#account .settings-modify .settings-modify-value span {
   color: var(--secondary-text);
   font-size: 15px;
   line-height: 20px;
   font-weight: 400;
 }
-.settings.account .settings-modify .settings-modify-value span strong {
+.settings#account .settings-modify .settings-modify-value span strong {
   font-size: inherit;
   font-weight: 600;
   color: inherit;
   line-height: inherit;
 }
-.settings.account .settings-modify .settings-modify-action {
+.settings#account .settings-modify .settings-modify-action {
   text-decoration: none;
   padding-right: 5px;
   float: right;
 }
-.settings.account .settings-modify .settings-modify-action span {
+.settings#account .settings-modify .settings-modify-action span {
   color: var(--blue-link);
   line-height: 20px;
   font-size: 15px;

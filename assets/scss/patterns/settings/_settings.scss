@@ -24,10 +24,6 @@
         display: flex;
         background-color: var(--settings-content-background);
 
-        &[data-status="hidden"] {
-            display: none;
-        }
-
         .settings-content-name {
             margin: 10px 5px;
 

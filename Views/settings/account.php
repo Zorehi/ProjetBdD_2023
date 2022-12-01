@@ -1,35 +1,36 @@
 <?php include ROOT."/Views/settings/panelSettings.php"; ?>
 
 <div class="globalContainer">
-    <div class="settings account">
+    <div class="settings" id="account">
         <div class="settings-title">
             <h2>Paramètres généraux du compte</h2>
         </div>
         <ul class="settings-list">
             <li>
-                <a role="button" data-status="shown" class="settings-modify">
+                <a role="button" class="settings-modify">
                     <div class="settings-modify-name">
                         <h3>Nom</h3>
                     </div>
                     <div class="settings-modify-value">
-                        <span><strong>Jérémy Legrix</strong></span>
+                        <span><strong><?= $user->getFirstname() . ' ' . $user->getLastname() ?></strong></span>
                     </div>
                     <div class="settings-modify-action">
                         <span>Modifier</span>
                     </div>
                 </a>
-                <div class="settings-content" data-status="hidden">
+                <div class="settings-content">
                     <div class="settings-content-name">
                         <h3>Nom</h3>
                     </div>
                     <form action="" method="post" class="settings-form">
+                        <input type="hidden" name="type" value="fullname">
                         <label for="firstname" class="settings-form-label">
                             <span>Prénom</span>
-                            <input type="text" name="firstname" id="firstname">
+                            <input type="text" name="firstname" value="<?= $user->getFirstname() ?>" id="firstname">
                         </label>
                         <label for="lastname" class="settings-form-label">
                             <span>Nom de famille</span>
-                            <input type="text" name="lastname" id="lastname">
+                            <input type="text" name="lastname" value="<?= $user->getLastname() ?>" id="lastname">
                         </label>
                         <div class="settings-form-divider"></div>
                         <div class="settings-form-button">
@@ -40,22 +41,23 @@
                 </div>
             </li>
             <li>
-                <a role="button" data-status="shown" class="settings-modify">
+                <a role="button" class="settings-modify">
                     <div class="settings-modify-name">
                         <h3>Nom d'utilisateur</h3>
                     </div>
                     <div class="settings-modify-value">
-                        <span>Vous n'avez pas défini de nom d'utilisateur.</span>
+                        <span><?= /*$user->getUsername() ? '<strong>'.$user->getUsername().'</strong>' :*/ "Vous n'avez pas défini de nom d'utilisateur." ?></span>
                     </div>
                     <div class="settings-modify-action">
                         <span>Modifier</span>
                     </div>
                 </a>
-                <div class="settings-content" data-status="hidden">
+                <div class="settings-content">
                     <div class="settings-content-name">
                         <h3>Nom d'utilisateur</h3>
                     </div>
                     <form action="" method="post" class="settings-form">
+                        <input type="hidden" name="type" value="username">
                         <label for="username" class="settings-form-label">
                             <span>Nom d'utilisateur</span>
                             <input type="text" name="username" id="username">
@@ -69,25 +71,26 @@
                 </div>
             </li>
             <li>
-                <a role="button" data-status="shown" class="settings-modify">
+                <a role="button" class="settings-modify">
                     <div class="settings-modify-name">
                         <h3>Email</h3>
                     </div>
                     <div class="settings-modify-value">
-                        <span><strong>jeremy284@hotmail.com</strong></span>
+                        <span><?= $user->getEmail() ? '<strong>'.$user->getEmail().'</strong>' : "Vous n'avez pas défini d'email." ?></span>
                     </div>
                     <div class="settings-modify-action">
                         <span>Modifier</span>
                     </div>
                 </a>
-                <div class="settings-content" data-status="hidden">
+                <div class="settings-content">
                     <div class="settings-content-name">
                         <h3>Email</h3>
                     </div>
                     <form action="" method="post" class="settings-form">
+                        <input type="hidden" name="type" value="email">
                         <label for="email" class="settings-form-label">
                             <span>Email</span>
-                            <input type="text" name="email" id="email">
+                            <input type="email" name="email" value="<?= $user->getEmail() ?>" id="email">
                         </label>
                         <div class="settings-form-divider"></div>
                         <div class="settings-form-button">
@@ -98,25 +101,26 @@
                 </div>
             </li>
             <li>
-                <a role="button" data-status="shown" class="settings-modify">
+                <a role="button" class="settings-modify">
                     <div class="settings-modify-name">
                         <h3>Numéro de téléphone</h3>
                     </div>
                     <div class="settings-modify-value">
-                        <span><strong>06 81 10 48 17</strong></span>
+                        <span><?= $user->getTel() ? '<strong>'.$user->getTel().'</strong>' : "Vous n'avez pas défini de numéro de téléphone." ?></span>
                     </div>
                     <div class="settings-modify-action">
                         <span>Modifier</span>
                     </div>
                 </a>
-                <div class="settings-content" data-status="hidden">
+                <div class="settings-content">
                     <div class="settings-content-name">
                         <h3>Numéro de téléphone</h3>
                     </div>
                     <form action="" method="post" class="settings-form">
+                        <input type="hidden" name="type" value="tel">
                         <label for="tel" class="settings-form-label">
                             <span>Numéro de téléphone</span>
-                            <input type="text" name="tel" id="tel">
+                            <input type="tel" name="tel" value="<?= $user->getTel() ?>" id="tel">
                         </label>
                         <div class="settings-form-divider"></div>
                         <div class="settings-form-button">
@@ -132,24 +136,26 @@
 
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
-    document.getElementById('settings').setAttribute('aria-current', 'page');
+    document.getElementById('btn-account').setAttribute('aria-current', 'page');
     document.querySelector('[data-status=selected]').dataset.status = 'unselected';
+    const account = document.getElementById('account');
 
     const modifyList = document.getElementsByClassName('settings-modify');
     const cancelList = document.getElementsByClassName('settings-form-cancel');
     
     const onClickModify = function() {
-        if (this.dataset.status == 'shown') {
-            this.dataset.status = 'hidden';
-            this.parentElement.children[1].dataset.status = 'shown';
-        } else {
-            this.dataset.status = 'shown';
-            this.parentElement.children[1].dataset.status = 'hidden';
+        const elem = account.querySelector('[data-status=modifying]');
+        if (elem) {
+            elem.removeAttribute('data-status');
+        }
+
+        if (this.dataset.status != 'modifying') {
+            this.parentElement.dataset.status = 'modifying';
         }
     }
 
     const onClickCancel = function() {
-        this.parentElement.parentElement.parentElement.parentElement.children[0].dispatchEvent(new Event("click"));
+        account.querySelector('[data-status=modifying]').removeAttribute('data-status');
     }
     
     for (const button of modifyList) {

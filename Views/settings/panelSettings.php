@@ -5,7 +5,7 @@
     <div>
         <div class="panel-section-scroll" id="panelSettings-scroll" data-status="show">
             <div class="panel-section-list">
-                <a href="/settings/?tab=account" class="panel-section-button" id="account">
+                <a href="/settings/?tab=account" class="panel-section-button" id="btn-account">
                     <div class="icon">
                         <img class="" height="24" src="assets/image/reglages.png" width="24" alt="">
                     </div>
@@ -14,7 +14,7 @@
                     </div>
                     <div class="hover"></div>
                 </a>
-                <a href="/settings/?tab=security" class="panel-section-button" id="security">
+                <a href="/settings/?tab=security" class="panel-section-button" id="btn-security">
                     <div class="icon">
                         <img class="" height="24" src="assets/image/bouclier.png" width="24" alt="">
                     </div>

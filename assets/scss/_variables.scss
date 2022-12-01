@@ -92,6 +92,9 @@ html {
         --settings-form-cancel-hover: #EBEDF0;
         --settings-form-cancel-text: #4b4f56;
         --settings-form-cancel-border: #ccd0d5;
+        --settings-category-border: #dddfe2;
+        --settings-category-name-bg: #f5f6f7;
+        --settings-category-modify-border: #e5e5e5;
         --filter-settings-icon: none;
     }
 
@@ -135,11 +138,14 @@ html {
         --settings-form-confirm-press: #223760;
         --settings-form-confirm-hover: #2F4D86;
         --settings-form-confirm-text: #fff;
-        --settings-form-cancel-bg: #f5f6f7;
-        --settings-form-cancel-press: #DDDFE2;
-        --settings-form-cancel-hover: #EBEDF0;
-        --settings-form-cancel-text: #4b4f56;
-        --settings-form-cancel-border: #ccd0d5;
+        --settings-form-cancel-bg: #08090A;
+        --settings-form-cancel-press: #1E2023;
+        --settings-form-cancel-hover: #101215;
+        --settings-form-cancel-text: #9FA4AA;
+        --settings-form-cancel-border: #2C3035;
+        --settings-category-border: #1E2023;
+        --settings-category-name-bg: #08090A;
+        --settings-category-modify-border: #1A1A1A;
         --filter-settings-icon: invert(1) hue-rotate(180deg);
     }
 }
@@ -185,11 +191,14 @@ html {
         --settings-form-confirm-press: #223760;
         --settings-form-confirm-hover: #2F4D86;
         --settings-form-confirm-text: #fff;
-        --settings-form-cancel-bg: #f5f6f7;
-        --settings-form-cancel-press: #DDDFE2;
-        --settings-form-cancel-hover: #EBEDF0;
-        --settings-form-cancel-text: #4b4f56;
-        --settings-form-cancel-border: #ccd0d5;
+        --settings-form-cancel-bg: #08090A;
+        --settings-form-cancel-press: #1E2023;
+        --settings-form-cancel-hover: #101215;
+        --settings-form-cancel-text: #9FA4AA;
+        --settings-form-cancel-border: #2C3035;
+        --settings-category-border: #1E2023;
+        --settings-category-name-bg: #08090A;
+        --settings-category-modify-border: #1A1A1A;
         --filter-settings-icon: invert(1) hue-rotate(180deg);
     }
 }
@@ -240,6 +249,9 @@ html {
         --settings-form-cancel-hover: #EBEDF0;
         --settings-form-cancel-text: #4b4f56;
         --settings-form-cancel-border: #ccd0d5;
+        --settings-category-border: #dddfe2;
+        --settings-category-name-bg: #f5f6f7;
+        --settings-category-modify-border: #e5e5e5;
         --filter-settings-icon: none;
     }
 }

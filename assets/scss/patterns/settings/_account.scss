@@ -1,4 +1,4 @@
-.settings.account {
+.settings#account {
     .settings-list {
         border-top: 1px solid var(--settings-list-border);
         border-bottom: 1px solid var(--settings-list-border);
@@ -11,6 +11,13 @@
             &:first-child {
                 border: none;
             }
+
+            &[data-status='modifying'] {
+                .settings-modify { display: none; }
+                .settings-content { display: flex; }
+            }
+            
+            .settings-content { display: none; }
         }
     }
 
@@ -19,10 +26,6 @@
         display: block;
         position: relative;
         cursor: pointer;
-
-        &[data-status="hidden"] {
-            display: none;
-        }
 
         &:hover {
             background-color: var(--hover-overlay);

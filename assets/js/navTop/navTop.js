@@ -137,6 +137,6 @@ profil.addEventListener("click", function(event) {
     displayButton.addEventListener("click", showDisplayListener);
     
     // Affiche le menu principal
-    card.style.height = card.children[0].clientHeight + 8 + "px";
     card.dataset.status = "visible";
+    card.style.height = card.children[0].clientHeight + 8 + "px";
 })
