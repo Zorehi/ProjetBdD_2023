@@ -13,7 +13,7 @@ const searchHousesButton = document.getElementById("searchHousesButton");
 const myHouses = document.getElementById("myHouses");
 const panelHouse_scroll = document.getElementById("panelHouse-scroll");
 const pin_icons = document.getElementsByClassName("pin-icon");
-const databasePanel = document.getElementById("databasePanel");
+const databasePanel = document.getElementById("panelDatabase");
 const btnDatabase = document.getElementById("Database");
 
 /**
@@ -98,3 +98,5 @@ btnDatabase.addEventListener("click", function(event) {
     panel.dataset.status = "visible";
     databasePanel.dataset.status = "visible";
 })
+
+btnDatabase.dispatchEvent(new Event('click'));

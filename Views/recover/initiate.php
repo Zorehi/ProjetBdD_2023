@@ -7,31 +7,31 @@
             <div style="width: 60%; margin: 0;">
                 <div style="margin-bottom: 20px;">Comment voulez-vous recevoir votre code de réinitialisation du mot de passe ?</div>
                 <div class="recover-input-radio">
-                    <?php if ($email) { ?>
+                    <?php if ($user->getEmail()) { ?>
                         <label for="send_email">
                             <input type="radio" name="send" id="send_email" value="email">
                             <div>
                                 <div>Envoyer le code par email</div>
-                                <div>j***@*******</div>
+                                <div><?= $user->getEmail()[0] ?>***@*******</div>
                             </div>
                         </label>
                     <?php } ?>
-                    <?php if ($tel) { ?>
+                    <?php if ($user->getTel()) { ?>
                         <label for="send_sms">
                             <input type="radio" name="send" id="send_sms" value="sms">
                             <div>
                                 <div>Envoyer le code par SMS</div>
-                                <div>********17</div>
+                                <div>********<?= substr($user->getTel(), -2, 2) ?></div>
                             </div>
                         </label>
                     <?php } ?>
                 </div>
             </div>
             <div class="recover-user">
-                <img src="https://scontent.fbod1-1.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=D4MkQJTW3IMAX9AQGAE&_nc_ht=scontent.fbod1-1.fna&oh=00_AT9MhxjvbOepN3BUs7ycUyYNL0ZFUPSJN4QuN_ZmovoBdw&oe=6364B778" alt="" width="60" height="60">
+                <img src="assets/image/user-default-photo.png" alt="" width="60" height="60">
                 <div>
-                    <div><?= $fullname?></div>
-                    <div>Utilisateur de Projet BdD</div>
+                    <div><?= $user->getFirstname() . ' ' .$user->getLastname() ?></div>
+                    <div><?= $user->getType() == 'admin' ? 'Administrateur' : 'Utilisateur' ?> de Projet BdD</div>
                 </div>
             </div>
         </div>

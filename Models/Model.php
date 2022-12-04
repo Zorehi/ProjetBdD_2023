@@ -6,6 +6,7 @@
     class Model extends Database {
         protected $table;
         protected $idName = "";
+        protected $champs = [];
 
         private $db;
 
@@ -152,6 +153,14 @@
                 }
             }
             return $this;
+        }
+
+        /**
+         * Get the value of champs
+         */ 
+        public function getChamps()
+        {
+                return $this->champs;
         }
     }
 ?>

@@ -1,0 +1,15 @@
+.panel-section#panelDatabase {
+    .panel-section-button {
+        height: 40px;
+        padding-left: 20px;
+
+        .text {
+            span {
+                color: var(--primary-text);
+                line-height: 20px;
+                font-size: 15px;
+                font-weight: 500;
+            }
+        }
+    }
+}

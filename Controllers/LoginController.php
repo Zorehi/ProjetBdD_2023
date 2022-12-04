@@ -64,7 +64,8 @@ class LoginController extends Controller
                             ->setFirstname($firstname)
                             ->setLastname($lastname)
                             ->setBorn_date($born_date)
-                            ->setSex_id($sex);
+                            ->setSex($sex)
+                            ->setType('user');
 
                         $user->create();
 
@@ -91,7 +92,7 @@ class LoginController extends Controller
             
             if ($userArray) {
                 $user->hydrate($userArray);
-                header("Location: /recover/initiate/".$user->getId());
+                header("Location: /recover/initiate/?id=".$user->getId());
             }
 
         }

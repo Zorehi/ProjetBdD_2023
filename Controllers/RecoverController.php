@@ -30,6 +30,7 @@ class RecoverController extends Controller
     
                 mail($user->getEmail(), $sujet, $message, $headers);
             } else {
+                /*
                 $_SESSION["recover"] = [
                     "send_to" => $user->getTel(),
                     "id" => $user->getId(),
@@ -42,16 +43,13 @@ class RecoverController extends Controller
                 $message = "Votre code est " . $code . " !";
 
                 mail("email2sms@capitolemobile.com", $sujet, $message, $headers);
+                */
             }
 
             header("Location: /recover/code");
         }
         
-        $fullname = $user->getFirstname() . " " . $user->getLastname();
-        $email = $user->getEmail();
-        $tel = $user->getTel();
-        
-        $this->render('/recover/initiate', compact("fullname", "email", "tel"), "login");
+        $this->render('/recover/initiate', compact("user"), "login");
     }
     
     public function code() {

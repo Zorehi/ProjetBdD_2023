@@ -4,13 +4,14 @@ namespace App\Models;
 class UsersModel extends Model
 {
     protected $id;
+    protected $email;
+    protected $tel;
+    protected $password;
     protected $firstname;
     protected $lastname;
-    protected $email;
-    protected $password;
-    protected $sex_id;
     protected $born_date;
-    protected $tel;
+    protected $sex;
+    protected $type;
     protected $create_time;
 
     public function __construct()
@@ -18,6 +19,11 @@ class UsersModel extends Model
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "id";
+        foreach($this as $champ => $valeur) {
+            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
+                $this->champs[] = $champ;
+            }
+        }
     }
 
     public function findByEmailOrTel($email) {
@@ -28,7 +34,8 @@ class UsersModel extends Model
         $_SESSION["user"] = [
             "id" => $this->id,
             "prenom" => $this->firstname,
-            "nom" => $this->lastname
+            "nom" => $this->lastname,
+            "type" => $this->type
         ];
     }
 
@@ -48,6 +55,66 @@ class UsersModel extends Model
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tel
+     */ 
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * Set the value of tel
+     *
+     * @return  self
+     */ 
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of password
+     */ 
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */ 
+    public function setPassword($password)
+    {
+        $this->password = $password;
 
         return $this;
     }
@@ -93,66 +160,6 @@ class UsersModel extends Model
     }
 
     /**
-     * Get the value of email
-     */ 
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set the value of email
-     *
-     * @return  self
-     */ 
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of password
-     */ 
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set the value of password
-     *
-     * @return  self
-     */ 
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of sex_id
-     */ 
-    public function getSex_id()
-    {
-        return $this->sex_id;
-    }
-
-    /**
-     * Set the value of sex_id
-     *
-     * @return  self
-     */ 
-    public function setSex_id($sex_id)
-    {
-        $this->sex_id = $sex_id;
-
-        return $this;
-    }
-
-    /**
      * Get the value of born_date
      */ 
     public function getBorn_date()
@@ -173,21 +180,41 @@ class UsersModel extends Model
     }
 
     /**
-     * Get the value of tel
+     * Get the value of sex
      */ 
-    public function getTel()
+    public function getSex()
     {
-        return $this->tel;
+        return $this->sex;
     }
 
     /**
-     * Set the value of tel
+     * Set the value of sex
      *
      * @return  self
      */ 
-    public function setTel($tel)
+    public function setSex($sex)
     {
-        $this->tel = $tel;
+        $this->sex = $sex;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of type
+     */ 
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set the value of type
+     *
+     * @return  self
+     */ 
+    public function setType($type)
+    {
+        $this->type = $type;
 
         return $this;
     }

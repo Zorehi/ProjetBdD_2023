@@ -1538,6 +1538,17 @@ button {
   display: none;
 }
 
+.panel-section#panelDatabase .panel-section-button {
+  height: 40px;
+  padding-left: 20px;
+}
+.panel-section#panelDatabase .panel-section-button .text span {
+  color: var(--primary-text);
+  line-height: 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .panel-section {
   top: 56px;
   left: 60px;

@@ -1,7 +1,7 @@
 <?php
-    namespace App\Core;
 
-use App\Controllers\LoginController;
+namespace App\Core;
+
 use App\Controllers\MainController;
 
     class Main
@@ -15,6 +15,14 @@ use App\Controllers\MainController;
                 setcookie(
                     'color-scheme',
                     '__pj-light-mode',
+                    [
+                        'expires'=> time() + 365*24*60*60
+                    ]
+                );
+            } else {
+                setcookie(
+                    'color-scheme',
+                    $_COOKIE['color-scheme'],
                     [
                         'expires'=> time() + 365*24*60*60
                     ]

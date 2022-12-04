@@ -1,4 +1,4 @@
-<div class="panel-section" id="databasePanel" data-status="hidden">
+<div class="panel-section panelDatabase" id="panelDatabase" data-status="hidden">
     <div class="panel-section-title">
         <h1>Base de données</h1>
     </div>
@@ -23,12 +23,23 @@
         <div class="panel-section-scroll" data-status="show">
             <div class="panel-section-separator"></div>
             <div class="panel-section-list">
-                <div id="db-table" class="display-true"> 
+                <div id="db-table">
                     <span>Tables de la base de données</span>
                     <div>
-                        <a class="panel-section-button" href="#">
-                            <div class="hover opacity-0 background-hover"></div>
+                        <?php
+                        $directory = ROOT.'/Models';
+                        $scanned_directory = array_diff(scandir($directory), array('..', '.', 'Model.php'));
+                        foreach ($scanned_directory as $file) {
+                            $tablename = substr($file, 0, strpos($file, '.'));
+                            $displayname = str_replace('Model', '', $tablename);
+                        ?>
+                        <a class="panel-section-button" href="tables/?name=<?= $tablename ?>">
+                            <div class="text">
+                                <span><?= $displayname ?></span>
+                            </div>
+                            <div class="hover"></div>
                         </a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
