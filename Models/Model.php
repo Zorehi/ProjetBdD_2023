@@ -68,7 +68,7 @@
             // On boucle pour éclater le tableau
             foreach($this as $champ => $valeur) {
                 // INSERT INTO annonces (titre, description, actif) VALUES (?, ?, ?)
-                if($valeur !== null && $champ != 'db' && $champ != 'table' && $champ != 'idName') {
+                if($valeur !== null && $champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != "champs") {
                     $champs[] = $champ;
                     $inter[] = "?";
                     $valeurs[] = $valeur;
@@ -97,7 +97,7 @@
             // On boucle pour éclater le tableau
             foreach($this as $champ => $valeur) {
                 // UPDATE annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
-                if($valeur !== null && $champ != 'db' && $champ != 'table' && $champ != 'idName'){
+                if($valeur !== null && $champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != "champs"){
                     $champs[] = "$champ = ?";
                     $valeurs[] = $valeur;
                 }

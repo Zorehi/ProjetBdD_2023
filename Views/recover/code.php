@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="card-recover__footer">
-            <a href="/recover/initiate/<?= $id ?>" id="left">Code non reçu ?</a>
+            <a href="/recover/initiate/?id=<?= $id ?>" id="left">Code non reçu ?</a>
             <a href="/login/identify">Annuler</a>
             <button>Continer</button>
         </div>
