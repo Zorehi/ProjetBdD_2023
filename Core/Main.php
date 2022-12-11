@@ -16,7 +16,8 @@ use App\Controllers\MainController;
                     'color-scheme',
                     '__pj-light-mode',
                     [
-                        'expires'=> time() + 365*24*60*60
+                        'expires'=> time() + 365*24*60*60,
+                        'path' => '/'
                     ]
                 );
             } else {
@@ -24,7 +25,8 @@ use App\Controllers\MainController;
                     'color-scheme',
                     $_COOKIE['color-scheme'],
                     [
-                        'expires'=> time() + 365*24*60*60
+                        'expires'=> time() + 365*24*60*60,
+                        'path' => '/'
                     ]
                 );
             }

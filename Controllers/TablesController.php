@@ -20,6 +20,6 @@ class TablesController extends Controller
             unset($lines[$i]['password']);
         }
 
-        $this->render('/tables/index', compact('pageName', 'table', 'lines'));
+        $this->render('/tables/index', compact('pageName', 'tablename', 'table', 'lines'));
     }
 }

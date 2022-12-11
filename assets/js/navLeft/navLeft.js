@@ -99,4 +99,4 @@ btnDatabase.addEventListener("click", function(event) {
     databasePanel.dataset.status = "visible";
 })
 
-btnDatabase.dispatchEvent(new Event('click'));
+//btnDatabase.dispatchEvent(new Event('click'));

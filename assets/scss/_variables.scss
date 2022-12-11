@@ -1,51 +1,3 @@
-:root {
-    --wash: #E4E6EB;
-    --accent: hsl(214, 89%, 52%);
-    --divider: #CED0D4;
-    --blue-link: #216FDB;
-    --base-blue: #1877F2;
-    --primary-text: #050505;
-    --primary-icon: #050505;
-    --secondary-text: #65676B;
-    --secondary-icon: #65676B;
-    --background-color: #F0F2F5;
-    --nav-background-color: #FFFFFF;
-    --navTop-logo-color: #1877F2;
-    --comment-background: #F0F2F5;
-    --comment-background-hover: #E4E6E9;
-    --comment-placeholder-focus : #65676B;
-    --secondary-button-background: #E4E6EB;
-    --hover-overlay: rgba(0, 0, 0, .05);
-    --press-overlay: rgba(0, 0, 0, .1);
-    --media-press: rgba(68, 73, 80, 0.35);
-    --card-background: #FFFFFF;
-    --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%) saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
-    --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
-    --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
-    --filter-always-white: invert(100%);
-    --primary-deemphasized-button-background: #E7F3FF;
-    --primary-deemphasized-button-text: #1877F2;
-    --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
-    --overlay-alpha-80: rgba(244, 244, 244, 0.8);
-    --settings-background-color: #FFFFFF;
-    --settings-list-border: #AAAAAA;
-    --settings-li-border: #EBEDF0;
-    --settings-content-background: #f2f2f2;
-    --settings-form-label-border: #CCD0D5;
-    --settings-form-label-text: #606770;
-    --settings-form-divider-background: #CCCCCC;
-    --settings-form-confirm-bg: #365899;
-    --settings-form-confirm-press: #223760;
-    --settings-form-confirm-hover: #2F4D86;
-    --settings-form-confirm-text: #fff;
-    --settings-form-cancel-bg: #f5f6f7;
-    --settings-form-cancel-press: #DDDFE2;
-    --settings-form-cancel-hover: #EBEDF0;
-    --settings-form-cancel-text: #4b4f56;
-    --settings-form-cancel-border: #ccd0d5;
-    --filter-settings-icon: none;
-}
-
 html {
     &.__pj-light-mode {
         --wash: #E4E6EB;
@@ -96,6 +48,10 @@ html {
         --settings-category-name-bg: #f5f6f7;
         --settings-category-modify-border: #e5e5e5;
         --filter-settings-icon: none;
+        --table-li-shadow: rgba(0, 0, 0, 0.1);
+        --table-row-bg: #F0F2F5;
+        --table-header-bg: #fff;
+        --scroll-thumb: #BCC0C4;
     }
 
     &.__pj-dark-mode {
@@ -147,6 +103,10 @@ html {
         --settings-category-name-bg: #08090A;
         --settings-category-modify-border: #1A1A1A;
         --filter-settings-icon: invert(1) hue-rotate(180deg);
+        --table-li-shadow: rgba(255, 255, 255, 0.1);
+        --table-row-bg: #18191A;
+        --table-header-bg: #242526;
+        --scroll-thumb: rgba(255, 255, 255, 0.3);
     }
 }
 
@@ -200,6 +160,10 @@ html {
         --settings-category-name-bg: #08090A;
         --settings-category-modify-border: #1A1A1A;
         --filter-settings-icon: invert(1) hue-rotate(180deg);
+        --table-li-shadow: rgba(255, 255, 255, 0.1);
+        --table-row-bg: #000;
+        --table-header-bg: #242526;
+        --scroll-thumb: rgba(255, 255, 255, 0.3);
     }
 }
 
@@ -253,5 +217,9 @@ html {
         --settings-category-name-bg: #f5f6f7;
         --settings-category-modify-border: #e5e5e5;
         --filter-settings-icon: none;
+        --table-li-shadow: rgba(0, 0, 0, 0.1);
+        --table-row-bg: #F0F2F5;
+        --table-header-bg: #fff;
+        --scroll-thumb: #BCC0C4;
     }
 }
