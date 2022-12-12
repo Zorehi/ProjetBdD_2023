@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Core\Form;
+
 class TablesController extends Controller
 {
     public function index(string $tablename) {
@@ -9,11 +11,10 @@ class TablesController extends Controller
         $table = '\\App\\Models\\'.$tablename;
         $table = new $table();
 
-        if (isset($_POST['deleteID'])) {
-            $table->delete(strip_tags($_POST['deleteID']));
+        if (Form::validate($_POST, ['deleteID'])) {
+            $table->delete($_POST['deleteID']);
             exit;
         }
-
 
         $pageName = 'Table ' . $tablename . ' | Projet BdD';
 

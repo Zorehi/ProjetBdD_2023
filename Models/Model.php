@@ -119,7 +119,7 @@
          */
         public function delete(int $id) 
         {
-            return $this->requete("DELETE FROM {$this->table} WHERE '. $this->idName .' = ?", [$id]);
+            return $this->requete('DELETE FROM '.$this->table.' WHERE '. $this->idName .' = ?', [$id]);
         }
 
         public function requete(string $sql, array $attributs = null)

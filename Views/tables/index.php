@@ -1,7 +1,7 @@
 <?php include ROOT."/Views/tables/panelTable.php"; ?>
 
 <div class="globalContainer">
-    <form class="<?= $tablename ?>" method="POST">
+    <div class="<?= $tablename ?>" method="POST">
         <ul class="responsive-table">
             <li class="table-header">
                 <?php foreach ($table->getChamps() as $champ) { ?>
@@ -10,7 +10,7 @@
             </li>
             <div class="scrollbar-container" id="scrollbar-1">
                 <div class="scrollbar-content" data-transition="yes">
-                    <?php for ($i = 0; $i < 30; $i++) { ?>
+                    <?php for ($i = 0; $i < 1; $i++) { ?>
                     <?php foreach ($lines as $line) { ?>
                         <li class="table-row">
                             <div class="table-row-info">
@@ -18,7 +18,7 @@
                                     <div class="<?= $key ?>" data-label="<?= $key ?>"><?= $value ?></div>
                                 <?php } ?>
                             </div>
-                            <button type="button" class="btn-delete" name="delete" value="<?= $line[$table->getIdName()] ?>" onclick="deleteRow('<?= $tablename ?>', this.value)">
+                            <button type="button" class="btn-delete" name="deleteID" value="<?= $line[$table->getIdName()] ?>" onclick="deleteRow('<?= $tablename ?>', this.value, this.parentElement)">
                                 <img src="assets/image/bin.png" height="16px" width="16px" alt="">
                             </button>
                             <div>
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </ul>
-    </form>
+    </div>
 </div>
 
 <script src="js.php?file=ScrollBar.js"></script>
@@ -52,17 +52,22 @@
         filterElement[label.getAttribute('for')] = label.querySelector('#'+label.getAttribute('for'));
     }
 
-    function deleteRow(table, id) {
+    function deleteRow(table, id, row) {
         const datas = new FormData();
         datas.append('deleteID', id);
 
-        $.ajax({
-            type: 'post',
+        row.remove();
+
+        /*$.ajax({
+            type: 'POST',
             url: 'tables/?name='+table,
             data: datas,
             dataType: 'json',
-            processData: false
-        });
+            timeout: 120000, //2 Minutes
+            cache: false,
+            contentType: false,
+            processData: false,
+        });*/
     }
 
     function filter() {
