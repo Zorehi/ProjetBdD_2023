@@ -21,7 +21,7 @@ html {
         --media-press: rgba(68, 73, 80, 0.35);
         --card-background: #FFFFFF;
         --filter-primary-icon: invert(8%) sepia(10%) saturate(200%) saturate(200%) saturate(166%) hue-rotate(177deg) brightness(104%) contrast(91%);
-        --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
+        --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%)hue-rotate(202deg) brightness(97%) contrast(96%);
         --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
         --filter-always-white: invert(100%);
         --primary-deemphasized-button-background: #E7F3FF;
@@ -52,6 +52,7 @@ html {
         --table-row-bg: #F0F2F5;
         --table-header-bg: #fff;
         --scroll-thumb: #BCC0C4;
+        --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%);
     }
 
     &.__pj-dark-mode {
@@ -107,6 +108,7 @@ html {
         --table-row-bg: #18191A;
         --table-header-bg: #242526;
         --scroll-thumb: rgba(255, 255, 255, 0.3);
+        --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%);
     }
 }
 
@@ -164,6 +166,7 @@ html {
         --table-row-bg: #000;
         --table-header-bg: #242526;
         --scroll-thumb: rgba(255, 255, 255, 0.3);
+        --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%);
     }
 }
 
@@ -221,5 +224,6 @@ html {
         --table-row-bg: #F0F2F5;
         --table-header-bg: #fff;
         --scroll-thumb: #BCC0C4;
+        --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%);
     }
 }

@@ -1,7 +1,7 @@
 <?php include ROOT."/Views/tables/panelTable.php"; ?>
 
 <div class="globalContainer">
-    <div class="<?= $tablename ?>">
+    <form class="<?= $tablename ?>" method="POST">
         <ul class="responsive-table">
             <li class="table-header">
                 <?php foreach ($table->getChamps() as $champ) { ?>
@@ -13,9 +13,17 @@
                     <?php for ($i = 0; $i < 30; $i++) { ?>
                     <?php foreach ($lines as $line) { ?>
                         <li class="table-row">
-                            <?php foreach ($line as $key => $value) { ?>
-                                <div class="<?= $key ?>" data-label="<?= $key ?>"><?= $value ?></div>
-                            <?php } ?>
+                            <div class="table-row-info">
+                                <?php foreach ($line as $key => $value) { ?>
+                                    <div class="<?= $key ?>" data-label="<?= $key ?>"><?= $value ?></div>
+                                <?php } ?>
+                            </div>
+                            <button type="button" class="btn-delete" name="delete" value="<?= $line[$table->getIdName()] ?>" onclick="deleteRow('<?= $tablename ?>', this.value)">
+                                <img src="assets/image/bin.png" height="16px" width="16px" alt="">
+                            </button>
+                            <div>
+
+                            </div>
                         </li>
                     <?php } ?>
                     <?php } ?>
@@ -26,7 +34,7 @@
                 </div>
             </div>
         </ul>
-    </div>
+    </form>
 </div>
 
 <script src="js.php?file=ScrollBar.js"></script>
@@ -44,17 +52,30 @@
         filterElement[label.getAttribute('for')] = label.querySelector('#'+label.getAttribute('for'));
     }
 
+    function deleteRow(table, id) {
+        const datas = new FormData();
+        datas.append('deleteID', id);
+
+        $.ajax({
+            type: 'post',
+            url: 'tables/?name='+table,
+            data: datas,
+            dataType: 'json',
+            processData: false
+        });
+    }
+
     function filter() {
-        const table_rows = scrollbar_1.sbContent.querySelectorAll('.table-row');
+        const table_rows = scrollbar_1.sbContent.querySelectorAll('.table-row-info');
 
         for (const table_row of table_rows) {
             const divs = table_row.querySelectorAll('div');
 
             for (const div of divs) {
                 if (div.textContent.toLocaleLowerCase().includes(filterElement[div.dataset.label].value.toLocaleLowerCase())) {
-                    table_row.style.display = 'flex';
+                    table_row.parentElement.style.display = 'flex';
                 } else {
-                    table_row.style.display = 'none';
+                    table_row.parentElement.style.display = 'none';
                     break;
                 }
             }

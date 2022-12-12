@@ -162,5 +162,13 @@
         {
                 return $this->champs;
         }
+
+        /**
+         * Get the value of idName
+         */ 
+        public function getIdName()
+        {
+                return $this->idName;
+        }
     }
 ?>

@@ -1,14 +1,18 @@
 .responsive-table {
-    width: 90%;
+    width: 100%;
     max-height: 90%;
     height: 90%;
 
     li {
         border-radius: 4px;
-        padding: 15px 30px;
+        padding: 15px 40px 15px 30px;
         display: flex;
         //justify-content: space-between;
         margin-bottom: 10px;
+    }
+
+    .scrollbar-container {
+        padding-left: 40px;
     }
     
     .table-header {
@@ -17,7 +21,7 @@
         font-size: 14px;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        margin: 0 20px 0 16px;
+        margin: 0 20px 0 40px;
     }
     
     .table-row {
@@ -25,10 +29,34 @@
         background-color: var(--table-row-bg);
         transition: transform 100ms cubic-bezier(0.19, 0.92, 0.72, 0.96);
         color: var(--secondary-text);
+        position: relative;
         cursor: pointer;
 
         &:hover {
             transform: scale(1.01) translateX(-6px);
+        }
+
+        .btn-delete {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            filter: var(--filter-red);
+            -webkit-filter: var(--filter-red);
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--hover-overlay);
+            }
+        }
+
+        .table-row-info {
+            display: flex;
+            width: 100%;
         }
     }
 }

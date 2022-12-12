@@ -7,8 +7,13 @@ class TablesController extends Controller
     public function index(string $tablename) {
 
         $table = '\\App\\Models\\'.$tablename;
+        $table = new $table();
 
-        $table = new $table();        
+        if (isset($_POST['deleteID'])) {
+            $table->delete(strip_tags($_POST['deleteID']));
+            exit;
+        }
+
 
         $pageName = 'Table ' . $tablename . ' | Projet BdD';
 
