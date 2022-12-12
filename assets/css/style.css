@@ -891,11 +891,10 @@ button {
   height: 90%;
 }
 .responsive-table li {
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 15px 30px;
   display: flex;
   margin-bottom: 10px;
-  box-shadow: 0px 0px 9px 0px var(--table-li-shadow);
 }
 .responsive-table .table-header {
   background-color: var(--table-header-bg);
@@ -906,6 +905,7 @@ button {
   margin: 0 20px 0 16px;
 }
 .responsive-table .table-row {
+  box-shadow: 0px 0px 9px 0px var(--table-li-shadow);
   background-color: var(--table-row-bg);
   transition: transform 100ms cubic-bezier(0.19, 0.92, 0.72, 0.96);
   color: var(--secondary-text);
@@ -954,7 +954,7 @@ button {
 .scrollbar-container {
   padding: 10px 20px 10px 16px;
   position: relative;
-  height: 90%;
+  height: 92%;
   overflow: hidden;
 }
 .scrollbar-container:hover .scrollbar-thumb {
@@ -1482,51 +1482,6 @@ button {
   z-index: 1;
 }
 
-.panelHouse .panelHouse-create {
-  padding: 8px 16px 0 16px;
-}
-.panelHouse .panelHouse-create > a {
-  position: relative;
-  width: 100%;
-  border-radius: 6px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--primary-deemphasized-button-background);
-  height: 36px;
-}
-.panelHouse .panelHouse-create > a:active {
-  transform: scale(0.96);
-}
-.panelHouse .panelHouse-create > a > span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.panelHouse .panelHouse-create > a > span > span {
-  font-size: 15px;
-  line-height: 20px;
-  font-weight: 600;
-  color: var(--primary-deemphasized-button-text);
-  margin: 0 3px;
-}
-.panelHouse .panelHouse-create > a > span > i {
-  -webkit-filter: var(--filter-accent);
-  filter: var(--filter-accent);
-  margin: 0 3px;
-}
-.panelHouse .panelHouse-create > a > div {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-}
-.panelHouse .panelHouse-create > a > div:hover {
-  background-color: var(--hover-overlay);
-}
-.panelHouse .panelHouse-create > a > div:active {
-  background-color: var(--primary-deemphasized-button-pressed-overlay);
-}
 .panelHouse #searchHousesButton {
   height: 56px;
 }
@@ -1616,7 +1571,7 @@ button {
 .panelHouse .panel-section-scroll[data-status=search] #containerSearchHouseButton {
   display: block;
 }
-.panelHouse .panel-section-scroll[data-status=search] .panelHouse-create {
+.panelHouse .panel-section-scroll[data-status=search] .panel-section-create {
   display: none;
 }
 .panelHouse .panel-section-scroll[data-status=search] .panel-section-separator {
@@ -1733,6 +1688,52 @@ button {
 .panel-section .panel-section-button > .hover:active {
   background-color: var(--press-overlay);
 }
+.panel-section .panel-section-create {
+  padding: 8px 16px 0 16px;
+}
+.panel-section .panel-section-create > a {
+  position: relative;
+  width: 100%;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-deemphasized-button-background);
+  height: 36px;
+  cursor: pointer;
+}
+.panel-section .panel-section-create > a:active {
+  transform: scale(0.96);
+}
+.panel-section .panel-section-create > a > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.panel-section .panel-section-create > a > span > span {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--primary-deemphasized-button-text);
+  margin: 0 3px;
+}
+.panel-section .panel-section-create > a > span > i {
+  -webkit-filter: var(--filter-accent);
+  filter: var(--filter-accent);
+  margin: 0 3px;
+}
+.panel-section .panel-section-create > a > .hover {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.panel-section .panel-section-create > a > .hover:hover {
+  background-color: var(--hover-overlay);
+}
+.panel-section .panel-section-create > a > .hover:active {
+  background-color: var(--primary-deemphasized-button-pressed-overlay);
+}
 
 .panelSettings {
   border-right: 1px solid var(--wash);
@@ -1765,6 +1766,15 @@ button {
 }
 .panelSettings .panel-section-scroll {
   padding: 0 8px;
+}
+
+.panelTable .panelTable-filter .panelTable-filter-title {
+  padding-top: 0;
+  padding: 0 16px;
+  color: var(--primary-text);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 20px;
 }
 
 .settings {

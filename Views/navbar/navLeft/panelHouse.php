@@ -32,13 +32,13 @@
                     <div class="hover"></div>
                 </a>
             </div>
-            <div class="panelHouse-create">
-                <a href="/houses/create" id="btnCreateHouse">
+            <div class="panel-section-create">
+                <a href="/houses/create" id="btnCreateHouse" ondragstart="return false;" class="unselectable">
                     <span>
                         <i style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yT/r/i14dpO3gzZZ.png&quot;); background-position: 0px -1659px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         <span>Créer une nouvelle maison</span>
                     </span>
-                    <div class="background-hover opacity-0"></div>
+                    <div class="hover"></div>
                 </a>
             </div>
             <div class="panel-section-separator"></div>
