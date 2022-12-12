@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models as ENamespace;
-
 class TablesController extends Controller
 {
     public function index(string $tablename) {
@@ -16,7 +14,7 @@ class TablesController extends Controller
 
         $lines = $table->findAll();
         $max = count($lines);
-        for ($i=0; $i < $max; $i++) { 
+        for ($i=0; $i < $max; $i++) {
             unset($lines[$i]['password']);
         }
 
