@@ -3,22 +3,24 @@ namespace App\Models;
 
 class UsersModel extends Model
 {
-    protected $id;
+    protected $id_user;
     protected $email;
     protected $tel;
     protected $password;
     protected $firstname;
     protected $lastname;
-    protected $born_date;
-    protected $sex;
-    protected $type;
+    protected $birthday;
+    protected $id_gender;
+    protected $is_admin;
     protected $create_time;
+    protected $state;
+    protected $username; 
 
     public function __construct()
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "id";
+        $this->idName = "id_user";
         foreach($this as $champ => $valeur) {
             if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
                 $this->champs[] = $champ;
@@ -39,22 +41,23 @@ class UsersModel extends Model
         ];
     }
 
+
     /**
-     * Get the value of id
+     * Get the value of id_user
      */ 
-    public function getId()
+    public function getId_user()
     {
-        return $this->id;
+        return $this->id_user;
     }
 
     /**
-     * Set the value of id
+     * Set the value of id_user
      *
      * @return  self
      */ 
-    public function setId($id)
+    public function setId_user($id_user)
     {
-        $this->id = $id;
+        $this->id_user = $id_user;
 
         return $this;
     }
@@ -160,61 +163,61 @@ class UsersModel extends Model
     }
 
     /**
-     * Get the value of born_date
+     * Get the value of birthday
      */ 
-    public function getBorn_date()
+    public function getBirthday()
     {
-        return $this->born_date;
+        return $this->birthday;
     }
 
     /**
-     * Set the value of born_date
+     * Set the value of birthday
      *
      * @return  self
      */ 
-    public function setBorn_date($born_date)
+    public function setBirthday($birthday)
     {
-        $this->born_date = $born_date;
+        $this->birthday = $birthday;
 
         return $this;
     }
 
     /**
-     * Get the value of sex
+     * Get the value of id_gender
      */ 
-    public function getSex()
+    public function getId_gender()
     {
-        return $this->sex;
+        return $this->id_gender;
     }
 
     /**
-     * Set the value of sex
+     * Set the value of id_gender
      *
      * @return  self
      */ 
-    public function setSex($sex)
+    public function setId_gender($id_gender)
     {
-        $this->sex = $sex;
+        $this->id_gender = $id_gender;
 
         return $this;
     }
 
     /**
-     * Get the value of type
+     * Get the value of is_admin
      */ 
-    public function getType()
+    public function getIs_admin()
     {
-        return $this->type;
+        return $this->is_admin;
     }
 
     /**
-     * Set the value of type
+     * Set the value of is_admin
      *
      * @return  self
      */ 
-    public function setType($type)
+    public function setIs_admin($is_admin)
     {
-        $this->type = $type;
+        $this->is_admin = $is_admin;
 
         return $this;
     }
@@ -235,6 +238,46 @@ class UsersModel extends Model
     public function setCreate_time($create_time)
     {
         $this->create_time = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of state
+     */ 
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * Set the value of state
+     *
+     * @return  self
+     */ 
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of username
+     */ 
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set the value of username
+     *
+     * @return  self
+     */ 
+    public function setUsername($username)
+    {
+        $this->username = $username;
 
         return $this;
     }
