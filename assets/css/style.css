@@ -953,8 +953,11 @@ button {
   justify-content: center;
   overflow: hidden;
 }
-.UsersModel .id {
+.UsersModel .id_user {
   width: 3%;
+}
+.UsersModel .username {
+  width: 1%;
 }
 .UsersModel .email {
   width: 27%;
@@ -966,17 +969,20 @@ button {
 .UsersModel .lastname {
   width: 13%;
 }
-.UsersModel .born_date {
+.UsersModel .birthday {
   width: 10%;
 }
-.UsersModel .sex {
+.UsersModel .id_gender {
   width: 6%;
 }
-.UsersModel .type {
+.UsersModel .is_admin {
   width: 6%;
 }
 .UsersModel .create_time {
   width: 12%;
+}
+.UsersModel .state {
+  width: 1%;
 }
 
 .scrollbar-container {
@@ -1619,6 +1625,15 @@ button {
   font-size: 15px;
   font-weight: 500;
 }
+.panel-section#panelDatabase .panel-section-list {
+  height: calc(100% - 62px);
+}
+.panel-section#panelDatabase .panel-section-list #db-table {
+  height: calc(100% - 0px);
+}
+.panel-section#panelDatabase .panel-section-list #db-table .scrollbar-container {
+  height: calc(100% - 22px);
+}
 
 .panel-section {
   top: 56px;
@@ -1644,6 +1659,10 @@ button {
   font-weight: 700;
   line-height: 28px;
   display: flex;
+}
+.panel-section .panel-section-content {
+  position: relative;
+  height: calc(100% - 55px);
 }
 .panel-section .panel-section-search {
   padding: 4px 16px 8px 16px;

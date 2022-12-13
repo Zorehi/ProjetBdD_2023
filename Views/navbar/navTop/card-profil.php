@@ -11,7 +11,7 @@
                         <circle fill="none" cx="18" cy="18" r="18"></circle>
                     </g>
                 </svg>
-                <span><?= $_SESSION["user"]["prenom"] . " " . $_SESSION["user"]["nom"] ?></span>
+                <span><?= $_SESSION["user"]["firstname"] . " " . $_SESSION["user"]["lastname"] ?></span>
             </a>
         </div>
         <div class="card-profil__body">

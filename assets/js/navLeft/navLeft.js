@@ -9,12 +9,16 @@ const panel = document.getElementById("panel");
 const panelHouse = document.getElementById("panelHouse");
 const btnCreateHouse = document.getElementById("btnCreateHouse");
 const search_houses = document.getElementById("search_houses");
+const search_tables = document.getElementById("search_tables");
 const searchHousesButton = document.getElementById("searchHousesButton");
 const myHouses = document.getElementById("myHouses");
 const panelHouse_scroll = document.getElementById("panelHouse-scroll");
 const pin_icons = document.getElementsByClassName("pin-icon");
 const databasePanel = document.getElementById("panelDatabase");
 const btnDatabase = document.getElementById("Database");
+
+const scroll_database = new ScrollBar(document.getElementById('scrollbar-1'), { offsetContainer: -20, offsetContent: 0 });
+scroll_database.init()
 
 /**
  * Permet de cacher le menu en cliquant à coté
@@ -68,7 +72,8 @@ btnHouses.addEventListener("click", function(event) {
  const outsidePanelDatabaseClickListener = event => {
     if (btnHouses.contains(event.target) && isVisible(panel)) {
         databasePanel.dataset.status = "hidden";
-
+        
+        search_tables.addEventListener('keydown', animateSearchDatabase);
         document.removeEventListener("click", outsidePanelDatabaseClickListener);
     } else if (!btnDatabase.contains(event.target) && !databasePanel.contains(event.target) && isVisible(panel)) {
         panel.dataset.status = "hidden";
@@ -78,7 +83,8 @@ btnHouses.addEventListener("click", function(event) {
         if (navLeft.dataset.always != 'small') {
             navbar_buttons[0].dataset.status = "selected";
         }
-        
+
+        search_tables.addEventListener('keydown', animateSearchDatabase);
         document.removeEventListener("click", outsidePanelDatabaseClickListener);
     }
 }
@@ -93,10 +99,12 @@ btnDatabase.addEventListener("click", function(event) {
     if (selected) {
         selected.dataset.status = "unselected";
     }
+    search_tables.addEventListener('keydown', animateSearchDatabase);
     btnDatabase.dataset.status = "selected";
     navLeft.dataset.status = "small";
     panel.dataset.status = "visible";
     databasePanel.dataset.status = "visible";
+    scroll_database.refresh();
 })
 
 //btnDatabase.dispatchEvent(new Event('click'));

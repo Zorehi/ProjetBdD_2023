@@ -2,16 +2,16 @@
  * File panelHouse.js
  */
 
-let timeoutID = [];
+let timeoutIDHouse = [];
 /**
  * Permet l'animation quand on cherche une maison
  * 
  * @param {Event} event 
  */
-const animateSearch = function(event) {
-    if (timeoutID.length > 0) { clearTimeout(timeoutID.shift()); }
-    timeoutID.push(setTimeout(() => {
-        timeoutID = [];
+const animateSearchHouse = function(event) {
+    if (timeoutIDHouse.length > 0) { clearTimeout(timeoutIDHouse.shift()); }
+    timeoutIDHouse.push(setTimeout(() => {
+        timeoutIDHouse = [];
         searchHousesButton.children[1].children[0].children[0].textContent = this.value;
         searchHousesButton.setAttribute("href", "/houses/search?s"+this.value);
         if (this.value == "") {
@@ -40,11 +40,3 @@ const searchHouse = function(value) {
         }
     }
 }
-
-/**
- * 
- * @param {HTMLElement} button 
- * @param {String} test 
- * @returns 
- */
-const isMatch = (button, test) => button.children[1].children[0].textContent.toLocaleLowerCase().includes(test.toLowerCase());

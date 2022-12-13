@@ -9,7 +9,7 @@
         <a href="#" class="navLeft-button profil" data-status="unselected">
             <div class="show-selected" data-status="unselected"></div>
             <img src="assets/image/user-default-photo.png" style="height: 24px;width: 24px;border-radius: 50%;">
-            <span style="margin-left: 12px;"><?= $_SESSION["user"]["prenom"] . " " . $_SESSION["user"]["nom"] ?></span>
+            <span style="margin-left: 12px;"><?= $_SESSION["user"]["firstname"] . " " . $_SESSION["user"]["lastname"] ?></span>
             <div class="button-hover"></div>
         </a>
     </div>
@@ -23,12 +23,12 @@
             <div class="button-hover"></div>
         </div>
     </div>
-    <?php if ($_SESSION['user']['type'] == 'admin') { ?>
+    <?php if ($_SESSION['user']['is_admin']) { ?>
         <div class="navLeft-section database">
             <div class="navLeft-button" id="Database" data-status="unselected">
                 <div class="show-selected"></div>
                 <div class="icon">
-                    <img width="16px" height="16px" src="https://cdn-icons-png.flaticon.com/512/149/149749.png" style="background-position:0 0;background-size:auto;background-repeat:no-repeat;display:inline-block">
+                    <img width="16px" height="16px" src="assets/image/database.png" style="background-position:0 0;background-size:auto;background-repeat:no-repeat;display:inline-block">
                 </div>
                 <span>Base de données</span>
                 <div class="button-hover"></div>
@@ -41,7 +41,7 @@
     <div class="navLeft-cloud"></div>
     <?php 
         include ROOT."/Views/navbar/navLeft/panelHouse.php";
-        if ($_SESSION['user']['type'] == 'admin') {
+        if ($_SESSION['user']['is_admin']) {
             include ROOT."/Views/navbar/navLeft/panelDatabase.php";
         }
     ?>

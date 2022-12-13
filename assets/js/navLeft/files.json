@@ -1,7 +1,8 @@
 {
-    "nbfiles": 2,
+    "nbfiles": 3,
     "files" : [
         "navLeft.js",
+        "panelDatabase.js",
         "panelHouse.js"
     ]
 }

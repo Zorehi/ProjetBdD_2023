@@ -10,8 +10,8 @@ class ScrollBar
      */
     constructor(scrollbarContainer, { offsetContainer = 0, offsetContent = 0 } = {}) {
         this.sbContainer = scrollbarContainer;
-        this.sbContent = this.sbContainer.querySelector('.scrollbar-content');
-        this.sbThumb = this.sbContainer.querySelector('.scrollbar-thumb');
+        this.sbContent = scrollbarContainer.querySelector('.scrollbar-content');
+        this.sbThumb = scrollbarContainer.querySelector('.scrollbar-thumb');
         this.mouseDown = false;
         this.offset = {
             content: typeof(offsetContent) == 'undefined' ? 0 : offsetContent,
@@ -46,7 +46,9 @@ class ScrollBar
     }
 
     refresh() {
+        this.sbContainerHeight = this.sbContainer.clientHeight + this.offset.container;
         this.sbContentHeight = this.sbContent.clientHeight + this.offset.content;
+        
         if (this.sbContentHeight < this.sbContainerHeight) {
             this.sbThumb.style.height = 0 + 'px';
 

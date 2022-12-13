@@ -71,13 +71,15 @@
     justify-content: center;
     overflow: hidden;
 
-    .id { width: 3%; }
+    .id_user { width: 3%; }
+    .username { width: 1%; }
     .email { width: 27%; }
     .tel { width: 10%; }
     .firstname,
     .lastname { width: 13%; }
-    .born_date { width: 10%; }
-    .sex { width: 6%; }
-    .type { width: 6%; }
+    .birthday { width: 10%; }
+    .id_gender { width: 6%; }
+    .is_admin { width: 6%; }
     .create_time { width: 12%; }
+    .state { width: 1%; }
 }

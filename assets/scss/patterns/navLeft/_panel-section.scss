@@ -26,6 +26,11 @@
         }
     }
 
+    .panel-section-content {
+        position: relative;
+        height: calc(100% - 55px);
+    }
+
     .panel-section-search {
         padding: 4px 16px 8px 16px;
 
@@ -73,6 +78,7 @@
     }
 
     .panel-section-list {
+        
         & > div {
             padding-top: 16px;
 

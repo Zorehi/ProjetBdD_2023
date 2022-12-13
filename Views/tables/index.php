@@ -8,9 +8,9 @@
                     <div class="<?= $champ ?>"><?= $champ ?></div>
                 <?php } ?>
             </li>
-            <div class="scrollbar-container" id="scrollbar-1">
+            <div class="scrollbar-container" id="scrollbar-2">
                 <div class="scrollbar-content" data-transition="yes">
-                    <?php for ($i = 0; $i < 1; $i++) { ?>
+                    <?php for ($i = 0; $i < 30; $i++) { ?>
                     <?php foreach ($lines as $line) { ?>
                         <li class="table-row">
                             <div class="table-row-info">
@@ -37,9 +37,8 @@
     </div>
 </div>
 
-<script src="js.php?file=ScrollBar.js"></script>
 <script text="text/javascript">
-    const scrollbarContainer = document.getElementById('scrollbar-1');
+    const scrollbarContainer = document.getElementById('scrollbar-2');
     const scrollbar_1 = new ScrollBar(scrollbarContainer, { offsetContainer: -20, offsetContent: 20});
     scrollbar_1.init();
     document.getElementById('navLeft').dataset.always = 'small';

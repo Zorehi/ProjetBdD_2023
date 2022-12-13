@@ -10,15 +10,14 @@
     <title><?= $pageName ?></title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/reset.css">
-    <script src="js.php?file=util.js" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
-    <script src="js.php?folder=navTop" defer></script>
-    <script src="js.php?folder=navLeft" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js.php?file=ScrollBar.js"></script>
+    <script src="js.php?file=util.js"></script>
     <script src="https://kit.fontawesome.com/364f5f0809.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="system-fonts--body segoe">
-
+    
     <?php 
         include ROOT."/Views/navbar/navTop/index.php";
         include ROOT."/Views/navbar/navLeft/index.php";
@@ -26,6 +25,8 @@
 
     <?= $contenu ?>
 
+    <script src="js.php?folder=navTop"></script>
+    <script src="js.php?folder=navLeft"></script>
 </body>
 
 </html>

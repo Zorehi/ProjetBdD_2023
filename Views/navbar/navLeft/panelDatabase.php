@@ -2,7 +2,7 @@
     <div class="panel-section-title">
         <h1>Base de données</h1>
     </div>
-    <div>
+    <div class="panel-section-content">
         <div class="panel-section-search">
             <label for="search_tables">
                 <div>
@@ -20,13 +20,13 @@
                 <input type="text" id="search_tables" placeholder="Rechercher des tables">
             </label>
         </div>
-        <div class="panel-section-scroll" data-status="show">
-            <div class="panel-section-separator"></div>
-            <div class="panel-section-list">
-                <div id="db-table">
-                    <span>Tables de la base de données</span>
-                    <div>
-                        <?php
+        <div class="panel-section-separator"></div>
+        <div class="panel-section-list">
+            <div id="db-table">
+                <span>Tables de la base de données</span>
+                <div class="scrollbar-container" id="scrollbar-1">
+                    <div class="scrollbar-content" data-transition="yes">
+                    <?php
                         $directory = ROOT.'/Models';
                         $scanned_directory = array_diff(scandir($directory), array('..', '.', 'Model.php'));
                         foreach ($scanned_directory as $file) {
@@ -39,7 +39,11 @@
                             </div>
                             <div class="hover"></div>
                         </a>
-                        <?php } ?>
+                    <?php } ?>
+                    </div>
+                    <div class="scrollbar-track"></div>
+                    <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
+                        <div></div>
                     </div>
                 </div>
             </div>
