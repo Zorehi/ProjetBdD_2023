@@ -4,17 +4,17 @@ namespace App\Models;
 class UsersModel extends Model
 {
     protected $id_user;
+    protected $username; 
     protected $email;
-    protected $tel;
     protected $password;
+    protected $tel;
     protected $firstname;
     protected $lastname;
     protected $birthday;
     protected $id_gender;
     protected $is_admin;
-    protected $create_time;
     protected $state;
-    protected $username; 
+    protected $create_time;
 
     public function __construct()
     {
@@ -34,10 +34,10 @@ class UsersModel extends Model
 
     public function setSession() {
         $_SESSION["user"] = [
-            "id" => $this->id,
-            "prenom" => $this->firstname,
-            "nom" => $this->lastname,
-            "type" => $this->type
+            "id" => $this->id_user,
+            "firstname" => $this->firstname,
+            "lastname" => $this->lastname,
+            "is_admin" => $this->is_admin
         ];
     }
 
