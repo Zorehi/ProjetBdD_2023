@@ -15,14 +15,15 @@ class UsersModel extends Model
     protected $is_admin;
     protected $state;
     protected $create_time;
-
+ 
+    
     public function __construct()
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "id_user";
         foreach($this as $champ => $valeur) {
-            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
+            if ($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password') {
                 $this->champs[] = $champ;
             }
         }
@@ -40,8 +41,8 @@ class UsersModel extends Model
             "is_admin" => $this->is_admin
         ];
     }
-
-
+    
+    
     /**
      * Get the value of id_user
      */ 
@@ -49,7 +50,7 @@ class UsersModel extends Model
     {
         return $this->id_user;
     }
-
+    
     /**
      * Set the value of id_user
      *
@@ -58,10 +59,10 @@ class UsersModel extends Model
     public function setId_user($id_user)
     {
         $this->id_user = $id_user;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of email
      */ 
@@ -69,7 +70,7 @@ class UsersModel extends Model
     {
         return $this->email;
     }
-
+    
     /**
      * Set the value of email
      *
@@ -78,10 +79,10 @@ class UsersModel extends Model
     public function setEmail($email)
     {
         $this->email = $email;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of tel
      */ 
@@ -89,7 +90,7 @@ class UsersModel extends Model
     {
         return $this->tel;
     }
-
+    
     /**
      * Set the value of tel
      *
@@ -98,10 +99,10 @@ class UsersModel extends Model
     public function setTel($tel)
     {
         $this->tel = $tel;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of password
      */ 
@@ -109,7 +110,7 @@ class UsersModel extends Model
     {
         return $this->password;
     }
-
+    
     /**
      * Set the value of password
      *
@@ -118,10 +119,10 @@ class UsersModel extends Model
     public function setPassword($password)
     {
         $this->password = $password;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of firstname
      */ 
@@ -129,7 +130,7 @@ class UsersModel extends Model
     {
         return $this->firstname;
     }
-
+    
     /**
      * Set the value of firstname
      *
@@ -138,10 +139,10 @@ class UsersModel extends Model
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of lastname
      */ 
@@ -158,10 +159,10 @@ class UsersModel extends Model
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of birthday
      */ 
@@ -169,7 +170,7 @@ class UsersModel extends Model
     {
         return $this->birthday;
     }
-
+    
     /**
      * Set the value of birthday
      *
@@ -178,10 +179,10 @@ class UsersModel extends Model
     public function setBirthday($birthday)
     {
         $this->birthday = $birthday;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of id_gender
      */ 
@@ -198,10 +199,10 @@ class UsersModel extends Model
     public function setId_gender($id_gender)
     {
         $this->id_gender = $id_gender;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of is_admin
      */ 
@@ -209,7 +210,7 @@ class UsersModel extends Model
     {
         return $this->is_admin;
     }
-
+    
     /**
      * Set the value of is_admin
      *
@@ -218,10 +219,10 @@ class UsersModel extends Model
     public function setIs_admin($is_admin)
     {
         $this->is_admin = $is_admin;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of create_time
      */ 
@@ -229,7 +230,7 @@ class UsersModel extends Model
     {
         return $this->create_time;
     }
-
+    
     /**
      * Set the value of create_time
      *
@@ -238,10 +239,10 @@ class UsersModel extends Model
     public function setCreate_time($create_time)
     {
         $this->create_time = $create_time;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of state
      */ 
@@ -258,10 +259,10 @@ class UsersModel extends Model
     public function setState($state)
     {
         $this->state = $state;
-
+        
         return $this;
     }
-
+    
     /**
      * Get the value of username
      */ 
@@ -278,7 +279,67 @@ class UsersModel extends Model
     public function setUsername($username)
     {
         $this->username = $username;
-
+        
         return $this;
     }
+    
+    static $info_tables = [
+        'id_user' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => 'disabled'
+        ],
+        'username' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'email' => [
+            'elementHTML' => 'input',
+            'inputType' => 'email',
+            'is_disabled' => ''
+        ],
+        'tel' => [
+            'elementHTML' => 'input',
+            'inputType' => 'tel',
+            'is_disabled' => ''
+        ],
+        'firstname' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'lastname' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'birthday' => [
+            'elementHTML' => 'input',
+            'inputType' => 'date',
+            'is_disabled' => ''
+        ],
+        'id_gender' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'description'
+        ],
+        'is_admin' => [
+            'elementHTML' => 'booleen',
+            'inputType' => null,
+            'is_disabled' => ''
+        ],
+        'state' => [
+            'elementHTML' => 'booleen',
+            'inputType' => null,
+            'is_disabled' => ''
+        ],
+        'create_time' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => 'disabled',
+            //'pattern' => '^(\d{4,})-(\d{2})-(\d{2})[ ](\d{2}):(\d{2})(?::(\d{2}(?:\.\d+)?))?$'
+        ],
+    ];
 }

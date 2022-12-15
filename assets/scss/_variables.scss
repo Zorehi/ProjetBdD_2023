@@ -52,7 +52,7 @@ html {
         --table-row-bg: #F0F2F5;
         --table-header-bg: #fff;
         --scroll-thumb: #BCC0C4;
-        --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%);
+        --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
     }
 
     &.__pj-dark-mode {
@@ -108,7 +108,7 @@ html {
         --table-row-bg: #18191A;
         --table-header-bg: #242526;
         --scroll-thumb: rgba(255, 255, 255, 0.3);
-        --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%);
+        --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
     }
 }
 
@@ -166,7 +166,7 @@ html {
         --table-row-bg: #000;
         --table-header-bg: #242526;
         --scroll-thumb: rgba(255, 255, 255, 0.3);
-        --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%);
+        --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
     }
 }
 
@@ -224,6 +224,6 @@ html {
         --table-row-bg: #F0F2F5;
         --table-header-bg: #fff;
         --scroll-thumb: #BCC0C4;
-        --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%);
+        --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
     }
 }

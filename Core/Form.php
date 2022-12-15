@@ -9,9 +9,12 @@ class Form
         foreach($champs as $champ) {
             // Si le champ est absent ou vide dans le formulaire
             if (!isset($form[$champ]) || empty($form[$champ])) {
-                // On sort en retournant false
-                return false;
+                if ($form[$champ] != '0') {
+                    // On sort en retournant false
+                    return false;
+                }
             }
+            $form[$champ] = strip_tags($form[$champ]);
         }
         return true;
     }

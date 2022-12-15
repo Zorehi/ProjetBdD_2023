@@ -1,6 +1,5 @@
 class ScrollBar
 {
-    #A; #B; #C; #D;
     #scroll = 0; #scrollThumb = 0;
 
     /**
@@ -32,43 +31,34 @@ class ScrollBar
         this.sbThumbHeight =  (this.sbContainerHeight / this.sbContentHeight) * this.sbContainerHeight;
         this.sbThumb.style.height = this.sbThumbHeight + 'px';
 
-        this.#A = this.wheelEventListener.bind(this);
-        this.#B = this.mouseDownEventListener.bind(this);
-        this.#C = this.mouseUpEventListener.bind(this);
-        this.#D = this.mouseMoveEventListener.bind(this);
-
-        this.sbContainer.addEventListener('wheel', this.#A);
-        this.sbThumb.addEventListener('mousedown', this.#B);
-        document.addEventListener('mouseup', this.#C);
-        document.addEventListener('mousemove', this.#D);
+        this.sbContainer.addEventListener('wheel', this.wheelEventListener.bind(this));
+        this.sbThumb.addEventListener('mousedown', this.mouseDownEventListener.bind(this));
+        document.addEventListener('mouseup', this.mouseUpEventListener.bind(this));
+        document.addEventListener('mousemove', this.mouseMoveEventListener.bind(this));
 
         return this;
     }
 
-    refresh() {
+    /**
+     * 
+     * @param {Boolean} forceZero 
+     */
+    refresh(forceZero = false) {
         this.sbContainerHeight = this.sbContainer.clientHeight + this.offset.container;
         this.sbContentHeight = this.sbContent.clientHeight + this.offset.content;
         
         if (this.sbContentHeight < this.sbContainerHeight) {
             this.sbThumb.style.height = 0 + 'px';
-
-            this.sbContainer.removeEventListener('wheel', this.#A);
-            this.sbThumb.removeEventListener('mousedown', this.#B);
-            document.removeEventListener('mouseup', this.#C);
-            document.removeEventListener('mousemove', this.#D);
         } else {
             this.sbThumbHeight =  (this.sbContainerHeight / this.sbContentHeight) * this.sbContainerHeight;
             this.sbThumb.style.height = this.sbThumbHeight + 'px';
+        }
 
-            this.#A = this.wheelEventListener.bind(this);
-            this.#B = this.mouseDownEventListener.bind(this);
-            this.#C = this.mouseUpEventListener.bind(this);
-            this.#D = this.mouseMoveEventListener.bind(this);
-
-            this.sbContainer.addEventListener('wheel', this.#A);
-            this.sbThumb.addEventListener('mousedown', this.#B);
-            document.addEventListener('mouseup', this.#C);
-            document.addEventListener('mousemove', this.#D);
+        if (forceZero) {
+            this.#scroll = 0;
+            this.#scrollThumb = 0;
+            this.sbContent.style.transform =  `translateY(-${this.#scroll}px)`;
+            this.sbThumb.style.transform =  `translateY(${this.#scrollThumb}px)`;
         }
     }
 

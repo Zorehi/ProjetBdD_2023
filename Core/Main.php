@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use App\Controllers\MainController;
+use App\Models\UsersModel;
 
     class Main
     {
@@ -29,6 +30,12 @@ use App\Controllers\MainController;
                         'path' => '/'
                     ]
                 );
+            }
+
+            if (isset($_SESSION['user'])) {
+                $user = new UsersModel();
+                $user->hydrate($user->findById($_SESSION['user']['id']));
+                $user->setSession();
             }
 
             // On retire le "trailing slash" (dernier slash) éventuel de l'URL

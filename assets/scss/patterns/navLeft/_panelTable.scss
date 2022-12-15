@@ -9,4 +9,46 @@
             line-height: 20px;
         }
     }
+
+    .text {
+        padding-right: 15px;
+        text-align: right;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--settings-form-label-text);
+        cursor: default;
+    }
+
+    .input {
+        border-radius: 3px;
+        font-size: 16px;
+        height: 29px;
+        width: 250px;
+        border: 1px solid var(--settings-form-label-border);
+        background-color: var(--settings-background-color);
+        color: var(--primary-text);
+        padding: 3px;
+        cursor: text;
+
+        &:disabled {
+            cursor: default;
+            background-color: rgba(239, 239, 239, 0.3);
+            color: rgb(84, 84, 84);
+            border-color: rgba(118, 118, 118, 0.3);
+        }
+    }
+
+    .select {
+        border-radius: 3px;
+        font-size: 16px;
+        height: 29px;
+        width: 250px;
+        border: 1px solid var(--settings-form-label-border);
+        background-color: var(--settings-background-color);
+        color: var(--primary-text);
+        padding: 3px;
+        cursor: pointer;
+    }
 }

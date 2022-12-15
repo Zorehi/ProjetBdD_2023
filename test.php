@@ -1,2 +1,3 @@
-<?php 
-echo password_hash('admin', PASSWORD_ARGON2I);
+<?php
+  echo empty('');
+?>

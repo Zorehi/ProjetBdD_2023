@@ -19,7 +19,7 @@ const animateSearchDatabase = function(event) {
         } else {
             searchTable(this.value);
         }
-        scroll_database.refresh();
+        scroll_database.refresh(true);
     }, 500));
 }
 

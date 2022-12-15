@@ -95,15 +95,15 @@
                     <span class="flex-wrap">
                         <span>
                             <label class="register-label" for="woman">Femme</label>
-                            <input type="radio" name="sex" value="woman" id="woman" class="register-radio">
+                            <input type="radio" name="sex" value="2" id="woman" class="register-radio">
                         </span>
                         <span>
                             <label class="register-label" for="man">Homme</label>
-                            <input type="radio" name="sex" value="man" id="man" class="register-radio">
+                            <input type="radio" name="sex" value="1" id="man" class="register-radio">
                         </span>
                         <span>
                             <label class="register-label" for="other">Personnalisé</label>
-                            <input type="radio" name="sex" value="other" id="other" class="register-radio">
+                            <input type="radio" name="sex" value="3" id="other" class="register-radio">
                         </span>
                     </span>
                 </div>
