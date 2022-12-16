@@ -982,7 +982,7 @@ button {
 #UsersModel .is_admin {
   width: 6%;
 }
-#UsersModel .state {
+#UsersModel .is_active {
   width: 4%;
 }
 #UsersModel .create_time {

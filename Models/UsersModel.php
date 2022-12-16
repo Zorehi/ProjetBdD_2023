@@ -13,7 +13,7 @@ class UsersModel extends Model
     protected $birthday;
     protected $id_gender;
     protected $is_admin;
-    protected $state;
+    protected $is_active;
     protected $create_time;
  
     
@@ -246,19 +246,19 @@ class UsersModel extends Model
     /**
      * Get the value of state
      */ 
-    public function getState()
+    public function getIs_active()
     {
-        return $this->state;
+        return $this->is_active;
     }
 
     /**
-     * Set the value of state
+     * Set the value of is_active
      *
      * @return  self
      */ 
-    public function setState($state)
+    public function setIs_active($is_active)
     {
-        $this->state = $state;
+        $this->is_active = $is_active;
         
         return $this;
     }
@@ -330,7 +330,7 @@ class UsersModel extends Model
             'inputType' => null,
             'is_disabled' => ''
         ],
-        'state' => [
+        'is_active' => [
             'elementHTML' => 'booleen',
             'inputType' => null,
             'is_disabled' => ''
