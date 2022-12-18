@@ -31,7 +31,7 @@
                                 <option value="<?= $champ2[$champ['name_id']] ?>"><?= $champ2[$champ['name_id']] . ' - ' . $champ2[$champ['name']] ?></option>
                             <?php } ?>
                             </select>
-                        <?php } else if ($champ['elementHTML'] == 'booleen') { ?>
+                        <?php } else if ($champ['elementHTML'] == 'boolean') { ?>
                             <select class="select" name="<?= $key ?>" id="<?= $key ?>" onchange="filter()">
                                 <option value="" selected>Aucun</option>
                                 <option value="0">False</option>

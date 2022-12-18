@@ -4,26 +4,24 @@
     <div class="table" id="<?= $tablename ?>">
         <ul class="responsive-table">
             <li class="table-header">
-                <?php foreach ($table->getChamps() as $champ) { ?>
+                <?php foreach (array_keys($table::$info_tables) as $champ) { ?>
                     <div class="<?= $champ ?>"><?= $champ ?></div>
                 <?php } ?>
             </li>
             <div class="scrollbar-container" id="scrollbar-2">
                 <div class="scrollbar-content" data-transition="yes">
-                    <?php for ($i = 0; $i < 1; $i++) { ?>
-                    <?php foreach ($lines as $line) { ?>
-                        <li class="table-row">
-                            <div class="table-row-info" onclick="modify(this)">
-                                <?php foreach ($table->getChamps() as $champ) { ?>
-                                    <div class="value <?= $champ ?>" data-label="<?= $champ ?>"><?= $line[$champ] ?></div>
-                                <?php } ?>
-                            </div>
-                            <button type="button" class="btn-delete" value="<?= $line[$table->getIdName()] ?>" onclick="deleteRow('<?= $tablename ?>', this.value, this.parentElement)">
-                                <img src="assets/image/bin.png" height="16px" width="16px" alt="">
-                            </button>
-                        </li>
-                    <?php } ?>
-                    <?php } ?>
+                <?php foreach ($lines as $line) { ?>
+                    <li class="table-row">
+                        <div class="table-row-info" onclick="modify(this)">
+                        <?php foreach (array_keys($table::$info_tables) as $champ) { ?>
+                            <div class="value <?= $champ ?>" data-label="<?= $champ ?>"><?= $line[$champ] ?></div>
+                        <?php } ?>
+                        </div>
+                        <button type="button" class="btn-delete" value="<?= $line[$table->getIdName()] ?>" onclick="deleteRow('<?= $tablename ?>', this.value, this.parentElement)">
+                            <img src="assets/image/bin.png" height="16px" width="16px" alt="">
+                        </button>
+                    </li>
+                <?php } ?>
                 </div>
                 <div class="scrollbar-track"></div>
                 <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
@@ -48,7 +46,7 @@
                                 <option value="<?= $champ2[$champ['name_id']] ?>"><?= $champ2[$champ['name_id']] . ' - ' . $champ2[$champ['name']] ?></option>
                             <?php } ?>
                             </select>
-                        <?php } else if ($champ['elementHTML'] == 'booleen') { ?>
+                        <?php } else if ($champ['elementHTML'] == 'boolean') { ?>
                             <select class="select" name="<?= $key ?>" id="<?= $key.'_1' ?>">
                                 <option value="0">False</option>
                                 <option value="1">True</option>
