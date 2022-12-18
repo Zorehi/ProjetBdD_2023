@@ -7,77 +7,75 @@ class ApartmentModel extends Model
     protected $num;
     protected $hab;
     protected $citizen_degree;
-    protected $security_degree;
- 
-
+    protected $id_security;
+    protected $id_house;
+    protected $id_apartment_type;
+    
+    
     public function __construct()
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "id_apartment";
-        foreach($this as $champ => $valeur) {
-            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
-                $this->champs[] = $champ;
-            }
-        }
     }
+    
 
     /**
-     * Get the value of id_apartment
+     * Get the value of id_apartment_type
      */ 
-    public function getId_apartment()
+    public function getId_apartment_type()
     {
-        return $this->id_apartment;
+        return $this->id_apartment_type;
     }
 
     /**
-     * Set the value of id_apartment
+     * Set the value of id_apartment_type
      *
      * @return  self
      */ 
-    public function setId_apartment($id_apartment)
+    public function setId_apartment_type($id_apartment_type)
     {
-        $this->id_apartment = $id_apartment;
+        $this->id_apartment_type = $id_apartment_type;
 
         return $this;
     }
 
     /**
-     * Get the value of num
+     * Get the value of id_house
      */ 
-    public function getNum()
+    public function getId_house()
     {
-        return $this->num;
+        return $this->id_house;
     }
 
     /**
-     * Set the value of num
+     * Set the value of id_house
      *
      * @return  self
      */ 
-    public function setNum($num)
+    public function setId_house($id_house)
     {
-        $this->num = $num;
+        $this->id_house = $id_house;
 
         return $this;
     }
 
     /**
-     * Get the value of hab
+     * Get the value of id_security
      */ 
-    public function getHab()
+    public function getId_security()
     {
-        return $this->hab;
+        return $this->id_security;
     }
 
     /**
-     * Set the value of hab
+     * Set the value of id_security
      *
      * @return  self
      */ 
-    public function setHab($hab)
+    public function setId_security($id_security)
     {
-        $this->hab = $hab;
+        $this->id_security = $id_security;
 
         return $this;
     }
@@ -103,22 +101,103 @@ class ApartmentModel extends Model
     }
 
     /**
-     * Get the value of security_degree
+     * Get the value of hab
      */ 
-    public function getSecurity_degree()
+    public function getHab()
     {
-        return $this->security_degree;
+        return $this->hab;
     }
 
     /**
-     * Set the value of security_degree
+     * Set the value of hab
      *
      * @return  self
      */ 
-    public function setSecurity_degree($security_degree)
+    public function setHab($hab)
     {
-        $this->security_degree = $security_degree;
+        $this->hab = $hab;
 
         return $this;
     }
+
+    /**
+     * Get the value of num
+     */ 
+    public function getNum()
+    {
+        return $this->num;
+    }
+
+    /**
+     * Set the value of num
+     *
+     * @return  self
+     */ 
+    public function setNum($num)
+    {
+        $this->num = $num;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_apartment
+     */ 
+    public function getId_apartment()
+    {
+        return $this->id_apartment;
+    }
+
+    /**
+     * Set the value of id_apartment
+     *
+     * @return  self
+     */ 
+    public function setId_apartment($id_apartment)
+    {
+        $this->id_apartment = $id_apartment;
+
+        return $this;
+    }
+
+    static $info_tables = [
+        'id_apartment' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => 'disabled'
+        ],
+        'num' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'hab' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'citizen_degree' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'id_security' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'description'
+        ],
+        'id_house' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'house_name'
+        ],
+        'id_apartment_type' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'description'
+        ]
+    ];
 }

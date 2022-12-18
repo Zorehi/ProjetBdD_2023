@@ -17,11 +17,6 @@ class SubstanceModel extends Model
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "is_substance";
-        foreach($this as $champ => $valeur) {
-            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
-                $this->champs[] = $champ;
-            }
-        }
     }
 
     /**
@@ -163,4 +158,43 @@ class SubstanceModel extends Model
 
         return $this;
     }
+
+    static $info_tables = [
+        'id_substance' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => 'disabled'
+        ],
+        'name' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'description' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'min_value' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'max_value' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'critical_value' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'model_value' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'city_name'
+        ]
+    ];
 }

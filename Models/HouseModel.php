@@ -10,6 +10,7 @@ class HouseModel extends Model
     protected $citizen_degree;
     protected $street;
     protected $house_number;
+    protected $id_city;
 
 
     public function __construct()
@@ -17,11 +18,6 @@ class HouseModel extends Model
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "id_house";
-        foreach($this as $champ => $valeur) {
-            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
-                $this->champs[] = $champ;
-            }
-        }
     }
 
     /**
@@ -163,4 +159,69 @@ class HouseModel extends Model
 
         return $this;
     }
+
+    /**
+     * Get the value of id_city
+     */ 
+    public function getId_city()
+    {
+        return $this->id_city;
+    }
+
+    /**
+     * Set the value of id_city
+     *
+     * @return  self
+     */ 
+    public function setId_city($id_city)
+    {
+        $this->id_city = $id_city;
+
+        return $this;
+    }
+
+    static $info_tables = [
+        'id_house' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => 'disabled'
+        ],
+        'house_name' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'isolation_degree' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'eval_eco' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'citizen_degree' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'street' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'house_number' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'id_city' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'city_name'
+        ]
+    ];
+    
 }

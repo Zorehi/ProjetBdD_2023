@@ -6,7 +6,6 @@
     class Model extends Database {
         protected $table;
         protected $idName = "";
-        protected $champs = [];
 
         private $db;
 
@@ -45,7 +44,7 @@
 
         /**
          * Sélection d'un enregistrements suivant l'id
-         * @param array $criteres Tableau de critères
+         * @param integer $id Id de l'enregistrement
          * @return array Tableau des enregistrements trouvés
          */
         public function findById(int $id)
@@ -68,7 +67,7 @@
             // On boucle pour éclater le tableau
             foreach($this as $champ => $valeur) {
                 // INSERT INTO annonces (titre, description, actif) VALUES (?, ?, ?)
-                if($valeur !== null && $champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != "champs") {
+                if($valeur !== null && $champ != 'db' && $champ != 'table' && $champ != 'idName') {
                     $champs[] = $champ;
                     $inter[] = "?";
                     $valeurs[] = $valeur;
@@ -85,8 +84,6 @@
 
         /**
          * Mise à jour d'un enregistrement suivant un tableau de données
-         * @param int $id id de l'enregistrement à modifier
-         * @param Model $model Objet à modifier
          * @return bool
          */
         public function update()
@@ -97,7 +94,7 @@
             // On boucle pour éclater le tableau
             foreach($this as $champ => $valeur) {
                 // UPDATE annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
-                if($valeur !== null && $champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != "champs"){
+                if($valeur !== null && $champ != 'db' && $champ != 'table' && $champ != 'idName'){
                     $champs[] = "$champ = ?";
                     $valeurs[] = $valeur;
                 }
@@ -153,14 +150,6 @@
                 }
             }
             return $this;
-        }
-
-        /**
-         * Get the value of champs
-         */ 
-        public function getChamps()
-        {
-                return $this->champs;
         }
 
         /**

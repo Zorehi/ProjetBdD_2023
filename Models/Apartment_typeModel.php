@@ -12,11 +12,6 @@ class Apartment_typeModel extends Model
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "id_apartment_type";
-        foreach($this as $champ => $valeur) {
-            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
-                $this->champs[] = $champ;
-            }
-        }
     }
 
     /**
@@ -58,4 +53,17 @@ class Apartment_typeModel extends Model
 
         return $this;
     }
+
+    static $info_tables = [
+        'id_apartment_type' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => 'disabled'
+        ],
+        'description' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ]
+    ];
 }

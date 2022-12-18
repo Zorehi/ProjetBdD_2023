@@ -6,17 +6,13 @@ class CityModel extends Model
     protected $id_city;
     protected $postcode;
     protected $city_name;
+    protected $id_department;
 
     public function __construct()
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "id_city";
-        foreach($this as $champ => $valeur) {
-            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
-                $this->champs[] = $champ;
-            }
-        }
     }
 
     /**
@@ -75,7 +71,53 @@ class CityModel extends Model
     public function setCity_name($city_name)
     {
         $this->city_name = $city_name;
+        
+        return $this;
+    }
+    
+    /**
+     * Get the value of id_department
+     */ 
+    public function getId_department()
+    {
+        return $this->id_department;
+    }
+
+    /**
+     * Set the value of id_department
+     *
+     * @return  self
+     */ 
+    public function setId_department($id_department)
+    {
+        $this->id_department = $id_department;
 
         return $this;
     }
+
+    static $info_tables = [
+        'id_city' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => 'disabled'
+        ],
+        'postcode' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => '',
+            'pattern' => '(?:0[1-9]|[1-8]\d|9[0-8])\d{3}'
+        ],
+        'city_name' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'id_department' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'department_name'
+        ]
+    ];
+
 }

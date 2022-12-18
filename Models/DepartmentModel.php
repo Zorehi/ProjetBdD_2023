@@ -6,6 +6,7 @@ class DepartmentModel extends Model
     protected $id_department;
     protected $department_code;
     protected $department_name;
+    protected $id_region;
  
 
     public function __construct()
@@ -13,11 +14,6 @@ class DepartmentModel extends Model
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "id_department";
-        foreach($this as $champ => $valeur) {
-            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
-                $this->champs[] = $champ;
-            }
-        }
     }
 
 
@@ -80,4 +76,48 @@ class DepartmentModel extends Model
 
         return $this;
     }
+
+    /**
+     * Get the value of id_region
+     */ 
+    public function getId_region()
+    {
+        return $this->id_region;
+    }
+
+    /**
+     * Set the value of id_region
+     *
+     * @return  self
+     */ 
+    public function setId_region($id_region)
+    {
+        $this->id_region = $id_region;
+
+        return $this;
+    }
+
+    static $info_tables = [
+        'id_department' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => 'disabled'
+        ],
+        'department_code' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'department_name' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'id_region' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'region_name'
+        ]
+    ];
 }

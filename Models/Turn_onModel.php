@@ -3,6 +3,8 @@ namespace App\Models;
 
 class Turn_onModel extends Model
 {
+    protected $id_device;
+    protected $from_date;
     protected $to_date;
  
 
@@ -11,15 +13,8 @@ class Turn_onModel extends Model
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "";
-        foreach($this as $champ => $valeur) {
-            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
-                $this->champs[] = $champ;
-            }
-        }
     }
 
-
-    
 
     /**
      * Get the value of to_date
@@ -40,4 +35,63 @@ class Turn_onModel extends Model
 
         return $this;
     }
+
+    /**
+     * Get the value of from_date
+     */ 
+    public function getFrom_date()
+    {
+        return $this->from_date;
+    }
+
+    /**
+     * Set the value of from_date
+     *
+     * @return  self
+     */ 
+    public function setFrom_date($from_date)
+    {
+        $this->from_date = $from_date;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_device
+     */ 
+    public function getId_device()
+    {
+        return $this->id_device;
+    }
+
+    /**
+     * Set the value of id_device
+     *
+     * @return  self
+     */ 
+    public function setId_device($id_device)
+    {
+        $this->id_device = $id_device;
+
+        return $this;
+    }
+
+    static $info_tables = [
+        'id_device' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'device_name'
+        ],
+        'from_date' => [
+            'elementHTML' => 'input',
+            'inputType' => 'date',
+            'is_disabled' => ''
+        ],
+        'to_date' => [
+            'elementHTML' => 'input',
+            'inputType' => 'date',
+            'is_disabled' => ''
+        ]
+    ];
 }

@@ -3,7 +3,10 @@ namespace App\Models;
 
 class TenantModel extends Model
 {
+    protected $id_apartment;
+    protected $from_date;
     protected $to_date;
+    protected $id_user;
  
 
     public function __construct()
@@ -11,11 +14,50 @@ class TenantModel extends Model
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "";
-        foreach($this as $champ => $valeur) {
-            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
-                $this->champs[] = $champ;
-            }
-        }
+    }
+
+    
+
+    
+
+    /**
+     * Get the value of id_apartment
+     */ 
+    public function getId_apartment()
+    {
+        return $this->id_apartment;
+    }
+
+    /**
+     * Set the value of id_apartment
+     *
+     * @return  self
+     */ 
+    public function setId_apartment($id_apartment)
+    {
+        $this->id_apartment = $id_apartment;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of from_date
+     */ 
+    public function getFrom_date()
+    {
+        return $this->from_date;
+    }
+
+    /**
+     * Set the value of from_date
+     *
+     * @return  self
+     */ 
+    public function setFrom_date($from_date)
+    {
+        $this->from_date = $from_date;
+
+        return $this;
     }
 
     /**
@@ -37,4 +79,49 @@ class TenantModel extends Model
 
         return $this;
     }
+
+    /**
+     * Get the value of id_user
+     */ 
+    public function getId_user()
+    {
+        return $this->id_user;
+    }
+
+    /**
+     * Set the value of id_user
+     *
+     * @return  self
+     */ 
+    public function setId_user($id_user)
+    {
+        $this->id_user = $id_user;
+
+        return $this;
+    }
+
+    static $info_tables = [
+        'id_apartment' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => '??'
+        ],
+        'from_date' => [
+            'elementHTML' => 'input',
+            'inputType' => 'date',
+            'is_disabled' => ''
+        ],
+        'to_date' => [
+            'elementHTML' => 'input',
+            'inputType' => 'date',
+            'is_disabled' => ''
+        ],
+        'id_user' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'username'
+        ]
+    ];
 }

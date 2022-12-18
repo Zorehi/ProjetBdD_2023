@@ -11,11 +11,6 @@ class VideoModel extends Model
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "id_video";
-        foreach($this as $champ => $valeur) {
-            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
-                $this->champs[] = $champ;
-            }
-        }
     }
 
     /**
@@ -57,4 +52,17 @@ class VideoModel extends Model
 
         return $this;
     }
+
+    static $info_tables = [
+        'id_video' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => 'disabled'
+        ],
+        'web_adress' => [
+            'elementHTML' => 'input',
+            'inputType' => 'url',
+            'is_disabled' => ''
+        ]
+    ];
 }

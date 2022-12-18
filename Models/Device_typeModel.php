@@ -5,17 +5,13 @@ class Device_typeModel extends Model
 {
     protected $id_device_type;
     protected $type_name;
-
+    protected $id_video;
+    
     public function __construct()
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "id_device_type";
-        foreach($this as $champ => $valeur) {
-            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
-                $this->champs[] = $champ;
-            }
-        }
     }
 
     /**
@@ -57,4 +53,43 @@ class Device_typeModel extends Model
 
         return $this;
     }
+
+    /**
+     * Get the value of id_video
+     */ 
+    public function getId_video()
+    {
+        return $this->id_video;
+    }
+
+    /**
+     * Set the value of id_video
+     *
+     * @return  self
+     */ 
+    public function setId_video($id_video)
+    {
+        $this->id_video = $id_video;
+
+        return $this;
+    }
+
+    static $info_tables = [
+        'id_device_type' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => 'disabled'
+        ],
+        'type_name' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'id_video' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => null
+        ]
+    ];
 }

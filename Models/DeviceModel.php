@@ -7,6 +7,7 @@ class DeviceModel extends Model
     protected $device_name;
     protected $description_device;
     protected $description_place;
+    protected $id_device_type;
 
 
     public function __construct()
@@ -14,11 +15,6 @@ class DeviceModel extends Model
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "id_device";
-        foreach($this as $champ => $valeur) {
-            if($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password'){
-                $this->champs[] = $champ;
-            }
-        }
     }
 
     /**
@@ -100,4 +96,53 @@ class DeviceModel extends Model
 
         return $this;
     }   
+
+    /**
+     * Get the value of id_device_type
+     */ 
+    public function getId_device_type()
+    {
+        return $this->id_device_type;
+    }
+
+    /**
+     * Set the value of id_device_type
+     *
+     * @return  self
+     */ 
+    public function setId_device_type($id_device_type)
+    {
+        $this->id_device_type = $id_device_type;
+
+        return $this;
+    }
+
+    static $info_tables = [
+        'id_device' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => 'disabled'
+        ],
+        'device_name' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'description_device' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'description_place' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
+        'id_device_type' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'type_name'
+        ]
+    ];
 }

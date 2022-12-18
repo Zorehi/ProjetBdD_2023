@@ -22,11 +22,6 @@ class UsersModel extends Model
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idName = "id_user";
-        foreach($this as $champ => $valeur) {
-            if ($champ != 'db' && $champ != 'table' && $champ != 'idName' && $champ != 'champs' && $champ != 'password') {
-                $this->champs[] = $champ;
-            }
-        }
     }
 
     public function findByEmailOrTel($email) {
@@ -326,12 +321,12 @@ class UsersModel extends Model
             'name' => 'description'
         ],
         'is_admin' => [
-            'elementHTML' => 'booleen',
+            'elementHTML' => 'boolean',
             'inputType' => null,
             'is_disabled' => ''
         ],
         'is_active' => [
-            'elementHTML' => 'booleen',
+            'elementHTML' => 'boolean',
             'inputType' => null,
             'is_disabled' => ''
         ],
