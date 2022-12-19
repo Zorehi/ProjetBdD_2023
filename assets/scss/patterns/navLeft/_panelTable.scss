@@ -8,6 +8,16 @@
             font-weight: 600;
             line-height: 20px;
         }
+
+        .panelTable-filter-content {
+            padding: 8px 0 0 24px;
+
+            & > label {
+                display: flex;
+                flex-direction: column;
+                margin-top: 5px;
+            }
+        }
     }
 
     .text {
@@ -17,38 +27,53 @@
         align-items: center;
         font-size: 15px;
         font-weight: 600;
-        color: var(--settings-form-label-text);
+        color: var(--primary-text);
         cursor: default;
+        margin-bottom: 2px;
     }
 
     .input {
-        border-radius: 3px;
+        border-radius: 4px;
         font-size: 16px;
         height: 29px;
-        width: 250px;
-        border: 1px solid var(--settings-form-label-border);
-        background-color: var(--settings-background-color);
+        width: 275px;
+        border: 1px solid var(--table-input-border);
+        background-color: var(--card-background);
         color: var(--primary-text);
         padding: 3px;
         cursor: text;
 
         &:disabled {
             cursor: default;
-            background-color: rgba(239, 239, 239, 0.3);
-            color: rgb(84, 84, 84);
-            border-color: rgba(118, 118, 118, 0.3);
+            background-color: var(--input-disabled-bg);
+            color: var(--input-disabled-color);
+            border-color: var(--input-disabled-border);
         }
     }
 
     .select {
-        border-radius: 3px;
+        border-radius: 4px;
         font-size: 16px;
         height: 29px;
-        width: 250px;
-        border: 1px solid var(--settings-form-label-border);
-        background-color: var(--settings-background-color);
+        width: 275px;
+        border: 1px solid var(--table-select-border);
+        background-color: var(--card-background);
         color: var(--primary-text);
         padding: 3px;
         cursor: pointer;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 6px;
+            background-color: var(--scroll-thumb);
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
     }
 }

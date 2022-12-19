@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
 
-    .modify-row {
+    .modify-card {
         position: absolute;
         display: flex;
         z-index: 2;
@@ -38,7 +38,7 @@
 
     .modify-label {
         display: flex;
-        width: 400px;
+        width: 450px;
         justify-content: end;
         padding-bottom: 10px;
 
@@ -49,39 +49,53 @@
             align-items: center;
             font-size: 15px;
             font-weight: 600;
-            color: var(--settings-form-label-text);
+            color: var(--primary-text);
             cursor: default;
         }
 
         .input {
-            border-radius: 3px;
+            border-radius: 4px;
             font-size: 16px;
             height: 29px;
-            width: 250px;
-            border: 1px solid var(--settings-form-label-border);
-            background-color: var(--settings-background-color);
+            width: 275px;
+            border: 1px solid var(--table-input-border);
+            background-color: var(--card-background);
             color: var(--primary-text);
             padding: 3px;
             cursor: text;
 
             &:disabled {
                 cursor: default;
-                background-color: rgba(239, 239, 239, 0.3);
-                color: rgb(84, 84, 84);
-                border-color: rgba(118, 118, 118, 0.3);
+                background-color: var(--input-disabled-bg);
+                color: var(--input-disabled-color);
+                border-color: var(--input-disabled-border);
             }
         }
 
         .select {
-            border-radius: 3px;
+            border-radius: 4px;
             font-size: 16px;
             height: 29px;
-            width: 250px;
-            border: 1px solid var(--settings-form-label-border);
-            background-color: var(--settings-background-color);
+            width: 275px;
+            border: 1px solid var(--table-select-border);
+            background-color: var(--card-background);
             color: var(--primary-text);
             padding: 3px;
             cursor: pointer;
+
+            &::-webkit-scrollbar {
+                width: 8px;
+                height: 8px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 6px;
+                background-color: var(--scroll-thumb);
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
         }
     }
 
@@ -130,7 +144,7 @@
 
     .table-cloud {
         position: absolute;
-        background-color: rgba(255, 255, 255, .8);
+        background-color: var(--table-cloud-bg);
         inset: 0 0 0 -360px;
         z-index: 2;
         display: none;
@@ -139,6 +153,18 @@
             display: block;
         }
     }
-    
-    
+}
+
+#UsersModel {
+    .id_users { width: 5%; }
+    .username { width: 9%; }
+    .email { width: 24%; }
+    .tel { width: 7%; }
+    .firstname,
+    .lastname { width: 10%; }
+    .birthday { width: 6%; }
+    .id_gender { width: 6%; }
+    .is_admin { width: 6%; }
+    .is_active { width: 6%; }
+    .create_time { width: 11%; }
 }

@@ -52,6 +52,13 @@ html.__pj-light-mode {
   --table-header-bg: #fff;
   --scroll-thumb: #BCC0C4;
   --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
+  --table-cloud-bg: rgba(255, 255, 255, .8);
+  --select-bg-url: url("http://projetbdd/assets/image/select-black.png");
+  --input-disabled-bg: rgba(239, 239, 239, 0.5);
+  --input-disabled-border: rgba(118, 118, 118, 0.3);
+  --input-disabled-color: rgb(84, 84, 84);
+  --table-input-border: #CCD0D5;
+  --table-select-border: #CCD0D5;
 }
 html.__pj-dark-mode {
   --wash: #3E4042;
@@ -107,6 +114,13 @@ html.__pj-dark-mode {
   --table-header-bg: #242526;
   --scroll-thumb: rgba(255, 255, 255, 0.3);
   --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
+  --table-cloud-bg: rgba(0, 0, 0, .8);
+  --select-bg-url: url("http://projetbdd/assets/image/select-white.png");
+  --input-disabled-bg: rgba(59, 59, 59, 0.3);
+  --input-disabled-border: rgba(118, 118, 118, 0.3);
+  --input-disabled-color: rgb(170, 170, 170);
+  --table-input-border: #56585a;
+  --table-select-border: #56585a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -163,6 +177,8 @@ html.__pj-dark-mode {
     --table-header-bg: #242526;
     --scroll-thumb: rgba(255, 255, 255, 0.3);
     --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
+    --table-cloud-bg: rgba(0, 0, 0, .8);
+    --select-bg-url: url("http://projetbdd/assets/image/select-white.png");
   }
 }
 @media (prefers-color-scheme: light) {
@@ -220,6 +236,8 @@ html.__pj-dark-mode {
     --table-header-bg: #fff;
     --scroll-thumb: #BCC0C4;
     --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
+    --table-cloud-bg: rgba(255, 255, 255, .8);
+    --select-bg-url: url("http://projetbdd/assets/image/select-black.png");
   }
 }
 body {
@@ -248,7 +266,7 @@ select {
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
-  background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yP/r/Yrq8Y9PlN02.png);
+  background-image: var(--select-bg-url);
   background-repeat: no-repeat;
   background-size: 14px;
   background-position: right 5px center;
@@ -957,38 +975,6 @@ button {
   font-size: 14px;
 }
 
-#UsersModel .id_user {
-  width: 5%;
-}
-#UsersModel .username {
-  width: 9%;
-}
-#UsersModel .email {
-  width: 24%;
-}
-#UsersModel .tel {
-  width: 7%;
-}
-#UsersModel .firstname,
-#UsersModel .lastname {
-  width: 10%;
-}
-#UsersModel .birthday {
-  width: 6%;
-}
-#UsersModel .id_gender {
-  width: 6%;
-}
-#UsersModel .is_admin {
-  width: 6%;
-}
-#UsersModel .is_active {
-  width: 6%;
-}
-#UsersModel .create_time {
-  width: 11%;
-}
-
 .scrollbar-container {
   padding: 10px 20px 10px 160px;
   position: relative;
@@ -1050,7 +1036,7 @@ button {
   align-items: center;
   justify-content: center;
 }
-.table .modify-row {
+.table .modify-card {
   position: absolute;
   display: flex;
   z-index: 2;
@@ -1060,10 +1046,10 @@ button {
   padding: 20px;
   width: fit-content;
 }
-.table .modify-row[data-status=hidden] {
+.table .modify-card[data-status=hidden] {
   display: none;
 }
-.table .modify-row form {
+.table .modify-card form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1076,7 +1062,7 @@ button {
 }
 .table .modify-label {
   display: flex;
-  width: 400px;
+  width: 450px;
   justify-content: end;
   padding-bottom: 10px;
 }
@@ -1087,36 +1073,47 @@ button {
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: var(--settings-form-label-text);
+  color: var(--primary-text);
   cursor: default;
 }
 .table .modify-label .input {
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 16px;
   height: 29px;
-  width: 250px;
-  border: 1px solid var(--settings-form-label-border);
-  background-color: var(--settings-background-color);
+  width: 275px;
+  border: 1px solid var(--table-input-border);
+  background-color: var(--card-background);
   color: var(--primary-text);
   padding: 3px;
   cursor: text;
 }
 .table .modify-label .input:disabled {
   cursor: default;
-  background-color: rgba(239, 239, 239, 0.3);
-  color: #545454;
-  border-color: rgba(118, 118, 118, 0.3);
+  background-color: var(--input-disabled-bg);
+  color: var(--input-disabled-color);
+  border-color: var(--input-disabled-border);
 }
 .table .modify-label .select {
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 16px;
   height: 29px;
-  width: 250px;
-  border: 1px solid var(--settings-form-label-border);
-  background-color: var(--settings-background-color);
+  width: 275px;
+  border: 1px solid var(--table-select-border);
+  background-color: var(--card-background);
   color: var(--primary-text);
   padding: 3px;
   cursor: pointer;
+}
+.table .modify-label .select::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.table .modify-label .select::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: var(--scroll-thumb);
+}
+.table .modify-label .select::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 .table .modify-btn-container {
   padding-top: 10px;
@@ -1158,13 +1155,45 @@ button {
 }
 .table .table-cloud {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--table-cloud-bg);
   inset: 0 0 0 -360px;
   z-index: 2;
   display: none;
 }
 .table .table-cloud[data-status=shown] {
   display: block;
+}
+
+#UsersModel .id_users {
+  width: 5%;
+}
+#UsersModel .username {
+  width: 9%;
+}
+#UsersModel .email {
+  width: 24%;
+}
+#UsersModel .tel {
+  width: 7%;
+}
+#UsersModel .firstname,
+#UsersModel .lastname {
+  width: 10%;
+}
+#UsersModel .birthday {
+  width: 6%;
+}
+#UsersModel .id_gender {
+  width: 6%;
+}
+#UsersModel .is_admin {
+  width: 6%;
+}
+#UsersModel .is_active {
+  width: 6%;
+}
+#UsersModel .create_time {
+  width: 11%;
 }
 
 .card-profil {
@@ -1955,6 +1984,14 @@ button {
   font-weight: 600;
   line-height: 20px;
 }
+.panelTable .panelTable-filter .panelTable-filter-content {
+  padding: 8px 0 0 24px;
+}
+.panelTable .panelTable-filter .panelTable-filter-content > label {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
 .panelTable .text {
   padding-right: 15px;
   text-align: right;
@@ -1962,36 +1999,48 @@ button {
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: var(--settings-form-label-text);
+  color: var(--primary-text);
   cursor: default;
+  margin-bottom: 2px;
 }
 .panelTable .input {
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 16px;
   height: 29px;
-  width: 250px;
-  border: 1px solid var(--settings-form-label-border);
-  background-color: var(--settings-background-color);
+  width: 275px;
+  border: 1px solid var(--table-input-border);
+  background-color: var(--card-background);
   color: var(--primary-text);
   padding: 3px;
   cursor: text;
 }
 .panelTable .input:disabled {
   cursor: default;
-  background-color: rgba(239, 239, 239, 0.3);
-  color: #545454;
-  border-color: rgba(118, 118, 118, 0.3);
+  background-color: var(--input-disabled-bg);
+  color: var(--input-disabled-color);
+  border-color: var(--input-disabled-border);
 }
 .panelTable .select {
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 16px;
   height: 29px;
-  width: 250px;
-  border: 1px solid var(--settings-form-label-border);
-  background-color: var(--settings-background-color);
+  width: 275px;
+  border: 1px solid var(--table-select-border);
+  background-color: var(--card-background);
   color: var(--primary-text);
   padding: 3px;
   cursor: pointer;
+}
+.panelTable .select::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.panelTable .select::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: var(--scroll-thumb);
+}
+.panelTable .select::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .settings {

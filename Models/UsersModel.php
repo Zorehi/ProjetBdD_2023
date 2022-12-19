@@ -3,7 +3,7 @@ namespace App\Models;
 
 class UsersModel extends Model
 {
-    protected $id_user;
+    protected $id_users;
     protected $username; 
     protected $email;
     protected $password;
@@ -21,7 +21,7 @@ class UsersModel extends Model
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "id_user";
+        $this->idName = "id_users";
     }
 
     public function findByEmailOrTel($email) {
@@ -30,7 +30,7 @@ class UsersModel extends Model
 
     public function setSession() {
         $_SESSION["user"] = [
-            "id" => $this->id_user,
+            "id" => $this->id_users,
             "firstname" => $this->firstname,
             "lastname" => $this->lastname,
             "is_admin" => $this->is_admin
@@ -39,21 +39,21 @@ class UsersModel extends Model
     
     
     /**
-     * Get the value of id_user
+     * Get the value of id_users
      */ 
-    public function getId_user()
+    public function getId_users()
     {
-        return $this->id_user;
+        return $this->id_users;
     }
     
     /**
-     * Set the value of id_user
+     * Set the value of id_users
      *
      * @return  self
      */ 
-    public function setId_user($id_user)
+    public function setId_users($id_users)
     {
-        $this->id_user = $id_user;
+        $this->id_users = $id_users;
         
         return $this;
     }
@@ -279,7 +279,7 @@ class UsersModel extends Model
     }
     
     static $info_tables = [
-        'id_user' => [
+        'id_users' => [
             'elementHTML' => 'input',
             'inputType' => 'text',
             'is_disabled' => 'disabled'

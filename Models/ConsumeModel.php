@@ -1,0 +1,71 @@
+<?php
+namespace App\Models;
+
+class EmitModel extends Model
+{
+    protected $id_device_type;
+    protected $id_ressource;
+ 
+
+    public function __construct()
+    {
+        $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
+        $this->table = strtolower(str_replace('Model', '', $class));
+        $this->idName = "id_gender";
+    }
+
+    /**
+     * Get the value of id_device_type
+     */ 
+    public function getId_device_type()
+    {
+        return $this->id_device_type;
+    }
+
+    /**
+     * Set the value of id_device_type
+     *
+     * @return  self
+     */ 
+    public function setId_device_type($id_device_type)
+    {
+        $this->id_device_type = $id_device_type;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_ressource
+     */ 
+    public function getId_ressource()
+    {
+        return $this->id_ressource;
+    }
+
+    /**
+     * Set the value of id_ressource
+     *
+     * @return  self
+     */ 
+    public function setId_ressource($id_ressource)
+    {
+        $this->id_ressource = $id_ressource;
+
+        return $this;
+    }
+
+    static $info_tables = [
+        'id_device_type' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'type_name'
+        ],
+        'id_ressource' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'name'
+        ]
+    ];
+}

@@ -78,17 +78,3 @@
         }
     }
 }
-
-#UsersModel {
-    .id_user { width: 5%; }
-    .username { width: 9%; }
-    .email { width: 24%; }
-    .tel { width: 7%; }
-    .firstname,
-    .lastname { width: 10%; }
-    .birthday { width: 6%; }
-    .id_gender { width: 6%; }
-    .is_admin { width: 6%; }
-    .is_active { width: 6%; }
-    .create_time { width: 11%; }
-}

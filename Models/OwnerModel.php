@@ -6,7 +6,7 @@ class OwnerModel extends Model
     protected $id_house;
     protected $from_date;
     protected $to_date;
-    protected $id_user;
+    protected $id_users;
 
     public function __construct()
     {
@@ -77,21 +77,21 @@ class OwnerModel extends Model
     }
 
     /**
-     * Get the value of id_user
+     * Get the value of id_users
      */ 
-    public function getId_user()
+    public function getId_users()
     {
-        return $this->id_user;
+        return $this->id_users;
     }
 
     /**
-     * Set the value of id_user
+     * Set the value of id_users
      *
      * @return  self
      */ 
-    public function setId_user($id_user)
+    public function setId_users($id_users)
     {
-        $this->id_user = $id_user;
+        $this->id_users = $id_users;
 
         return $this;
     }
@@ -113,7 +113,7 @@ class OwnerModel extends Model
             'inputType' => 'date',
             'is_disabled' => ''
         ],
-        'id_user' => [
+        'id_users' => [
             'elementHTML' => 'select',
             'inputType' => null,
             'is_disabled' => '',

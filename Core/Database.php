@@ -19,12 +19,16 @@ class Database extends PDO {
         // DSN de connexion
         $_dsn = "mysql:host=" . self::DBHOST . ";dbname=" . self::DBNAME;
 
-        try {
-            parent::__construct($_dsn, self::DBUSER, self::DBPASS);
+        $option = [
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ];
 
-            $this->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, 'SET NAMES utf8');
-            $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+
+            parent::__construct($_dsn, self::DBUSER, self::DBPASS, $option);
+
         } catch(PDOException $e) {
             die($e->getMessage());
         }

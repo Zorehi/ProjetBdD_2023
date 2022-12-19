@@ -28,7 +28,7 @@
                             <select class="select" name="<?= $key ?>" id="<?= $key ?>" onchange="filter()">
                                 <option value="" selected>Aucun</option>
                             <?php foreach($champ['values'] as $champ2) { ?>
-                                <option value="<?= $champ2[$champ['name_id']] ?>"><?= $champ2[$champ['name_id']] . ' - ' . $champ2[$champ['name']] ?></option>
+                                <option value="<?= $champ2[$key] ?>"><?= $champ2[$key] . ' - ' . $champ2[$champ['name']] ?></option>
                             <?php } ?>
                             </select>
                         <?php } else if ($champ['elementHTML'] == 'boolean') { ?>

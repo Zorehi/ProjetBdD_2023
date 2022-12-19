@@ -1,9 +1,9 @@
 <?php
 namespace App\Models;
 
-class Security_typeModel extends Model
+class Security_degreeModel extends Model
 {
-    protected $id_security;
+    protected $id_security_degree;
     protected $description;
 
 
@@ -11,25 +11,25 @@ class Security_typeModel extends Model
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "id_security";
+        $this->idName = "id_security_degree";
     }
 
     /**
-     * Get the value of id_security
+     * Get the value of id_security_degree
      */ 
-    public function getId_security()
+    public function getId_security_degree()
     {
-        return $this->id_security;
+        return $this->id_security_degree;
     }
 
     /**
-     * Set the value of id_security
+     * Set the value of id_security_degree
      *
      * @return  self
      */ 
-    public function setId_security($id_security)
+    public function setId_security_degree($id_security_degree)
     {
-        $this->id_security = $id_security;
+        $this->id_security_degree = $id_security_degree;
 
         return $this;
     }
@@ -55,7 +55,7 @@ class Security_typeModel extends Model
     }
 
     static $info_tables = [
-        'id_security' => [
+        'id_security_degree' => [
             'elementHTML' => 'input',
             'inputType' => 'text',
             'is_disabled' => 'disabled'

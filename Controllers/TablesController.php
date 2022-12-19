@@ -21,7 +21,7 @@ class TablesController extends Controller
                     break;
                 
                 case 'update':
-                    if (Form::validate($_POST, $table->getChamps())) {
+                    if (Form::validate($_POST, array_keys($table::$info_tables))) {
                         $table->hydrate($_POST);
                         $table->update();
                     }
@@ -32,7 +32,7 @@ class TablesController extends Controller
                     foreach ($table::$info_tables as $key => $value) {
                         if (!empty($value['is_disabled'])) $not_needed_champs[] = $key;
                     }
-                    if (Form::validate($_POST, array_diff($table->getChamps(), $not_needed_champs))) {
+                    if (Form::validate($_POST, array_diff(array_keys($table::$info_tables), $not_needed_champs))) {
                         $table->hydrate($_POST);
                         $idName = 'set' . ucfirst($table->getIdName());
                         $table->$idName(null);
@@ -46,17 +46,12 @@ class TablesController extends Controller
         $pageName = 'Table ' . $tablename . ' | Projet BdD';
 
         $lines = $table->findAll();
-        $max = count($lines);
-        for ($i=0; $i < $max; $i++) {
-            unset($lines[$i]['password']);
-        }
 
         foreach ($table::$info_tables as $key => $value) {
             if (strpos($key, 'id') !== false && $value['elementHTML'] == 'select') {
                 $table_2 = '\\App\\Models\\' . ucfirst(substr($key, 3)) . 'Model';
                 $table_2 = new $table_2();
                 $table::$info_tables[$key]['values'] = $table_2->findAll();
-                $table::$info_tables[$key]['name_id'] = $table_2->getIdname();;
             } 
         }
 

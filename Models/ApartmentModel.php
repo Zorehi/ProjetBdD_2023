@@ -7,7 +7,7 @@ class ApartmentModel extends Model
     protected $num;
     protected $hab;
     protected $citizen_degree;
-    protected $id_security;
+    protected $id_security_degree;
     protected $id_house;
     protected $id_apartment_type;
     
@@ -61,21 +61,21 @@ class ApartmentModel extends Model
     }
 
     /**
-     * Get the value of id_security
+     * Get the value of id_security_degree
      */ 
-    public function getId_security()
+    public function getId_security_degree()
     {
-        return $this->id_security;
+        return $this->id_security_degree;
     }
 
     /**
-     * Set the value of id_security
+     * Set the value of id_security_degree
      *
      * @return  self
      */ 
-    public function setId_security($id_security)
+    public function setId_security_degree($id_security_degree)
     {
-        $this->id_security = $id_security;
+        $this->id_security_degree = $id_security_degree;
 
         return $this;
     }
@@ -181,7 +181,7 @@ class ApartmentModel extends Model
             'inputType' => 'text',
             'is_disabled' => ''
         ],
-        'id_security' => [
+        'id_security_degree' => [
             'elementHTML' => 'select',
             'inputType' => null,
             'is_disabled' => '',
