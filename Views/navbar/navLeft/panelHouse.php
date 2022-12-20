@@ -43,9 +43,9 @@
             </div>
             <div class="panel-section-separator"></div>
             <div class="panel-section-list">
-                <div id="pinHouses">
-                    <span>Epinglés</span>
-                    <div>
+                <div id="pinHouses" class="panel-section-list-wrapper">
+                    <span class="panel-section-list-title">Epinglés</span>
+                    <div class="panel-section-list-container">
                         <a class="panel-section-button panelHouse-button" href="#">
                             <div class="img">
                                 <svg aria-hidden="true" class="" role="none" style="height: 36px; width: 36px;">
@@ -70,9 +70,9 @@
                         </a>
                     </div>
                 </div>
-                <div id="myHouses" class="display-true"> 
-                    <span>Maisons dont vous êtes propriétaire</span>
-                    <div>
+                <div id="myHouses" class="panel-section-list-wrapper">
+                    <span class="panel-section-list-title">Maisons dont vous êtes propriétaire</span>
+                    <div class="panel-section-list-container">
                         <a class="panel-section-button panelHouse-button" href="#">
                             <div class="img">
                                 <svg style="height: 36px; width: 36px;">

@@ -22,13 +22,13 @@
         </div>
         <div class="panel-section-separator"></div>
         <div class="panel-section-list">
-            <div id="db-table">
-                <span>Tables de la base de données</span>
-                <div class="scrollbar-container" id="scrollbar-1">
+            <div id="db-table" class="panel-section-list-wrapper">
+                <span class="panel-section-list-title">Tables de la base de données</span>
+                <div class="panel-section-list-container scrollbar-container" id="scrollbar-1">
                     <div class="scrollbar-content" data-transition="yes">
                     <?php
                         $directory = ROOT.'/Models';
-                        $scanned_directory = array_diff(scandir($directory), array('..', '.', 'Model.php'));
+                        $scanned_directory = array_diff(scandir($directory), array('..', '.', 'Model.php', 'Association.php'));
                         foreach ($scanned_directory as $file) {
                             $tablename = substr($file, 0, strpos($file, '.'));
                             $displayname = str_replace('Model', '', $tablename);

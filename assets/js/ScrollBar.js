@@ -26,15 +26,16 @@ class ScrollBar
     init() {
         this.sbContainerHeight = this.sbContainer.clientHeight + this.offset.container;
         this.sbContentHeight = this.sbContent.clientHeight + this.offset.content;
-        if (this.sbContentHeight < this.sbContainerHeight) return this;
-
-        this.sbThumbHeight =  (this.sbContainerHeight / this.sbContentHeight) * this.sbContainerHeight;
-        this.sbThumb.style.height = this.sbThumbHeight + 'px';
-
+        
         this.sbContainer.addEventListener('wheel', this.wheelEventListener.bind(this));
         this.sbThumb.addEventListener('mousedown', this.mouseDownEventListener.bind(this));
         document.addEventListener('mouseup', this.mouseUpEventListener.bind(this));
         document.addEventListener('mousemove', this.mouseMoveEventListener.bind(this));
+        window.addEventListener('resize', this.resizeEventListener.bind(this));
+        
+        if (this.sbContentHeight < this.sbContainerHeight) return this;
+        this.sbThumbHeight =  (this.sbContainerHeight / this.sbContentHeight) * this.sbContainerHeight;
+        this.sbThumb.style.height = this.sbThumbHeight + 'px';
 
         return this;
     }
@@ -119,5 +120,14 @@ class ScrollBar
         this.#scroll = this.#scrollThumb / (this.sbContainerHeight/this.sbContentHeight);
         this.sbContent.style.transform =  `translateY(-${this.#scroll}px)`;
         this.sbThumb.style.transform =  `translateY(${this.#scrollThumb}px)`;
+    }
+
+    /**
+     * 
+     * @param {Event} event 
+     */
+    resizeEventListener = (event) => {
+        console.log("resize");
+        this.refresh(true);
     }
 }

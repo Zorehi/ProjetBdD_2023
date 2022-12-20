@@ -1863,17 +1863,17 @@ button {
   margin: 0 16px;
   border-bottom: 1px solid var(--divider);
 }
-.panel-section .panel-section-list > div {
+.panel-section .panel-section-list > .panel-section-list-wrapper {
   padding-top: 16px;
 }
-.panel-section .panel-section-list > div > span {
+.panel-section .panel-section-list > .panel-section-list-wrapper > .panel-section-list-title {
   padding: 0 16px;
   color: var(--primary-text);
   font-size: 17px;
   font-weight: 600;
   line-height: 20px;
 }
-.panel-section .panel-section-list > div > div {
+.panel-section .panel-section-list > .panel-section-list-wrapper > .panel-section-list-container {
   padding: 8px 8px 0 8px;
 }
 .panel-section .panel-section-button {
@@ -1890,10 +1890,10 @@ button {
   inset: 0;
   transition: background-color 100ms cubic-bezier(0, 0, 1, 1);
 }
-.panel-section .panel-section-button > .hover:hover {
+.panel-section .panel-section-button:hover > .hover {
   background-color: var(--hover-overlay);
 }
-.panel-section .panel-section-button > .hover:active {
+.panel-section .panel-section-button:active > .hover {
   background-color: var(--press-overlay);
 }
 .panel-section .panel-section-create {
@@ -1976,6 +1976,9 @@ button {
   padding: 0 8px;
 }
 
+.panelTable .panelTable-filter {
+  padding-top: 12px;
+}
 .panelTable .panelTable-filter .panelTable-filter-title {
   padding-top: 0;
   padding: 0 16px;
@@ -2041,6 +2044,130 @@ button {
 }
 .panelTable .select::-webkit-scrollbar-track {
   background-color: transparent;
+}
+
+.panelCreateHouse {
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+}
+.panelCreateHouse .panel-section-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  max-height: calc(100% - 55px);
+}
+.panelCreateHouse .create-user-owner {
+  display: flex;
+  padding: 0 16px;
+}
+.panelCreateHouse .create-user-owner img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin: 8px 12px 8px 0;
+}
+.panelCreateHouse .create-user-owner .text {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+.panelCreateHouse .create-user-owner .text .primary {
+  color: var(--primary-text);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+}
+.panelCreateHouse .create-user-owner .text .secondary {
+  color: var(--secondary-text);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.panelCreateHouse .create-house-form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  max-height: calc(100% - 56px);
+}
+.panelCreateHouse .create-label-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 8px 16px;
+  max-height: calc(100% - 68px);
+}
+.panelCreateHouse .create-label {
+  position: relative;
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  margin-bottom: 16px;
+  display: block;
+}
+.panelCreateHouse .create-label span {
+  position: absolute;
+  color: var(--secondary-text);
+  left: 16px;
+  top: 18px;
+  transform-origin: top left;
+  transition: transform 0.2s cubic-bezier(0.08, 0.52, 0.52, 1);
+  transform: scale(0.75) translateY(-11px);
+}
+.panelCreateHouse .create-label input {
+  padding: 26px 16px 10px 16px;
+  color: var(--primary-text);
+  width: 100%;
+}
+.panelCreateHouse .create-label[data-status=empty] span {
+  transform: none;
+}
+.panelCreateHouse .create-label:focus-within {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent);
+}
+.panelCreateHouse .create-label:focus-within span {
+  color: var(--accent);
+  transform: scale(0.75) translateY(-11px);
+}
+.panelCreateHouse .create-label:hover {
+  border-color: #8A8D91;
+}
+.panelCreateHouse .create-btn-container {
+  padding: 16px;
+}
+.panelCreateHouse .create-btn-container .create-btn {
+  position: relative;
+  height: 36px;
+  width: 100%;
+  cursor: pointer;
+  background-color: #2374E1;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.panelCreateHouse .create-btn-container .create-btn span {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+}
+.panelCreateHouse .create-btn-container .create-btn > .hover {
+  position: absolute;
+  border-radius: 6px;
+  inset: 0;
+  transition: background-color 100ms cubic-bezier(0, 0, 1, 1);
+}
+.panelCreateHouse .create-btn-container .create-btn:hover > .hover {
+  background-color: var(--hover-overlay);
+}
+.panelCreateHouse .create-btn-container .create-btn:active {
+  transform: scale(0.96);
+}
+.panelCreateHouse .create-btn-container .create-btn:active .hover {
+  background-color: var(--press-overlay);
 }
 
 .settings {

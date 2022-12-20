@@ -79,10 +79,10 @@
 
     .panel-section-list {
         
-        & > div {
+        & > .panel-section-list-wrapper {
             padding-top: 16px;
 
-            & > span {
+            & > .panel-section-list-title {
                 padding: 0 16px;
                 color: var(--primary-text);
                 font-size: 17px;
@@ -90,7 +90,7 @@
                 line-height: 20px;
             }
     
-            & > div {
+            & > .panel-section-list-container {
                 padding: 8px 8px 0 8px;
             }
         }
@@ -110,12 +110,13 @@
             inset: 0;
             transition: background-color 100ms cubic-bezier(0, 0, 1, 1);
 
-            &:hover {
-                background-color: var(--hover-overlay);
-            }
-            &:active {
-                background-color: var(--press-overlay);
-            }
+        }
+
+        &:hover > .hover {
+            background-color: var(--hover-overlay);
+        }
+        &:active > .hover {
+            background-color: var(--press-overlay);
         }
     }
 
