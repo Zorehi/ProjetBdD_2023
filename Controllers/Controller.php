@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\UsersModel;
+
 abstract class Controller
 {
     public function render(string $fichier, array $donnees = [], string $template = 'default')
@@ -22,5 +24,30 @@ abstract class Controller
         $contenu = ob_get_clean();
 
         require_once ROOT.'/Views/templates/'.$template.'.php';
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Boolean $admin true si on doit checker s'il est admin
+     * @return void
+     */
+    public function securityCheck($admin) {
+        if (isset($_SESSION['user'])) {
+            if (!$admin) return;
+            $user = new UsersModel();
+            $user_array = $user->findById($_SESSION['user']['id']);
+            if (!$user_array) {
+                header('Location: /');
+                exit;
+            }
+            if (!$user_array['is_admin']) {
+                header('Location: /');
+                exit;
+            }
+        } else {
+            header('Location: /');
+            exit;
+        }
     }
 }

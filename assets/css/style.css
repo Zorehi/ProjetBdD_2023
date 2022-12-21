@@ -1591,10 +1591,10 @@ button {
 .navLeft .main > a > :last-child {
   inset: -2px 8px;
 }
-.navLeft .main > .home {
+.navLeft .main > #Home {
   margin-bottom: 8px;
 }
-.navLeft .main > .profil {
+.navLeft .main > #Profil {
   margin-top: 4px;
   padding: 6px 18px;
 }
@@ -2077,15 +2077,16 @@ button {
 }
 .panel-create .create-form {
   display: flex;
-  flex-direction: column-reverse;
   flex-grow: 1;
   flex-shrink: 1;
   position: relative;
 }
 .panel-create .create-form#create-appart {
+  flex-direction: column-reverse;
   max-height: calc(100% - 0px);
 }
 .panel-create .create-form#create-house {
+  flex-direction: column;
   max-height: calc(100% - 56px);
 }
 .panel-create .create-label-list {

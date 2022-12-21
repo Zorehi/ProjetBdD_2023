@@ -6,7 +6,13 @@ use App\Core\Form;
 
 class TablesController extends Controller
 {
+    public function __construct()
+    {
+        $this->securityCheck(true);
+    }
+    
     public function index(string $tablename) {
+        $this->securityCheck(true);
 
         $table = '\\App\\Models\\'.$tablename;
         $table = new $table();

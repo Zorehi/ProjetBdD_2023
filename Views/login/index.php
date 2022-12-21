@@ -3,7 +3,7 @@
         <input type="hidden" name="type" value="login">
         <div>
             <div class="card-login__id">
-                <input type="text" name="email" placeholder="Adresse e-mail ou numéro de tél.">
+                <input type="text" name="email" placeholder="Adresse e-mail ou nom d'utilisateur.">
             </div>
             <div class="card-login__id">
                 <input type="password" name="password" placeholder="Mot de passe" id="pass">
@@ -45,7 +45,13 @@
                     </span>
                 </div>
                 <div class="_10pad">
-                    <input type="text" name="email" class="register-input long" placeholder="Numéro de mobile ou e-mail" required>
+                    <input type="tel" name="tel" class="register-input long" placeholder="Numéro de téléphone" required>
+                </div>
+                <div class="_10pad">
+                    <input type="email" name="email" class="register-input long" placeholder="Email" required>
+                </div>
+                <div class="_10pad">
+                    <input type="text" name="username" class="register-input long" placeholder="Nom d'utilisateur" required>
                 </div>
                 <div class="_10pad">
                     <input type="password" name="password" class="register-input long" placeholder="Mot de passe" required>
@@ -95,15 +101,15 @@
                     <span class="flex-wrap">
                         <span>
                             <label class="register-label" for="woman">Femme</label>
-                            <input type="radio" name="sex" value="2" id="woman" class="register-radio">
+                            <input type="radio" name="id_gender" value="2" id="woman" class="register-radio">
                         </span>
                         <span>
                             <label class="register-label" for="man">Homme</label>
-                            <input type="radio" name="sex" value="1" id="man" class="register-radio">
+                            <input type="radio" name="id_gender" value="1" id="man" class="register-radio">
                         </span>
                         <span>
                             <label class="register-label" for="other">Personnalisé</label>
-                            <input type="radio" name="sex" value="3" id="other" class="register-radio">
+                            <input type="radio" name="id_gender" value="3" id="other" class="register-radio">
                         </span>
                     </span>
                 </div>

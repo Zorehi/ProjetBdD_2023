@@ -31,7 +31,7 @@
                 <img src="assets/image/user-default-photo.png" alt="" width="60" height="60">
                 <div>
                     <div><?= $user->getFirstname() . ' ' .$user->getLastname() ?></div>
-                    <div><?= $user->getType() == 'admin' ? 'Administrateur' : 'Utilisateur' ?> de Projet BdD</div>
+                    <div><?= $user->getIs_admin() ? 'Administrateur' : 'Utilisateur' ?> de Projet BdD</div>
                 </div>
             </div>
         </div>

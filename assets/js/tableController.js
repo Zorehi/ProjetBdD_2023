@@ -2,7 +2,6 @@ const scrollbarContainer = document.getElementById('scrollbar-2');
 const scrollbar_2 = new ScrollBar(scrollbarContainer, { offsetContainer: -20, offsetContent: 20});
 scrollbar_2.init();
 document.getElementById('navLeft').dataset.always = 'small';
-document.querySelector('[data-status=selected]').dataset.status = 'unselected';
 
 const filterElement = {};
 const panelTableFfilterContent = document.getElementsByClassName('panelTable-filter-content')[0];

@@ -46,15 +46,16 @@
 
     .create-form {
         display: flex;
-        flex-direction: column-reverse;
         flex-grow: 1;
         flex-shrink: 1;
         position: relative;
-
+        
         &#create-appart {
+            flex-direction: column-reverse;
             max-height: calc(100% - 0px);
         }
         &#create-house {
+            flex-direction: column;
             max-height: calc(100% - 56px);
         }
     }

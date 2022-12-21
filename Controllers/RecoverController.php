@@ -19,7 +19,7 @@ class RecoverController extends Controller
             if ($_POST["send"] == "email") {
                 $_SESSION["recover"] = [
                     "send_to" => $user->getEmail(),
-                    "id" => $user->getId(),
+                    "id" => $user->getId_users(),
                     "code" => $code
                 ];
     
@@ -28,7 +28,9 @@ class RecoverController extends Controller
                 $headers = "Content-Type: text/plain; charset=utf-8\r\n";
                 $headers .= "From: Projet BdD <projetbdd@hotmail.com>\r\n";
     
-                mail($user->getEmail(), $sujet, $message, $headers);
+                if (mail($user->getEmail(), $sujet, $message, $headers)) {
+                    header("Location: /recover/code");
+                }
             } else {
                 /*
                 $_SESSION["recover"] = [
@@ -46,7 +48,6 @@ class RecoverController extends Controller
                 */
             }
 
-            header("Location: /recover/code");
         }
         
         $this->render('/recover/initiate', compact("user"), "login");
