@@ -1,7 +1,8 @@
-.panelCreateHouse {
+.panel-create {
     z-index: -1;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     .panel-section-list {
         display: flex;
@@ -43,12 +44,19 @@
         }
     }
 
-    .create-house-form {
+    .create-form {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         flex-grow: 1;
         flex-shrink: 1;
-        max-height: calc(100% - 56px);
+        position: relative;
+
+        &#create-appart {
+            max-height: calc(100% - 0px);
+        }
+        &#create-house {
+            max-height: calc(100% - 56px);
+        }
     }
 
     .create-label-list {
@@ -66,6 +74,7 @@
         border-radius: 6px;
         margin-bottom: 16px;
         display: block;
+        cursor: text;
 
         span {
             position: absolute;
@@ -77,10 +86,21 @@
             transform: scale(.75) translateY(-11px);
         }
 
-        input {
+        input, select {
             padding: 26px 16px 10px 16px;
             color: var(--primary-text);
             width: 100%;
+            border: none;
+        }
+
+        select {
+            background-position: right 10px center;
+            background-color: var(--card-background);
+            border-radius: 6px;
+        }
+
+        &.select {
+            cursor: pointer;
         }
 
         &[data-status='empty'] span {
@@ -139,6 +159,108 @@
                 .hover {
                     background-color: var(--press-overlay);
                 }
+            }
+        }
+    }
+
+    .create-label-wrapper {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        inset: 0;
+        transition: transform .2s cubic-bezier(.08,.52,.52,1);
+
+        .create-btn-container {
+            padding-top: 0;
+        }
+
+        &.padding {
+            padding: 8px 16px;
+        }
+
+        &[data-status="active"] { transform: none; }
+        &[data-status="before"] { transform: translateX(-100%); }
+        &[data-status="after"] { transform: translateX(100%); }
+    }
+
+    .list-container {
+        border: 2px solid var(--divider);
+        border-radius: 6px;
+        margin-top: 8px;
+        max-height: calc(100% - 275px);
+        flex-grow: 1;
+        padding-bottom: 8px;
+
+        legend {
+            font-size: 17px;
+            padding: 0 4px;
+            margin-left: 8px;
+            color: var(--secondary-text);
+        }
+
+        .scrollbar-container {
+            height: 100%;
+        }
+    }
+
+    .panel-section-separator {
+        padding: 0;
+    }
+
+    .room-row {
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        //justify-content: space-between;
+        margin-bottom: 10px;
+        padding: 12px 10px 12px 10px;
+        box-shadow: 0px 0px 9px 0px var(--table-li-shadow);
+        background-color: var(--card-background);
+        transition: transform 100ms cubic-bezier(0.19, 0.92, 0.72, 0.96),
+                    padding 100ms cubic-bezier(0.19, 0.92, 0.72, 0.96);
+        color: var(--secondary-text);
+        position: relative;
+        cursor: pointer;
+
+        span {
+            display: flex;
+            padding: 5px 0;
+            font-size: 13px;
+
+            &:before {
+                color: #6C7A89;
+                padding-right: 10px;
+                content: attr(data-label);
+                flex-basis: 50%;
+                text-align: right;
+            }
+        }
+        
+        &:hover {
+            padding-right: 30px;
+            transform: scale(1.02) translateX(-1%);
+
+            .btn-delete {
+                width: 40px;
+            }
+        }
+
+        .btn-delete {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            filter: var(--filter-red);
+            -webkit-filter: var(--filter-red);
+            cursor: pointer;
+            transition: width 100ms cubic-bezier(0.19, 0.92, 0.72, 0.96);
+
+            &:hover {
+                background-color: var(--hover-overlay);
             }
         }
     }

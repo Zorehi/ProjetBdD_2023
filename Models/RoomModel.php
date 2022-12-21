@@ -4,6 +4,7 @@ namespace App\Models;
 class RoomModel extends Model
 {
     protected $id_room;
+    protected $room_name;
     protected $id_room_type;
     protected $id_apartment;
 
@@ -32,6 +33,26 @@ class RoomModel extends Model
     public function setId_room($id_room)
     {
         $this->id_room = $id_room;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of room_name
+     */ 
+    public function getRoom_name()
+    {
+        return $this->room_name;
+    }
+
+    /**
+     * Set the value of room_name
+     *
+     * @return  self
+     */ 
+    public function setRoom_name($room_name)
+    {
+        $this->room_name = $room_name;
 
         return $this;
     }
@@ -81,6 +102,11 @@ class RoomModel extends Model
             'elementHTML' => 'input',
             'inputType' => 'text',
             'is_disabled' => 'disabled'
+        ],
+        'room_name' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
         ],
         'id_room_type' => [
             'elementHTML' => 'select',

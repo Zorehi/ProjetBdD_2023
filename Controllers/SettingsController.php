@@ -22,10 +22,10 @@ class SettingsController extends Controller
                     }
                     break;
                 case 'username':
-                    /*if (Form::validate($_POST, ['username')) {
+                    if (Form::validate($_POST, ['username'])) {
                         $user->setUsername(strip_tags($_POST['username']));
                         $user->update();
-                    }*/
+                    }
                     break;
                 case 'email':
                     if (Form::validate($_POST, ['email'])) {

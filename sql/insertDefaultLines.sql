@@ -1,4 +1,3 @@
-CREATE SCHEMA IF NOT EXISTS `projetbdd` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `projetbdd`;
 
 

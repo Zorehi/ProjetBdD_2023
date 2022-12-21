@@ -47,7 +47,7 @@
                             <h3>Nom d'utilisateur</h3>
                         </div>
                         <div class="settings-modify-value">
-                            <span><?= /*$user->getUsername() ? '<strong>'.$user->getUsername().'</strong>' :*/ "Vous n'avez pas défini de nom d'utilisateur." ?></span>
+                            <span><?= $user->getUsername() ? '<strong>'.$user->getUsername().'</strong>' : "Vous n'avez pas défini de nom d'utilisateur." ?></span>
                         </div>
                         <div class="settings-modify-action">
                             <span>Modifier</span>
@@ -61,7 +61,7 @@
                             <input type="hidden" name="type" value="username">
                             <label for="username" class="settings-form-label">
                                 <span>Nom d'utilisateur</span>
-                                <input type="text" name="username" id="username">
+                                <input type="text" name="username" id="username" value="<?= $user->getUsername() ?>">
                             </label>
                             <div class="settings-form-divider"></div>
                             <div class="settings-form-button">

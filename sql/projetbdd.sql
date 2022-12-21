@@ -206,6 +206,7 @@ CREATE TABLE apartment(
 DROP TABLE IF EXISTS `room`;
 CREATE TABLE room(
    `id_room` INT AUTO_INCREMENT,
+   `room_name` VARCHAR(50)  NOT NULL,
    `id_room_type` INT NOT NULL,
    `id_apartment` INT NOT NULL,
    PRIMARY KEY(`id_room`),
