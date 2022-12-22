@@ -65,4 +65,4 @@
     </div>
 </div>
 
-<script src="js.php?file=tableController.js"></script>
+<script src="assets/js/tableController.js"></script>

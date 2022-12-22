@@ -64,7 +64,6 @@
 
 <script type="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
-    document.querySelector('[data-status=selected]').dataset.status = 'unselected';
 
     const scrollbarContainer4 = document.getElementById('scrollbar-4');
     const scrollbar_4 = new ScrollBar(scrollbarContainer4, { offsetContainer: -16, offsetContent: 0});

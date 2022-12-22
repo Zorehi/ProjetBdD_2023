@@ -1,0 +1,172 @@
+.panel-manage {
+    z-index: -1;
+
+    .panel-manage-header {
+        padding: 8px;
+    }
+
+    .panel-manage-profil {
+        display: flex;
+        padding: 8px;
+
+        img {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+        }
+
+        .text {
+            padding: 2px 0 6px 0;
+        }
+
+        .primary {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .secondary {
+            font-size: 13px;
+            font-weight: 600;
+        }
+    }
+
+    .panel-manage-btn-create-container {
+        padding: 8px 8px 0 8px;
+
+        .panel-section-button {
+            height: 36px;
+            background-color: var(--accent);
+            border-radius: 6px;
+            justify-content: center;
+            transition: transform 50ms ease;
+
+            img {
+                filter: var(--filter-always-white);
+            }
+
+            .primary {
+                font-size: 15px;
+                color: white;
+            }
+
+            &:active {
+                transform: scale(.96);
+            }
+        }
+    }
+
+    .panel-manage-main {
+        padding: 0;
+
+        .panel-section-button {
+            height: 44px;
+
+            svg {
+                height: 20px;
+                width: 20px;
+                filter: var(--filter-primary-icon);
+            }
+
+            .primary {
+                font-weight: 500;
+                font-size: 15px;
+            }
+        }
+    }
+
+    .panel-section-content {
+        height: calc(100% - 132px);
+
+        .scrollbar-container {
+            height: 100%;
+            padding: 8px;
+        }
+    }
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 12px;
+
+        .primary {
+            color: var(--primary-text);
+            line-height: 20px;
+        }
+        .secondary {
+            color: var(--secondary-text);
+            line-height: 16px;
+        }
+    }
+
+    .panel-manage-wrapper {
+        div.panel-section-button {
+            height: 44px;
+            justify-content: space-between;
+
+            .text {
+                margin: 0;
+            }
+
+            .icon {
+                height: 36px;
+                width: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                
+                .image {
+                    background-image: url('http://projetbdd/assets/image/fleche.png');
+                    background-size: auto;
+                    height: 20px;
+                    width: 20px;
+                    display: block;
+                    background-position: 20px 0;
+                    filter: var(--filter-secondary-icon);
+                }
+                
+                .hover {
+                    z-index: 1;
+                    border-radius: 50%;
+                }
+
+                &:hover > .hover {
+                    background-color: var(--hover-overlay);
+                }
+            }
+        }
+
+        &[data-status="hidden"] {
+            div.panel-section-button .image {
+                background-position: 0 0;
+            }
+            a.panel-section-button {
+                display: none;
+            }
+        }
+    }
+
+    .panel-section-separator {
+        padding: 0;
+        margin: 8px 8px;
+    }
+
+    .panel-section-button {
+        padding: 0 8px;
+        cursor: pointer;
+        border-radius: 8px;
+
+        &[data-status="selected"] {
+            background-color: var(--primary-deemphasized-button-background);
+
+            .text .primary, .text .secondary {
+                color: var(--primary-deemphasized-button-text);
+            }
+
+            svg, img {
+                filter: var(--filter-accent);
+            }
+        }
+    }
+}

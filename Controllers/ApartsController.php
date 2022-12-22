@@ -8,6 +8,11 @@ use App\Models\Security_degreeModel;
 
 class ApartsController extends Controller
 {
+    public function __construct()
+    {
+        $this->securityCheck(false);
+    }
+
     public function index() {  }
 
     public function create($idMaison) {

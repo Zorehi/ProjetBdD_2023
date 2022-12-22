@@ -1591,10 +1591,10 @@ button {
 .navLeft .main > a > :last-child {
   inset: -2px 8px;
 }
-.navLeft .main > .home {
+.navLeft .main > #Home {
   margin-bottom: 8px;
 }
-.navLeft .main > .profil {
+.navLeft .main > #Profil {
   margin-top: 4px;
   padding: 6px 18px;
 }
@@ -1884,7 +1884,7 @@ button {
   height: 60px;
   position: relative;
 }
-.panel-section .panel-section-button > .hover {
+.panel-section .panel-section-button .hover {
   position: absolute;
   border-radius: 8px;
   inset: 0;
@@ -2077,15 +2077,16 @@ button {
 }
 .panel-create .create-form {
   display: flex;
-  flex-direction: column-reverse;
   flex-grow: 1;
   flex-shrink: 1;
   position: relative;
 }
 .panel-create .create-form#create-appart {
+  flex-direction: column-reverse;
   max-height: calc(100% - 0px);
 }
 .panel-create .create-form#create-house {
+  flex-direction: column;
   max-height: calc(100% - 56px);
 }
 .panel-create .create-label-list {
@@ -2265,6 +2266,144 @@ button {
 }
 .panel-create .room-row .btn-delete:hover {
   background-color: var(--hover-overlay);
+}
+
+.panel-manage {
+  z-index: -1;
+}
+.panel-manage .panel-manage-header {
+  padding: 8px;
+}
+.panel-manage .panel-manage-profil {
+  display: flex;
+  padding: 8px;
+}
+.panel-manage .panel-manage-profil img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+}
+.panel-manage .panel-manage-profil .text {
+  padding: 2px 0 6px 0;
+}
+.panel-manage .panel-manage-profil .primary {
+  font-size: 17px;
+  font-weight: 600;
+}
+.panel-manage .panel-manage-profil .secondary {
+  font-size: 13px;
+  font-weight: 600;
+}
+.panel-manage .panel-manage-btn-create-container {
+  padding: 8px 8px 0 8px;
+}
+.panel-manage .panel-manage-btn-create-container .panel-section-button {
+  height: 36px;
+  background-color: var(--accent);
+  border-radius: 6px;
+  justify-content: center;
+  transition: transform 50ms ease;
+}
+.panel-manage .panel-manage-btn-create-container .panel-section-button img {
+  filter: var(--filter-always-white);
+}
+.panel-manage .panel-manage-btn-create-container .panel-section-button .primary {
+  font-size: 15px;
+  color: white;
+}
+.panel-manage .panel-manage-btn-create-container .panel-section-button:active {
+  transform: scale(0.96);
+}
+.panel-manage .panel-manage-main {
+  padding: 0;
+}
+.panel-manage .panel-manage-main .panel-section-button {
+  height: 44px;
+}
+.panel-manage .panel-manage-main .panel-section-button svg {
+  height: 20px;
+  width: 20px;
+  filter: var(--filter-primary-icon);
+}
+.panel-manage .panel-manage-main .panel-section-button .primary {
+  font-weight: 500;
+  font-size: 15px;
+}
+.panel-manage .panel-section-content {
+  height: calc(100% - 132px);
+}
+.panel-manage .panel-section-content .scrollbar-container {
+  height: 100%;
+  padding: 8px;
+}
+.panel-manage .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 12px;
+}
+.panel-manage .text .primary {
+  color: var(--primary-text);
+  line-height: 20px;
+}
+.panel-manage .text .secondary {
+  color: var(--secondary-text);
+  line-height: 16px;
+}
+.panel-manage .panel-manage-wrapper div.panel-section-button {
+  height: 44px;
+  justify-content: space-between;
+}
+.panel-manage .panel-manage-wrapper div.panel-section-button .text {
+  margin: 0;
+}
+.panel-manage .panel-manage-wrapper div.panel-section-button .icon {
+  height: 36px;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.panel-manage .panel-manage-wrapper div.panel-section-button .icon .image {
+  background-image: url("http://projetbdd/assets/image/fleche.png");
+  background-size: auto;
+  height: 20px;
+  width: 20px;
+  display: block;
+  background-position: 20px 0;
+  filter: var(--filter-secondary-icon);
+}
+.panel-manage .panel-manage-wrapper div.panel-section-button .icon .hover {
+  z-index: 1;
+  border-radius: 50%;
+}
+.panel-manage .panel-manage-wrapper div.panel-section-button .icon:hover > .hover {
+  background-color: var(--hover-overlay);
+}
+.panel-manage .panel-manage-wrapper[data-status=hidden] div.panel-section-button .image {
+  background-position: 0 0;
+}
+.panel-manage .panel-manage-wrapper[data-status=hidden] a.panel-section-button {
+  display: none;
+}
+.panel-manage .panel-section-separator {
+  padding: 0;
+  margin: 8px 8px;
+}
+.panel-manage .panel-section-button {
+  padding: 0 8px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.panel-manage .panel-section-button[data-status=selected] {
+  background-color: var(--primary-deemphasized-button-background);
+}
+.panel-manage .panel-section-button[data-status=selected] .text .primary, .panel-manage .panel-section-button[data-status=selected] .text .secondary {
+  color: var(--primary-deemphasized-button-text);
+}
+.panel-manage .panel-section-button[data-status=selected] svg, .panel-manage .panel-section-button[data-status=selected] img {
+  filter: var(--filter-accent);
 }
 
 .settings {

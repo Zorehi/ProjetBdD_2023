@@ -12,11 +12,8 @@ class LoginController extends Controller
         if(Form::validate($_POST, ["email", "password"])) {
             // On vérifie le type $_POST
             if ($_POST["type"] === "login") {
-                // On "nettoie" l'adresse email
-                $email = strip_tags($_POST["email"]);
-
                 $user = new UsersModel;
-                $userArray = $user->findByEmailOrTel($email);
+                $userArray = $user->findByEmailOrUsername($_POST["email"], $_POST["email"]);
 
                 if ($userArray) {
                     // L'utilisateur existe
@@ -34,39 +31,29 @@ class LoginController extends Controller
 
 
             } else {
-                if (Form::validate($_POST, ["firstname", "lastname", "day", "month", "year", "sex"])) {
-                    $email = strip_tags($_POST["email"]);
-
+                if (Form::validate($_POST, ["tel", "username", "firstname", "lastname", "day", "month", "year", "id_gender"])) {
                     // On check si l'user existe déjà
                     $user = new UsersModel();
-                    $userArray = $user->findByEmailOrTel($email);
+                    $userArray = $user->findByEmailOrUsername($_POST["email"], $_POST["username"]);
 
                     if (!$userArray) {
                         // On chiffre le mot de passe
                         $pass = password_hash($_POST["password"], PASSWORD_ARGON2I);
-                        $firstname = strip_tags($_POST["firstname"]);
-                        $lastname = strip_tags($_POST["lastname"]);
-                        $sex = strip_tags($_POST["sex"]);
-                        $day = strip_tags($_POST["day"]);
-                        $month = strip_tags($_POST["month"]);
-                        $year = strip_tags($_POST["year"]);
+                        $day = $_POST["day"];
+                        $month = $_POST["month"];
+                        $year = $_POST["year"];
                         // format the date to 'year-month-day'
 			            $birthday = date("Y-m-d", mktime(0, 0, 0, $month, $day, $year));
 
-                        // On check si c'est un email ou numéro de téléphone
-                        if (strstr($email, "@")) {
-                            $user->setEmail($email);
-                        } else {
-                            $user->setTel($email);
-                        }
+                        $user->hydrate($_POST);
 
-                        $user->setPassword($pass)
-                            ->setFirstname($firstname)
-                            ->setLastname($lastname)
-                            ->setBirthday($birthday)
-                            ->setId_gender($sex);
+                        $user->setBirthday($birthday)
+                             ->setPassword($pass);
 
                         $user->create();
+
+                        $userArray = $user->findBy(['email' => $user->getEmail()]);
+                        $user->setId_users($userArray['id_users']);
 
                         $user->setSession();
                         header("Location: /");

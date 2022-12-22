@@ -2,7 +2,6 @@ const scrollbarContainer = document.getElementById('scrollbar-2');
 const scrollbar_2 = new ScrollBar(scrollbarContainer, { offsetContainer: -20, offsetContent: 20});
 scrollbar_2.init();
 document.getElementById('navLeft').dataset.always = 'small';
-document.querySelector('[data-status=selected]').dataset.status = 'unselected';
 
 const filterElement = {};
 const panelTableFfilterContent = document.getElementsByClassName('panelTable-filter-content')[0];
@@ -15,10 +14,6 @@ function deleteRow(table, id, row) {
     datas.append('deleteID', id);
     datas.append('type', 'delete');
     
-    row.remove();
-    
-    scrollbar_2.refresh();
-    
     $.ajax({
         type: 'POST',
         url: 'tables/?name='+table,
@@ -28,6 +23,14 @@ function deleteRow(table, id, row) {
         cache: false,
         contentType: false,
         processData: false,
+        on
+    })
+    .done(function() {
+        row.remove();
+        scrollbar_2.refresh();
+    })
+    .fail(function() {
+        alert('Impossible de supprimer la ligne');
     });
 }
 

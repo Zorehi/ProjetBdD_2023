@@ -7,6 +7,11 @@ use App\Models\UsersModel;
 
 class SettingsController extends Controller
 {
+    public function __construct()
+    {
+        $this->securityCheck(false);
+    }
+
     public function index($page) {
         $user = new UsersModel;
         $user->hydrate($user->findById($_SESSION['user']['id']));

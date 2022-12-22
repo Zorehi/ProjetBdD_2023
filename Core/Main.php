@@ -33,9 +33,15 @@ use App\Models\UsersModel;
             }
 
             if (isset($_SESSION['user'])) {
-                $user = new UsersModel();
-                $user->hydrate($user->findById($_SESSION['user']['id']));
-                $user->setSession();
+                try {
+                    $user = new UsersModel();
+                    $user->hydrate($user->findById($_SESSION['user']['id']));
+                    $user->setSession();
+                } catch (\Throwable $th) {
+                    unset($_SESSION['user']);
+                    header('Location: /');
+                    exit;
+                }
             }
 
             // On retire le "trailing slash" (dernier slash) éventuel de l'URL

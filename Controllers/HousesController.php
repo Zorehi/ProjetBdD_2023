@@ -2,12 +2,20 @@
 
 namespace App\Controllers;
 
-use App\Core\Form;
-use App\Models\UsersModel;
-
 class HousesController extends Controller
 {
-    public function index() {  }
+    public function __construct()
+    {
+        $this->securityCheck(false);
+    }
+    
+    public function index($id) {
+        $house = new HouseModel();
+        $house->hydrate($house->findById($id));
+        $pageName = "{$house->getHouse_name()} | Projet BdD";
+
+        $this->render('/houses/index', compact('pageName', 'house'));
+    }
 
     // Permet de naviguer vers d'autres URL
     public function create() {

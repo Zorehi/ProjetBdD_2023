@@ -28,6 +28,10 @@ class UsersModel extends Model
         return $this->requete("SELECT * FROM {$this->table} WHERE email = ? OR tel = ?", [$email, $email])->fetch();
     }
 
+    public function findByEmailOrUsername($email, $username) {
+        return $this->requete("SELECT * FROM {$this->table} WHERE email = ? OR username = ?", [$email, $username])->fetch();
+    }
+
     public function setSession() {
         $_SESSION["user"] = [
             "id" => $this->id_users,
