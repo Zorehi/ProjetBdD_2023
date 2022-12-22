@@ -43,7 +43,20 @@ class HousesController extends Controller
             {
                 // La maison existe déja on verra la gestion plus tard 
             }
+        // On récupère les infos du formulaires dans des variables 
+        $house_name = $_POST["house_name"]
+        $isolation_degree = $_POST["isolation_degree"]
+        $eval_eco = $_POST["eval_eco"]
+        $citizen_degree = $_POST["citizen_degree"]
+        $street = $_POST["street"]
+        $house_number = $_POST["house_number"]
+        $id_city = $_POST["city_name"]
         
+        $house->create();
+        $houseArray = $house->findBy('house_Name'); // Celle la à vérifier
+
+        $userArray = $user->findBy(['email' => $user->getEmail()]);
+        $user->setId_users($userArray['id_users']);
 
        }
 
