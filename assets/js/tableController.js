@@ -14,10 +14,6 @@ function deleteRow(table, id, row) {
     datas.append('deleteID', id);
     datas.append('type', 'delete');
     
-    row.remove();
-    
-    scrollbar_2.refresh();
-    
     $.ajax({
         type: 'POST',
         url: 'tables/?name='+table,
@@ -27,6 +23,14 @@ function deleteRow(table, id, row) {
         cache: false,
         contentType: false,
         processData: false,
+        on
+    })
+    .done(function() {
+        row.remove();
+        scrollbar_2.refresh();
+    })
+    .fail(function() {
+        alert('Impossible de supprimer la ligne');
     });
 }
 

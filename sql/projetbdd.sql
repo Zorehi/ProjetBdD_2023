@@ -11,7 +11,7 @@ CREATE TABLE apartment_type(
    `id_apartment_type` INT AUTO_INCREMENT,
    `description` VARCHAR(50)  NOT NULL,
    PRIMARY KEY(`id_apartment_type`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table room_typea
@@ -22,7 +22,7 @@ CREATE TABLE room_type(
    `id_room_type` INT AUTO_INCREMENT,
    `description` VARCHAR(50)  NOT NULL,
    PRIMARY KEY(`id_room_type`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table region
@@ -33,7 +33,7 @@ CREATE TABLE region(
    `id_region` INT AUTO_INCREMENT,
    `region_name` VARCHAR(50)  NOT NULL,
    PRIMARY KEY(`id_region`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table resource
@@ -47,7 +47,7 @@ CREATE TABLE resource(
    `min_value` DOUBLE NOT NULL,
    `max_value` DOUBLE NOT NULL,
    PRIMARY KEY(`id_ressource`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table substance
@@ -63,7 +63,7 @@ CREATE TABLE `substance`(
    `critical_value` DOUBLE NOT NULL,
    `model_value` DOUBLE NOT NULL,
    PRIMARY KEY(`id_substance`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table security_degree
@@ -74,7 +74,7 @@ CREATE TABLE `security_degree`(
    `id_security_degree` INT AUTO_INCREMENT,
    `description` VARCHAR(50)  NOT NULL,
    PRIMARY KEY(`id_security_degree`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table video
@@ -85,7 +85,7 @@ CREATE TABLE `video`(
    `id_video` INT AUTO_INCREMENT,
    `web_adress` VARCHAR(70)  NOT NULL,
    PRIMARY KEY(`id_video`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table gender
@@ -96,7 +96,7 @@ CREATE TABLE `gender`(
    `id_gender` INT AUTO_INCREMENT,
    `description` VARCHAR(50) ,
    PRIMARY KEY(`id_gender`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table users
@@ -118,7 +118,7 @@ CREATE TABLE `users`(
    `id_gender` INT NOT NULL,
    PRIMARY KEY(`id_users`),
    FOREIGN KEY(`id_gender`) REFERENCES gender(`id_gender`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table department
@@ -132,7 +132,7 @@ CREATE TABLE department(
    `id_region` INT NOT NULL,
    PRIMARY KEY(`id_department`),
    FOREIGN KEY(`id_region`) REFERENCES region(`id_region`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table device_type
@@ -145,7 +145,7 @@ CREATE TABLE device_type(
    `id_video` INT NOT NULL,
    PRIMARY KEY(`id_device_type`),
    FOREIGN KEY(`id_video`) REFERENCES video(`id_video`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table city
@@ -159,7 +159,7 @@ CREATE TABLE city(
    `id_department` INT NOT NULL,
    PRIMARY KEY(`id_city`),
    FOREIGN KEY(`id_department`) REFERENCES department(`id_department`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table house
@@ -177,7 +177,7 @@ CREATE TABLE house(
    `id_city` INT NOT NULL,
    PRIMARY KEY(`id_house`),
    FOREIGN KEY(`id_city`) REFERENCES city(`id_city`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table apartment
@@ -197,7 +197,7 @@ CREATE TABLE apartment(
    FOREIGN KEY(`id_security_degree`) REFERENCES security_degree(`id_security_degree`),
    FOREIGN KEY(`id_house`) REFERENCES house(`id_house`),
    FOREIGN KEY(`id_apartment_type`) REFERENCES apartment_type(`id_apartment_type`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table room
@@ -212,7 +212,7 @@ CREATE TABLE room(
    PRIMARY KEY(`id_room`),
    FOREIGN KEY(`id_room_type`) REFERENCES room_type(`id_room_type`),
    FOREIGN KEY(`id_apartment`) REFERENCES apartment(`id_apartment`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table device
@@ -227,7 +227,7 @@ CREATE TABLE device(
    `id_device_type` INT NOT NULL,
    PRIMARY KEY(`id_device`),
    FOREIGN KEY(`id_device_type`) REFERENCES device_type(`id_device_type`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table owner
@@ -242,7 +242,7 @@ CREATE TABLE owner(
    PRIMARY KEY(`id_house`, `from_date`),
    FOREIGN KEY(`id_house`) REFERENCES house(`id_house`),
    FOREIGN KEY(`id_users`) REFERENCES users(`id_users`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table tenant
@@ -257,7 +257,7 @@ CREATE TABLE tenant(
    PRIMARY KEY(`id_apartment`, `from_date`),
    FOREIGN KEY(`id_apartment`) REFERENCES apartment(`id_apartment`),
    FOREIGN KEY(`id_users`) REFERENCES users(`id_users`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table has_room_type
@@ -270,7 +270,7 @@ CREATE TABLE has_room_type(
    PRIMARY KEY(`id_apartment_type`, `id_room_type`),
    FOREIGN KEY(`id_apartment_type`) REFERENCES apartment_type(`id_apartment_type`),
    FOREIGN KEY(`id_room_type`) REFERENCES room_type(`id_room_type`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table emit
@@ -283,7 +283,7 @@ CREATE TABLE emit(
    PRIMARY KEY(`id_device_type`, `id_substance`),
    FOREIGN KEY(`id_device_type`) REFERENCES device_type(`id_device_type`),
    FOREIGN KEY(`id_substance`) REFERENCES substance(`id_substance`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table consume
@@ -296,7 +296,7 @@ CREATE TABLE consume(
    PRIMARY KEY(`id_device_type`, `id_ressource`),
    FOREIGN KEY(`id_device_type`) REFERENCES device_type(`id_device_type`),
    FOREIGN KEY(`id_ressource`) REFERENCES resource(`id_ressource`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table has_device
@@ -309,7 +309,7 @@ CREATE TABLE has_device(
    PRIMARY KEY(`id_room`, `id_device`),
    FOREIGN KEY(`id_room`) REFERENCES room(`id_room`),
    FOREIGN KEY(`id_device`) REFERENCES device(`id_device`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table turn_on
@@ -322,7 +322,7 @@ CREATE TABLE turn_on(
    `to_date` DATETIME,
    PRIMARY KEY(`id_device`, `from_date`),
    FOREIGN KEY(`id_device`) REFERENCES device(`id_device`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table emission
@@ -336,7 +336,7 @@ CREATE TABLE emission(
    PRIMARY KEY(`id_device`, `id_substance`),
    FOREIGN KEY(`id_device`) REFERENCES device(`id_device`),
    FOREIGN KEY(`id_substance`) REFERENCES substance(`id_substance`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table consumption
@@ -350,4 +350,4 @@ CREATE TABLE consumption(
    PRIMARY KEY(`id_device`, `id_ressource`),
    FOREIGN KEY(`id_device`) REFERENCES device(`id_device`),
    FOREIGN KEY(`id_ressource`) REFERENCES resource(`id_ressource`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
