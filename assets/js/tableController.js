@@ -22,8 +22,7 @@ function deleteRow(table, id, row) {
         timeout: 120000, //2 Minutes
         cache: false,
         contentType: false,
-        processData: false,
-        on
+        processData: false
     })
     .done(function() {
         row.remove();

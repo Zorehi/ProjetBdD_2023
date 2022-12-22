@@ -48,9 +48,9 @@
                         </div>
                         <div class="hover"></div>
                     </div>
-                    <a href="" class="panel-section-button" data-status="unselected">
+                    <a href="houses/?id=<?= $house->getId_house() ?>&page=house_aparts" class="panel-section-button" data-status="unselected">
                         <div class="text unselectable">
-                            <span class="primary">Appartement de la maison</span>
+                            <span class="primary">Appartements de la maison</span>
                             <span class="secondary">1 appartement</span>
                         </div>
                         <div class="hover"></div>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="hover"></div>
                     </div>
-                    <a href="" class="panel-section-button" data-status="unselected">
+                    <a href="houses/?id=<?= $house->getId_house() ?>&page=edit" class="panel-section-button" data-status="unselected">
                         <div class="text unselectable">
                             <span class="primary">Paramètres de la maison</span>
                             <span class="secondary">Gérez le nom et adresse</span>
@@ -86,13 +86,13 @@
                         </div>
                         <div class="hover"></div>
                     </div>
-                    <a href="" class="panel-section-button" data-status="unselected">
+                    <a href="houses/?id=<?= $house->getId_house() ?>&page=consume" class="panel-section-button" data-status="unselected">
                         <div class="text unselectable">
                             <span class="primary">Consommation</span>
                         </div>
                         <div class="hover"></div>
                     </a>
-                    <a href="" class="panel-section-button" data-status="unselected">
+                    <a href="houses/?id=<?= $house->getId_house() ?>&page=emit" class="panel-section-button" data-status="unselected">
                         <div class="text unselectable">
                             <span class="primary">Emission</span>
                         </div>
