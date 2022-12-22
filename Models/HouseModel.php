@@ -180,6 +180,7 @@ class HouseModel extends Model
         return $this;
     }
 
+
     static $info_tables = [
         'id_house' => [
             'elementHTML' => 'input',
