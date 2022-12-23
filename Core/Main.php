@@ -90,6 +90,10 @@ use App\Models\UsersModel;
 
                 // On récupère le 2ieme paramètre d'URL
                 $action = (isset($params[0])) ? array_shift($params) : 'index';
+                if (intval($action)) {
+                    array_unshift($variables, $action);
+                    $action = (isset($params[0])) ? array_shift($params) : 'index';
+                }
 
                 if (method_exists($controller, $action)) {
                     // Si il y a des variables on les passent à la méthode
