@@ -9,26 +9,31 @@ for (const label of panelTableFfilterContent.children) {
     filterElement[label.getAttribute('for')] = label.querySelector('#'+label.getAttribute('for'));
 }
 
-function deleteRow(table, id, row) {
+/**
+ * 
+ * @param {String} type 
+ * @param {String} table 
+ * @param {String} id 
+ * @param {String} row 
+ */
+function deleteRow(type, table, id, row) {
     const datas = new FormData();
     datas.append('deleteID', id);
     datas.append('type', 'delete');
     
-    $.ajax({
+    var requete = $.ajax({
         type: 'POST',
-        url: 'tables/?name='+table,
+        url: 'tables/?type='+type+'&name='+table,
         data: datas,
-        dataType: 'json',
         timeout: 120000, //2 Minutes
-        cache: false,
         contentType: false,
         processData: false
-    })
-    .done(function() {
+    });
+    requete.done((response) => {
         row.remove();
         scrollbar_2.refresh();
-    })
-    .fail(function() {
+    });
+    requete.fail(() => {
         alert('Impossible de supprimer la ligne');
     });
 }

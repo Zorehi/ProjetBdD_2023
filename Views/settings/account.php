@@ -139,7 +139,6 @@
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
     document.getElementById('btn-account').setAttribute('aria-current', 'page');
-    document.querySelector('[data-status=selected]').dataset.status = 'unselected';
     const account = document.getElementById('account');
 
     const modifyList = document.getElementsByClassName('settings-modify');

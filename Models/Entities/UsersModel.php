@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class UsersModel extends Model
+use App\Models\Entity;
+
+class UsersModel extends Entity
 {
     protected $id_users;
     protected $username; 

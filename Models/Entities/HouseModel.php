@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class HouseModel extends Model
+use App\Models\Entity;
+
+class HouseModel extends Entity
 {
     protected $id_house;
     protected $house_name;

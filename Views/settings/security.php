@@ -57,7 +57,6 @@
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
     document.getElementById('btn-security').setAttribute('aria-current', 'page');
-    document.querySelector('[data-status=selected]').dataset.status = 'unselected';
     const security = document.getElementById('security');
 
     const modifyList = document.getElementsByClassName('settings-modify');

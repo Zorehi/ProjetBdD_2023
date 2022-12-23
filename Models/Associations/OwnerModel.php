@@ -1,37 +1,39 @@
 <?php
-namespace App\Models;
+namespace App\Models\Associations;
 
-class Turn_onModel extends Model
+use App\Models\Association;
+
+class OwnerModel extends Association
 {
-    protected $id_device;
+    protected $id_house;
     protected $from_date;
     protected $to_date;
- 
+    protected $id_users;
 
     public function __construct()
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "";
+        $this->idNames = ['id_house', 'from_date'];
     }
-
+    
 
     /**
-     * Get the value of to_date
+     * Get the value of id_house
      */ 
-    public function getTo_date()
+    public function getId_house()
     {
-        return $this->to_date;
+        return $this->id_house;
     }
 
     /**
-     * Set the value of to_date
+     * Set the value of id_house
      *
      * @return  self
      */ 
-    public function setTo_date($to_date)
+    public function setId_house($id_house)
     {
-        $this->to_date = $to_date;
+        $this->id_house = $id_house;
 
         return $this;
     }
@@ -57,31 +59,51 @@ class Turn_onModel extends Model
     }
 
     /**
-     * Get the value of id_device
+     * Get the value of to_date
      */ 
-    public function getId_device()
+    public function getTo_date()
     {
-        return $this->id_device;
+        return $this->to_date;
     }
 
     /**
-     * Set the value of id_device
+     * Set the value of to_date
      *
      * @return  self
      */ 
-    public function setId_device($id_device)
+    public function setTo_date($to_date)
     {
-        $this->id_device = $id_device;
+        $this->to_date = $to_date;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_users
+     */ 
+    public function getId_users()
+    {
+        return $this->id_users;
+    }
+
+    /**
+     * Set the value of id_users
+     *
+     * @return  self
+     */ 
+    public function setId_users($id_users)
+    {
+        $this->id_users = $id_users;
 
         return $this;
     }
 
     static $info_tables = [
-        'id_device' => [
+        'id_house' => [
             'elementHTML' => 'select',
             'inputType' => null,
             'is_disabled' => '',
-            'name' => 'device_name'
+            'name' => 'house_name'
         ],
         'from_date' => [
             'elementHTML' => 'input',
@@ -92,6 +114,12 @@ class Turn_onModel extends Model
             'elementHTML' => 'input',
             'inputType' => 'date',
             'is_disabled' => ''
+        ],
+        'id_users' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'username'
         ]
     ];
 }

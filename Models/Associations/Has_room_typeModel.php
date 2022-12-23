@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Associations;
 
-class Has_room_typeModel extends Model
+use App\Models\Association;
+
+class Has_room_typeModel extends Association
 {
     protected $id_apartment_type;
     protected $id_room_type;
@@ -11,7 +13,7 @@ class Has_room_typeModel extends Model
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "id_gender";
+        $this->idNames = ['id_apartment_type', 'id_room_type'];
     }
     
 
@@ -60,7 +62,7 @@ class Has_room_typeModel extends Model
             'elementHTML' => 'select',
             'inputType' => null,
             'is_disabled' => '',
-            'name' => ''
+            'name' => 'description'
         ],
         'id_room_type' => [
             'elementHTML' => 'select',

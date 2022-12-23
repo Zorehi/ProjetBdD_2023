@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class VideoModel extends Model
+use App\Models\Entity;
+
+class VideoModel extends Entity
 {
     protected $id_video;
     protected $web_adress; 

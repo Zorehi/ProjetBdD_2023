@@ -27,13 +27,27 @@
                 <div class="panel-section-list-container scrollbar-container" id="scrollbar-1">
                     <div class="scrollbar-content" data-transition="yes">
                     <?php
-                        $directory = ROOT.'/Models';
-                        $scanned_directory = array_diff(scandir($directory), array('..', '.', 'Model.php', 'Association.php'));
+                        $directory = ROOT.'/Models/Entities';
+                        $scanned_directory = array_diff(scandir($directory), array('..', '.'));
                         foreach ($scanned_directory as $file) {
                             $tablename = substr($file, 0, strpos($file, '.'));
                             $displayname = str_replace('Model', '', $tablename);
                         ?>
-                        <a class="panel-section-button" href="tables/?name=<?= $tablename ?>">
+                        <a class="panel-section-button" href="tables/?type=Entities&name=<?= $displayname ?>">
+                            <div class="text">
+                                <span><?= $displayname ?></span>
+                            </div>
+                            <div class="hover"></div>
+                        </a>
+                    <?php } ?>
+                    <?php
+                        $directory = ROOT.'/Models/Associations';
+                        $scanned_directory = array_diff(scandir($directory), array('..', '.'));
+                        foreach ($scanned_directory as $file) {
+                            $tablename = substr($file, 0, strpos($file, '.'));
+                            $displayname = str_replace('Model', '', $tablename);
+                        ?>
+                        <a class="panel-section-button" href="tables/?type=Associations&name=<?= $displayname ?>">
                             <div class="text">
                                 <span><?= $displayname ?></span>
                             </div>

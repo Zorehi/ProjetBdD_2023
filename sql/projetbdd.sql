@@ -41,12 +41,12 @@ CREATE TABLE region(
 
 DROP TABLE IF EXISTS `resource`;
 CREATE TABLE resource(
-   `id_ressource` INT AUTO_INCREMENT,
+   `id_resource` INT AUTO_INCREMENT,
    `name` VARCHAR(50)  NOT NULL,
    `description` VARCHAR(50)  NOT NULL,
    `min_value` DOUBLE NOT NULL,
    `max_value` DOUBLE NOT NULL,
-   PRIMARY KEY(`id_ressource`)
+   PRIMARY KEY(`id_resource`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
@@ -292,10 +292,10 @@ CREATE TABLE emit(
 DROP TABLE IF EXISTS `consume`;
 CREATE TABLE consume(
    `id_device_type` INT,
-   `id_ressource` INT,
-   PRIMARY KEY(`id_device_type`, `id_ressource`),
+   `id_resource` INT,
+   PRIMARY KEY(`id_device_type`, `id_resource`),
    FOREIGN KEY(`id_device_type`) REFERENCES device_type(`id_device_type`),
-   FOREIGN KEY(`id_ressource`) REFERENCES resource(`id_ressource`)
+   FOREIGN KEY(`id_resource`) REFERENCES resource(`id_resource`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
@@ -345,9 +345,9 @@ CREATE TABLE emission(
 DROP TABLE IF EXISTS `consumption`;
 CREATE TABLE consumption(
    `id_device` INT,
-   `id_ressource` INT,
+   `id_resource` INT,
    `consumption_per_hour` DOUBLE NOT NULL,
-   PRIMARY KEY(`id_device`, `id_ressource`),
+   PRIMARY KEY(`id_device`, `id_resource`),
    FOREIGN KEY(`id_device`) REFERENCES device(`id_device`),
-   FOREIGN KEY(`id_ressource`) REFERENCES resource(`id_ressource`)
+   FOREIGN KEY(`id_resource`) REFERENCES resource(`id_resource`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

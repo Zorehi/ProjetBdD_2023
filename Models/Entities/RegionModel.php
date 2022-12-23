@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class RegionModel extends Model
+use App\Models\Entity;
+
+class RegionModel extends Entity
 {
     protected $id_region;
     protected $region_name;

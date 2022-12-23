@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Associations;
 
-class Has_deviceModel extends Model
+use App\Models\Association;
+
+class Has_deviceModel extends Association
 {
     protected $id_room;
     protected $id_device;
@@ -11,7 +13,7 @@ class Has_deviceModel extends Model
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "id_gender";
+        $this->idNames = ['id_room', 'id_device'];
     }
    
 

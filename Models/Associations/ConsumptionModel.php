@@ -1,10 +1,12 @@
 <?php
-namespace App\Models;
+namespace App\Models\Associations;
 
-class ConsumptionModel extends Model
+use App\Models\Association;
+
+class ConsumptionModel extends Association
 {
     protected $id_device;
-    protected $id_ressource;
+    protected $id_resource;
     protected $consumption_per_hour;
  
 
@@ -12,7 +14,7 @@ class ConsumptionModel extends Model
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "";
+        $this->idNames = ['id_device', 'id_resource'];
     }
 
     /**
@@ -36,21 +38,21 @@ class ConsumptionModel extends Model
     }
 
     /**
-     * Get the value of id_ressource
+     * Get the value of id_resource
      */ 
-    public function getId_ressource()
+    public function getId_resource()
     {
-        return $this->id_ressource;
+        return $this->id_resource;
     }
 
     /**
-     * Set the value of id_ressource
+     * Set the value of id_resource
      *
      * @return  self
      */ 
-    public function setId_ressource($id_ressource)
+    public function setId_resource($id_resource)
     {
-        $this->id_ressource = $id_ressource;
+        $this->id_resource = $id_resource;
 
         return $this;
     }
@@ -82,7 +84,7 @@ class ConsumptionModel extends Model
             'is_disabled' => '',
             'name' => 'device_name'
         ],
-        'id_ressource' => [
+        'id_resource' => [
             'elementHTML' => 'select',
             'inputType' => null,
             'is_disabled' => '',

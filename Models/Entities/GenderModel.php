@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class GenderModel extends Model
+use App\Models\Entity;
+
+class GenderModel extends Entity
 {
     protected $id_gender;
     protected $description;

@@ -53,13 +53,13 @@ INSERT INTO `region` VALUES (22, 'Rhône-Alpes');
 --  Ligne par défaut de la table resource
 --  --------------------------------------------------------------------------------------
 
-INSERT INTO `resource` (`id_ressource`, `name`, `description`, `min_value`, `max_value`) 
+INSERT INTO `resource` (`id_resource`, `name`, `description`, `min_value`, `max_value`) 
 VALUES (NULL, 'Electricite', 'Electricite', '0', '10000');
 
-INSERT INTO `resource` (`id_ressource`, `name`, `description`, `min_value`, `max_value`) 
+INSERT INTO `resource` (`id_resource`, `name`, `description`, `min_value`, `max_value`) 
 VALUES (NULL, 'Gaz', 'Gaz', '0', '10000');
 
-INSERT INTO `resource` (`id_ressource`, `name`, `description`, `min_value`, `max_value`) 
+INSERT INTO `resource` (`id_resource`, `name`, `description`, `min_value`, `max_value`) 
 VALUES (NULL, 'Eau', 'Eau', '0', '10000');
 
 

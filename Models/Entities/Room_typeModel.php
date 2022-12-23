@@ -1,35 +1,36 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class Security_degreeModel extends Model
+use App\Models\Entity;
+
+class Room_typeModel extends Entity
 {
-    protected $id_security_degree;
+    protected $id_room_type;
     protected $description;
-
 
     public function __construct()
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "id_security_degree";
+        $this->idName = "id_room_type";
     }
 
     /**
-     * Get the value of id_security_degree
+     * Get the value of id_room_type
      */ 
-    public function getId_security_degree()
+    public function getId_room_type()
     {
-        return $this->id_security_degree;
+        return $this->id_room_type;
     }
 
     /**
-     * Set the value of id_security_degree
+     * Set the value of id_room_type
      *
      * @return  self
      */ 
-    public function setId_security_degree($id_security_degree)
+    public function setId_room_type($id_room_type)
     {
-        $this->id_security_degree = $id_security_degree;
+        $this->id_room_type = $id_room_type;
 
         return $this;
     }
@@ -55,7 +56,7 @@ class Security_degreeModel extends Model
     }
 
     static $info_tables = [
-        'id_security_degree' => [
+        'id_room_type' => [
             'elementHTML' => 'input',
             'inputType' => 'text',
             'is_disabled' => 'disabled'

@@ -256,7 +256,9 @@ a {
 input {
   outline: none;
   text-rendering: auto;
-  appearance: auto;
+  -webkit-appearance: auto;
+     -moz-appearance: auto;
+          appearance: auto;
   text-align: start;
 }
 
@@ -265,7 +267,8 @@ select {
   align-items: center;
   text-align: start;
   -webkit-appearance: none;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   background-image: var(--select-bg-url);
   background-repeat: no-repeat;
   background-size: 14px;
@@ -300,7 +303,9 @@ button {
 
 .unselectable {
   -webkit-user-select: none;
-  user-select: none;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
 }
 
 @font-face {
@@ -516,6 +521,12 @@ button {
   line-height: 16px;
   padding: 11px;
   outline: none;
+}
+.register-input::-moz-placeholder {
+  color: #8D949E !important;
+}
+.register-input:-ms-input-placeholder {
+  color: #8D949E !important;
 }
 .register-input::placeholder {
   color: #8D949E !important;
@@ -997,6 +1008,8 @@ button {
   transition: opacity 0.3s ease 0s, transform 0.5s cubic-bezier(0.14, 0.82, 0.51, 0.99);
 }
 .scrollbar-container .scrollbar-content {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   overflow: visible;
   transition: transform 0.5s cubic-bezier(0.14, 0.82, 0.51, 0.99);
@@ -1055,6 +1068,8 @@ button {
   border-radius: 8px;
   background-color: var(--card-background);
   padding: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 .table .modify-card[data-status=hidden] {
@@ -1064,11 +1079,15 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 .table .modify-wrapper {
   display: flex;
   flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 .table .modify-label {
@@ -1260,7 +1279,6 @@ button {
   border-radius: 50%;
 }
 .card-profil__body > div > :first-child > div > i {
-  -webkit-filter: var(--filter-primary-icon);
   filter: var(--filter-primary-icon);
 }
 .card-profil__body > div > :first-child > span {
@@ -1272,7 +1290,6 @@ button {
   color: var(--primary-text);
 }
 .card-profil__body > div > :first-child > i {
-  -webkit-filter: var(--filter-primary-icon);
   filter: var(--filter-primary-icon);
 }
 .card-profil__body > div > :first-child:hover {
@@ -1292,7 +1309,6 @@ button {
   display: flex;
 }
 .card-profil__display-head > div > i {
-  -webkit-filter: var(--filter-primary-icon);
   filter: var(--filter-primary-icon);
 }
 .card-profil__display-head > div:hover {
@@ -1323,7 +1339,6 @@ button {
   justify-content: center;
 }
 .card-profil__display-body > :first-child > .icon > i {
-  -webkit-filter: var(--filter-primary-icon);
   filter: var(--filter-primary-icon);
 }
 .card-profil__display-body > :first-child > :last-child {
@@ -1370,11 +1385,9 @@ button {
   color: var(--primary-text);
 }
 .card-profil__display-body > :last-child > label > i {
-  -webkit-filter: var(--filter-secondary-icon);
   filter: var(--filter-secondary-icon);
 }
 .card-profil__display-body > :last-child > label > i.checked {
-  -webkit-filter: var(--filter-accent);
   filter: var(--filter-accent);
 }
 .card-profil__display-body > :last-child > label:hover {
@@ -1460,6 +1473,12 @@ button {
   font-size: 15px;
   width: 100%;
   color: var(--primary-text);
+}
+.navTop .navTop-searchBar label > input::-moz-placeholder {
+  color: var(--secondary-text);
+}
+.navTop .navTop-searchBar label > input:-ms-input-placeholder {
+  color: var(--secondary-text);
 }
 .navTop .navTop-searchBar label > input::placeholder {
   color: var(--secondary-text);
@@ -1579,7 +1598,6 @@ button {
   background-color: var(--secondary-button-background);
 }
 .navLeft .navLeft-section > :first-child i, .navLeft .navLeft-section > :first-child img {
-  -webkit-filter: var(--filter-primary-icon);
   filter: var(--filter-primary-icon);
 }
 .navLeft .main {
@@ -1627,7 +1645,6 @@ button {
   background-color: var(--hover-overlay);
 }
 .navLeft .navLeft-button i {
-  -webkit-filter: var(--filter-primary-icon);
   filter: var(--filter-primary-icon);
 }
 .navLeft .navLeft-button[data-status=selected] > .show-selected {
@@ -1645,7 +1662,6 @@ button {
   background-color: var(--primary-deemphasized-button-background);
 }
 .navLeft .navLeft-button[data-status=selected] img, .navLeft .navLeft-button[data-status=selected] i {
-  -webkit-filter: var(--filter-accent);
   filter: var(--filter-accent);
 }
 
@@ -1690,7 +1706,6 @@ button {
   justify-content: center;
 }
 .panelHouse #searchHousesButton > .img > i {
-  -webkit-filter: var(--filter-always-white);
   filter: var(--filter-always-white);
 }
 .panelHouse #searchHousesButton > .text > :first-child {
@@ -1742,7 +1757,6 @@ button {
   transform: scale(0.96);
 }
 .panelHouse .panelHouse-button > .pin-icon > i {
-  -webkit-filter: var(--filter-primary-icon);
   filter: var(--filter-primary-icon);
 }
 .panelHouse .panelHouse-button > .pin-icon > div {
@@ -1852,8 +1866,20 @@ button {
   color: var(--primary-text);
   flex-grow: 1;
 }
+.panel-section .panel-section-search > label > input::-moz-placeholder {
+  color: var(--secondary-text);
+}
+.panel-section .panel-section-search > label > input:-ms-input-placeholder {
+  color: var(--secondary-text);
+}
 .panel-section .panel-section-search > label > input::placeholder {
   color: var(--secondary-text);
+}
+.panel-section .panel-section-search > label > input:focus::-moz-placeholder {
+  color: var(--comment-placeholder-focus);
+}
+.panel-section .panel-section-search > label > input:focus:-ms-input-placeholder {
+  color: var(--comment-placeholder-focus);
 }
 .panel-section .panel-section-search > label > input:focus::placeholder {
   color: var(--comment-placeholder-focus);
@@ -1927,7 +1953,6 @@ button {
   margin: 0 3px;
 }
 .panel-section .panel-section-create > a > span > i {
-  -webkit-filter: var(--filter-accent);
   filter: var(--filter-accent);
   margin: 0 3px;
 }
@@ -2597,6 +2622,8 @@ button {
   font-weight: 400;
   line-height: 20px;
   text-align: left;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 .settings#security .settings-modify .settings-modify-text h3 {
@@ -2691,6 +2718,4 @@ button {
   font-weight: 400;
   text-decoration: inherit;
   text-align: right;
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=index.css.map */

@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Models\Apartment_typeModel;
-use App\Models\Room_typeModel;
-use App\Models\Security_degreeModel;
+use App\Models\Entities\Apartment_typeModel;
+use App\Models\Entities\Room_typeModel;
+use App\Models\Entities\Security_degreeModel;
 
 class ApartsController extends Controller
 {

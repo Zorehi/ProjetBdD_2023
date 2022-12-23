@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class Device_typeModel extends Model
+use App\Models\Entity;
+
+class Device_typeModel extends Entity
 {
     protected $id_device_type;
     protected $type_name;

@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class CityModel extends Model
+use App\Models\Entity;
+
+class CityModel extends Entity
 {
     protected $id_city;
     protected $postcode;

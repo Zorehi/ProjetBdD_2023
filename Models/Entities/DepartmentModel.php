@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class DepartmentModel extends Model
+use App\Models\Entity;
+
+class DepartmentModel extends Entity
 {
     protected $id_department;
     protected $department_code;

@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Form;
-use App\Models\HouseModel;
+use App\Models\Entities\HouseModel;
 
 class HousesController extends Controller
 {

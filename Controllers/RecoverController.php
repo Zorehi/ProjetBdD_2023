@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Form;
-use App\Models\UsersModel;
+use App\Models\Entities\UsersModel;
 
 class RecoverController extends Controller
 {

@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class RoomModel extends Model
+use App\Models\Entity;
+
+class RoomModel extends Entity
 {
     protected $id_room;
     protected $room_name;

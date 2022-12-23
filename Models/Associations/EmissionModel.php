@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Associations;
 
-class EmissionModel extends Model
+use App\Models\Association;
+
+class EmissionModel extends Association
 {
     protected $id_device;
     protected $id_substance;
@@ -12,7 +14,7 @@ class EmissionModel extends Model
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "";
+        $this->idNames = ['id_device', 'id_substance'];
     }
 
 

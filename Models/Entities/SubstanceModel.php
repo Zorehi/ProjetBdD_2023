@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class SubstanceModel extends Model
+use App\Models\Entity;
+
+class SubstanceModel extends Entity
 {
     protected $id_substance;
     protected $name;

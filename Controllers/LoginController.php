@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Form;
-use App\Models\UsersModel;
+use App\Models\Entities\UsersModel;
 
 class LoginController extends Controller
 {
@@ -24,6 +24,7 @@ class LoginController extends Controller
                         // Le mot de passe est bon
                         $user->setSession();
                         header("Location: /");
+                        exit;
                     } else {
                         // Mauvais mot de passe
                     }
@@ -57,6 +58,7 @@ class LoginController extends Controller
 
                         $user->setSession();
                         header("Location: /");
+                        exit;
                     }
                 }
             }
@@ -80,6 +82,7 @@ class LoginController extends Controller
                 $user->hydrate($userArray);
                 $idName = 'get' . ucfirst($user->getIdName());
                 header("Location: /recover/initiate/?id=".$user->$idName());
+                exit;
             }
 
         }

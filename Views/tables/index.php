@@ -10,14 +10,24 @@
             </li>
             <div class="scrollbar-container" id="scrollbar-2">
                 <div class="scrollbar-content" data-transition="yes">
-                <?php foreach ($lines as $line) { ?>
+                <?php foreach ($lines as $line) {
+                    if ($table->getType() == 'Associations') {
+                        $valeur_id = [];
+                        foreach ($table->getIdNames() as $valeur) {
+                            $valeur_id[] = $line[$valeur];
+                        }
+                        $liste_id = implode('-', $valeur_id);
+                    } else {
+                        $liste_id = $line[$table->getIdName()];
+                    }
+                    ?>
                     <li class="table-row">
                         <div class="table-row-info" onclick="modify(this)">
                         <?php foreach (array_keys($table::$info_tables) as $champ) { ?>
                             <div class="value <?= $champ ?>" data-label="<?= $champ ?>"><?= $line[$champ] ?></div>
                         <?php } ?>
                         </div>
-                        <button type="button" class="btn-delete" value="<?= $line[$table->getIdName()] ?>" onclick="deleteRow('<?= $tablename ?>', this.value, this.parentElement)">
+                        <button type="submit" class="btn-delete" name="deleteID" value="<?= $liste_id ?>" onclick="deleteRow('<?= $table->getType() ?>', '<?= $tablename ?>', this.value, this.parentElement)">
                             <img src="assets/image/bin.png" height="16px" width="16px" alt="">
                         </button>
                     </li>

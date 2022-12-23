@@ -11,17 +11,21 @@ class TablesController extends Controller
         $this->securityCheck(true);
     }
     
-    public function index(string $tablename) {
+    public function index(string $type, string $tablename) {
         $this->securityCheck(true);
 
-        $table = '\\App\\Models\\'.$tablename;
+        $table = "\\App\\Models\\{$type}\\{$tablename}Model";
         $table = new $table();
 
         if (isset($_POST['type'])) {
             switch ($_POST['type']) {
                 case 'delete':
                     if (Form::validate($_POST, ['deleteID'])) {
-                        $table->delete($_POST['deleteID']);
+                        if ($table->getType() == 'Associations') {
+                            $table->delete(explode('-', $_POST['deleteID']));
+                        } else {
+                            $table->delete($_POST['deleteID']);
+                        }
                         exit;
                     }
                     break;
@@ -40,13 +44,13 @@ class TablesController extends Controller
                     }
                     if (Form::validate($_POST, array_diff(array_keys($table::$info_tables), $not_needed_champs))) {
                         $table->hydrate($_POST);
-                        $idName = 'set' . ucfirst($table->getIdName());
-                        $table->$idName(null);
                         $table->create();
                     }
                     break;
 
             }
+            header("Location: /tables/?type=$type&name=$tablename");
+            exit;
         }
 
         $pageName = 'Table ' . $tablename . ' | Projet BdD';
@@ -55,13 +59,11 @@ class TablesController extends Controller
 
         foreach ($table::$info_tables as $key => $value) {
             if (strpos($key, 'id') !== false && $value['elementHTML'] == 'select') {
-                $table_2 = '\\App\\Models\\' . ucfirst(substr($key, 3)) . 'Model';
+                $table_2 = '\\App\\Models\\Entities\\' . ucfirst(substr($key, 3)) . 'Model';
                 $table_2 = new $table_2();
                 $table::$info_tables[$key]['values'] = $table_2->findAll();
             } 
         }
-
-        //var_dump($table::$info_tables);
 
         $this->render('/tables/index', compact('pageName', 'tablename', 'table', 'lines'));
     }

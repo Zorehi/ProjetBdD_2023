@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Form;
-use App\Models\UsersModel;
+use App\Models\Entities\UsersModel;
 
 class SettingsController extends Controller
 {
@@ -55,6 +55,8 @@ class SettingsController extends Controller
                     }
                     break;
             }
+            header("Location: /settings/?tab=$page");
+            exit;
         }
             
         $pageName = 'Paramètres et confidentialité | Projet BdD';

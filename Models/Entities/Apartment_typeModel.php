@@ -1,7 +1,9 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class Apartment_typeModel extends Model
+use App\Models\Entity;
+
+class Apartment_typeModel extends Entity
 {
     protected $id_apartment_type;
     protected $description;

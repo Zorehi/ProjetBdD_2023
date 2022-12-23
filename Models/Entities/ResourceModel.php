@@ -1,9 +1,11 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class RessourceModel extends Model
+use App\Models\Entity;
+
+class ResourceModel extends Entity
 {
-    protected $id_ressource;
+    protected $id_resource;
     protected $name;
     protected $description;
     protected $min_value;
@@ -13,25 +15,25 @@ class RessourceModel extends Model
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "id_ressource";
+        $this->idName = "id_resource";
     }
 
     /**
-     * Get the value of id_ressource
+     * Get the value of id_resource
      */ 
-    public function getId_ressource()
+    public function getId_resource()
     {
-        return $this->id_ressource;
+        return $this->id_resource;
     }
 
     /**
-     * Set the value of id_ressource
+     * Set the value of id_resource
      *
      * @return  self
      */ 
-    public function setId_ressource($id_ressource)
+    public function setId_resource($id_resource)
     {
-        $this->id_ressource = $id_ressource;
+        $this->id_resource = $id_resource;
 
         return $this;
     }
@@ -117,7 +119,7 @@ class RessourceModel extends Model
     }
 
     static $info_tables = [
-        'id_ressource' => [
+        'id_resource' => [
             'elementHTML' => 'input',
             'inputType' => 'text',
             'is_disabled' => 'disabled'

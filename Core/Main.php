@@ -3,7 +3,7 @@
 namespace App\Core;
 
 use App\Controllers\MainController;
-use App\Models\UsersModel;
+use App\Models\Entities\UsersModel;
 
     class Main
     {

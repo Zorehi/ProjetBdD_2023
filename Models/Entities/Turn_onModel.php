@@ -1,12 +1,13 @@
 <?php
-namespace App\Models;
+namespace App\Models\Entities;
 
-class TenantModel extends Model
+use App\Models\Entity;
+
+class Turn_onModel extends Entity
 {
-    protected $id_apartment;
+    protected $id_device;
     protected $from_date;
     protected $to_date;
-    protected $id_users;
  
 
     public function __construct()
@@ -16,26 +17,23 @@ class TenantModel extends Model
         $this->idName = "";
     }
 
-    
-
-    
 
     /**
-     * Get the value of id_apartment
+     * Get the value of to_date
      */ 
-    public function getId_apartment()
+    public function getTo_date()
     {
-        return $this->id_apartment;
+        return $this->to_date;
     }
 
     /**
-     * Set the value of id_apartment
+     * Set the value of to_date
      *
      * @return  self
      */ 
-    public function setId_apartment($id_apartment)
+    public function setTo_date($to_date)
     {
-        $this->id_apartment = $id_apartment;
+        $this->to_date = $to_date;
 
         return $this;
     }
@@ -61,51 +59,31 @@ class TenantModel extends Model
     }
 
     /**
-     * Get the value of to_date
+     * Get the value of id_device
      */ 
-    public function getTo_date()
+    public function getId_device()
     {
-        return $this->to_date;
+        return $this->id_device;
     }
 
     /**
-     * Set the value of to_date
+     * Set the value of id_device
      *
      * @return  self
      */ 
-    public function setTo_date($to_date)
+    public function setId_device($id_device)
     {
-        $this->to_date = $to_date;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of id_users
-     */ 
-    public function getId_users()
-    {
-        return $this->id_users;
-    }
-
-    /**
-     * Set the value of id_users
-     *
-     * @return  self
-     */ 
-    public function setId_users($id_users)
-    {
-        $this->id_users = $id_users;
+        $this->id_device = $id_device;
 
         return $this;
     }
 
     static $info_tables = [
-        'id_apartment' => [
+        'id_device' => [
             'elementHTML' => 'select',
             'inputType' => null,
             'is_disabled' => '',
-            'name' => '??'
+            'name' => 'device_name'
         ],
         'from_date' => [
             'elementHTML' => 'input',
@@ -116,12 +94,6 @@ class TenantModel extends Model
             'elementHTML' => 'input',
             'inputType' => 'date',
             'is_disabled' => ''
-        ],
-        'id_users' => [
-            'elementHTML' => 'select',
-            'inputType' => null,
-            'is_disabled' => '',
-            'name' => 'username'
         ]
     ];
 }

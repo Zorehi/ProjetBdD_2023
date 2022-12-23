@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\UsersModel;
+use App\Models\Entities\UsersModel;
 
 abstract class Controller
 {

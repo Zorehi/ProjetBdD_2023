@@ -1,37 +1,40 @@
 <?php
-namespace App\Models;
+namespace App\Models\Associations;
 
-class OwnerModel extends Model
+use App\Models\Association;
+
+class TenantModel extends Association
 {
-    protected $id_house;
+    protected $id_apartment;
     protected $from_date;
     protected $to_date;
     protected $id_users;
+ 
 
     public function __construct()
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "";
+        $this->idNames = ['id_apartment', 'from_date'];
     }
     
 
     /**
-     * Get the value of id_house
+     * Get the value of id_apartment
      */ 
-    public function getId_house()
+    public function getId_apartment()
     {
-        return $this->id_house;
+        return $this->id_apartment;
     }
 
     /**
-     * Set the value of id_house
+     * Set the value of id_apartment
      *
      * @return  self
      */ 
-    public function setId_house($id_house)
+    public function setId_apartment($id_apartment)
     {
-        $this->id_house = $id_house;
+        $this->id_apartment = $id_apartment;
 
         return $this;
     }
@@ -97,11 +100,11 @@ class OwnerModel extends Model
     }
 
     static $info_tables = [
-        'id_house' => [
+        'id_apartment' => [
             'elementHTML' => 'select',
             'inputType' => null,
             'is_disabled' => '',
-            'name' => 'house_name'
+            'name' => '??'
         ],
         'from_date' => [
             'elementHTML' => 'input',
