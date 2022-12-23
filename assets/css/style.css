@@ -1775,7 +1775,7 @@ button {
 }
 
 .panel-section#panelDatabase .panel-section-button {
-  height: 40px;
+  min-height: 40px;
   padding-left: 20px;
 }
 .panel-section#panelDatabase .panel-section-button .text span {
@@ -1881,7 +1881,7 @@ button {
   flex-direction: row;
   align-items: center;
   padding: 6px 2px;
-  height: 60px;
+  min-height: 60px;
   position: relative;
 }
 .panel-section .panel-section-button .hover {
@@ -2298,7 +2298,7 @@ button {
   padding: 8px 8px 0 8px;
 }
 .panel-manage .panel-manage-btn-create-container .panel-section-button {
-  height: 36px;
+  min-height: 36px;
   background-color: var(--accent);
   border-radius: 6px;
   justify-content: center;
@@ -2306,6 +2306,8 @@ button {
 }
 .panel-manage .panel-manage-btn-create-container .panel-section-button img {
   filter: var(--filter-always-white);
+  height: 16px;
+  width: 16px;
 }
 .panel-manage .panel-manage-btn-create-container .panel-section-button .primary {
   font-size: 15px;
@@ -2319,11 +2321,6 @@ button {
 }
 .panel-manage .panel-manage-main .panel-section-button {
   height: 44px;
-}
-.panel-manage .panel-manage-main .panel-section-button svg {
-  height: 20px;
-  width: 20px;
-  filter: var(--filter-primary-icon);
 }
 .panel-manage .panel-manage-main .panel-section-button .primary {
   font-weight: 500;
@@ -2395,6 +2392,18 @@ button {
   padding: 0 8px;
   cursor: pointer;
   border-radius: 8px;
+  min-height: 44px;
+}
+.panel-manage .panel-section-button .image {
+  width: 22px;
+  height: 22px;
+  filter: var(--filter-primary-icon);
+  background-image: url("http://projetbdd/assets/image/page-manage.png");
+  background-size: 44px 110px;
+}
+.panel-manage .panel-section-button .text {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .panel-manage .panel-section-button[data-status=selected] {
   background-color: var(--primary-deemphasized-button-background);
@@ -2402,8 +2411,9 @@ button {
 .panel-manage .panel-section-button[data-status=selected] .text .primary, .panel-manage .panel-section-button[data-status=selected] .text .secondary {
   color: var(--primary-deemphasized-button-text);
 }
-.panel-manage .panel-section-button[data-status=selected] svg, .panel-manage .panel-section-button[data-status=selected] img {
+.panel-manage .panel-section-button[data-status=selected] .image {
   filter: var(--filter-accent);
+  background-position-x: 22px;
 }
 
 .settings {
