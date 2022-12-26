@@ -16,7 +16,7 @@
                         foreach ($table->getIdNames() as $valeur) {
                             $valeur_id[] = $line[$valeur];
                         }
-                        $liste_id = implode('-', $valeur_id);
+                        $liste_id = implode('|', $valeur_id);
                     } else {
                         $liste_id = $line[$table->getIdName()];
                     }

@@ -43,58 +43,19 @@
             </div>
             <div class="panel-section-separator"></div>
             <div class="panel-section-list">
-                <div id="pinHouses" class="panel-section-list-wrapper">
-                    <span class="panel-section-list-title">Epinglés</span>
-                    <div class="panel-section-list-container">
-                        <a class="panel-section-button panelHouse-button" href="#">
-                            <div class="img">
-                                <svg aria-hidden="true" class="" role="none" style="height: 36px; width: 36px;">
-                                    <mask id="jsc_c_1x">
-                                        <rect cy="18" fill="white" height="36" rx="8" ry="8" width="36" x="0" y="0"></rect>
-                                    </mask>
-                                    <g mask="url(#jsc_c_1x)">
-                                        <image x="0" y="0" style="width: 36px;height: 36px;" xlink:href="assets/image/house-default-min-photo.png" style="height: 36px; width: 36px;"></image>
-                                        <rect class="" cy="18" fill="none" height="36" rx="8" ry="8" width="36" x="0" y="0"></rect>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="text">
-                                <span class="primary">Pharmatech</span>
-                                <span class="secondary">En ligne il y a 6 heures</span>
-                            </div>
-                            <div class="pin-icon">
-                                <i class="" style="background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/XwHPmbqCLP0.png);background-position: 0px -373px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
-                                <div class="opacity-0 background-hover"></div>
-                            </div>
-                            <div class="hover"></div>
-                        </a>
-                    </div>
-                </div>
                 <div id="myHouses" class="panel-section-list-wrapper">
                     <span class="panel-section-list-title">Maisons dont vous êtes propriétaire</span>
                     <div class="panel-section-list-container">
-                        <a class="panel-section-button panelHouse-button" href="#">
-                            <div class="img">
-                                <svg style="height: 36px; width: 36px;">
-                                    <mask id="jsc_c_2x">
-                                        <rect cy="18" fill="white" height="36" rx="8" ry="8" width="36" x="0" y="0"></rect>
-                                    </mask>
-                                    <g mask="url(#jsc_c_2x)">
-                                        <image style="width: 36px;height: 36px;" xlink:href="assets/image/house-default-min-photo.png" style="height: 36px; width: 36px;"></image>
-                                        <rect class="" cy="18" fill="none" height="36" rx="8" ry="8" width="36" x="0" y="0"></rect>
-                                    </g>
-                                </svg>
-                            </div>
+                    <?php foreach ($house_array as $key => $value) { ?>
+                        <a class="panel-section-button panelHouse-button" href="/houses/<?= $value['id_house'] ?>">
+                            <img class="image" src="assets/image/house-default-min-photo.png" alt="">
                             <div class="text">
-                                <span class="primary">Pharmatech</span>
-                                <span class="secondary">En ligne il y a 6 heures</span>
-                            </div>
-                            <div class="pin-icon">
-                                <i class="" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yT/r/lM3wJmRoC7j.png&quot;); background-position: 0px -38px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
-                                <div class="opacity-0 background-hover"></div>
+                                <span class="primary"><?= $value['house_name'] ?></span>
+                                <span class="secondary">1 appartement · 1 appartement libre</span>
                             </div>
                             <div class="hover"></div>
                         </a>
+                    <?php } ?>
                     </div>
                 </div>
             </div>

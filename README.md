@@ -1,6 +1,6 @@
 # ProjetBdD_2023
  
-Pour ajouter le virtualhost il faut ajouter le chemin jusqu'au dossier public de ce repository
+Pour ajouter le virtualhost il faut ajouter le chemin racine du repository
 
 ### Exemple de chemin d'installation
 

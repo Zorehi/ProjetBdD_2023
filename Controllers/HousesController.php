@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Form;
+use App\Models\Entities\CityModel;
 use App\Models\Entities\HouseModel;
 
 class HousesController extends Controller
@@ -31,9 +32,11 @@ class HousesController extends Controller
     public function edit($id) {
         $house = new HouseModel();
         $house->hydrate($house->findById($id));
+        $city = new CityModel();
+        $city->hydrate($city->findById($house->getId_city()));
         $pageName = "{$house->getHouse_name()} | Projet BdD";
             
-        $this->render('/houses/edit', compact('pageName', 'house'));
+        $this->render('/houses/edit', compact('pageName', 'house', 'city'));
     }
 
     public function insights($id, $section) {

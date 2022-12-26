@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\Associations\OwnerModel;
+use App\Models\Entities\HouseModel;
 use App\Models\Entities\UsersModel;
 
 abstract class Controller
@@ -23,6 +25,9 @@ abstract class Controller
 
         $contenu = ob_get_clean();
 
+        if ($template == 'default') {
+            $house_array = $this->retrieveInfoForNavLeft($_SESSION['user']['id']);
+        }
         require_once ROOT.'/Views/templates/'.$template.'.php';
     }
 
@@ -49,5 +54,24 @@ abstract class Controller
             header('Location: /');
             exit;
         }
+    }
+
+    /**
+     * Retrieve information of this user for navLeft
+     *
+     * @param Number $id
+     * @return void
+     */
+    public function retrieveInfoForNavLeft($id) {
+        $owner = new OwnerModel();
+        $owner_array = $owner->findBy(['id_users' => $id]);
+
+        $house_array = [];
+        $house = new HouseModel();
+        foreach ($owner_array as $value) {
+            $house_array[] = $house->findById($value['id_house']);
+        }
+
+        return $house_array;
     }
 }

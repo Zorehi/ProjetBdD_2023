@@ -1,0 +1,123 @@
+.card-edit {
+    .card-edit-row[data-status="modifying"] {
+        .card-edit-content[data-index="0"] {
+            display: none;
+        }
+        .card-edit-content[data-index="1"] {
+            display: flex;
+        }
+    }
+
+    .card-edit-content {
+        padding: 0 16px;
+        position: relative;
+        min-height: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .form-label-input {
+            margin-bottom: 8px;
+        }
+
+        .image-container {
+            position: absolute;
+            right: 8px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .image {
+                display: block;
+                background-image: url('http://projetbdd/assets/image/edit-icon.png');
+                background-position: 0 0;
+                background-size: 24px 24px;
+                width: 24px;
+                height: 24px;
+                filter: var(--filter-secondary-icon);
+            }
+
+            &:active {
+                background-color: var(--press-overlay);
+            }
+        }
+
+        .card-edit-content-title {
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 20px;
+            color: var(--primary-text);
+            margin: 16px 0 8px 0;
+        }
+
+        .card-edit-list-input {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &[data-index="0"] {
+            display: flex;
+        }
+        &[data-index="1"] {
+            display: none;
+        }
+    }
+
+    .card-edit-btn-container {
+        display: flex;
+        justify-content: flex-end;
+        padding: 8px 0;
+
+        .btn-cancel {
+            color: var(--primary-deemphasized-button-text);
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 20px;
+            height: 36px;
+            cursor: pointer;
+            border-radius: 6px;
+            padding: 0 20px;
+            transition: transform 50ms ease-in-out;
+
+            &:hover {
+                background-color: var(--hover-overlay);
+            }
+            &:active {
+                background-color: var(--primary-deemphasized-button-background);
+                transform: scale(.96);
+            }
+        }
+
+        .btn-confirm {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 20px;
+            height: 36px;
+            cursor: pointer;
+            border-radius: 6px;
+            padding: 0 40px;
+            transition: transform 50ms ease-in-out;
+            background-color: var(--accent);
+            position: relative;
+            margin-left: 8px;
+
+            .hover {
+                position: absolute;
+                inset: 0;
+                border-radius: 6px;
+            }
+
+            &:hover .hover {
+                background-color: var(--hover-overlay);
+            }
+            &:active {
+                transform: scale(.96);
+            }
+        }
+    }
+}

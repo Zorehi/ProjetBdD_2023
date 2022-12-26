@@ -73,7 +73,7 @@ class Association extends Database {
         // On boucle pour éclater le tableau
         foreach($this as $champ => $valeur) {
             // INSERT INTO annonces (titre, description, actif) VALUES (?, ?, ?)
-            if($valeur !== null && !in_array($champ, ['db', 'table', 'idName', 'idNames', 'type'])) {
+            if(!in_array($champ, ['db', 'table', 'idName', 'idNames', 'type'])) {
                 $champs[] = $champ;
                 $inter[] = "?";
                 $valeurs[] = $valeur;
@@ -101,7 +101,7 @@ class Association extends Database {
         // On boucle pour éclater le tableau
         foreach($this as $champ => $valeur) {
             // UPDATE annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
-            if($valeur !== null && !in_array($champ, ['db', 'table', 'idName', 'idNames', 'type'])){
+            if(!in_array($champ, ['db', 'table', 'idName', 'idNames', 'type'])){
                 $champs[] = "$champ = ?";
                 $valeurs[] = $valeur;
             }

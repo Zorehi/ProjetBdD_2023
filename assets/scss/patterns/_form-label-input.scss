@@ -1,0 +1,51 @@
+.form-label-input {
+    position: relative;
+    border: 1px solid var(--divider);
+    border-radius: 6px;
+    display: block;
+    cursor: text;
+
+    span {
+        position: absolute;
+        color: var(--secondary-text);
+        left: 16px;
+        top: 18px;
+        transform-origin: top left;
+        transition: transform .2s cubic-bezier(.08,.52,.52,1);
+        transform: scale(.75) translateY(-11px);
+    }
+
+    input, select {
+        padding: 26px 16px 10px 16px;
+        color: var(--primary-text);
+        width: 100%;
+        border: none;
+    }
+
+    select {
+        background-position: right 10px center;
+        background-color: var(--card-background);
+        border-radius: 6px;
+    }
+
+    &.select {
+        cursor: pointer;
+    }
+
+    &[data-status='empty'] span {
+        transform: none;
+    }
+
+    &:focus-within {
+        box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent);
+
+        span {
+            color: var(--accent);
+            transform: scale(.75) translateY(-11px);
+        }
+    }
+
+    &:hover {
+        border-color: #8A8D91;
+    }
+}

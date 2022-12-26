@@ -987,7 +987,7 @@ button {
 }
 
 .scrollbar-container {
-  padding: 10px 20px 10px 16px;
+  padding: 16px 20px 16px 16px;
   position: relative;
   height: 92%;
   overflow: hidden;
@@ -1164,36 +1164,221 @@ button {
   display: block;
 }
 
-#UsersModel .id_users {
+#Users .id_users {
   width: 5%;
 }
-#UsersModel .username {
+#Users .username {
   width: 9%;
 }
-#UsersModel .email {
+#Users .email {
   width: 24%;
 }
-#UsersModel .tel {
+#Users .tel {
   width: 7%;
 }
-#UsersModel .firstname,
-#UsersModel .lastname {
+#Users .firstname,
+#Users .lastname {
   width: 10%;
 }
-#UsersModel .birthday {
+#Users .birthday {
   width: 6%;
 }
-#UsersModel .id_gender {
+#Users .id_gender {
   width: 6%;
 }
-#UsersModel .is_admin {
+#Users .is_admin {
   width: 6%;
 }
-#UsersModel .is_active {
+#Users .is_active {
   width: 6%;
 }
-#UsersModel .create_time {
+#Users .create_time {
   width: 11%;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.card {
+  padding-bottom: 20px;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.card .card-head {
+  padding: 16px 16px 0 16px;
+}
+.card .card-head .card-head-title {
+  color: var(--primary-text);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+.card .card-content {
+  padding-top: 8px;
+}
+.card .card-separator {
+  background-color: var(--divider);
+  height: 1px;
+  margin: 4px 16px;
+}
+
+.card-edit .card-edit-row[data-status=modifying] .card-edit-content[data-index="0"] {
+  display: none;
+}
+.card-edit .card-edit-row[data-status=modifying] .card-edit-content[data-index="1"] {
+  display: flex;
+}
+.card-edit .card-edit-content {
+  padding: 0 16px;
+  position: relative;
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card-edit .card-edit-content .form-label-input {
+  margin-bottom: 8px;
+}
+.card-edit .card-edit-content .image-container {
+  position: absolute;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-edit .card-edit-content .image-container .image {
+  display: block;
+  background-image: url("http://projetbdd/assets/image/edit-icon.png");
+  background-position: 0 0;
+  background-size: 24px 24px;
+  width: 24px;
+  height: 24px;
+  filter: var(--filter-secondary-icon);
+}
+.card-edit .card-edit-content .image-container:active {
+  background-color: var(--press-overlay);
+}
+.card-edit .card-edit-content .card-edit-content-title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--primary-text);
+  margin: 16px 0 8px 0;
+}
+.card-edit .card-edit-content .card-edit-list-input {
+  display: flex;
+  flex-direction: column;
+}
+.card-edit .card-edit-content[data-index="0"] {
+  display: flex;
+}
+.card-edit .card-edit-content[data-index="1"] {
+  display: none;
+}
+.card-edit .card-edit-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 0;
+}
+.card-edit .card-edit-btn-container .btn-cancel {
+  color: var(--primary-deemphasized-button-text);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  height: 36px;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0 20px;
+  transition: transform 50ms ease-in-out;
+}
+.card-edit .card-edit-btn-container .btn-cancel:hover {
+  background-color: var(--hover-overlay);
+}
+.card-edit .card-edit-btn-container .btn-cancel:active {
+  background-color: var(--primary-deemphasized-button-background);
+  transform: scale(0.96);
+}
+.card-edit .card-edit-btn-container .btn-confirm {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  height: 36px;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0 40px;
+  transition: transform 50ms ease-in-out;
+  background-color: var(--accent);
+  position: relative;
+  margin-left: 8px;
+}
+.card-edit .card-edit-btn-container .btn-confirm .hover {
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+}
+.card-edit .card-edit-btn-container .btn-confirm:hover .hover {
+  background-color: var(--hover-overlay);
+}
+.card-edit .card-edit-btn-container .btn-confirm:active {
+  transform: scale(0.96);
+}
+
+.form-label-input {
+  position: relative;
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  display: block;
+  cursor: text;
+}
+.form-label-input span {
+  position: absolute;
+  color: var(--secondary-text);
+  left: 16px;
+  top: 18px;
+  transform-origin: top left;
+  transition: transform 0.2s cubic-bezier(0.08, 0.52, 0.52, 1);
+  transform: scale(0.75) translateY(-11px);
+}
+.form-label-input input, .form-label-input select {
+  padding: 26px 16px 10px 16px;
+  color: var(--primary-text);
+  width: 100%;
+  border: none;
+}
+.form-label-input select {
+  background-position: right 10px center;
+  background-color: var(--card-background);
+  border-radius: 6px;
+}
+.form-label-input.select {
+  cursor: pointer;
+}
+.form-label-input[data-status=empty] span {
+  transform: none;
+}
+.form-label-input:focus-within {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent);
+}
+.form-label-input:focus-within span {
+  color: var(--accent);
+  transform: scale(0.75) translateY(-11px);
+}
+.form-label-input:hover {
+  border-color: #8A8D91;
 }
 
 .card-profil {
@@ -1705,10 +1890,11 @@ button {
   line-height: inherit;
   color: inherit;
 }
-.panelHouse .panelHouse-button > .img {
-  padding: 6px;
-  display: flex;
-  align-items: center;
+.panelHouse .panelHouse-button > .image {
+  margin: 6px;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
 }
 .panelHouse .panelHouse-button > .text {
   display: flex;
@@ -1727,35 +1913,6 @@ button {
   line-height: 16px;
   font-size: 12px;
   font-weight: 400;
-}
-.panelHouse .panelHouse-button > .pin-icon {
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 99;
-}
-.panelHouse .panelHouse-button > .pin-icon.scale-96 {
-  transform: scale(0.96);
-}
-.panelHouse .panelHouse-button > .pin-icon > i {
-  -webkit-filter: var(--filter-primary-icon);
-  filter: var(--filter-primary-icon);
-}
-.panelHouse .panelHouse-button > .pin-icon > div {
-  position: absolute;
-  border-radius: 50px;
-  inset: 0;
-  transition: opacity 100ms cubic-bezier(0, 0, 1, 1);
-}
-.panelHouse .panelHouse-button > .pin-icon > div:hover {
-  background-color: var(--hover-overlay);
-}
-.panelHouse .panelHouse-button > .pin-icon > div:active {
-  background-color: var(--press-overlay);
 }
 
 .panelHouse .panel-section-scroll #containerSearchHouseButton {
@@ -2097,49 +2254,8 @@ button {
   padding: 8px 16px;
   max-height: calc(100% - 68px);
 }
-.panel-create .create-label {
-  position: relative;
-  border: 1px solid var(--divider);
-  border-radius: 6px;
+.panel-create .form-label-input {
   margin-bottom: 16px;
-  display: block;
-  cursor: text;
-}
-.panel-create .create-label span {
-  position: absolute;
-  color: var(--secondary-text);
-  left: 16px;
-  top: 18px;
-  transform-origin: top left;
-  transition: transform 0.2s cubic-bezier(0.08, 0.52, 0.52, 1);
-  transform: scale(0.75) translateY(-11px);
-}
-.panel-create .create-label input, .panel-create .create-label select {
-  padding: 26px 16px 10px 16px;
-  color: var(--primary-text);
-  width: 100%;
-  border: none;
-}
-.panel-create .create-label select {
-  background-position: right 10px center;
-  background-color: var(--card-background);
-  border-radius: 6px;
-}
-.panel-create .create-label.select {
-  cursor: pointer;
-}
-.panel-create .create-label[data-status=empty] span {
-  transform: none;
-}
-.panel-create .create-label:focus-within {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent);
-}
-.panel-create .create-label:focus-within span {
-  color: var(--accent);
-  transform: scale(0.75) translateY(-11px);
-}
-.panel-create .create-label:hover {
-  border-color: #8A8D91;
 }
 .panel-create .create-btn-container {
   padding: 16px;

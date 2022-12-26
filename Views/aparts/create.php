@@ -9,15 +9,15 @@
             <div class="create-label-wrapper" data-status="active">
                 <div class="create-label-list scrollbar-container" id="scrollbar-10">
                     <div class="scrollbar-content" data-transition="yes">
-                        <label for="num" class="create-label" data-status="empty">
+                        <label for="num" class="form-label-input" data-status="empty">
                             <span>Numéro d'appartement</span>
                             <input type="text" id="num" name="num" onchange="onChangeEvent(this)" required>
                         </label>
-                        <label for="citizen_degree" class="create-label" data-status="empty">
+                        <label for="citizen_degree" class="form-label-input" data-status="empty">
                             <span>Degré de citoyenneté</span>
                             <input type="text" id="citizen_degree" name="citizen_degree" onchange="onChangeEvent(this)" required>
                         </label>
-                        <label for="id_security_degree" class="create-label select" data-status="empty">
+                        <label for="id_security_degree" class="form-label-input select" data-status="empty">
                             <span>Degré de sécurité</span>
                             <select id="id_security_degree" name="id_security_degree" onchange="onChangeEvent(this)" required>
                             <?php foreach ($security_degree->findAll() as $value) { ?>
@@ -25,7 +25,7 @@
                             <?php } ?>
                             </select>
                         </label>
-                        <label for="id_apartment_type" class="create-label select" data-status="empty">
+                        <label for="id_apartment_type" class="form-label-input select" data-status="empty">
                             <span>Type d'appartement</span>
                             <select id="id_apartment_type" name="id_apartment_type" onchange="onChangeEvent(this)" required>
                             <?php foreach ($apartment_type->findAll() as $value) { ?>
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="create-label-wrapper padding" data-status="after">
-                <label for="id_room_type" class="create-label select" data-status="empty">
+                <label for="id_room_type" class="form-label-input select" data-status="empty">
                     <span>Type de pièce</span>
                     <select form="form-add-room" id="id_room_type" name="id_room_type" onchange="onChangeEvent(this)" required>
                     <?php foreach ($room_type->findAll() as $value) { ?>
@@ -49,7 +49,7 @@
                     <?php } ?>
                     </select>
                 </label>
-                <label for="room_name" class="create-label" data-status="empty">
+                <label for="room_name" class="form-label-input" data-status="empty">
                     <span>Nom de la pièce</span>
                     <input form="form-add-room" type="text" id="room_name" name="room_name" onchange="onChangeEvent(this)" required>
                 </label>

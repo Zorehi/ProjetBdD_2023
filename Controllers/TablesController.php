@@ -22,7 +22,7 @@ class TablesController extends Controller
                 case 'delete':
                     if (Form::validate($_POST, ['deleteID'])) {
                         if ($table->getType() == 'Associations') {
-                            $table->delete(explode('-', $_POST['deleteID']));
+                            $table->delete(explode('|', $_POST['deleteID']));
                         } else {
                             $table->delete($_POST['deleteID']);
                         }
@@ -31,7 +31,7 @@ class TablesController extends Controller
                     break;
                 
                 case 'update':
-                    if (Form::validate($_POST, array_keys($table::$info_tables))) {
+                    if (Form::validateIfEmptyNull($_POST, array_keys($table::$info_tables))) {
                         $table->hydrate($_POST);
                         $table->update();
                     }
@@ -42,7 +42,7 @@ class TablesController extends Controller
                     foreach ($table::$info_tables as $key => $value) {
                         if (!empty($value['is_disabled'])) $not_needed_champs[] = $key;
                     }
-                    if (Form::validate($_POST, array_diff(array_keys($table::$info_tables), $not_needed_champs))) {
+                    if (Form::validateIfEmptyNull($_POST, array_diff(array_keys($table::$info_tables), $not_needed_champs))) {
                         $table->hydrate($_POST);
                         $table->create();
                     }
