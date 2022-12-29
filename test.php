@@ -1,3 +1,3 @@
 <?php
-  echo empty('');
+  echo date("Y-m-d");
 ?>

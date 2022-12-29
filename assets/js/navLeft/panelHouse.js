@@ -8,11 +8,15 @@
  * @param {Event} event 
  */
 const outsidePanelHouseClickListener = event => {
-    if (btnDatabase.contains(event.target) && isVisible(panel)) {
-        panelHouse.dataset.status = "hidden";
-
-        document.removeEventListener("click", outsidePanelHouseClickListener);
-    } else if (!btnHouses.contains(event.target) && !panelHouse.contains(event.target) && isVisible(panel)) {
+    if (btnDatabase != null) {
+        if (btnDatabase.contains(event.target) && isVisible(panel)) {
+            panelHouse.dataset.status = "hidden";
+    
+            document.removeEventListener("click", outsidePanelHouseClickListener);
+            return;
+        }
+    }
+    if (!btnHouses.contains(event.target) && !panelHouse.contains(event.target) && isVisible(panel)) {
         panel.dataset.status = "hidden";
         panelHouse.dataset.status = "hidden";
         navLeft.querySelector('[data-status="selected"]').dataset.status = "unselected";

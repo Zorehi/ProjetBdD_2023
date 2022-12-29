@@ -930,6 +930,7 @@ button {
 }
 .responsive-table .scrollbar-container {
   padding-left: 40px;
+  height: 95%;
 }
 .responsive-table .table-header {
   background-color: var(--table-header-bg);
@@ -989,7 +990,7 @@ button {
 .scrollbar-container {
   padding: 16px 20px 16px 16px;
   position: relative;
-  height: 92%;
+  height: 100%;
   overflow: hidden;
 }
 .scrollbar-container:hover .scrollbar-thumb {
@@ -1205,25 +1206,121 @@ button {
 }
 
 .card {
-  padding-bottom: 20px;
   background-color: var(--card-background);
   border-radius: 8px;
-  max-width: 500px;
+  max-width: 680px;
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 16px;
+}
+.card.house_edit, .card.apart_edit {
+  padding-bottom: 20px;
+  max-width: 500px;
 }
 .card .card-head {
-  padding: 16px 16px 0 16px;
+  padding: 8px 8px 0 8px;
 }
 .card .card-head .card-head-title {
+  padding: 8px 8px 0 8px;
   color: var(--primary-text);
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
 }
+.card .card-head .card-head-profil {
+  display: flex;
+  padding-top: 8px;
+}
+.card .card-head .card-head-profil .image-container {
+  position: relative;
+  margin: 0 8px;
+  height: 40px;
+  width: 40px;
+}
+.card .card-head .card-head-profil .image-container .image {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.card .card-head .card-head-profil .image-container .hover {
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+}
+.card .card-head .card-head-profil .image-container:hover .hover {
+  background-color: var(--hover-overlay);
+}
+.card .card-head .card-head-profil .image-container:active {
+  transform: scale(0.96);
+}
+.card .card-head .card-head-profil .image-container:active .hover {
+  background-color: var(--press-overlay);
+}
+.card .card-head .card-head-profil .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 2px;
+}
+.card .card-head .card-head-profil .text .primary {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--primary-text);
+}
+.card .card-head .card-head-profil .text .secondary {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--secondary-text);
+}
+.card .card-head .card-head-profil .text .secondary a {
+  position: relative;
+  cursor: pointer;
+}
+.card .card-head .card-head-profil .text .secondary a:hover {
+  text-decoration: underline;
+}
+.card .card-head .card-head-profil .text .secondary a:hover::after {
+  display: block;
+}
+.card .card-head .card-head-profil .text .secondary a::after {
+  display: none;
+  content: attr(data-infobulle);
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  transform-origin: 0 0;
+  transform: translate(-45%, 2px);
+  line-height: 14px;
+}
 .card .card-content {
   padding-top: 8px;
+}
+.card .card-content .card-content-text {
+  padding: 0 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+}
+.card .card-content .card-content-text .primary {
+  color: var(--primary-text);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: start;
+}
+.card .card-content .card-content-image {
+  height: fit-content;
+}
+.card .card-content .card-content-image img {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 .card .card-separator {
   background-color: var(--divider);
@@ -2530,6 +2627,9 @@ button {
 .panel-manage .panel-section-button[data-status=selected] .image {
   filter: var(--filter-accent);
   background-position-x: 22px;
+}
+.panel-manage .panel-section-button[data-status=selected] .hover {
+  background-color: transparent;
 }
 
 .settings {

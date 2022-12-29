@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Form;
+use App\Models\Associations\OwnerModel;
 use App\Models\Entities\CityModel;
 use App\Models\Entities\HouseModel;
 
@@ -14,37 +15,35 @@ class HousesController extends Controller
     }
     
     public function index($id) {
-        $house = new HouseModel();
-        $house->hydrate($house->findById($id));
-        $pageName = "{$house->getHouse_name()} | Projet BdD";
-            
-        $this->render('/houses/index', compact('pageName', 'house'));
-    }
+        $is_admin_or_owner = $this->checkIfOwnerOrAdmin($id);
 
-    public function house_aparts($id) {
         $house = new HouseModel();
         $house->hydrate($house->findById($id));
         $pageName = "{$house->getHouse_name()} | Projet BdD";
             
-        $this->render('/houses/house_aparts', compact('pageName', 'house'));
+        $this->render('/houses/index', compact('pageName', 'house', 'is_admin_or_owner'));
     }
 
     public function edit($id) {
+        $is_admin_or_owner = $this->checkIfOwnerOrAdmin($id);
+
         $house = new HouseModel();
         $house->hydrate($house->findById($id));
         $city = new CityModel();
         $city->hydrate($city->findById($house->getId_city()));
         $pageName = "{$house->getHouse_name()} | Projet BdD";
             
-        $this->render('/houses/edit', compact('pageName', 'house', 'city'));
+        $this->render('/houses/edit', compact('pageName', 'house', 'city', 'is_admin_or_owner'));
     }
 
     public function insights($id, $section) {
+        $is_admin_or_owner = $this->checkIfOwnerOrAdmin($id);
+
         $house = new HouseModel();
         $house->hydrate($house->findById($id));
         $pageName = "{$house->getHouse_name()} | Projet BdD";
             
-        $this->render('/houses/insights/'.$section, compact('pageName', 'house'));
+        $this->render('/houses/insights/'.$section, compact('pageName', 'house', 'is_admin_or_owner'));
     }
 
     // Permet d'afficher la page house/create
@@ -88,6 +87,20 @@ class HousesController extends Controller
 
        }
 
+    }
+
+    public function checkIfOwnerOrAdmin($idHouse) {
+        if (!$_SESSION['user']['is_admin']) {
+            $owner = new OwnerModel();
+            $owner_array = $owner->findBy(['id_users' => $_SESSION['user']['id'], 'id_house' => $idHouse]);
+            foreach ($owner_array as $owner) {
+                $today = date("Y-m-d");
+                if ($owner['from_date'] <= $today && ($owner['to_date'] > $today || $owner['to_date'] == "0000-00-00")) return true;
+            }
+            header("Location: /houses/$idHouse");
+            exit;
+        }
+        return true;
     }
     
 }

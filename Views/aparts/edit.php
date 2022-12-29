@@ -1,7 +1,7 @@
-<?php include ROOT."/Views/houses/panelManage.php"; ?>
+<?php include ROOT."/Views/aparts/panelManage.php"; ?>
 
 <div class="globalContainer">
-    <div class="scrollbar-container" id="scrollbar-house-edit">
+    <div class="scrollbar-container" id="scrollbar-apart-edit">
         <div class="card-wrapper scrollbar-content" data-transition="yes">
             <div class="card house_edit">
                 <div class="card-head">
@@ -12,17 +12,17 @@
                         <ul>
                             <li class="card-edit-row">
                                 <div class="card-edit-content" data-index="0">
-                                    <span class="card-edit-content-title">Nom de la maison</span>
+                                    <span class="card-edit-content-title">Numéro de l'appartement</span>
                                     <div class="image-container" onclick="onClickModify(this.parentElement)">
                                         <i class="image"></i>
                                     </div>
                                 </div>
                                 <div class="card-edit-content" data-index="1">
-                                    <span class="card-edit-content-title">Nom de la maison</span>
+                                    <span class="card-edit-content-title">Numéro de l'appartement</span>
                                     <div class="card-edit-list-input">
-                                        <label for="house_name" class="form-label-input" data-status="empty">
-                                            <span>Nom</span>
-                                            <input type="text" id="house_name" name="house_name" onchange="onChangeEvent(this)" value="<?= $house->getHouse_name() ?>">
+                                        <label for="num" class="form-label-input" data-status="empty">
+                                            <span>Numéro</span>
+                                            <input type="text" id="num" name="num" onchange="onChangeEvent(this)" value="<?= $apart->getNum() ?>">
                                         </label>
                                     </div>
                                     <div class="card-edit-btn-container">
@@ -37,29 +37,17 @@
                             </li>
                             <li class="card-edit-row">
                                 <div class="card-edit-content" data-index="0">
-                                    <span class="card-edit-content-title">Localisation</span>
+                                    <span class="card-edit-content-title">Nombre d'habitant</span>
                                     <div class="image-container" onclick="onClickModify(this.parentElement)">
                                         <i class="image"></i>
                                     </div>
                                 </div>
                                 <div class="card-edit-content" data-index="1">
-                                    <span class="card-edit-content-title">Localisation</span>
+                                    <span class="card-edit-content-title">Nombre d'habitant</span>
                                     <div class="card-edit-list-input">
-                                        <label for="house_number" class="form-label-input" data-status="empty">
-                                            <span>Numéro</span>
-                                            <input type="text" id="house_number" name="house_number" onchange="onChangeEvent(this)" value="<?= $house->getHouse_number() ?>">
-                                        </label>
-                                        <label for="street" class="form-label-input" data-status="empty">
-                                            <span>Rue</span>
-                                            <input type="text" id="street" name="street" onchange="onChangeEvent(this)" value="<?= $house->getStreet() ?>">
-                                        </label>
-                                        <label for="city_name" class="form-label-input" data-status="empty">
-                                            <span>Ville</span>
-                                            <input type="text" id="city" name="city" onchange="onChangeEvent(this)" value="<?= $city->getCity_name() ?>">
-                                        </label>
-                                        <label for="postcode" class="form-label-input" data-status="empty">
-                                            <span>Code postal</span>
-                                            <input type="text" id="postcode" name="postcode" onchange="onChangeEvent(this)" value="<?= $city->getPostcode() ?>">
+                                        <label for="hab" class="form-label-input" data-status="empty">
+                                            <span>Nombre d'habitant</span>
+                                            <input type="text" id="hab" name="hab" onchange="onChangeEvent(this)" value="<?= $apart->getHab() ?>">
                                         </label>
                                     </div>
                                     <div class="card-edit-btn-container">
@@ -89,12 +77,15 @@
 
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
-    const scrollbar_manage_house = new ScrollBar(document.getElementById('scrollbar-manage-house'), { offsetContainer: -16, offsetContent: 0});
-    scrollbar_manage_house.init();
+    const scrollbar_manage_apart = new ScrollBar(document.getElementById('scrollbar-manage-apart'), { offsetContainer: -16, offsetContent: 0});
+    scrollbar_manage_apart.init();
+
+    const scrollbar_apart_edit = new ScrollBar(document.getElementById('scrollbar-apart-edit'), { offsetContainer: -16, offsetContent: 0});
+    scrollbar_apart_edit.init();
     
-    const edit_house = document.getElementById('edit_house');
-    edit_house.dataset.status = 'selected';
-    edit_house.onclick = () => { return false };
+    const edit_apart = document.getElementById('edit_apart');
+    edit_apart.dataset.status = 'selected';
+    edit_apart.onclick = () => { return false };
 
     const input_array = document.querySelectorAll('.form-label-input input');
     for (const input of input_array) {
@@ -107,7 +98,7 @@
         } else {
             element.dataset.status = 'hidden';
         }
-        scrollbar_manage_house.refresh();
+        scrollbar_manage_apart.refresh();
     }
 
     function onChangeEvent(element) {

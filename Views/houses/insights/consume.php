@@ -6,13 +6,12 @@
 
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
-    const manage_house = document.getElementById('manage-house');
-    const scrollbarcontainer12 = document.getElementById('scrollbar-12');
-    const scrollbar_12 = new ScrollBar(scrollbarcontainer12, { offsetContainer: -16, offsetContent: 0});
-    scrollbar_12.init();
+    const scrollbar_manage_house = new ScrollBar(document.getElementById('scrollbar-manage-house'), { offsetContainer: -16, offsetContent: 0});
+    scrollbar_manage_house.init();
     
-    const Home_house = document.getElementById('house_consume');
-    Home_house.dataset.status = 'selected';
+    const house_consume = document.getElementById('house_consume');
+    house_consume.dataset.status = 'selected';
+    house_consume.onclick = () => { return false };
 
     function onClickDropDown(element) {
         if (element.dataset.status == 'hidden') {
@@ -20,6 +19,6 @@
         } else {
             element.dataset.status = 'hidden';
         }
-        scrollbar_12.refresh();
+        scrollbar_manage_house.refresh();
     }
 </script>
