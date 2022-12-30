@@ -16,8 +16,7 @@ class Association extends Database {
      */
     public function findAll()
     {
-        $query = $this->requete('SELECT * FROM '.$this->table);
-        return $query->fetchAll();
+        return $this->requete('SELECT * FROM '.$this->table)->fetchAll();
     }
 
     /**
@@ -57,7 +56,7 @@ class Association extends Database {
         // On transforme le tableau "champs" en une chaine de caractères
         $liste_champs = implode(' AND ', $champs);
 
-        return $this->requete("SELECT * FROM {$this->table} WHERE $liste_champs", $valeurs);
+        return $this->requete("SELECT * FROM {$this->table} WHERE $liste_champs", $valeurs)->fetch();
     }
 
     /**
@@ -73,7 +72,7 @@ class Association extends Database {
         // On boucle pour éclater le tableau
         foreach($this as $champ => $valeur) {
             // INSERT INTO annonces (titre, description, actif) VALUES (?, ?, ?)
-            if(!in_array($champ, ['db', 'table', 'idName', 'idNames', 'type'])) {
+            if($valeur != null && !in_array($champ, ['db', 'table', 'idName', 'idNames', 'type'])) {
                 $champs[] = $champ;
                 $inter[] = "?";
                 $valeurs[] = $valeur;
@@ -101,7 +100,7 @@ class Association extends Database {
         // On boucle pour éclater le tableau
         foreach($this as $champ => $valeur) {
             // UPDATE annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
-            if(!in_array($champ, ['db', 'table', 'idName', 'idNames', 'type'])){
+            if($valeur != null && !in_array($champ, ['db', 'table', 'idName', 'idNames', 'type'])){
                 $champs[] = "$champ = ?";
                 $valeurs[] = $valeur;
             }

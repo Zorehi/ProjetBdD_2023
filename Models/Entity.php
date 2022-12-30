@@ -16,8 +16,7 @@
          */
         public function findAll()
         {
-            $query = $this->requete('SELECT * FROM '.$this->table);
-            return $query->fetchAll();
+            return $this->requete('SELECT * FROM '.$this->table)->fetchAll();
         }
 
         /**
@@ -68,7 +67,7 @@
             // On boucle pour éclater le tableau
             foreach($this as $champ => $valeur) {
                 // INSERT INTO annonces (titre, description, actif) VALUES (?, ?, ?)
-                if(!in_array($champ, ['db', 'table', 'idName', 'type'])) {
+                if($valeur != null && !in_array($champ, ['db', 'table', 'idName', 'type'])) {
                     $champs[] = $champ;
                     $inter[] = "?";
                     $valeurs[] = $valeur;
@@ -95,7 +94,7 @@
             // On boucle pour éclater le tableau
             foreach($this as $champ => $valeur) {
                 // UPDATE annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
-                if(!in_array($champ, ['db', 'table', 'idName', 'type'])){
+                if($valeur != null && !in_array($champ, ['db', 'table', 'idName', 'type'])){
                     $champs[] = "$champ = ?";
                     $valeurs[] = $valeur;
                 }

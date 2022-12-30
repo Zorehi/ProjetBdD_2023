@@ -1,7 +1,7 @@
 <div class="panel-section panel-manage" id="manage-apart">
     <div class="panel-manage-header">
         <div class="panel-manage-profil">
-            <img src="assets/image/house-default-min-photo.png" alt="">
+            <img src="assets/image/apart-default-min-photo.png" alt="">
             <div class="text">
                 <span class="primary"></span>
                 <span class="secondary">T1/F1/P1 · 1 pièce</span>

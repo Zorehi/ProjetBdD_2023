@@ -112,9 +112,9 @@ CREATE TABLE `users`(
    `firstname` VARCHAR(50)  NOT NULL,
    `lastname` VARCHAR(50)  NOT NULL,
    `birthday` DATE NOT NULL,
-   `is_admin` TINYINT(1) DEFAULT 0,
-   `is_active` TINYINT(1) DEFAULT 1,
-   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP,
+   `is_admin` TINYINT(1) NOT NULL DEFAULT 0,
+   `is_active` TINYINT(1) NOT NULL DEFAULT 1,
+   `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
    `id_gender` INT NOT NULL,
    PRIMARY KEY(`id_users`),
    FOREIGN KEY(`id_gender`) REFERENCES gender(`id_gender`)
@@ -237,8 +237,8 @@ DROP TABLE IF EXISTS `owner`;
 CREATE TABLE owner(
    `id_house` INT,
    `from_date` DATE,
-   `to_date` DATE,
-   `id_users` INT NOT NULL,
+   `to_date` DATE NOT NULL DEFAULT '0000-00-00',
+   `id_users` INT,
    PRIMARY KEY(`id_house`, `from_date`),
    FOREIGN KEY(`id_house`) REFERENCES house(`id_house`),
    FOREIGN KEY(`id_users`) REFERENCES users(`id_users`)
@@ -252,8 +252,8 @@ DROP TABLE IF EXISTS `tenant`;
 CREATE TABLE tenant(
    `id_apartment` INT,
    `from_date` DATE,
-   `to_date` DATE NOT NULL,
-   `id_users` INT NOT NULL,
+   `to_date` DATE NOT NULL DEFAULT '0000-00-00',
+   `id_users` INT,
    PRIMARY KEY(`id_apartment`, `from_date`),
    FOREIGN KEY(`id_apartment`) REFERENCES apartment(`id_apartment`),
    FOREIGN KEY(`id_users`) REFERENCES users(`id_users`)

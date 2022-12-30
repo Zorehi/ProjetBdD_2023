@@ -1,7 +1,7 @@
 <?php include ROOT."/Views/houses/panelManage.php"; ?>
 
 <div class="globalContainer">
-<div class="scrollbar-container" id="scrollbar-house-aparts">
+    <div class="scrollbar-container" id="scrollbar-house-aparts">
         <div class="card-wrapper scrollbar-content" data-transition="yes">
             <div class="card">
                 <div class="card-head">
@@ -23,7 +23,7 @@
                         <span class="primary">Bonjour ! Je suis le nouveau locataire de l'appartement n°{} de la maison {}</span>
                     </div>
                     <div class="card-content-image">
-                        <img src="assets/image/11lasorquideasaticointerior02-w900.jpg" alt="">
+                        <img src="assets/image/apart-default-photo.png" alt="">
                     </div>
                 </div>
             </div>

@@ -7,6 +7,7 @@ class Room_typeModel extends Entity
 {
     protected $id_room_type;
     protected $description;
+    protected $image_url;
 
     public function __construct()
     {
@@ -51,6 +52,26 @@ class Room_typeModel extends Entity
     public function setDescription($description)
     {
         $this->description = $description;
+        
+        return $this;
+    }
+    
+    /**
+     * Get the value of image_url
+     */ 
+    public function getImage_url()
+    {
+        return $this->image_url;
+    }
+
+    /**
+     * Set the value of image_url
+     *
+     * @return  self
+     */ 
+    public function setImage_url($image_url)
+    {
+        $this->image_url = $image_url;
 
         return $this;
     }
@@ -61,10 +82,16 @@ class Room_typeModel extends Entity
             'inputType' => 'text',
             'is_disabled' => 'disabled'
         ],
+        'image_url' => [
+            'elementHTML' => 'input',
+            'inputType' => 'text',
+            'is_disabled' => ''
+        ],
         'description' => [
             'elementHTML' => 'input',
             'inputType' => 'text',
             'is_disabled' => ''
         ]
     ];
+
 }

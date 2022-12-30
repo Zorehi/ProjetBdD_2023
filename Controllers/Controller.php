@@ -25,7 +25,7 @@ abstract class Controller
 
         $contenu = ob_get_clean();
 
-        if ($template == 'default') {
+        if ($template == 'default' || $template == 'analytics') {
             $house_array = $this->retrieveInfoForNavLeft($_SESSION['user']['id']);
         }
         require_once ROOT.'/Views/templates/'.$template.'.php';
@@ -64,7 +64,7 @@ abstract class Controller
      */
     public function retrieveInfoForNavLeft($id) {
         $owner = new OwnerModel();
-        $owner_array = $owner->findBy(['id_users' => $id]);
+        $owner_array = $owner->findByIdUsers($id);
 
         $house_array = [];
         $house = new HouseModel();

@@ -7,7 +7,7 @@
                 <span class="secondary">1 appartement · 1 appartement libre</span>
             </div>
         </div>
-    <?php if (isset($is_admin_or_owner) && $is_admin_or_owner) { ?>
+    <?php if ($owner->getId_users() == $_SESSION['user']['id'] || $_SESSION['user']['is_admin']) { ?>
         <div class="panel-manage-btn-create-container">
             <a href="aparts/create/?id=<?= $house->getId_house() ?>" class="panel-section-button">
                 <img src="assets/image/plus.png" class="unselectable"></i>
@@ -31,7 +31,7 @@
                         <div class="hover"></div>
                     </a>
                 </div>
-            <?php if (isset($is_admin_or_owner) && $is_admin_or_owner) { ?>
+            <?php if ($owner->getId_users() == $_SESSION['user']['id'] || $_SESSION['user']['is_admin']) { ?>
                 <div class="panel-section-separator"></div>
                 <!-- <div class="panel-manage-wrapper" data-status="shown">
                     <div class="panel-section-button" onclick="onClickDropDown(this.parentElement)" draggable="false" ondragstart="return false;">

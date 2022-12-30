@@ -1213,6 +1213,7 @@ button {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
+  overflow: hidden;
 }
 .card.house_edit, .card.apart_edit {
   padding-bottom: 20px;
@@ -1316,11 +1317,8 @@ button {
   text-align: start;
 }
 .card .card-content .card-content-image {
-  height: fit-content;
-}
-.card .card-content .card-content-image img {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  display: flex;
+  justify-content: center;
 }
 .card .card-separator {
   background-color: var(--divider);

@@ -16,6 +16,16 @@ class OwnerModel extends Association
         $this->table = strtolower(str_replace('Model', '', $class));
         $this->idNames = ['id_house', 'from_date'];
     }
+
+    public function findByIdHouse($id_house) {
+        $today = date("Y-m-d");
+        return $this->requete("SELECT * FROM {$this->table} WHERE id_house = ? AND from_date <= ? AND (to_date > ? OR to_date = '0000-00-00')", [$id_house, $today, $today])->fetch();
+    }
+
+    public function findByIdUsers($id_users) {
+        $today = date("Y-m-d");
+        return $this->requete("SELECT * FROM {$this->table} WHERE id_users = ? AND from_date <= ? AND (to_date > ? OR to_date = '0000-00-00')", [$id_users, $today, $today])->fetchAll();
+    }
     
 
     /**

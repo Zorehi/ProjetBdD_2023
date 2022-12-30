@@ -12,6 +12,6 @@ class AnalyticsController extends Controller
     public function index() {
         $pageName = 'Statistiques | Projet BdD';
 
-        $this->render('/analytics/index', compact('pageName'));
+        $this->render('/analytics/index', compact('pageName'), 'analytics');
     }
 }
