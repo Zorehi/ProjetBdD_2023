@@ -65,6 +65,9 @@
                 const color = colorThief.getColor(this);
                 this.parentElement.style.backgroundColor = `rgb(${color.join(', ')})`;
             }
+            if (img.complete) {
+                img.dispatchEvent(new Event('load'));
+            }
         }
     }
 </script>

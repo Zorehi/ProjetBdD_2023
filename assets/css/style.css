@@ -1213,7 +1213,6 @@ button {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
-  overflow: hidden;
 }
 .card.house_edit, .card.apart_edit {
   padding-bottom: 20px;
@@ -1319,6 +1318,9 @@ button {
 .card .card-content .card-content-image {
   display: flex;
   justify-content: center;
+  overflow: hidden;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 .card .card-separator {
   background-color: var(--divider);
