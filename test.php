@@ -1,3 +1,3 @@
 <?php
-  echo date("Y-m-d");
+  echo password_hash('oui', PASSWORD_ARGON2I);
 ?>

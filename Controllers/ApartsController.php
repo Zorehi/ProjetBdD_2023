@@ -34,6 +34,16 @@ class ApartsController extends Controller
         $this->render('/aparts/edit', compact('pageName', 'apart', 'is_admin_or_owner'));
     }
 
+    public function apart_devices($id) {
+        $is_admin_or_owner = true;
+
+        $apart = new ApartmentModel();
+        $apart->hydrate($apart->findById($id));
+        $pageName = "{} | Projet BdD";
+            
+        $this->render('/aparts/apart_devices', compact('pageName', 'apart', 'is_admin_or_owner'));
+    }
+
     public function insights($id, $section) {
         $is_admin_or_owner = true;
 

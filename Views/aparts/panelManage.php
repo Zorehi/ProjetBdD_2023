@@ -33,7 +33,7 @@
                 </div>
             <?php if (isset($is_admin_or_owner) && $is_admin_or_owner) { ?>
                 <div class="panel-section-separator"></div>
-                <!-- <div class="panel-manage-wrapper" data-status="shown">
+                <div class="panel-manage-wrapper" data-status="shown">
                     <div class="panel-section-button" onclick="onClickDropDown(this.parentElement)" draggable="false" ondragstart="return false;">
                         <div class="text unselectable">
                             <span class="secondary">Outils d'administration</span>
@@ -44,15 +44,15 @@
                         </div>
                         <div class="hover"></div>
                     </div>
-                    <a href="houses/<?= $apart->getId_apartment() ?>/house_aparts" id="house_aparts" class="panel-section-button" data-status="unselected">
+                    <a href="aparts/<?= $apart->getId_apartment() ?>/apart_devices" id="apart_devices" class="panel-section-button" data-status="unselected">
                         <i class="image" style="background-position-y: -22px;"></i>
                         <div class="text unselectable">
-                            <span class="primary">Appartements de la maison</span>
-                            <span class="secondary">1 appartement</span>
+                            <span class="primary">Équipements de l'appartement</span>
+                            <span class="secondary">156 équipements</span>
                         </div>
                         <div class="hover"></div>
                     </a>
-                </div> -->
+                </div>
                 <div class="panel-manage-wrapper" data-status="shown">
                     <div class="panel-section-button" onclick="onClickDropDown(this.parentElement)" draggable="false" ondragstart="return false;">
                         <div class="text unselectable">

@@ -1,6 +1,6 @@
 <div class="panel-section panel-create">
     <div class="panel-section-title">
-        <h1>Créer une maison</h1>
+        <h1>Créer un appartement</h1>
     </div>
     <div class="panel-section-list">
         <form action="" id="form-add-room" hidden></form>
@@ -123,6 +123,11 @@
         }
     });
 
+    function deleteRow(element) {
+        element.remove();
+        scrollbar_11.refresh();
+    }
+
     const btn_add_room = document.getElementById('btn-add-room');
     const form_add_room = document.getElementById('form-add-room');
     const list_room = document.getElementById('list-room');
@@ -133,7 +138,7 @@
                 <input type="text" name="room_name[]" value="${form_add_room[1].value}" hidden>
                 <span data-label="Type de pièce">${form_add_room[0][form_add_room[0].selectedIndex].textContent}</span>
                 <span data-label="Nom de la pièce">${form_add_room[1].value}</span>
-                <button type="button" class="btn-delete" onclick="this.parentElement.remove()">
+                <button type="button" class="btn-delete" onclick="deleteRow(this.parentElement)">
                     <img src="assets/image/bin.png" height="16px" width="16px" alt="">
                 </button>
             </div>`;
