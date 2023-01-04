@@ -2,12 +2,13 @@
 namespace App\Controllers;
 
 use App\Models\Associations\OwnerModel;
+use App\Models\Entities\ApartmentModel;
 use App\Models\Entities\HouseModel;
 use App\Models\Entities\UsersModel;
 
 abstract class Controller
 {
-    public function render(string $fichier, array $donnees = [], string $template = 'default')
+    protected function render(string $fichier, array $donnees = [], string $template = 'default')
     {
         // On extrait le contenu de $donnes
         extract($donnees);
@@ -37,7 +38,7 @@ abstract class Controller
      * @param Boolean $admin true si on doit checker s'il est admin
      * @return void
      */
-    public function securityCheck($admin) {
+    protected function securityCheck($admin) {
         if (isset($_SESSION['user'])) {
             if (!$admin) return;
             $user = new UsersModel();
@@ -62,14 +63,18 @@ abstract class Controller
      * @param Number $id
      * @return void
      */
-    public function retrieveInfoForNavLeft($id) {
+    private function retrieveInfoForNavLeft($id) {
         $owner = new OwnerModel();
         $owner_array = $owner->findByIdUsers($id);
 
         $house_array = [];
         $house = new HouseModel();
+        $apartment = new ApartmentModel();
         foreach ($owner_array as $value) {
-            $house_array[] = $house->findById($value['id_house']);
+            $array = $house->findById($value['id_house']);
+            $array['nbr_aparts'] = $apartment->countApartFromHouse($value['id_house']);
+            $array['nbr_free_aparts'] = $apartment->countFreeApartFromHouse($value['id_house']);
+            $house_array[] = $array;
         }
 
         return $house_array;

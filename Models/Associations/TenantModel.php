@@ -18,7 +18,7 @@ class TenantModel extends Association
         $this->idNames = ['id_apartment', 'from_date'];
     }
 
-    public function findByIdHouse($id_apartment) {
+    public function findByIdApartment($id_apartment) {
         $today = date("Y-m-d");
         return $this->requete("SELECT * FROM {$this->table} WHERE id_apartment = ? AND from_date <= ? AND (to_date > ? OR to_date = '0000-00-00')", [$id_apartment, $today, $today])->fetch();
     }
@@ -85,6 +85,7 @@ class TenantModel extends Association
     public function setTo_date($to_date)
     {
         $this->to_date = $to_date;
+        if ($to_date == null) $this->to_date = '0000-00-00';
 
         return $this;
     }
@@ -114,7 +115,7 @@ class TenantModel extends Association
             'elementHTML' => 'select',
             'inputType' => null,
             'is_disabled' => '',
-            'name' => '??'
+            'name' => 'num'
         ],
         'from_date' => [
             'elementHTML' => 'input',

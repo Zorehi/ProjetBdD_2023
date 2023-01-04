@@ -2612,7 +2612,7 @@ button {
   height: 22px;
   filter: var(--filter-primary-icon);
   background-image: url("http://projetbdd/assets/image/page-manage.png");
-  background-size: 44px 110px;
+  background-size: 44px 132px;
 }
 .panel-manage .panel-section-button .text {
   margin-top: 8px;

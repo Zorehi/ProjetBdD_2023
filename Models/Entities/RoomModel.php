@@ -17,6 +17,9 @@ class RoomModel extends Entity
         $this->idName = "id_room";
     }
 
+    public function countRoomApart($idApart) {
+        return $this->requete("SELECT COUNT(*) as nbr_rooms FROM {$this->table} WHERE id_apartment = {$idApart}")->fetch()['nbr_rooms'];
+    }
     
 
     /**
@@ -120,7 +123,7 @@ class RoomModel extends Entity
             'elementHTML' => 'select',
             'inputType' => null,
             'is_disabled' => '',
-            'name' => 'description'
+            'name' => 'num'
         ]
     ];
 }

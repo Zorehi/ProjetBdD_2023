@@ -84,6 +84,7 @@ class OwnerModel extends Association
     public function setTo_date($to_date)
     {
         $this->to_date = $to_date;
+        if ($to_date == null) $this->to_date = '0000-00-00';
 
         return $this;
     }
