@@ -14,7 +14,8 @@
     .panel-section-title {
         margin: 19px 16px 8px 16px;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        justify-content: center;
 
         & > h1 {
             color: var(--primary-text);

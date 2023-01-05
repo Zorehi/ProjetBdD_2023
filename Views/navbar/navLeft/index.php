@@ -2,7 +2,7 @@
     <div class="main">
         <a href="/" class="navLeft-button" id="Home" data-status="unselected">
             <div class="show-selected"></div>
-            <i style="background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yG/r/YHLvfJvVfG6.png);background-position:0 0;background-size:auto;width:20px;height:20px;background-repeat:no-repeat;display:inline-block"></i>
+            <img src="/assets/image/home.png" alt="" class="image">
             <span>Accueil</span>
             <div class="button-hover"></div>
         </a>
@@ -14,10 +14,19 @@
         </a>
     </div>
     <div class="navLeft-section houses">
+        <div class="navLeft-section-separator"></div>
+    <?php foreach ($house_array as $key => $value) { if ($key > 2) break; ?>
+        <a class="navLeft-button redirect" id="<?= $value['id_house'] . '-' . $value['house_name'] ?>" href="/houses/<?= $value['id_house'] ?>">
+            <div class="show-selected"></div>
+            <img src="assets/image/house-default-min-photo.png" alt="">
+            <span><?= $value['house_name'] ?></span>
+            <div class="button-hover"></div>
+        </a>
+    <?php } ?>
         <div class="navLeft-button" id="Maisons" data-status="unselected">
             <div class="show-selected"></div>
-            <div class="icon">
-                <i class="fa-solid fa-building fa-lg" style="background-position:0 0;background-size:auto;background-repeat:no-repeat;display:inline-block"></i>
+            <div class="icon-container">
+                <i class="image" style="background-position-y: 0px;"></i>
             </div>
             <span>Maisons</span>
             <div class="button-hover"></div>
@@ -25,20 +34,22 @@
     </div>
 <?php if ($_SESSION['user']['is_admin']) { ?>
     <div class="navLeft-section database">
+        <div class="navLeft-section-separator"></div>
         <div class="navLeft-button" id="Database" data-status="unselected">
             <div class="show-selected"></div>
-            <div class="icon">
-                <img width="16px" height="16px" src="assets/image/database.png" style="background-position:0 0;background-size:auto;background-repeat:no-repeat;display:inline-block">
+            <div class="icon-container">
+                <i class="image" style="background-position-y: -32px;"></i>
             </div>
             <span>Base de données</span>
             <div class="button-hover"></div>
         </div>
     </div>
     <div class="navLeft-section analytics">
+        <div class="navLeft-section-separator"></div>
         <a href="analytics" class="navLeft-button" id="Analytics" data-status="unselected">
             <div class="show-selected"></div>
-            <div class="icon">
-                <img width="16px" height="16px" src="assets/image/analytics.png" style="background-position:0 0;background-size:auto;background-repeat:no-repeat;display:inline-block">
+            <div class="icon-container">
+                <i class="image" style="background-position-y: -48px;"></i>
             </div>
             <span>Statistiques</span>
             <div class="button-hover"></div>

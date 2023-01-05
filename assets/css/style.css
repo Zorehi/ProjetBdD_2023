@@ -854,70 +854,6 @@ button {
   background-color: #166FE5;
 }
 
-.card-recover {
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -60%);
-  background-color: #fff;
-}
-.card-recover__head {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-.card-recover__head h2 {
-  font-size: 20px;
-  line-height: 24px;
-  padding: 18px 16px 18px 18px;
-  margin: 0;
-}
-.card-recover__body {
-  padding: 16px;
-}
-.card-recover__body > :first-child {
-  font-size: 17px;
-  line-height: 20px;
-  margin-bottom: 20px;
-}
-.card-recover__footer {
-  padding: 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  text-align: end;
-  position: relative;
-}
-.card-recover__footer a {
-  padding: 0 20px;
-  background-color: #e4e6eb;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  line-height: 36px;
-  color: #4b4f56;
-  display: inline-block;
-  font-weight: bold;
-}
-.card-recover__footer a:hover {
-  text-decoration: none;
-}
-.card-recover__footer button {
-  padding: 0 20px;
-  background-color: #1877f2;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  line-height: 36px;
-  margin-left: 8px;
-  font-weight: bold;
-  color: #fff;
-  cursor: pointer;
-}
-.card-recover__footer button:hover {
-  background-color: #166FE5;
-}
-
 .responsive-table {
   width: 100%;
   max-height: 90%;
@@ -1197,6 +1133,50 @@ button {
   width: 11%;
 }
 
+.form-label-input {
+  position: relative;
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  display: block;
+  cursor: text;
+}
+.form-label-input span {
+  position: absolute;
+  color: var(--secondary-text);
+  left: 16px;
+  top: 18px;
+  transform-origin: top left;
+  transition: transform 0.2s cubic-bezier(0.08, 0.52, 0.52, 1);
+  transform: scale(0.75) translateY(-11px);
+}
+.form-label-input input, .form-label-input select {
+  padding: 26px 16px 10px 16px;
+  color: var(--primary-text);
+  width: 100%;
+  border: none;
+}
+.form-label-input select {
+  background-position: right 10px center;
+  background-color: var(--card-background);
+  border-radius: 6px;
+}
+.form-label-input.select {
+  cursor: pointer;
+}
+.form-label-input[data-status=empty] span {
+  transform: none;
+}
+.form-label-input:focus-within {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent);
+}
+.form-label-input:focus-within span {
+  color: var(--accent);
+  transform: scale(0.75) translateY(-11px);
+}
+.form-label-input:hover {
+  border-color: #8A8D91;
+}
+
 .card-wrapper {
   display: flex;
   flex-direction: column;
@@ -1328,6 +1308,70 @@ button {
   margin: 4px 16px;
 }
 
+.card-recover {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  background-color: #fff;
+}
+.card-recover__head {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.card-recover__head h2 {
+  font-size: 20px;
+  line-height: 24px;
+  padding: 18px 16px 18px 18px;
+  margin: 0;
+}
+.card-recover__body {
+  padding: 16px;
+}
+.card-recover__body > :first-child {
+  font-size: 17px;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+.card-recover__footer {
+  padding: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: end;
+  position: relative;
+}
+.card-recover__footer a {
+  padding: 0 20px;
+  background-color: #e4e6eb;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  line-height: 36px;
+  color: #4b4f56;
+  display: inline-block;
+  font-weight: bold;
+}
+.card-recover__footer a:hover {
+  text-decoration: none;
+}
+.card-recover__footer button {
+  padding: 0 20px;
+  background-color: #1877f2;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  line-height: 36px;
+  margin-left: 8px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
+.card-recover__footer button:hover {
+  background-color: #166FE5;
+}
+
 .card-edit .card-edit-row[data-status=modifying] .card-edit-content[data-index="0"] {
   display: none;
 }
@@ -1434,48 +1478,90 @@ button {
   transform: scale(0.96);
 }
 
-.form-label-input {
+.card-search div.card-list-row {
+  padding: 16px;
+}
+.card-search .card-list-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
   position: relative;
-  border: 1px solid var(--divider);
-  border-radius: 6px;
-  display: block;
-  cursor: text;
 }
-.form-label-input span {
-  position: absolute;
-  color: var(--secondary-text);
-  left: 16px;
-  top: 18px;
-  transform-origin: top left;
-  transition: transform 0.2s cubic-bezier(0.08, 0.52, 0.52, 1);
-  transform: scale(0.75) translateY(-11px);
+.card-search .card-list-row .image, .card-search .card-list-row .image-href {
+  height: 60px;
+  width: 60px;
+  border-radius: 8px;
 }
-.form-label-input input, .form-label-input select {
-  padding: 26px 16px 10px 16px;
+.card-search .card-list-row > .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 12px;
+}
+.card-search .card-list-row > .text .primary {
   color: var(--primary-text);
-  width: 100%;
-  border: none;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-bottom: 2px;
 }
-.form-label-input select {
-  background-position: right 10px center;
-  background-color: var(--card-background);
+.card-search .card-list-row > .text a.primary:hover {
+  text-decoration: underline;
+}
+.card-search .card-list-row > .text .secondary {
+  color: var(--secondary-text);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.card-search .card-list-row .button-container {
+  position: absolute;
+  right: 16px;
+}
+.card-search .button {
+  position: relative;
+  padding: 0 12px;
+  border-radius: 6px;
+  height: 36px;
+  background-color: var(--primary-deemphasized-button-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-search .button .text {
+  color: var(--primary-deemphasized-button-text);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+}
+.card-search .button .hover {
+  inset: 0;
+  position: absolute;
   border-radius: 6px;
 }
-.form-label-input.select {
-  cursor: pointer;
+.card-search .button:hover .hover {
+  background-color: var(--hover-overlay);
 }
-.form-label-input[data-status=empty] span {
-  transform: none;
+.card-search .button:active {
+  transform: scale(0.96);
 }
-.form-label-input:focus-within {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent);
+.card-search .button:active .hover {
+  background-color: var(--primary-deemphasized-button-pressed-overlay);
 }
-.form-label-input:focus-within span {
-  color: var(--accent);
-  transform: scale(0.75) translateY(-11px);
+.card-search .card-btn-container {
+  padding: 8px 16px 16px 16px;
 }
-.form-label-input:hover {
-  border-color: #8A8D91;
+.card-search .card-btn-container .button {
+  background-color: var(--secondary-button-background);
+}
+.card-search .card-btn-container .button .text {
+  color: var(--primary-text);
+}
+.card-search .card-btn-container .button:active {
+  transform: scale(0.984);
+}
+.card-search .card-btn-container .button:active .hover {
+  background-color: var(--hover-overlay);
 }
 
 .card-profil {
@@ -1829,7 +1915,7 @@ button {
   width: 60px;
   background-color: var(--nav-background-color);
 }
-.navLeft[data-status=small] .navLeft-section > :first-child > .button-hover, .navLeft#navLeft[data-always=small] .navLeft-section > :first-child > .button-hover {
+.navLeft[data-status=small] .navLeft-section > :last-child > .button-hover, .navLeft#navLeft[data-always=small] .navLeft-section > :last-child > .button-hover {
   inset: 4px 14px;
   border-radius: 16px;
 }
@@ -1840,18 +1926,19 @@ button {
   width: 300px;
   background-color: none;
 }
-.navLeft .navLeft-section {
-  padding: 8px 0;
+.navLeft .navLeft-section .navLeft-section-separator {
+  height: 1px;
+  background-color: var(--divider);
+  margin: 8px 16px;
 }
-.navLeft .navLeft-section > :first-child {
+.navLeft .navLeft-section > :last-child {
   padding: 4px 14px;
+  margin-top: 2px;
 }
-.navLeft .navLeft-section > :first-child > span {
-  margin-left: 8px;
-  font-size: 17px;
-  font-weight: 600;
+.navLeft .navLeft-section > :last-child span {
+  margin-left: 10px;
 }
-.navLeft .navLeft-section > :first-child > .icon {
+.navLeft .navLeft-section > :last-child > .icon-container {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -1860,12 +1947,20 @@ button {
   justify-content: center;
   background-color: var(--secondary-button-background);
 }
-.navLeft .navLeft-section > :first-child i, .navLeft .navLeft-section > :first-child img {
+.navLeft .navLeft-section > :last-child .image {
   -webkit-filter: var(--filter-primary-icon);
   filter: var(--filter-primary-icon);
 }
+.navLeft .navLeft-section .navLeft-button.redirect {
+  padding: 8px 18px;
+}
+.navLeft .navLeft-section .navLeft-button.redirect img {
+  height: 24px;
+  width: 24px;
+  border-radius: 6px;
+}
 .navLeft .main {
-  padding: 16px 0 8px 0;
+  padding: 16px 0 4px 0;
 }
 .navLeft .main > a {
   height: 36px;
@@ -1895,7 +1990,7 @@ button {
   font-size: 15px;
   font-weight: 500;
   color: var(--primary-text);
-  line-height: 1.33;
+  line-height: 20px;
   display: block;
   min-width: 0;
 }
@@ -1908,9 +2003,21 @@ button {
 .navLeft .navLeft-button > .button-hover:hover {
   background-color: var(--hover-overlay);
 }
+.navLeft .navLeft-button > .image {
+  height: 20px;
+  width: 20px;
+  -webkit-filter: var(--filter-primary-icon);
+  filter: var(--filter-primary-icon);
+}
 .navLeft .navLeft-button i {
   -webkit-filter: var(--filter-primary-icon);
   filter: var(--filter-primary-icon);
+  background-image: url("http://projetbdd/assets/image/navleft.png");
+  background-size: 16px 64px;
+  background-position-x: 0;
+  display: block;
+  height: 16px;
+  width: 16px;
 }
 .navLeft .navLeft-button[data-status=selected] > .show-selected {
   background-color: var(--accent);
@@ -1923,10 +2030,10 @@ button {
   transform: scaleY(1) translateY(-50%);
   display: block;
 }
-.navLeft .navLeft-button[data-status=selected] > .icon {
+.navLeft .navLeft-button[data-status=selected] > .icon-container {
   background-color: var(--primary-deemphasized-button-background);
 }
-.navLeft .navLeft-button[data-status=selected] img, .navLeft .navLeft-button[data-status=selected] i {
+.navLeft .navLeft-button[data-status=selected] .image {
   -webkit-filter: var(--filter-accent);
   filter: var(--filter-accent);
 }
@@ -2065,7 +2172,8 @@ button {
 .panel-section .panel-section-title {
   margin: 19px 16px 8px 16px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 .panel-section .panel-section-title > h1 {
   color: var(--primary-text);
@@ -2287,6 +2395,47 @@ button {
   color: var(--primary-text);
   padding: 3px;
   cursor: pointer;
+}
+
+.panelSearch .panel-section-separator {
+  padding-top: 8px;
+}
+.panelSearch .panel-section-button {
+  min-height: 52px;
+}
+.panelSearch .panel-section-button .icon-container {
+  height: 36px;
+  width: 36px;
+  background-color: var(--secondary-button-background);
+  border-radius: 50%;
+  margin: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.panelSearch .panel-section-button .icon-container .icon {
+  background-image: url("http://projetbdd/assets/image/page-search.png");
+  height: 22px;
+  width: 22px;
+  filter: var(--filter-primary-icon);
+  background-size: 22px 66px;
+  background-position-x: 0;
+  display: block;
+}
+.panelSearch .panel-section-button[data-status=selected] .icon-container {
+  background-color: var(--base-blue);
+}
+.panelSearch .panel-section-button[data-status=selected] .hover {
+  background-color: var(--hover-overlay);
+}
+.panelSearch .text {
+  margin: 0 8px;
+}
+.panelSearch .text .primary {
+  color: var(--primary-text);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
 }
 
 .panel-create {

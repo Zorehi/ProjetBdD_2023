@@ -1,4 +1,5 @@
 <div class="panel-section panel-manage" id="manage-house">
+    <input type="hidden" id="id-to-select" value="<?= $house->getId_house(). '-' . $house->getHouse_name() ?>">
     <div class="panel-manage-header">
         <div class="panel-manage-profil">
             <img src="assets/image/house-default-min-photo.png" alt="">

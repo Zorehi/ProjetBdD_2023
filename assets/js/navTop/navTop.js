@@ -18,6 +18,13 @@ const className = {
 const inputKeys = Object.keys(inputRadio);
 const classValues = Object.values(className);
 
+const searchGlobal = document.getElementById('search');
+searchGlobal.addEventListener('keyup', (event) => {
+    if (event.key == 'Enter') {
+        document.location.href = "http://projetbdd/search/all/?q="+searchGlobal.value;
+    }
+})
+
 /**
  * Créer un cookie ou le met à jour
  * 
