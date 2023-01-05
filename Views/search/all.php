@@ -5,6 +5,37 @@
         <div class="card-wrapper scrollbar-content" data-transition="yes">
             <div class="card">
                 <div class="card-head">
+                    <span class="card-head-title">Personnes</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-search">
+                        <ul class="card-list">
+                            <li class="card-list-row">
+                                <a href="#" class="image-href people">
+                                    <img src="assets/image/user-default-photo.png" alt="" class="image people">
+                                </a>
+                                <div class="text">
+                                    <a href="#" class="primary">Jérémy Legrix</a>
+                                </div>
+                                <div class="button-container">
+                                    <a href="#" class="button">
+                                        <span class="text">Voir le profil</span>
+                                        <div class="hover"></div>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="card-btn-container">
+                            <a href=<?= "/search/people/?q=$querry" ?> class="button">
+                                <span class="text">Voir tout</span>
+                                <div class="hover"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-head">
                     <span class="card-head-title">Maisons</span>
                 </div>
                 <div class="card-content">

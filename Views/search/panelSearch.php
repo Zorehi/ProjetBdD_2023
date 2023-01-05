@@ -17,6 +17,15 @@
                         </div>
                         <div class="hover"></div>
                     </a>
+                    <a href="/search/people/?q=<?= $querry ?>" id="filter-people" class="panel-section-button">
+                        <div class="icon-container">
+                            <i class="icon" style="background-position-y: -66px;"></i>
+                        </div>
+                        <div class="text">
+                            <span class="primary">Personnes</span>
+                        </div>
+                        <div class="hover"></div>
+                    </a>
                     <a href="/search/houses/?q=<?= $querry ?>" id="filter-houses" class="panel-section-button">
                         <div class="icon-container">
                             <i class="icon" style="background-position-y: 0px;"></i>

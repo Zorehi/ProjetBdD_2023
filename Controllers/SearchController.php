@@ -15,6 +15,12 @@ class SearchController extends Controller
         $this->render('/search/all', compact('pageName', 'querry'));
     }
 
+    public function people($querry) {
+        $pageName = "{$querry} : résultat de la recherche | Projet BdD";
+
+        $this->render('/search/people', compact('pageName', 'querry'));
+    }
+
     public function houses($querry) {
         $pageName = "{$querry} : résultat de la recherche | Projet BdD";
 
