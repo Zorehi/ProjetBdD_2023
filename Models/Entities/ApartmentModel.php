@@ -31,6 +31,14 @@ class ApartmentModel extends Entity
                                FROM Apartment A LEFT OUTER JOIN Tenant T ON(A.id_apartment = T.id_apartment AND A.id_house = {$idHouse} AND T.from_date <= '{$today}' AND (T.to_date > '{$today}' OR T.to_date = '0000-00-00')) 
                                WHERE T.id_users is null")->fetch()['nbr_free_aparts'];
     }
+
+    public function search($querry) {
+        return $this->requete("SELECT *
+                               FROM {$this->table} A INNER JOIN House H ON(A.id_house = H.id_house) NATURAL JOIN Apartment_type
+                               WHERE house_name LIKE '%{$querry}%' OR
+                                     CONCAT('N°', num, ' - ', house_name) LIKE '%{$querry}%' OR
+                                     num LIKE '%{$querry}%'")->fetchAll();
+    }
     
 
     /**

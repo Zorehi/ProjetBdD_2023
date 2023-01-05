@@ -3,6 +3,7 @@
 <div class="globalContainer">
     <div class="scrollbar-container" id="scrollbar-search-people">
         <div class="card-wrapper scrollbar-content" data-transition="yes">
+        <?php foreach ($users_array as $value) { ?>
             <div class="card">
                 <div class="card-search">
                     <div class="card-list-row">
@@ -10,7 +11,7 @@
                             <img src="assets/image/user-default-photo.png" alt="" class="image people">
                         </a>
                         <div class="text">
-                            <a href="#" class="primary">Jérémy Legrix</a>
+                            <a href="#" class="primary"><?= $value['firstname'].' '.$value['lastname'] ?></a>
                         </div>
                         <div class="button-container">
                             <a href="#" class="button">
@@ -21,6 +22,7 @@
                     </div>
                 </div>
             </div>
+        <?php } ?>
         </div>
         <div class="scrollbar-track"></div>
         <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">

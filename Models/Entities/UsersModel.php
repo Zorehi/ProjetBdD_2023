@@ -34,6 +34,15 @@ class UsersModel extends Entity
         return $this->requete("SELECT * FROM {$this->table} WHERE email = ? OR username = ?", [$email, $username])->fetch();
     }
 
+    public function search($querry) {
+        return $this->requete("SELECT * FROM {$this->table} 
+                               WHERE username LIKE '%{$querry}%' OR
+                                     firstname LIKE '%{$querry}%' OR
+                                     lastname LIKE '%{$querry}%' OR
+                                     CONCAT(firstname, ' ', lastname) LIKE '%{$querry}%' OR
+                                     tel LIKE '%{$querry}%'")->fetchAll();
+    }
+
     public function setSession() {
         $_SESSION["user"] = [
             "id" => $this->id_users,

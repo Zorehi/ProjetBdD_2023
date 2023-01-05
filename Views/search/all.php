@@ -3,6 +3,7 @@
 <div class="globalContainer">
     <div class="scrollbar-container" id="scrollbar-search-all">
         <div class="card-wrapper scrollbar-content" data-transition="yes">
+        <?php if (count($users_array) > 0) { ?>
             <div class="card">
                 <div class="card-head">
                     <span class="card-head-title">Personnes</span>
@@ -10,12 +11,13 @@
                 <div class="card-content">
                     <div class="card-search">
                         <ul class="card-list">
+                        <?php foreach ($users_array as $value) { ?>
                             <li class="card-list-row">
                                 <a href="#" class="image-href people">
                                     <img src="assets/image/user-default-photo.png" alt="" class="image people">
                                 </a>
                                 <div class="text">
-                                    <a href="#" class="primary">Jérémy Legrix</a>
+                                    <a href="#" class="primary"><?= $value['firstname'].' '.$value['lastname'] ?></a>
                                 </div>
                                 <div class="button-container">
                                     <a href="#" class="button">
@@ -24,6 +26,7 @@
                                     </a>
                                 </div>
                             </li>
+                        <?php } ?>
                         </ul>
                         <div class="card-btn-container">
                             <a href=<?= "/search/people/?q=$querry" ?> class="button">
@@ -34,6 +37,7 @@
                     </div>
                 </div>
             </div>
+        <?php } if (count($house_array) > 0) { ?>
             <div class="card">
                 <div class="card-head">
                     <span class="card-head-title">Maisons</span>
@@ -41,21 +45,27 @@
                 <div class="card-content">
                     <div class="card-search">
                         <ul class="card-list">
+                        <?php foreach ($house_array as $value) { ?>
                             <li class="card-list-row">
-                                <a href="#" class="image-href">
+                                <a href="<?= "/houses/{$value['id_house']}" ?>" class="image-href">
                                     <img src="assets/image/house-default-min-photo.png" alt="" class="image">
                                 </a>
                                 <div class="text">
-                                    <a href="#" class="primary">Pharmatech</a>
-                                    <span class="secondary">1 appartement · 1 appartement libre</span>
+                                    <a href="<?= "/houses/{$value['id_house']}" ?>" class="primary"><?= $value['house_name'] ?></a>
+                                    <?php 
+                                        $nbr_aparts = $apartment->countApartFromHouse($value['id_house']);
+                                        $nbr_free_aparts = $apartment->countFreeApartFromHouse($value['id_house']);
+                                    ?>
+                                    <span class="secondary"><?= "{$nbr_aparts} appartement".($nbr_aparts > 1 ? "s" : "")." · {$nbr_free_aparts} appartement".($nbr_free_aparts > 1 ? "s" : "")." libre" ?></span>
                                 </div>
                                 <div class="button-container">
-                                    <a href="#" class="button">
+                                    <a href="<?= "/houses/{$value['id_house']}" ?>" class="button">
                                         <span class="text">Voir la maison</span>
                                         <div class="hover"></div>
                                     </a>
                                 </div>
                             </li>
+                        <?php } ?>
                         </ul>
                         <div class="card-btn-container">
                             <a href=<?= "/search/houses/?q=$querry" ?> class="button">
@@ -66,6 +76,7 @@
                     </div>
                 </div>
             </div>
+        <?php } if (count($apartment_array) > 0) { ?>
             <div class="card">
                 <div class="card-head">
                     <span class="card-head-title">Appartements</span>
@@ -73,21 +84,24 @@
                 <div class="card-content">
                     <div class="card-search">
                         <ul class="card-list">
+                        <?php foreach ($apartment_array as $value) { ?>
                             <li class="card-list-row">
-                                <a href="#" class="image-href">
+                                <a href="<?= "/aparts/{$value['id_apartment']}" ?>" class="image-href">
                                     <img src="assets/image/apart-default-min-photo.png" alt="" class="image">
                                 </a>
                                 <div class="text">
-                                    <a href="#" class="primary">N°202 - Pharmatech</a>
-                                    <span class="secondary">T1/F1/P1 · 1 pièce</span>
+                                    <a href="<?= "/aparts/{$value['id_apartment']}" ?>" class="primary"><?= "N°{$value['num']} - {$value['house_name']}" ?></a>
+                                    <?php $nbr_rooms = $room->countRoomApart($value['id_apartment']) ?>
+                                    <span class="secondary"><?= "{$value['description']} · $nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
                                 </div>
                                 <div class="button-container">
-                                    <a href="#" class="button">
+                                    <a href="<?= "/aparts/{$value['id_apartment']}" ?>" class="button">
                                         <span class="text">Voir l'appartement</span>
                                         <div class="hover"></div>
                                     </a>
                                 </div>
                             </li>
+                        <?php } ?>
                         </ul>
                         <div class="card-btn-container">
                             <a href=<?= "/search/apartments/?q=$querry" ?> class="button">
@@ -98,6 +112,7 @@
                     </div>
                 </div>
             </div>
+        <?php } ?>
         </div>
         <div class="scrollbar-track"></div>
         <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
