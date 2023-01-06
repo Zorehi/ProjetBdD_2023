@@ -80,9 +80,9 @@
                     color: var(--primary-text);
                 }
 
-                & > i {
-                    -webkit-filter: var(--filter-primary-icon);
-                    filter: var(--filter-primary-icon);
+                .secondary {
+                    -webkit-filter: var(--filter-secondary-icon);
+                    filter: var(--filter-secondary-icon);
                 }
 
 

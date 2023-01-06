@@ -91,7 +91,7 @@ class Device_typeModel extends Entity
             'elementHTML' => 'select',
             'inputType' => null,
             'is_disabled' => '',
-            'name' => null
+            'name' => 'web_adress'
         ]
     ];
 }

@@ -1,0 +1,51 @@
+.panelSearch {
+    .panel-section-separator {
+        padding-top: 8px;
+    }
+
+    .panel-section-button {
+        min-height: 52px;
+
+        .icon-container {
+            height: 36px;
+            width: 36px;
+            background-color: var(--secondary-button-background);
+            border-radius: 50%;
+            margin: 0 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .icon {
+                background-image: url('http://projetbdd/assets/image/page-search.png');
+                height: 22px;
+                width: 22px;
+                filter: var(--filter-primary-icon);
+                background-size: 22px 88px;
+                background-position-x: 0;
+                display: block;
+            }
+        }
+
+        &[data-status="selected"] {
+            .icon-container {
+                background-color: var(--base-blue);
+            }
+
+            .hover {
+                background-color: var(--hover-overlay);
+            }
+        }
+    }
+
+    .text {
+        margin: 0 8px;
+
+        .primary {
+            color: var(--primary-text);
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 20px;
+        }
+    }
+}

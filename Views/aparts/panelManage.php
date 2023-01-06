@@ -3,11 +3,11 @@
         <div class="panel-manage-profil">
             <img src="assets/image/apart-default-min-photo.png" alt="">
             <div class="text">
-                <span class="primary"></span>
-                <span class="secondary">T1/F1/P1 · 1 pièce</span>
+                <span class="primary"><?= "N°{$apart->getNum()} · {$house->getHouse_name()}" ?></span>
+                <span class="secondary"><?= "{$apartment_type->getDescription()} · $nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
             </div>
         </div>
-    <?php if (isset($is_admin_or_owner) && $is_admin_or_owner) { ?>
+    <?php if ($tenant->getId_users() == $_SESSION['user']['id'] || $_SESSION['user']['is_admin']) { ?>
         <div class="panel-manage-btn-create-container">
             <a class="panel-section-button">
                 <img src="assets/image/plus.png" class="unselectable"></i>
@@ -31,9 +31,9 @@
                         <div class="hover"></div>
                     </a>
                 </div>
-            <?php if (isset($is_admin_or_owner) && $is_admin_or_owner) { ?>
+            <?php if ($tenant->getId_users() == $_SESSION['user']['id'] || $_SESSION['user']['is_admin']) { ?>
                 <div class="panel-section-separator"></div>
-                <!-- <div class="panel-manage-wrapper" data-status="shown">
+                <div class="panel-manage-wrapper" data-status="shown">
                     <div class="panel-section-button" onclick="onClickDropDown(this.parentElement)" draggable="false" ondragstart="return false;">
                         <div class="text unselectable">
                             <span class="secondary">Outils d'administration</span>
@@ -44,15 +44,23 @@
                         </div>
                         <div class="hover"></div>
                     </div>
-                    <a href="houses/<?= $apart->getId_apartment() ?>/house_aparts" id="house_aparts" class="panel-section-button" data-status="unselected">
+                    <a href="aparts/<?= $apart->getId_apartment() ?>/apart_rooms" id="apart_rooms" class="panel-section-button" data-status="unselected">
                         <i class="image" style="background-position-y: -22px;"></i>
                         <div class="text unselectable">
-                            <span class="primary">Appartements de la maison</span>
-                            <span class="secondary">1 appartement</span>
+                            <span class="primary">Pièces de l'appartement</span>
+                            <span class="secondary"><?= "$nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
                         </div>
                         <div class="hover"></div>
                     </a>
-                </div> -->
+                    <a href="aparts/<?= $apart->getId_apartment() ?>/apart_devices" id="apart_devices" class="panel-section-button" data-status="unselected">
+                        <i class="image" style="background-position-y: -110px;"></i>
+                        <div class="text unselectable">
+                            <span class="primary">Équipements de l'appartement</span>
+                            <span class="secondary"><!-- <?= "$nbr_devices équipement".($nbr_devices > 1 ? "s" : "") ?> --></span>
+                        </div>
+                        <div class="hover"></div>
+                    </a>
+                </div>
                 <div class="panel-manage-wrapper" data-status="shown">
                     <div class="panel-section-button" onclick="onClickDropDown(this.parentElement)" draggable="false" ondragstart="return false;">
                         <div class="text unselectable">

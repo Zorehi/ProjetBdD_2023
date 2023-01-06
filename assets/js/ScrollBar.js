@@ -55,12 +55,20 @@ class ScrollBar
             this.sbThumb.style.height = this.sbThumbHeight + 'px';
         }
 
+        if (this.#scroll < 0) {
+            this.#scroll = 0;
+        } else if (this.#scroll > this.sbContentHeight-this.sbContainerHeight) {
+            this.#scroll = this.sbContentHeight-this.sbContainerHeight;
+        }
+        this.#scrollThumb = (this.sbContainerHeight / this.sbContentHeight) * this.#scroll;
+
         if (forceZero) {
             this.#scroll = 0;
             this.#scrollThumb = 0;
-            this.sbContent.style.transform =  `translateY(-${this.#scroll}px)`;
-            this.sbThumb.style.transform =  `translateY(${this.#scrollThumb}px)`;
         }
+
+        this.sbContent.style.transform =  `translateY(-${this.#scroll}px)`;
+        this.sbThumb.style.transform =  `translateY(${this.#scrollThumb}px)`;
     }
 
     /**

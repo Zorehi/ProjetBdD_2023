@@ -14,7 +14,7 @@
         width: 60px;
         background-color: var(--nav-background-color);
 
-        .navLeft-section > :first-child > .button-hover {
+        .navLeft-section > :last-child > .button-hover {
             inset: 4px 14px;
             border-radius: 16px;
         }
@@ -28,18 +28,21 @@
     }
 
     .navLeft-section {
-        padding: 8px 0;
+        .navLeft-section-separator {
+            height: 1px;
+            background-color: var(--divider);
+            margin: 8px 16px;
+        }
 
-        & > :first-child {
+        & > :last-child {
             padding: 4px 14px;
+            margin-top: 2px;
 
-            & > span {
-                margin-left: 8px;
-                font-size: 17px;
-                font-weight: 600;
+            span {
+                margin-left: 10px;
             }
 
-            & > .icon {
+            & > .icon-container {
                 width: 32px;
                 height: 32px;
                 border-radius: 50%;
@@ -50,15 +53,26 @@
 
             }
 
-            i, img {
+            .image {
                 -webkit-filter: var(--filter-primary-icon);
                 filter: var(--filter-primary-icon);    
+            }
+
+        }
+
+        .navLeft-button.redirect {
+            padding: 8px 18px;
+
+            img {
+                height: 24px;
+                width: 24px;
+                border-radius: 6px;
             }
         }
     }
     
     .main {
-        padding: 16px 0 8px 0;
+        padding: 16px 0 4px 0;
 
         & > a {
             height: 36px;
@@ -92,7 +106,7 @@
             font-size: 15px;
             font-weight: 500;
             color: var(--primary-text);
-            line-height: 1.33;
+            line-height: 20px;
             display: block;
             min-width: 0;
         }
@@ -109,9 +123,22 @@
         }
 
 
+        & > .image {
+            height: 20px;
+            width: 20px;
+            -webkit-filter: var(--filter-primary-icon);
+            filter:  var(--filter-primary-icon);
+        }
+
         i {
             -webkit-filter: var(--filter-primary-icon);
             filter:  var(--filter-primary-icon);
+            background-image: url('http://projetbdd/assets/image/navleft.png');
+            background-size: 16px 64px;
+            background-position-x: 0;
+            display: block;
+            height: 16px;
+            width: 16px;
         }
 
         &[data-status="selected"] {
@@ -127,11 +154,11 @@
                 display: block;
             }
 
-            & > .icon {
+            & > .icon-container {
                 background-color: var(--primary-deemphasized-button-background);
             }
 
-            img, i {
+            .image {
                 -webkit-filter: var(--filter-accent);
                 filter:  var(--filter-accent);
             }

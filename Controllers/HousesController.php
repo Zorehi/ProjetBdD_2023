@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Form;
 use App\Models\Associations\OwnerModel;
+use App\Models\Entities\ApartmentModel;
 use App\Models\Entities\CityModel;
 use App\Models\Entities\HouseModel;
 
@@ -13,40 +14,49 @@ class HousesController extends Controller
     {
         $this->securityCheck(false);
     }
-    
-    public function index($id) {
-        $owner = new OwnerModel();
-        $owner->hydrate($owner->findByIdHouse($id));
 
+    private function retrieveInfoForPanelManage($id) {
+        $owner = new OwnerModel();
+        $owner_array = $owner->findByIdHouse($id);
+        if ($owner_array) $owner->hydrate($owner_array);
+        
         $house = new HouseModel();
         $house->hydrate($house->findById($id));
+
+        $apartment = new ApartmentModel();
+        $nbr_aparts = $apartment->countApartFromHouse($id);
+        $nbr_free_aparts = $apartment->countFreeApartFromHouse($id);
+
         $pageName = "{$house->getHouse_name()} | Projet BdD";
+
+        return compact('owner', 'house', 'pageName', 'nbr_aparts', 'nbr_free_aparts');
+    }
+    
+    public function index($id) {
+        extract($this->retrieveInfoForPanelManage($id));
             
-        $this->render('/houses/index', compact('pageName', 'house', 'owner'));
+        $this->render('/houses/index', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts'));
+    }
+
+    public function house_aparts($id) {
+        extract($this->retrieveInfoForPanelManage($id));
+            
+        $this->render('/houses/house_aparts', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts'));
     }
 
     public function edit($id) {
-        $owner = new OwnerModel();
-        $owner->hydrate($owner->findByIdHouse($id));
+        extract($this->retrieveInfoForPanelManage($id));
 
-        $house = new HouseModel();
-        $house->hydrate($house->findById($id));
         $city = new CityModel();
         $city->hydrate($city->findById($house->getId_city()));
-        $pageName = "{$house->getHouse_name()} | Projet BdD";
             
-        $this->render('/houses/edit', compact('pageName', 'house', 'owner', 'city'));
+        $this->render('/houses/edit', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts', 'city'));
     }
 
     public function insights($id, $section) {
-        $owner = new OwnerModel();
-        $owner->hydrate($owner->findByIdHouse($id));
-
-        $house = new HouseModel();
-        $house->hydrate($house->findById($id));
-        $pageName = "{$house->getHouse_name()} | Projet BdD";
+        extract($this->retrieveInfoForPanelManage($id));
             
-        $this->render('/houses/insights/'.$section, compact('pageName', 'house', 'owner'));
+        $this->render('/houses/insights/'.$section, compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts'), 'analytics');
     }
 
     // Permet d'afficher la page house/create

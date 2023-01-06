@@ -11,13 +11,15 @@
 @import "./pages/_password";
 
 // Patterns
-@import "./patterns/_card-recover.scss";
 @import "./patterns/_responsive-table.scss";
 @import "./patterns/_scrollbar-container.scss";
 @import "./patterns/_table.scss";
-@import "./patterns/_card.scss";
-@import "./patterns/_card-edit.scss";
 @import "./patterns/_form-label-input.scss";
+
+@import "./patterns/card/_card.scss";
+@import "./patterns/card/_card-recover.scss";
+@import "./patterns/card/_card-edit.scss";
+@import "./patterns/card/_card-search.scss";
 
 @import "./patterns/navTop/_card-profil.scss";
 @import "./patterns/navTop/_navTop.scss";
@@ -28,6 +30,7 @@
 @import "./patterns/navLeft/_panel-section.scss";
 @import "./patterns/navLeft/_panelSettings.scss";
 @import "./patterns/navLeft/_panelTable.scss";
+@import "./patterns/navLeft/_panelSearch.scss";
 @import "./patterns/navLeft/_panel-create.scss";
 @import "./patterns/navLeft/_panel-manage.scss";
 

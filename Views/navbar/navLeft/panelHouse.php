@@ -51,7 +51,7 @@
                             <img class="image" src="assets/image/house-default-min-photo.png" alt="">
                             <div class="text">
                                 <span class="primary"><?= $value['house_name'] ?></span>
-                                <span class="secondary">1 appartement · 1 appartement libre</span>
+                                <span class="secondary"><?= "{$value['nbr_aparts']} appartement".($value['nbr_aparts'] > 1 ? "s" : "")." · {$value['nbr_free_aparts']} appartement".($value['nbr_free_aparts'] > 1 ? "s" : "")." libre" ?></span>
                             </div>
                             <div class="hover"></div>
                         </a>

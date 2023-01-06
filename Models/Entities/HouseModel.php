@@ -22,6 +22,10 @@ class HouseModel extends Entity
         $this->idName = "id_house";
     }
 
+    public function search($querry) {
+        return $this->requete("SELECT * FROM {$this->table} WHERE house_name LIKE '%{$querry}%'")->fetchAll();
+    }
+
     /**
      * Get the value of id_house
      */ 
