@@ -17,6 +17,10 @@
                             <span>Degré de citoyenneté</span>
                             <input type="text" id="citizen_degree" name="citizen_degree" onchange="onChangeEvent(this)" required>
                         </label>
+                        <label for="hab" class="form-label-input" data-status="empty">
+                            <span>Nombre d'habitant</span>
+                            <input type="text" id="hab" name="hab" onchange="onChangeEvent(this)" required>
+                        </label>
                         <label for="id_security_degree" class="form-label-input select" data-status="empty">
                             <span>Degré de sécurité</span>
                             <select id="id_security_degree" name="id_security_degree" onchange="onChangeEvent(this)" required>
