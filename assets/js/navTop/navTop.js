@@ -46,7 +46,7 @@ const setCookie = function(name, value, days) {
 inputKeys.forEach(input => {
     if (html.classList.contains(className[input])) {
         inputRadio[input].checked = true;
-        document.getElementById("ICON_" + input).style.backgroundPosition = "-21px -145px";
+        document.getElementById("ICON_" + input).style.backgroundPosition = "-20px -40px";
         document.getElementById("ICON_" + input).classList.add("checked");
         setCookie("color-scheme", className[input], 365);
     }
@@ -63,11 +63,11 @@ const clickInputListener = function(event) {
     
     inputKeys.forEach(index => {
         if (index == this.id) {
-            document.getElementById("ICON_" + index).style.backgroundPosition = "-21px -145px";
+            document.getElementById("ICON_" + index).style.backgroundPosition = "-20px -40px";
             document.getElementById("ICON_" + index).classList.add("checked");
             setCookie("color-scheme", className[index], 365);
         } else {
-            document.getElementById("ICON_" + index).style.backgroundPosition = "-42px -145px";
+            document.getElementById("ICON_" + index).style.backgroundPosition = "0px -40px";
             document.getElementById("ICON_" + index).classList.remove("checked");
         }
     })

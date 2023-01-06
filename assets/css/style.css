@@ -1644,9 +1644,9 @@ button {
   font-weight: 500;
   color: var(--primary-text);
 }
-.card-profil__body > div > :first-child > i {
-  -webkit-filter: var(--filter-primary-icon);
-  filter: var(--filter-primary-icon);
+.card-profil__body > div > :first-child .secondary {
+  -webkit-filter: var(--filter-secondary-icon);
+  filter: var(--filter-secondary-icon);
 }
 .card-profil__body > div > :first-child:hover {
   text-decoration: none;
