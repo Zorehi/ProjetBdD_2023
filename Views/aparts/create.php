@@ -130,8 +130,11 @@
 
     const btn_add_room = document.getElementById('btn-add-room');
     const form_add_room = document.getElementById('form-add-room');
-    const list_room = document.getElementById('list-room');
     btn_add_room.addEventListener('click', (event) => {
+        input_room_name = scrollbar_11.sbContent.querySelectorAll('input[name="room_name[]"]');
+        for (const input of input_room_name) {
+            if (input.value == form_add_room[1].value) return;
+        }
         if (form_add_room.reportValidity()) {
             scrollbar_11.sbContent.innerHTML += `<div class="room-row">
                 <input type="text" name="id_room_type[]" value="${form_add_room[0].value}" hidden>
