@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\Form;
 use App\Models\Associations\OwnerModel;
 use App\Models\Associations\TenantModel;
 use App\Models\Entities\Apartment_typeModel;
@@ -77,11 +78,30 @@ class ApartsController extends Controller
 
     public function create($idMaison) {
         $pageName = "Créer un appartement | Projet BdD";
+        $apart = new ApartmentModel();
+        //var_dump($_POST);
+        if(Form::validate($_POST, ["num", "citizen_degree","id_security_degree","id_apartment_type","id_room_type","room_name","hab"])){
+            if(count($apart->findby(["num"=>$apart->getNum(), 'id_house' =>$apart->getid_house()]))==1){
+                $apart->hydrate($_POST);
+                $apart->setId_house($idMaison);
+                $apart->create();
+                $taille =count($_POST["id_room_type"]);
+                $id_room = $_POST["id_room_type"];
+                $room_name = $_POST["room_name"];
+                $apart->hydrate($apart->findBy(["num"=>$apart->getNum(), 'id_house' =>$apart->getid_house()])[0]);
+                for ($i=0 ; $i < $taille ; $i++){
+                    $piece = new RoomModel();
+                    $piece->setId_room_type($id_room[$i]);
+                    $piece->setRoom_name($room_name[$i]);
+                    $piece->setId_apartment($apart->getId_apartment());
+                    $piece->create();
+                }
+            }
 
-        $security_degree = new Security_degreeModel();
-        $apartment_type = new Apartment_typeModel();
-        $room_type = new Room_typeModel();
-
+        }
+            $security_degree = new Security_degreeModel();
+            $apartment_type = new Apartment_typeModel();
+            $room_type = new Room_typeModel();
         $this->render('/aparts/create', compact('pageName', 'idMaison', 'security_degree', 'apartment_type', 'room_type'));
     }
 }

@@ -1,6 +1,8 @@
 <?php
 namespace App\Core;
 
+use function PHPSTORM_META\type;
+
 class Form
 {
     public static function validate(array $form, array $champs)
@@ -16,7 +18,7 @@ class Form
                     return false;
                 }
             }
-            $form[$champ] = strip_tags($form[$champ]);
+            if (!gettype($form[$champ]) == 'array') $form[$champ] = strip_tags($form[$champ]);
         }
         return true;
     }
