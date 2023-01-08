@@ -43,6 +43,13 @@ class UsersModel extends Entity
                                      tel LIKE '%{$querry}%'")->fetchAll();
     }
 
+    public function countByAgeRange() {
+        return $this->requete("SELECT (SELECT COUNT(id_users) FROM {$this->table} WHERE DATEDIFF(SYSDATE(), birthday)/365 BETWEEN 18 AND 24) as 'TR18_24',
+                                      (SELECT COUNT(id_users) FROM {$this->table} WHERE DATEDIFF(SYSDATE(), birthday)/365 BETWEEN 24.01 AND 45) as 'TR24_45',
+                                      (SELECT COUNT(id_users) FROM {$this->table} WHERE DATEDIFF(SYSDATE(), birthday)/365 BETWEEN 45.01 AND 65) as 'TR45_65',
+                                      (SELECT COUNT(id_users) FROM {$this->table} WHERE DATEDIFF(SYSDATE(), birthday)/365 > 65) as 'TR65+'")->fetch();
+    }
+
     public function setSession() {
         $_SESSION["user"] = [
             "id" => $this->id_users,

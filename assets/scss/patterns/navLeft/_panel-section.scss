@@ -7,6 +7,19 @@
     position: fixed;
     z-index: 1;
 
+    &::after {
+        content: '';
+        background-image: url('http://projetbdd/assets/image/panel-shadow.png');
+        width: 7px;
+        right: -6px;
+        background-size: 7px 1px;
+        background-repeat: repeat-y;
+        bottom: 0;
+        top: 0;
+        display: block;
+        position: absolute;
+    }
+
     &[data-status="hidden"] {
         display: none;
     }
