@@ -14,6 +14,7 @@ html.__pj-light-mode {
   --comment-background: #F0F2F5;
   --comment-background-hover: #E4E6E9;
   --comment-placeholder-focus: #65676B;
+  --comment-placeholder: #65676B;
   --secondary-button-background: #E4E6EB;
   --hover-overlay: rgba(0, 0, 0, .05);
   --press-overlay: rgba(0, 0, 0, .1);
@@ -23,6 +24,7 @@ html.__pj-light-mode {
   --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%)hue-rotate(202deg) brightness(97%) contrast(96%);
   --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
   --filter-always-white: invert(100%);
+  --filter-placeholder-icon: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
   --primary-deemphasized-button-background: #E7F3FF;
   --primary-deemphasized-button-text: #1877F2;
   --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
@@ -76,6 +78,7 @@ html.__pj-dark-mode {
   --comment-background: #3A3B3C;
   --comment-background-hover: #4E4F50;
   --comment-placeholder-focus: #8A8D91;
+  --comment-placeholder: #b0b3b8;
   --secondary-button-background: rgba(255, 255, 255, .1);
   --hover-overlay: rgba(255, 255, 255, .1);
   --press-overlay: rgba(255, 255, 255, .1);
@@ -85,6 +88,7 @@ html.__pj-dark-mode {
   --filter-accent: invert(40%) sepia(52%) saturate(200%) saturate(200%) saturate(200%) saturate(189%) hue-rotate(191deg) brightness(103%) contrast(102%);
   --filter-secondary-icon: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
   --filter-always-white: invert(100%);
+  --filter-placeholder-icon: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
   --primary-deemphasized-button-background: rgba(45, 136, 255, 0.2);
   --primary-deemphasized-button-text: #2D88FF;
   --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
@@ -139,6 +143,7 @@ html.__pj-dark-mode {
     --comment-background: #3A3B3C;
     --comment-background-hover: #4E4F50;
     --comment-placeholder-focus: #8A8D91;
+    --comment-placeholder: #b0b3b8;
     --secondary-button-background: rgba(255, 255, 255, .1);
     --hover-overlay: rgba(255, 255, 255, .1);
     --press-overlay: rgba(255, 255, 255, .1);
@@ -148,6 +153,7 @@ html.__pj-dark-mode {
     --filter-accent: invert(40%) sepia(52%) saturate(200%) saturate(200%) saturate(200%) saturate(189%) hue-rotate(191deg) brightness(103%) contrast(102%);
     --filter-secondary-icon: invert(62%) sepia(98%) saturate(12%) hue-rotate(175deg) brightness(90%) contrast(96%);
     --filter-always-white: invert(100%);
+    --filter-placeholder-icon: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
     --primary-deemphasized-button-background: rgba(45, 136, 255, 0.2);
     --primary-deemphasized-button-text: #2D88FF;
     --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
@@ -198,6 +204,7 @@ html.__pj-dark-mode {
     --comment-background: #F0F2F5;
     --comment-background-hover: #E4E6E9;
     --comment-placeholder-focus: #65676B;
+    --comment-placeholder: #65676B;
     --secondary-button-background: #E4E6EB;
     --hover-overlay: rgba(0, 0, 0, .05);
     --press-overlay: rgba(0, 0, 0, .1);
@@ -207,6 +214,7 @@ html.__pj-dark-mode {
     --filter-accent: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
     --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
     --filter-always-white: invert(100%);
+    --filter-placeholder-icon: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
     --primary-deemphasized-button-background: #E7F3FF;
     --primary-deemphasized-button-text: #1877F2;
     --primary-deemphasized-button-pressed-overlay: rgba(25, 110, 255, 0.15);
@@ -243,6 +251,7 @@ html.__pj-dark-mode {
 body {
   background-color: var(--background-color);
   line-height: 1.34;
+  overflow: hidden;
 }
 
 a {
@@ -295,7 +304,7 @@ button {
   left: 420px;
   right: 0;
   bottom: 0;
-  z-index: 0;
+  z-index: -3;
 }
 
 .unselectable {
@@ -1167,7 +1176,7 @@ button {
   transform: none;
 }
 .form-label-input:focus-within {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent);
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--base-blue);
 }
 .form-label-input:focus-within span {
   color: var(--accent);
@@ -1175,6 +1184,98 @@ button {
 }
 .form-label-input:hover {
   border-color: #8A8D91;
+}
+
+.select-made-in-myself {
+  position: relative;
+  width: fit-content;
+}
+.select-made-in-myself .primary {
+  color: var(--primary-text);
+  line-height: 20px;
+  font-size: 15px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.select-made-in-myself .button {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  background-color: var(--secondary-button-background);
+  border-radius: 6px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 100ms cubic-bezier(0, 0, 1, 1);
+}
+.select-made-in-myself .button .primary {
+  font-weight: 600;
+}
+.select-made-in-myself .button .icon {
+  filter: var(--filter-primary-icon);
+  margin-left: 8px;
+  z-index: 2;
+  position: relative;
+}
+.select-made-in-myself .button .hover {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.select-made-in-myself .button:hover .hover {
+  background-color: var(--hover-overlay);
+}
+.select-made-in-myself .button:active .hover {
+  background-color: var(--press-overlay);
+}
+.select-made-in-myself .select.button[data-status=selected] .primary {
+  color: var(--accent);
+}
+.select-made-in-myself .select.button[data-status=selected] .icon {
+  filter: var(--filter-accent);
+}
+.select-made-in-myself .select.button:active {
+  transform: scale(0.96);
+}
+.select-made-in-myself .option.button {
+  background-color: transparent;
+  border-radius: 4px;
+}
+.select-made-in-myself .option.button .primary {
+  font-weight: 500;
+}
+.select-made-in-myself .option.button.show-select[data-status=selected] {
+  padding: 12px 8px;
+}
+.select-made-in-myself .option.button.show-select[data-status=selected] .hover {
+  background-color: var(--hover-overlay);
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--base-blue);
+}
+.select-made-in-myself .option.button.show-select[data-status=selected]::after {
+  content: "";
+  background-image: url("http://projetbdd/assets/image/select-made-by-myself.png");
+  background-position: 0 0;
+  position: absolute;
+  background-size: auto;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  right: 10px;
+  filter: var(--filter-accent);
+}
+.select-made-in-myself .pop-up-select {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--card-background);
+  z-index: 1;
+  box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  width: calc(100% + 80px);
+}
+.select-made-in-myself .pop-up-select[data-status=hidden] {
+  display: none;
 }
 
 .card-wrapper {
@@ -1906,6 +2007,79 @@ button {
   right: 16px;
 }
 
+.panelTopFilter {
+  background-color: var(--card-background);
+  width: 100%;
+  padding: 24px 16px 16px 16px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.panelTopFilter > div {
+  z-index: 99;
+  position: relative;
+  max-width: 876px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.panelTopFilter .panelTopFilter-head {
+  height: 64px;
+  margin: -6px 0 6px 0;
+  display: flex;
+  align-items: center;
+}
+.panelTopFilter .panelTopFilter-head .panelTopFilter-head-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+}
+.panelTopFilter .panelTopFilter-head .panelTopFilter-head-title .primary {
+  color: var(--primary-text);
+}
+.panelTopFilter .panelTopFilter-head .panelTopFilter-head-title .secondary {
+  color: var(--secondary-text);
+}
+.panelTopFilter .panelTopFilter-searchBy, .panelTopFilter .panelTopFilter-filterBy {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+}
+.panelTopFilter .panelTopFilter-filterBy .select-made-in-myself {
+  margin-right: 8px;
+}
+.panelTopFilter .panelTopFilter_search {
+  display: flex;
+  flex-grow: 1;
+  border-radius: 50px;
+  background-color: var(--comment-background);
+  margin-right: 16px;
+}
+.panelTopFilter .panelTopFilter_search .icon-search-container {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+.panelTopFilter .panelTopFilter_search .icon-search-container .icon-search {
+  filter: var(--filter-placeholder-icon);
+}
+.panelTopFilter .panelTopFilter_search .input_search {
+  padding: 7px 6px 9px 6px;
+  height: 36px;
+  text-align: left;
+  color: var(--primary-text);
+  font-size: 15px;
+  font-weight: 400;
+  flex-grow: 1;
+}
+.panelTopFilter .panelTopFilter_search .input_search::placeholder {
+  color: var(--comment-placeholder);
+}
+.panelTopFilter .panelTopFilter_search .input_search:focus::placeholder {
+  color: var(--comment-placeholder-focus);
+}
+
 .navLeft {
   overflow: hidden;
   height: 100%;
@@ -2171,6 +2345,18 @@ button {
   position: fixed;
   z-index: 1;
 }
+.panel-section::after {
+  content: "";
+  background-image: url("http://projetbdd/assets/image/panel-shadow.png");
+  width: 7px;
+  right: -6px;
+  background-size: 7px 1px;
+  background-repeat: repeat-y;
+  bottom: 0;
+  top: 0;
+  display: block;
+  position: absolute;
+}
 .panel-section[data-status=hidden] {
   display: none;
 }
@@ -2420,15 +2606,18 @@ button {
 }
 .panelSearch .panel-section-button .icon-container .icon {
   background-image: url("http://projetbdd/assets/image/page-search.png");
-  height: 22px;
-  width: 22px;
+  height: 20px;
+  width: 20px;
   filter: var(--filter-primary-icon);
-  background-size: 22px 88px;
+  background-size: 20px 48px;
   background-position-x: 0;
   display: block;
 }
 .panelSearch .panel-section-button[data-status=selected] .icon-container {
   background-color: var(--base-blue);
+}
+.panelSearch .panel-section-button[data-status=selected] .icon-container .icon {
+  filter: var(--filter-always-white);
 }
 .panelSearch .panel-section-button[data-status=selected] .hover {
   background-color: var(--hover-overlay);
