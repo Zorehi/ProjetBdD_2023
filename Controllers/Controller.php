@@ -10,7 +10,7 @@ abstract class Controller
 {
     protected function render(string $fichier, array $donnees = [], string $template = 'default')
     {
-        // On extrait le contenu de $donnes
+        // On extrait le contenu de $donnees
         extract($donnees);
 
         if (!isset($pageName)) {
@@ -57,7 +57,7 @@ abstract class Controller
         }
     }
 
-    /*protected function renderData(array $donnees, string $erreur = null) {
+    protected function renderData(array $donnees, string $erreur = null) {
         // Headers requis
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json; charset=UTF-8");
@@ -77,7 +77,7 @@ abstract class Controller
             echo json_encode(["message" => $erreur]);
         }
 
-    }*/
+    }
 
     /**
      * Retrieve information of this user for navLeft

@@ -12,7 +12,7 @@ class SettingsController extends Controller
         $this->securityCheck(false);
     }
 
-    public function index($page) {
+    public function index($tab) {
         $user = new UsersModel;
         $user->hydrate($user->findById($_SESSION['user']['id']));
 
@@ -55,12 +55,12 @@ class SettingsController extends Controller
                     }
                     break;
             }
-            header("Location: /settings/?tab=$page");
+            header("Location: /settings/?tab=$tab");
             exit;
         }
             
         $pageName = 'Paramètres et confidentialité | Projet BdD';
 
-        $this->render('/settings/'.$page, compact('pageName', 'user'));
+        $this->render('/settings/'.$tab, compact('pageName', 'user'));
     }
 }

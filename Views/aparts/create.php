@@ -5,7 +5,6 @@
     <div class="panel-section-list">
         <form action="" id="form-add-room" hidden></form>
         <form class="create-form" id="create-appart" action="" method="POST">
-            <input type="hidden" name="id_houses" value="<?= $idMaison ?>">
             <div class="create-label-wrapper" data-status="active">
                 <div class="create-label-list scrollbar-container" id="scrollbar-10">
                     <div class="scrollbar-content" data-transition="yes">

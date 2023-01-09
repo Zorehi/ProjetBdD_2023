@@ -14,8 +14,8 @@ class SearchController extends Controller
         $this->securityCheck(false);
     }
 
-    public function all($querry) {
-        $querry = str_replace('%20', '%', $querry);
+    public function all($q) {
+        $querry = str_replace('%20', '%', $q);
         $pageName = str_replace('%', ' ', $querry)." : résultat de la recherche | Projet BdD";
 
         $users = new UsersModel();
@@ -31,8 +31,8 @@ class SearchController extends Controller
         $this->render('/search/all', compact('pageName', 'querry', 'house_array', 'apartment', 'users_array', 'apartment_array', 'room'));
     }
 
-    public function people($querry) {
-        $querry = str_replace('%20', '%', $querry);
+    public function people($q) {
+        $querry = str_replace('%20', '%', $q);
         $pageName = str_replace('%', ' ', $querry)." : résultat de la recherche | Projet BdD";
 
         $users = new UsersModel();
@@ -41,8 +41,8 @@ class SearchController extends Controller
         $this->render('/search/people', compact('pageName', 'querry', 'users_array'));
     }
 
-    public function houses($querry) {
-        $querry = str_replace('%20', '%', $querry);
+    public function houses($q) {
+        $querry = str_replace('%20', '%', $q);
         $pageName = str_replace('%', ' ', $querry)." : résultat de la recherche | Projet BdD";
 
         $house = new HouseModel();
@@ -52,8 +52,8 @@ class SearchController extends Controller
         $this->render('/search/houses', compact('pageName', 'querry', 'house_array', 'apartment'));
     }
 
-    public function apartments($querry) {
-        $querry = str_replace('%20', '%', $querry);
+    public function apartments($q) {
+        $querry = str_replace('%20', '%', $q);
         $pageName = str_replace('%', ' ', $querry)." : résultat de la recherche | Projet BdD";
 
         $apartment = new ApartmentModel();

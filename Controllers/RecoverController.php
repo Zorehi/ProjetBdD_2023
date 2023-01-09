@@ -59,10 +59,10 @@ class RecoverController extends Controller
 
         if (Form::validate($_POST, ["code"])) {
             if ($_POST["code"] === $_SESSION["recover"]["code"]) {
-                header("Location: /recover/password/?id=".$_SESSION["recover"]["code"]);
+                header("Location: /recover/password/?code=".$_SESSION["recover"]["code"]);
             }
         }
-
+        
         $this->render('/recover/code', compact("send_to", "id"), "login");
     }
 

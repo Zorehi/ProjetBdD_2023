@@ -7,10 +7,14 @@ use App\Models\Associations\OwnerModel;
 use App\Models\Associations\TenantModel;
 use App\Models\Entities\Apartment_typeModel;
 use App\Models\Entities\ApartmentModel;
+use App\Models\Entities\Device_typeModel;
+use App\Models\Entities\DeviceModel;
 use App\Models\Entities\HouseModel;
+use App\Models\Entities\ResourceModel;
 use App\Models\Entities\Room_typeModel;
 use App\Models\Entities\RoomModel;
 use App\Models\Entities\Security_degreeModel;
+use App\Models\Entities\SubstanceModel;
 
 class ApartsController extends Controller
 {
@@ -64,10 +68,20 @@ class ApartsController extends Controller
         $this->render('/aparts/apart_rooms', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type'));
     }
 
-    public function apart_devices($id) {
+    public function apart_devices($id, $order_by = 'ASC', $id_room = false) {
         extract($this->retrieveInfoForPanelManage($id));
+
+        $init = [
+            'order_by' => $order_by == 'ASC' ? 0 : 1,
+            'id_room' => $id_room ? $id_room : 0,
+        ];
+
+        $device_type = new Device_typeModel();
+        $substance = new SubstanceModel();
+        $ressource = new ResourceModel();
+        $room = new RoomModel();
             
-        $this->render('/aparts/apart_devices', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type'));
+        $this->render('/aparts/apart_devices', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'room', 'device_type', 'substance', 'ressource', 'init'));
     }
 
     public function insights($id, $section) {
@@ -76,32 +90,39 @@ class ApartsController extends Controller
         $this->render('/aparts/insights/'.$section, compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type'), 'analytics');
     }
 
-    public function create($idMaison) {
+    public function create($id_house) {
         $pageName = "Créer un appartement | Projet BdD";
         $apart = new ApartmentModel();
-        //var_dump($_POST);
+
         if(Form::validate($_POST, ["num", "citizen_degree","id_security_degree","id_apartment_type","id_room_type","room_name","hab"])){
-            if(count($apart->findby(["num"=>$apart->getNum(), 'id_house' =>$apart->getid_house()]))==1){
+            if(count($apart->findby(["num" => $apart->getNum(), 'id_house' => $apart->getid_house()])) == 0){
                 $apart->hydrate($_POST);
-                $apart->setId_house($idMaison);
+                $apart->setId_house($id_house);
                 $apart->create();
                 $taille =count($_POST["id_room_type"]);
                 $id_room = $_POST["id_room_type"];
                 $room_name = $_POST["room_name"];
                 $apart->hydrate($apart->findBy(["num"=>$apart->getNum(), 'id_house' =>$apart->getid_house()])[0]);
+                $piece = new RoomModel();
                 for ($i=0 ; $i < $taille ; $i++){
-                    $piece = new RoomModel();
                     $piece->setId_room_type($id_room[$i]);
                     $piece->setRoom_name($room_name[$i]);
                     $piece->setId_apartment($apart->getId_apartment());
                     $piece->create();
                 }
             }
-
         }
-            $security_degree = new Security_degreeModel();
-            $apartment_type = new Apartment_typeModel();
-            $room_type = new Room_typeModel();
-        $this->render('/aparts/create', compact('pageName', 'idMaison', 'security_degree', 'apartment_type', 'room_type'));
+        
+        $security_degree = new Security_degreeModel();
+        $apartment_type = new Apartment_typeModel();
+        $room_type = new Room_typeModel();
+
+        $this->render('/aparts/create', compact('pageName', 'security_degree', 'apartment_type', 'room_type'));
+    }
+
+    public function retrieveDevice($id_apart, $id_room = null, $id_substance = true, $id_resource = true) {
+        $device = new DeviceModel();
+
+        
     }
 }

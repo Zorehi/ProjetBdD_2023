@@ -64,8 +64,9 @@ use App\Models\Entities\UsersModel;
             $variables = [];
             if (strstr($uri, '?')) {
                 $array = explode('&', substr($uri, strpos($uri, '?')+1));
-                foreach($array as $i => $value) {
-                    $variables[$i] = explode('=', $value)[1];
+                foreach($array as $value) {
+                    $explode = explode('=', $value);
+                    $variables[$explode[0]] = $explode[1];
                 }
             }
 
@@ -91,13 +92,13 @@ use App\Models\Entities\UsersModel;
                 // On récupère le 2ieme paramètre d'URL
                 $action = (isset($params[0])) ? array_shift($params) : 'index';
                 if (intval($action)) {
-                    array_unshift($variables, $action);
+                    $variables['id'] = $action;
                     $action = (isset($params[0])) ? array_shift($params) : 'index';
                 }
 
                 if (method_exists($controller, $action)) {
                     // Si il y a des variables on les passent à la méthode
-                    count($variables) > 0 ? call_user_func_array([$controller, $action], $variables) : $controller->$action();
+                    count($variables) > 0 ? $controller->$action(...$variables) : $controller->$action();
                 } else {
                     http_response_code(404);
                     echo "La page recherchée n'existe pas";
