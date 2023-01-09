@@ -47,7 +47,7 @@ class ApartsController extends Controller
     
         $pageName = "N°{$apart->getNum()} | {$house->getHouse_name()} | Projet BdD";
 
-        return compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type');
+        return compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type' ,'room');
     }
 
     public function index($id) {
@@ -68,8 +68,10 @@ class ApartsController extends Controller
 
     public function apart_rooms($id) {
         extract($this->retrieveInfoForPanelManage($id));
-            
-        $this->render('/aparts/apart_rooms', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type'));
+        $tableroom = $room->allRoom($id);
+        
+
+        $this->render('/aparts/apart_rooms', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type','tableroom'));
     }
 
     public function apart_devices($id, $order_by = 'ASC', $id_room = false) {

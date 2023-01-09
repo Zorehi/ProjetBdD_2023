@@ -1,32 +1,34 @@
-<?php include ROOT."/Views/aparts/panelManage.php"; ?>
+<?php include ROOT . "/Views/aparts/panelManage.php"; ?>
 
 <div class="globalContainer">
     <div class="scrollbar-container" id="scrollbar-apart-rooms">
         <div class="card-wrapper scrollbar-content" data-transition="yes">
-            <div class="card">
-                <div class="card-head">
-                    <div class="card-head-profil">
-                        <div class="image-container">
-                            <img class="image" src="assets/image/user-default-photo.png" alt="">
-                            <div class="hover"></div>
+            <?php foreach ($tableroom as $value) { ?>
+                <div class="card">
+                    <div class="card-head">
+                        <div class="card-head-profil">
+                            <div class="image-container">
+                                <img class="image" src="assets/image/user-default-photo.png" alt="">
+                                <div class="hover"></div>
+                            </div>
+                            <div class="text">
+                                <span class="primary">Quelqu'un</span>
+                                <span class="secondary">
+                                    <a data-infobulle="le Mercredi 28 décembre 2022">1 j</a>
+                                </span>
+                            </div>
                         </div>
-                        <div class="text">
-                            <span class="primary">Quelqu'un</span>
-                            <span class="secondary">
-                                <a data-infobulle="le Mercredi 28 décembre 2022">1 j</a>
-                            </span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-content-text">
+                            <span class="primary">Ajout de <?= $value['room_name'] ?> pour cette appartement</span>
+                        </div>
+                        <div class="card-content-image">
+                            <img src="assets/image/<?= $value['image_url'] ?>" alt="">
                         </div>
                     </div>
                 </div>
-                <div class="card-content">
-                    <div class="card-content-text">
-                        <span class="primary">Ajout de toilettes pour cette appartement</span>
-                    </div>
-                    <div class="card-content-image">
-                        <img src="assets/image/room/toilettes.png" alt="">
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
         <div class="scrollbar-track"></div>
         <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
@@ -38,15 +40,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.min.js"></script>
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
-    const scrollbar_manage_apart = new ScrollBar(document.getElementById('scrollbar-manage-apart'), { offsetContainer: -16, offsetContent: 0});
+    const scrollbar_manage_apart = new ScrollBar(document.getElementById('scrollbar-manage-apart'), {
+        offsetContainer: -16,
+        offsetContent: 0
+    });
     scrollbar_manage_apart.init();
 
-    const scrollbar_apart_rooms = new ScrollBar(document.getElementById('scrollbar-apart-rooms'), { offsetContainer: -16, offsetContent: 0});
+    const scrollbar_apart_rooms = new ScrollBar(document.getElementById('scrollbar-apart-rooms'), {
+        offsetContainer: -16,
+        offsetContent: 0
+    });
     scrollbar_apart_rooms.init();
-    
+
     const apart_rooms = document.getElementById('apart_rooms');
     apart_rooms.dataset.status = 'selected';
-    apart_rooms.onclick = () => { return false };
+    apart_rooms.onclick = () => {
+        return false
+    };
 
     function onClickDropDown(element) {
         if (element.dataset.status == 'hidden') {
@@ -60,15 +70,15 @@
     const img_array = document.querySelectorAll('.card-content-image img');
     const colorThief = new ColorThief();
     for (const img of img_array) {
-        if (img.clientWidth != img.parentElement.clientWidth) {
-            img.onload = function () {
+        img.onload = function() {
+            if (img.clientWidth != img.parentElement.clientWidth) {
                 const color = colorThief.getColor(this);
                 this.parentElement.style.backgroundColor = `rgb(${color.join(', ')})`;
             }
-            if (img.complete) {
-                img.dispatchEvent(new Event('load'));
-            }
+            scrollbar_apart_rooms.refresh();
+        }
+        if (img.complete) {
+            img.dispatchEvent(new Event('load'));
         }
     }
-
 </script>
