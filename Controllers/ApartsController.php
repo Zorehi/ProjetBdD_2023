@@ -61,6 +61,7 @@ class ApartsController extends Controller
         if(Form::validate($_POST, ["num","hab","id_security_degree"]))
         {
             $apart->hydrate($_POST);
+            $apart->update();
         }
         $this->render('/aparts/edit', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type'));
     }
