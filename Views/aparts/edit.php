@@ -11,7 +11,6 @@
                     <form action="" method="POST" class="card-edit">
                         <ul>
                             <li class="card-edit-row">
-                                input
                                 <div class="card-edit-content" data-index="0">
                                     <span class="card-edit-content-title">Numéro de l'appartement</span>
                                     <div class="image-container" onclick="onClickModify(this.parentElement)">
@@ -74,7 +73,7 @@
                                     <div class="card-edit-list-input">
                                         <label for="num" class="form-label-input" data-status="empty">
                                             <span>Degré de sécurité</span>
-                                            <input type="text" id="num" name="num" onchange="onChangeEvent(this)" value="<?= $apart->getId_security_degree() ?>">
+                                            <input type="text" id="id_security_degree" name="id_security_degree" onchange="onChangeEvent(this)" value="<?= $apart->getId_security_degree() ?>">
                                         </label>
                                     </div>
                                     <div class="card-edit-btn-container">
