@@ -18,7 +18,7 @@ class SubstanceModel extends Entity
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "is_substance";
+        $this->idName = "id_substance";
     }
 
     /**

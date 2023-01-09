@@ -37,7 +37,7 @@
     }
 
     &:focus-within {
-        box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent);
+        box-shadow: 0 0 0 2px white, 0 0 0 4px var(--base-blue);
 
         span {
             color: var(--accent);

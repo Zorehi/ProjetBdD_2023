@@ -2,11 +2,13 @@
     <figure class="highcharts-figure">
         <div id="pie-chart-container"></div>
     </figure>
+    <figure class="highcharts-figure">
+        <div id="basic-column-container"></div>
+    </figure>
 </div>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script type="text/javascript">
-    //document.getElementById('navLeft').dataset.always = 'small';
     document.getElementById('Analytics').dataset.status = 'selected';
 
     Highcharts.chart('pie-chart-container', {
@@ -17,7 +19,7 @@
             type: 'pie'
         },
         title: {
-            text: 'Browser market shares in May, 2020'
+            text: 'Pourcentage de chaque genre inscrit sur le site'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -38,38 +40,54 @@
             }
         },
         series: [{
-            name: 'Brands',
+            name: 'Utilisateurs',
             colorByPoint: true,
-            data: [{
-                name: 'Chrome',
-                y: 70.67,
-                sliced: true,
-                selected: true
-            }, {
-                name: 'Edge',
-                y: 14.77
-            }, {
-                name: 'Firefox',
-                y: 4.86
-            }, {
-                name: 'Safari',
-                y: 2.63
-            }, {
-                name: 'Internet Explorer',
-                y: 1.53
-            }, {
-                name: 'Opera',
-                y: 1.40
-            }, {
-                name: 'Sogou Explorer',
-                y: 0.84
-            }, {
-                name: 'QQ',
-                y: 0.51
-            }, {
-                name: 'Other',
-                y: 2.6
-            }]
+            data: <?= json_encode($dataGender) ?>
+        }]
+    });
+
+    Highcharts.chart('basic-column-container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Nombre d\'utilisateurs par tranche d\'âge'
+        },
+        legend: {
+            enabled: false
+        },
+        xAxis: {
+            categories: [
+                '18-24',
+                '24-45',
+                '45-65',
+                '65+'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Nombres d\'utilisateurs'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Utilisateurs',
+            data: <?= json_encode($dataRangeF) ?>
         }]
     });
 </script>

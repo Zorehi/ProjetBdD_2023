@@ -1,0 +1,113 @@
+.select-made-in-myself {
+    position: relative;
+    width: fit-content;
+
+    .primary {
+        color: var(--primary-text);
+        line-height: 20px;
+        font-size: 15px;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .button {
+        padding: 8px 12px;
+        display: flex;
+        align-items: center;
+        background-color: var(--secondary-button-background);
+        border-radius: 6px;
+        position: relative;
+        cursor: pointer;
+        
+        .primary {
+            font-weight: 600;
+        }
+        
+        .icon {
+            filter: var(--filter-primary-icon);
+            margin-left: 8px;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .hover {
+            transition: background-color 100ms cubic-bezier(0, 0, 1, 1);
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+        }
+
+        &:hover .hover {
+            background-color: var(--hover-overlay);
+        }
+
+        &:active .hover {
+            background-color: var(--press-overlay);
+        }
+    }
+
+    .select.button {
+        &[data-status="selected"] {
+            .primary {
+                color: var(--accent);
+            }
+
+            .icon {
+                filter: var(--filter-accent);
+            }
+        }
+
+        &:active {
+            transform: scale(0.96);
+        }
+    }
+
+    .option.button {
+        background-color: transparent;
+        border-radius: 4px;
+
+        .primary {
+            font-weight: 500;
+        }
+
+        &.show-select[data-status="selected"] {
+            padding: 12px 8px;
+
+            .hover {
+                background-color: var(--hover-overlay);
+                box-shadow: 0 0 0 2px white, 0 0 0 4px var(--base-blue);
+            }
+            
+            &::after {
+                content: "";
+                background-image: url("http://projetbdd/assets/image/select-made-by-myself.png");
+                background-position: 0 0;
+                position: absolute;
+                background-size: auto;
+                width: 20px;
+                height: 20px;
+                background-repeat: no-repeat;
+                display: inline-block;
+                right: 10px;
+                filter: var(--filter-accent);
+            }
+        }
+
+    }
+
+    .pop-up-select {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        border-radius: 8px;
+        background-color: var(--card-background);
+        z-index: 1;
+        box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+        width: calc(100% + 80px);
+
+        &[data-status="hidden"] {
+            display: none;
+        }
+    }
+}

@@ -9,12 +9,14 @@
 @import "./pages/_initiate";
 @import "./pages/_code";
 @import "./pages/_password";
+@import "./pages/_apart_devices";
 
 // Patterns
 @import "./patterns/_responsive-table.scss";
 @import "./patterns/_scrollbar-container.scss";
 @import "./patterns/_table.scss";
 @import "./patterns/_form-label-input.scss";
+@import "./patterns/_select-made-in-myself.scss";
 
 @import "./patterns/card/_card.scss";
 @import "./patterns/card/_card-recover.scss";
@@ -23,6 +25,7 @@
 
 @import "./patterns/navTop/_card-profil.scss";
 @import "./patterns/navTop/_navTop.scss";
+@import "./patterns/navTop/_panelTopFilter.scss";
 
 @import "./patterns/navLeft/_navLeft.scss";
 @import "./patterns/navLeft/_panelHouse.scss";

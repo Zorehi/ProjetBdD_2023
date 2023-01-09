@@ -10,7 +10,7 @@
                 <div class="panel-section-list-container">
                     <a href="/search/all/?q=<?= $querry ?>" id="filter-all" class="panel-section-button">
                         <div class="icon-container">
-                            <i class="icon" style="background-position-y: -44px;"></i>
+                            <i class="icon" style="background-position: 0px -100px; background-size: auto;"></i>
                         </div>
                         <div class="text">
                             <span class="primary">Tous</span>
@@ -19,7 +19,7 @@
                     </a>
                     <a href="/search/people/?q=<?= $querry ?>" id="filter-people" class="panel-section-button">
                         <div class="icon-container">
-                            <i class="icon" style="background-position-y: -66px;"></i>
+                            <i class="icon" style="background-position: -20px -100px; background-size: auto;"></i>
                         </div>
                         <div class="text">
                             <span class="primary">Personnes</span>
@@ -37,7 +37,7 @@
                     </a>
                     <a href="/search/apartments/?q=<?= $querry ?>" id="filter-apartments" class="panel-section-button">
                         <div class="icon-container">
-                            <i class="icon" style="background-position-y: -22px;"></i>
+                            <i class="icon" style="background-position-y: -20px;"></i>
                         </div>
                         <div class="text">
                             <span class="primary">Appartements</span>

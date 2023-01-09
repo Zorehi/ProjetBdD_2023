@@ -33,7 +33,7 @@
                             $tablename = substr($file, 0, strpos($file, '.'));
                             $displayname = str_replace('Model', '', $tablename);
                         ?>
-                        <a class="panel-section-button" href="tables/?type=Entities&name=<?= $displayname ?>">
+                        <a class="panel-section-button" href="tables/?type=Entities&tablename=<?= $displayname ?>">
                             <div class="text">
                                 <span><?= $displayname ?></span>
                             </div>
@@ -47,7 +47,7 @@
                             $tablename = substr($file, 0, strpos($file, '.'));
                             $displayname = str_replace('Model', '', $tablename);
                         ?>
-                        <a class="panel-section-button" href="tables/?type=Associations&name=<?= $displayname ?>">
+                        <a class="panel-section-button" href="tables/?type=Associations&tablename=<?= $displayname ?>">
                             <div class="text">
                                 <span><?= $displayname ?></span>
                             </div>

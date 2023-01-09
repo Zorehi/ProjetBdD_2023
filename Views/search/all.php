@@ -11,7 +11,7 @@
                 <div class="card-content">
                     <div class="card-search">
                         <ul class="card-list">
-                        <?php foreach ($users_array as $value) { ?>
+                        <?php foreach ($users_array as $key => $value) { if ($key >= 5) break;?>
                             <li class="card-list-row">
                                 <a href="#" class="image-href people">
                                     <img src="assets/image/user-default-photo.png" alt="" class="image people">
@@ -45,7 +45,7 @@
                 <div class="card-content">
                     <div class="card-search">
                         <ul class="card-list">
-                        <?php foreach ($house_array as $value) { ?>
+                        <?php foreach ($house_array as $key => $value) { if ($key >= 5) break;?>
                             <li class="card-list-row">
                                 <a href="<?= "/houses/{$value['id_house']}" ?>" class="image-href">
                                     <img src="assets/image/house-default-min-photo.png" alt="" class="image">
@@ -84,7 +84,7 @@
                 <div class="card-content">
                     <div class="card-search">
                         <ul class="card-list">
-                        <?php foreach ($apartment_array as $value) { ?>
+                        <?php foreach ($apartment_array as $key => $value) { if ($key >= 5) break; ?>
                             <li class="card-list-row">
                                 <a href="<?= "/aparts/{$value['id_apartment']}" ?>" class="image-href">
                                     <img src="assets/image/apart-default-min-photo.png" alt="" class="image">

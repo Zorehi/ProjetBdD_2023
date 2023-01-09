@@ -10,7 +10,7 @@
         </div>
     <?php if ($owner->getId_users() == $_SESSION['user']['id'] || $_SESSION['user']['is_admin']) { ?>
         <div class="panel-manage-btn-create-container">
-            <a href="aparts/create/?id=<?= $house->getId_house() ?>" class="panel-section-button">
+            <a href="aparts/create/?id_house=<?= $house->getId_house() ?>" class="panel-section-button">
                 <img src="assets/image/plus.png" class="unselectable"></i>
                 <div class="text unselectable">
                     <span class="primary">Ajouter un appartement</span>
