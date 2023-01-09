@@ -23,7 +23,7 @@ function deleteRow(type, table, id, row) {
     
     var requete = $.ajax({
         type: 'POST',
-        url: 'tables/?type='+type+'&name='+table,
+        url: 'tables/?type='+type+'&tablename='+table,
         data: datas,
         timeout: 120000, //2 Minutes
         contentType: false,

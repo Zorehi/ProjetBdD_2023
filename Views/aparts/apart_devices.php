@@ -22,7 +22,7 @@
                             </g>
                         </svg>
                     </div>
-                    <input class="input_search" type="text" id="search_device" placeholder="Rechercher par nom d'équipement">
+                    <input class="input_search" type="text" id="search_device" placeholder="Rechercher par nom d'équipement" value="<?= $search ?>">
                 </label>
                 <div class="select-made-in-myself select">
                     <div class="select button">
@@ -166,9 +166,31 @@
     
     const order_by = document.querySelector('input[name="order-by"]');
     const id_room = document.querySelector('input[name="id_room"]');
+    const search_device = document.getElementById('search_device');
+
+    search_device.addEventListener('keyup', (event) => {
+        if (event.key == 'Enter') {
+            history.replaceState(null, '', `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&search=${search_device.value}`);
+
+            var requete = $.ajax({
+                type: 'GET',
+                url: 'tables/?type='+type+'&tablename='+table,
+                timeout: 120000, //2 Minutes
+                contentType: false,
+                processData: false
+            });
+            requete.done((response) => {
+                row.remove();
+                scrollbar_2.refresh();
+            });
+            requete.fail(() => {
+                alert('Impossible de supprimer la ligne');
+            });
+        }
+    })
     
     const onFilterChange = () => {
-        history.replaceState(null, '', `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}`);
+        history.replaceState(null, '', `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&search=<?= $search ?>`);
     }
     
     order_by.addEventListener('change', onFilterChange);
