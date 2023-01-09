@@ -63,7 +63,7 @@ class Select
 
     clickOnOption(element) {
         this.options.forEach((value, index) => {
-            if (value == element) return this.setSelectedIndex(index);
+            if (value.dataset.value == element.dataset.value) return this.setSelectedIndex(index);
         })
 
         document.dispatchEvent(new Event("click"));
