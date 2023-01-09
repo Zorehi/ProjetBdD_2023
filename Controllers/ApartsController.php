@@ -54,7 +54,10 @@ class ApartsController extends Controller
 
     public function edit($id) {
         extract($this->retrieveInfoForPanelManage($id));
-            
+        if(Form::validate($_POST, ["num","hab","id_security_degree"]))
+        {
+            $apart->hydrate($_POST);
+        }
         $this->render('/aparts/edit', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type'));
     }
 
