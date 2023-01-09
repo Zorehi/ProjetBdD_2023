@@ -21,6 +21,7 @@ DROP TABLE IF EXISTS `room_type`;
 CREATE TABLE room_type(
    `id_room_type` INT AUTO_INCREMENT,
    `description` VARCHAR(50)  NOT NULL,
+   `image_url` VARCHAR(50)  NOT NULL,
    PRIMARY KEY(`id_room_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

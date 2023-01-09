@@ -62,8 +62,11 @@
     for (const img of img_array) {
         if (img.clientWidth != img.parentElement.clientWidth) {
             img.onload = function () {
-                const color = colorThief.getColor(this);
-                this.parentElement.style.backgroundColor = `rgb(${color.join(', ')})`;
+                if (img.clientWidth != img.parentElement.clientWidth) {
+                    const color = colorThief.getColor(this);
+                    this.parentElement.style.backgroundColor = `rgb(${color.join(', ')})`;
+                }
+                scrollbar_apart_rooms.refresh();
             }
             if (img.complete) {
                 img.dispatchEvent(new Event('load'));

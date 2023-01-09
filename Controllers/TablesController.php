@@ -49,7 +49,7 @@ class TablesController extends Controller
                     break;
 
             }
-            header("Location: /tables/?type=$type&name=$tablename");
+            header("Location: /tables/?type=$type&tablename=$tablename");
             exit;
         }
 

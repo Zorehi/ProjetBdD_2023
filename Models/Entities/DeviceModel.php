@@ -19,10 +19,10 @@ class DeviceModel extends Entity
         $this->idName = "id_device";
     }
 
-    public function search() {
-        return $this->requete("SELECT 
-                               FROM {$this->table} D LEFT OUTER JOIN Room
-                               WHERE ")->fetchAll();
+    public function search($q) {
+        return $this->requete("SELECT *
+                               FROM {$this->table}
+                               WHERE device_name LIKE '%{$q}%'")->fetchAll();
     }
 
     /**

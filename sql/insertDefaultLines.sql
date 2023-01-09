@@ -92,13 +92,13 @@ INSERT INTO `apartment_type` (`id_apartment_type`, `description`) VALUES
 --  Ligne par défaut de la table room_type
 --  --------------------------------------------------------------------------------------
 
-INSERT INTO `room_type` (`id_room_type`, `description`) VALUES
-(1, 'Cuisine'),
-(2, 'Salle a Manger'),
-(3, 'Salon'),
-(4, 'Chambre'),
-(5, 'Salle de bain'),
-(6, 'Toilettes');
+INSERT INTO `room_type` (`id_room_type`, `description`, `image_url`) VALUES
+(1, 'Cuisine', 'room/cuisine.png'),
+(2, 'Salle a Manger', 'room/salle-a-manger.png'),
+(3, 'Salon', 'room/salon.png'),
+(4, 'Chambre', 'room/chambre.png'),
+(5, 'Salle de bain', 'room/salle-de-bain.png'),
+(6, 'Toilettes', 'room/toilettes.png');
 
 
 --  --------------------------------------------------------------------------------------
@@ -254,7 +254,7 @@ INSERT INTO `city` (`id_city`, `postcode`, `city_name`, `id_department`) VALUES
 
 INSERT INTO `house` (`id_house`, `house_name`, `isolation_degree`, `eval_eco`, `citizen_degree`, `street`, `house_number`, `id_city`) VALUES
 (1, 'Pharmatech', 1, 'ok', 1, 'Avenue Jean Portalis', 64, 1),
-(1, 'Moison', 1, 'cool', 1, 'rue Moi', 98, 1);
+(2, 'Moison', 1, 'cool', 1, 'rue Moi', 98, 1);
 
 
 --  --------------------------------------------------------------------------------------

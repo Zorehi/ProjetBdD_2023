@@ -1,15 +1,26 @@
 <div class="globalContainer">
-    <figure class="highcharts-figure">
-        <div id="pie-chart-container"></div>
-    </figure>
-    <figure class="highcharts-figure">
-        <div id="basic-column-container"></div>
-    </figure>
+    <div class="scrollbar-container" id="scrollbar-analytics">
+        <div class="scrollbar-content" data-transition="yes">
+            <figure class="highcharts-figure">
+                <div id="pie-chart-container"></div>
+            </figure>
+            <figure class="highcharts-figure">
+                <div id="basic-column-container"></div>
+            </figure>
+        </div>
+        <div class="scrollbar-track"></div>
+        <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
+            <div></div>
+        </div>
+    </div>
 </div>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script type="text/javascript">
     document.getElementById('Analytics').dataset.status = 'selected';
+
+    const scrollbar_analytics = new ScrollBar(document.getElementById('scrollbar-analytics'), { offsetContainer: -16, offsetContent: 0});
+    scrollbar_analytics.init();
 
     Highcharts.chart('pie-chart-container', {
         chart: {
@@ -90,4 +101,6 @@
             data: <?= json_encode($dataRangeF) ?>
         }]
     });
+
+    scrollbar_analytics.refresh();
 </script>

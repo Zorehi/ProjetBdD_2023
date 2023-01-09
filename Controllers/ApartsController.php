@@ -71,7 +71,7 @@ class ApartsController extends Controller
         $this->render('/aparts/apart_rooms', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type'));
     }
 
-    public function apart_devices($id, $order_by = 'ASC', $id_room = false) {
+    public function apart_devices($id, $order_by = 'ASC', $id_room = false, $search = '') {
         extract($this->retrieveInfoForPanelManage($id));
 
         $init = [
@@ -79,12 +79,29 @@ class ApartsController extends Controller
             'id_room' => $id_room ? $id_room : 0,
         ];
 
+        $device = new DeviceModel();
         $device_type = new Device_typeModel();
         $substance = new SubstanceModel();
         $ressource = new ResourceModel();
         $room = new RoomModel();
+
+        $donnees = [
+            'pageName' => $pageName,
+            'apart' => $apart,
+            'tenant' => $tenant,
+            'house' => $house,
+            'nbr_rooms' => $nbr_rooms,
+            'apartment_type' => $apartment_type,
+            'room' => $room,
+            'device_type' => $device_type,
+            'substance' => $substance,
+            'ressource' => $ressource,
+            'init' => $init,
+            'device' => $device,
+            'search' => $search,
+        ];
             
-        $this->render('/aparts/apart_devices', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'room', 'device_type', 'substance', 'ressource', 'init'));
+        $this->render('/aparts/apart_devices', $donnees);
     }
 
     public function insights($id, $section) {
@@ -123,9 +140,11 @@ class ApartsController extends Controller
         $this->render('/aparts/create', compact('pageName', 'security_degree', 'apartment_type', 'room_type'));
     }
 
-    public function retrieveDevice($id_apart, $id_room = null, $id_substance = true, $id_resource = true) {
+    public function retrieveDevice($id, $id_room = null, $id_substance = true, $id_resource = true, $search = '') {
         $device = new DeviceModel();
 
-        
+        $device_array = $device->search($search);
+
+        $this->renderData($device_array);
     }
 }
