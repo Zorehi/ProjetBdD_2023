@@ -5,12 +5,13 @@
         <div class="card-wrapper scrollbar-content" data-transition="yes">
             <div class="card house_edit">
                 <div class="card-head">
-                    <span class="card-head-title">Configurer la maison</span>
+                    <span class="card-head-title">Configurer l'appartement</span>
                 </div>
                 <div class="card-content">
                     <form action="" method="POST" class="card-edit">
                         <ul>
                             <li class="card-edit-row">
+                                input
                                 <div class="card-edit-content" data-index="0">
                                     <span class="card-edit-content-title">Numéro de l'appartement</span>
                                     <div class="image-container" onclick="onClickModify(this.parentElement)">
@@ -59,9 +60,31 @@
                                     </div>
                                 </div>
                                 <!-- <div class="card-separator"></div> -->
+                                <div class="card-separator"></div>
                             </li>
                             <li class="card-edit-row">
-            
+                            <div class="card-edit-content" data-index="0">
+                                    <span class="card-edit-content-title">Degré de Sécurité</span>
+                                    <div class="image-container" onclick="onClickModify(this.parentElement)">
+                                        <i class="image"></i>
+                                    </div>
+                                </div>
+                                <div class="card-edit-content" data-index="1">
+                                    <span class="card-edit-content-title">Degré de sécurité</span>
+                                    <div class="card-edit-list-input">
+                                        <label for="num" class="form-label-input" data-status="empty">
+                                            <span>Degré de sécurité</span>
+                                            <input type="text" id="num" name="num" onchange="onChangeEvent(this)" value="<?= $apart->getId_security_degree() ?>">
+                                        </label>
+                                    </div>
+                                    <div class="card-edit-btn-container">
+                                        <button type="button" class="btn-cancel" onclick="onClickCancel(this.parentElement.parentElement)">Annuler</button>
+                                        <button class="btn-confirm">
+                                            <span>Confirmer</span>
+                                            <div class="hover"></div>
+                                        </button>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </form>
