@@ -32,11 +32,11 @@
                         <div class="hover"></div>
                     </div>
                     <div class="pop-up-select" data-status="hidden">
-                        <div class="option button show-select" data-value="1">
+                        <div class="option button show-select" data-value="ASC">
                             <span class="text primary">Ordre alphabétique</span>
                             <div class="hover"></div>
                         </div>
-                        <div class="option button show-select" data-value="2">
+                        <div class="option button show-select" data-value="DSC">
                             <span class="text primary">Ordre alphabétique inversé</span>
                             <div class="hover"></div>
                         </div>
@@ -52,26 +52,12 @@
                         <div class="hover"></div>
                     </div>
                     <div class="pop-up-select" data-status="hidden">
-                        <div class="option button show-select" data-value="1">
-                            <span class="text primary">Chambre</span>
+                    <?php foreach ($room->findBy(['id_apartment' => $apart->getId_apartment()]) as $value) { ?>
+                        <div class="option button show-select" data-value="<?= $value['id_room'] ?>">
+                            <span class="text primary"><?= $value['room_name'] ?></span>
                             <div class="hover"></div>
                         </div>
-                        <div class="option button show-select" data-value="2">
-                            <span class="text primary">Cuisine</span>
-                            <div class="hover"></div>
-                        </div>
-                        <div class="option button show-select" data-value="3">
-                            <span class="text primary">Salon</span>
-                            <div class="hover"></div>
-                        </div>
-                        <div class="option button show-select" data-value="4">
-                            <span class="text primary">Salle de bain</span>
-                            <div class="hover"></div>
-                        </div>
-                        <div class="option button show-select" data-value="5">
-                            <span class="text primary">Salle à manger</span>
-                            <div class="hover"></div>
-                        </div>
+                    <?php } ?>
                     </div>
                 </div>
                 <div class="select-made-in-myself filter">
@@ -82,30 +68,12 @@
                         <div class="hover"></div>
                     </div>
                     <div class="pop-up-select" data-status="hidden">
-                        <div class="option button show-select" data-value="1">
-                            <span class="text primary">Chauffage</span>
+                    <?php foreach ($device_type->findAll() as $value) { ?>
+                        <div class="option button show-select" data-value="<?= $value['id_device_type'] ?>">
+                            <span class="text primary"><?= $value['type_name'] ?></span>
                             <div class="hover"></div>
                         </div>
-                        <div class="option button show-select" data-value="2">
-                            <span class="text primary">Lampe</span>
-                            <div class="hover"></div>
-                        </div>
-                        <div class="option button show-select" data-value="3">
-                            <span class="text primary">Electromenager</span>
-                            <div class="hover"></div>
-                        </div>
-                        <div class="option button show-select" data-value="4">
-                            <span class="text primary">Multimedia</span>
-                            <div class="hover"></div>
-                        </div>
-                        <div class="option button show-select" data-value="5">
-                            <span class="text primary">Chauffe eau</span>
-                            <div class="hover"></div>
-                        </div>
-                        <div class="option button show-select" data-value="6">
-                            <span class="text primary">Machine à laver</span>
-                            <div class="hover"></div>
-                        </div>
+                    <?php } ?>
                     </div>
                 </div>
                 <div class="select-made-in-myself filter">
@@ -116,48 +84,42 @@
                         <div class="hover"></div>
                     </div>
                     <div class="pop-up-select" data-status="hidden">
-                        <div class="option button show-select" data-value="1">
+                        <div class="option button show-select" data-value="substance">
                             <span class="text primary">Substances</span>
                             <div class="hover"></div>
                         </div>
-                        <div class="option button show-select" data-value="2">
+                        <div class="option button show-select" data-value="resource">
                             <span class="text primary">Ressources</span>
                             <div class="hover"></div>
                         </div>
-                        <div class="option button show-select" data-value="3">
-                            <span class="text primary">CO2 / Dioxyde de Carbone</span>
+                    <?php foreach ($substance->findAll() as $value) { ?>
+                        <div class="option button show-select" data-value="<?= "substance-".$value['id_substance'] ?>">
+                            <span class="text primary"><?= $value['name'] ?></span>
                             <div class="hover"></div>
                         </div>
-                        <div class="option button show-select" data-value="4">
-                            <span class="text primary">NO3- / Oxyde d'azote</span>
+                    <?php } foreach ($ressource->findAll() as $value) { ?>
+                        <div class="option button show-select" data-value="<?= "resource-".$value['id_resource'] ?>">
+                            <span class="text primary"><?= $value['name'] ?></span>
                             <div class="hover"></div>
                         </div>
-                        <div class="option button show-select" data-value="5">
-                            <span class="text primary">Electricite</span>
-                            <div class="hover"></div>
-                        </div>
-                        <div class="option button show-select" data-value="6">
-                            <span class="text primary">Gaz</span>
-                            <div class="hover"></div>
-                        </div>
-                        <div class="option button show-select" data-value="7">
-                            <span class="text primary">Eau</span>
-                            <div class="hover"></div>
-                        </div>
+                    <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="apart_devices">
+        <div class="scrollbar-container" id="scrollbar-apart-devices">
+            <div class="card-wrapper scrollbar-content" data-transition="yes">
+                <div class="card card-device">
 
-    <div class="scrollbar-container" id="scrollbar-apart-devices">
-        <div class="scrollbar-content" data-transition="yes">
-            
-        </div>
-        <div class="scrollbar-track"></div>
-        <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
-            <div></div>
+                </div>
+            </div>
+            <div class="scrollbar-track"></div>
+            <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
+                <div></div>
+            </div>
         </div>
     </div>
 </div>
@@ -168,13 +130,22 @@
     const scrollbar_manage_apart = new ScrollBar(document.getElementById('scrollbar-manage-apart'), { offsetContainer: -16, offsetContent: 0});
     scrollbar_manage_apart.init();
 
-    const select_array = document.querySelectorAll('.select-made-in-myself.select');
-    for (const select of select_array) {
-        new Select(select);
-    }
+    const select = document.querySelector('.select-made-in-myself.select');
+    new Select(select, 'select', <?= $init['order_by'] ?>);
+
     const filter_array = document.querySelectorAll('.select-made-in-myself.filter');
     for (const filter of filter_array) {
-        new Select(filter, 'filter');
+        const select = new Select(filter, 'filter');
+        console.log(select.input.getAttribute('name'));
+        switch (select.input.getAttribute('name')) {
+            case 'id_room':
+                const value = <?= $init['id_room'] ?>;
+                if (value) select.setSelectedValue(value);
+                break;
+        
+            default:
+                break;
+        }
     }
 
     const scrollbar_apart_edit = new ScrollBar(document.getElementById('scrollbar-apart-devices'), { offsetContainer: -16, offsetContent: 0});
@@ -192,5 +163,16 @@
         }
         scrollbar_manage_apart.refresh();
     }
+    
+    const order_by = document.querySelector('input[name="order-by"]');
+    const id_room = document.querySelector('input[name="id_room"]');
+    
+    const onFilterChange = () => {
+        history.replaceState(null, '', `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}`);
+    }
+    
+    order_by.addEventListener('change', onFilterChange);
+    id_room.addEventListener('change', onFilterChange);
+
 
 </script>

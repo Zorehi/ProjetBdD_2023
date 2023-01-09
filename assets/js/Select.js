@@ -1,6 +1,6 @@
 class Select
 {
-    value = null;
+    value = false;
     selectedIndex = 0;
     type = 'select';
 
@@ -53,27 +53,18 @@ class Select
             this.icon.style.backgroundPosition = '0px -20px';
             this.select_text.textContent = this.select_defaultText;
             const element_selected = this.popup.querySelector('[data-status="selected"]');
+            this.value = false;
+            this.input.value = false;
+            this.input.dispatchEvent(new Event('change'));
             if (element_selected) element_selected.dataset.status = '';
         }
     }
     clickOnSelectBind = this.clickOnSelect.bind(this);
 
     clickOnOption(element) {
-        this.value = element.dataset.value;
-        this.input.value = this.value;
-
-        const element_selected = this.popup.querySelector('[data-status="selected"]');
-        if (element_selected) element_selected.dataset.status = '';
-        element.dataset.status = 'selected';
-
-        this.select_text.textContent = element.querySelector('.text.primary').textContent;
-
-        if (this.type == 'filter') {
-            this.select.dataset.status = 'selected';
-            this.icon.style.height = '20px'
-            this.icon.style.width = '20px'
-            this.icon.style.backgroundPosition = '0px -36px';
-        }
+        this.options.forEach((value, index) => {
+            if (value == element) return this.setSelectedIndex(index);
+        })
 
         document.dispatchEvent(new Event("click"));
     }
@@ -88,4 +79,30 @@ class Select
 
     }
     outsideClickListenerBind = this.outsideClickListener.bind(this);
+
+    setSelectedIndex(selectedIndex) {
+        this.selectedIndex = selectedIndex;
+        this.value = this.options[selectedIndex].dataset.value;
+        this.input.value = this.value;
+        this.input.dispatchEvent(new Event('change'));
+
+        const element_selected = this.popup.querySelector('[data-status="selected"]');
+        if (element_selected) element_selected.dataset.status = '';
+        this.options[selectedIndex].dataset.status = 'selected';
+
+        this.select_text.textContent = this.options[selectedIndex].querySelector('.text.primary').textContent;
+
+        if (this.type == 'filter') {
+            this.select.dataset.status = 'selected';
+            this.icon.style.height = '20px'
+            this.icon.style.width = '20px'
+            this.icon.style.backgroundPosition = '0px -36px';
+        }
+    }
+
+    setSelectedValue(selectedValue) {
+        this.options.forEach((value, index) => {
+            if (value.dataset.value == selectedValue) return this.setSelectedIndex(index);
+        })
+    }
 }
