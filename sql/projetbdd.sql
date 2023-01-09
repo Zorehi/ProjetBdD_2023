@@ -225,7 +225,9 @@ CREATE TABLE device(
    `description_device` VARCHAR(50)  NOT NULL,
    `description_place` VARCHAR(30) ,
    `id_device_type` INT NOT NULL,
+   `id_room` INT NOT NULL,
    PRIMARY KEY(`id_device`),
+   FOREIGN KEY(`id_room`) REFERENCES room(`id_room`),
    FOREIGN KEY(`id_device_type`) REFERENCES device_type(`id_device_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -296,19 +298,6 @@ CREATE TABLE consume(
    PRIMARY KEY(`id_device_type`, `id_resource`),
    FOREIGN KEY(`id_device_type`) REFERENCES device_type(`id_device_type`),
    FOREIGN KEY(`id_resource`) REFERENCES resource(`id_resource`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---  --------------------------------------------------------------------------------------
---  Structure de la table has_device
---  --------------------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `has_device`;
-CREATE TABLE has_device(
-   `id_room` INT,
-   `id_device` INT,
-   PRIMARY KEY(`id_room`, `id_device`),
-   FOREIGN KEY(`id_room`) REFERENCES room(`id_room`),
-   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
