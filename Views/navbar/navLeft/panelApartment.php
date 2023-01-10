@@ -28,7 +28,7 @@
                             <i style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/QouyfNuGrAZ.png&quot;); background-position: -170px -187px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         </div>
                         <div class="text">
-                            <span>Rechercher <strong id="querry-display"></strong> dans les appartements</span>
+                            <span>Rechercher <strong id="querry-apart-display"></strong> dans les appartements</span>
                         </div>
                         <div class="hover"></div>
                     </a>

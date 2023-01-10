@@ -42,6 +42,8 @@ const outsidePanelApartmentClickListener = event => {
     }
 }
 
+const apartment_list = panelApartment.querySelector('#apartment-list');
+
 btnAppartements.addEventListener("click", function(event) {
     if (isVisible(panel) && (!isVisible(databasePanel) && !isVisible(panelHouse))) {
         document.dispatchEvent(new Event("click"));
@@ -58,19 +60,18 @@ btnAppartements.addEventListener("click", function(event) {
     panel.dataset.status = "visible";
     panelApartment.dataset.status = "visible";
 
-    for (let button of myHouses.children[1].children) {
+    for (let button of apartment_list.children) {
         button.style.display = "flex";
     }
 
-    search_apartments.addEventListener('input', animateSearchApart)
+    search_apartments.addEventListener('input', animateSearchHouse)
 
     scroll_panel_apart.refresh();
 });
 
 
 const search_apart_button = panelApartment.querySelector('#search-apart-button');
-const apartment_list = panelApartment.querySelector('#apartment-list');
-const querry_display = panelApartment.querySelector('#querry-display');
+const querry_apart_display = panelApartment.querySelector('#querry-apart-display');
 
 let timeoutIDApart = [];
 /**
@@ -79,20 +80,21 @@ let timeoutIDApart = [];
  * @param {Event} event 
  */
 const animateSearchApart = function(event) {
-    if (timeoutIDApart.length > 0) { clearTimeout(timeoutIDApart.shift()); }
-    timeoutIDApart.push(setTimeout(() => {
-        timeoutIDApart = [];
-        querry_display.textContent = this.value;
-        search_apart_button.setAttribute("href", "/search/apartments/?q="+this.value);
+    if (timeoutIDHouse.length > 0) { clearTimeout(timeoutIDHouse.shift()); }
+    timeoutIDHouse.push(setTimeout(() => {
+        timeoutIDHouse = [];
+        querry_house_display.textContent = this.value;
+        search_house_button.setAttribute("href", "/search/apartments/?q="+this.value);
         if (this.value == "") {
             scroll_panel_apart.sbContainer.dataset.status = "show";
-            for (let button of apartment_list.children) {
+            for (let button of house_list.children) {
                 button.style.display = "flex";
             }
         } else {
             scroll_panel_apart.sbContainer.dataset.status = "search";
-            searchApart(this.value);
+            searchHouse(this.value);
         }
+        scroll_panel_apart.refresh();
     }, 500));
 }
 
@@ -102,7 +104,7 @@ const animateSearchApart = function(event) {
  * @param {String} value 
  */
 const searchApart = function(value) {
-    for (let button of apartment_list.children) {
+    for (let button of house_list.children) {
         if (!isMatch(button.querySelector('.primary').textContent, value)) {
             button.style.display = "none";
         } else {
