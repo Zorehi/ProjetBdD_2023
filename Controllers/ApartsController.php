@@ -71,8 +71,11 @@ class ApartsController extends Controller
 
     public function apart_rooms($id) {
         extract($this->retrieveInfoForPanelManage($id));
-            
-        $this->render('/aparts/apart_rooms', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices'));
+
+        $room = new RoomModel();
+        $tableroom = $room->allRoom($id);
+
+        $this->render('/aparts/apart_rooms', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices','tableroom'));
     }
 
     public function apart_devices($id, $order_by = 'ASC', $id_room = false, $id_device_type = false, $search = '') {
