@@ -5,7 +5,7 @@
         <div>
             <div class="panelTopFilter-head">
                 <div class="panelTopFilter-head-title">
-                    <span class="primary">Équipement de l'appartement<span class="secondary" id="nbr_result"> · Aucun résultat</span></span>
+                    <span class="primary">Équipement de l'appartement <span class="secondary" id="nbr_result"> · Aucun résultat</span></span>
                 </div>
             </div>
             <div class="panelTopFilter-searchBy">
@@ -172,26 +172,43 @@
     const id_device_type = document.querySelector('input[name="id_device_type"]');
     const search_device = document.getElementById('search_device');
 
-    const nbr_result = document.getElementById('nbr_result');
-    const displayDevices = (device_array) => {
-        scrollbar_apart_devices.sbContent.innerHTML = '';
-        nbr_result.textContent = ` · ${device_array.length > 0 ? device_array.length : 'Aucun'} résultat${device_array.length > 1 ? 's' : ''}`;
-        for (const device of device_array) {
-            scrollbar_apart_devices.sbContent.innerHTML += card_device_html(device);
-        }
-        scrollbar_apart_devices.refresh();
-    }
+    let limit = 10;
+    let offset = 0;
 
-    const requestDevices = () => {
-        const url = `aparts/<?= $apart->getId_apartment() ?>/retrieveDevices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&search=${search_device.value}`;
+    const nbr_result = document.getElementById('nbr_result');
+    const displayDevices = (device_array, number,  revert) => {
+        if (revert) {
+            scrollbar_apart_devices.sbContent.innerHTML = ''
+        };
+        number = number['nbr_devices'];
+        nbr_result.textContent = ` · ${number > 0 ? number : 'Aucun'} résultat${number > 1 ? 's' : ''}`;
+        offset += device_array.length;
+        if (device_array.length > 0) {
+            for (const device of device_array) {
+                scrollbar_apart_devices.sbContent.innerHTML += card_device_html(device);
+            }
+            scrollbar_apart_devices.refresh();
+        }
+    }
+    
+    const requestDevices = (revert = true) => {
+        const url = `aparts/<?= $apart->getId_apartment() ?>/retrieveDevices/`;
         $.ajax({
             type: 'GET',
             url: url,
+            data: {
+                'order_by': order_by.value,
+                'id_room': id_room.value,
+                'id_device_type': id_device_type.value,
+                'search': search_device.value,
+                'limit': limit,
+                'offset': offset,
+            },
             timeout: 120000, //2 Minutes
             dataType: 'json'
         })
         .done((response) => {
-            displayDevices(response);
+            displayDevices(response.datas, response.search_length, revert);
         })
         .fail((error) => {
             alert('Impossible de récuperer les équipements de cette appartement');
@@ -204,6 +221,7 @@
             const url = `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&search=${search_device.value}`;
             history.replaceState(null, '', url);
 
+            offset = 0;
             requestDevices();
         }
     })
@@ -211,12 +229,18 @@
     const onFilterChange = () => {
         const url = `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&search=${search_device.value}`;
         history.replaceState(null, '', url);
+        offset = 0;
         requestDevices();
     }
     
     order_by.addEventListener('change', onFilterChange);
     id_room.addEventListener('change', onFilterChange);
     id_device_type.addEventListener('change', onFilterChange);
+    
+    scrollbar_apart_devices.sbContent.addEventListener('80%', function() {
+        requestDevices(false);
+        console.log('coucou');
+    })
 
 
 </script>

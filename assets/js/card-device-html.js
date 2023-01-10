@@ -35,8 +35,8 @@ function card_device_html(device) {
                     <i class="icon" style="background-image: url('http://projetbdd/assets/image/localisation.png');background-position: 0px 0px; background-size: auto;"></i>
                 </div>
                 <div class="text">
-                    <span class="secondary">Chambre 1</span>
-                    <span class="secondary">Sur le plafond</span>
+                    <span class="secondary">${device['room_name']}</span>
+                    <span class="secondary">${device['description_place']}</span>
                 </div>
             </div>
             <div class="device-info-row">

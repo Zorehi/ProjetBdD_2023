@@ -149,11 +149,12 @@ class ApartsController extends Controller
         $this->render('/aparts/create', compact('pageName', 'security_degree', 'apartment_type', 'room_type'));
     }
 
-    public function retrieveDevices($id, $order_by = 'ASC',  $id_room = 'false', $id_device_type = 'false', $id_substance = true, $id_resource = true, $search = '') {
+    public function retrieveDevices($id, $order_by = 'ASC',  $id_room = 'false', $id_device_type = 'false', $id_substance = true, $id_resource = true, $search = '', $limit = 10, $offset = 0) {
         $device = new DeviceModel();
 
-        $device_array = $device->search($id, $search, $order_by, $id_room, $id_device_type);
+        $device_array = $device->search($id, $search, $order_by, $id_room, $id_device_type, $limit, $offset);
+        $device_number = $device->countSearch($id, $search, $order_by, $id_room, $id_device_type);
 
-        $this->renderData($device_array);
+        $this->renderData(['datas' => $device_array, 'search_length' => $device_number]);
     }
 }
