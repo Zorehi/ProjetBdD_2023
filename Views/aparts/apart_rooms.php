@@ -12,16 +12,16 @@
                                 <div class="hover"></div>
                             </div>
                             <div class="text">
-                                <span class="primary">Quelqu'un</span>
+                                <span class="primary">Vous</span>
                                 <span class="secondary">
-                                    <a data-infobulle="le Mercredi 28 décembre 2022">1 j</a>
+                                    <a data-infobulle="<?= date('d-m-Y')?>">Aujourd'hui</a>
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div class="card-content">
                         <div class="card-content-text">
-                            <span class="primary">Ajout de <?= $value['room_name'] ?> pour cette appartement</span>
+                            <span class="primary">Ajout de la pièce <?= $value['room_name'] ?> pour cet appartement</span>
                         </div>
                         <div class="card-content-image">
                             <img src="assets/image/<?= $value['image_url'] ?>" alt="">

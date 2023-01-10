@@ -226,4 +226,56 @@ INSERT INTO `security_degree` (`id_security_degree`, `description`) VALUES
 (2, 'Moyen'),
 (3, 'Fort');
 
+
+--  --------------------------------------------------------------------------------------
+--  Ligne par défaut de la table city
+--  --------------------------------------------------------------------------------------
+
+INSERT INTO `city` (`id_city`, `postcode`, `city_name`, `id_department`) VALUES
+(1, '37200', 'Tours-sud', 38);
+
+
+--  --------------------------------------------------------------------------------------
+--  Ligne par défaut de la table house
+--  --------------------------------------------------------------------------------------
+
+INSERT INTO `house` (`id_house`, `house_name`, `isolation_degree`, `eval_eco`, `citizen_degree`, `street`, `house_number`, `id_city`) VALUES
+(1, 'Pharmatech', 1, 'ok', 1, 'Avenue Jean Portalis', 64, 1),
+(2, 'Moison', 1, 'cool', 1, 'rue Moi', 98, 1);
+
+
+
+--  --------------------------------------------------------------------------------------
+--  Ligne par défaut de la table owner
+--  --------------------------------------------------------------------------------------
+
+INSERT INTO `owner` (`id_house`, `from_date`, `to_date`, `id_users`) VALUES
+(1, '2023-01-01', '0000-00-00', 1);
+
+
+--  --------------------------------------------------------------------------------------
+--  Ligne par défaut de la table apartment
+--  --------------------------------------------------------------------------------------
+
+INSERT INTO `apartment` (`id_apartment`, `num`, `hab`, `citizen_degree`, `security_degree`, `id_security_degree`, `id_house`, `id_apartment_type`) VALUES
+(1, 202, 4, 1, NULL, 1, 1, 1),
+(2, 4, 5, 2, NULL, 2, 2, 2);
+
+
+--  --------------------------------------------------------------------------------------
+--  Ligne par défaut de la table room
+--  --------------------------------------------------------------------------------------
+
+INSERT INTO `room` (`id_room`, `room_name`, `id_room_type`, `id_apartment`) VALUES
+(1, 'Cuisine', 1, 2),
+(2, 'Salle à manger', 2, 2),
+(3, 'Chambre 1', 4, 2),
+(4, 'Chambre 2', 4, 2),
+(5, 'Chambre 3', 4, 2),
+(6, 'Salle de bain', 5, 2),
+(7, 'Moilettes', 6, 2);
+
+
+
 COMMIT;
+

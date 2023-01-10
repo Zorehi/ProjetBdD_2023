@@ -9,7 +9,7 @@
         </div>
     <?php if ($tenant->getId_users() == $_SESSION['user']['id'] || $_SESSION['user']['is_admin']) { ?>
         <div class="panel-manage-btn-create-container">
-            <a class="panel-section-button">
+            <a href="/devices/create/?id=" class="panel-section-button">
                 <img src="assets/image/plus.png" class="unselectable"></i>
                 <div class="text unselectable">
                     <span class="primary">Ajouter une pièce</span>
