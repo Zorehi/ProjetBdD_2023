@@ -107,8 +107,8 @@ class Association extends Database {
         }
 
         foreach ($id_valeurs as $champ => $valeur) {
-            $champsID[] = "$valeur = ?";
-            $valeurs[] = $champ;
+            $champsID[] = "$champ = ?";
+            $valeurs[] = $valeur;
         }
         
 

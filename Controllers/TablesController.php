@@ -34,7 +34,7 @@ class TablesController extends Controller
                     if (Form::validateIfEmptyNull($_POST, array_keys($table::$info_tables))) {
                         $table->hydrate($_POST);
                         if ($table->getType() == 'Associations') {
-                            if (!Form::validate($_POST, ['old_id'])) {
+                            if (Form::validate($_POST, ['old_id'])) {
                                 $table->update($_POST['old_id']);
                             }
                         } else {

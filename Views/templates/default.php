@@ -27,9 +27,9 @@
 
     <script src="assets/js/navLeft/navLeft.js"></script>
     <script src="assets/js/navLeft/panelHouse.js"></script>
-    <?php if ($_SESSION['user']['is_admin']) { ?>
+<?php if ($_SESSION['user']['is_admin']) { ?>
     <script src="assets/js/navLeft/panelDatabase.js"></script>
-    <?php } ?>
+<?php } ?>
     <script src="assets/js/navTop/navTop.js"></script>
 </body>
 

@@ -37,11 +37,11 @@ abstract class Controller
                 ]
             );
         }
-
+        
         // On démarre le buffer de sortie
         ob_start();
         // A partir de ce point toute sortie est conservée en mémoire
-
+        
         // On crée le chemin vers la vue
         require_once ROOT.'/Views'.$fichier.'.php';
 

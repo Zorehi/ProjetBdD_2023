@@ -59,7 +59,7 @@ class DevicesController extends Controller
         $device_type = new Device_typeModel();
         $room = new roomModel();
         
-        $this->render('/devices/create',compact('pageName'));
+        $this->render('/devices/create', compact('pageName', 'room', 'device_type'));
     }
 
     

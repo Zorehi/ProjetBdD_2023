@@ -12,7 +12,7 @@
             <a href="/devices/create/?id=" class="panel-section-button">
                 <img src="assets/image/plus.png" class="unselectable"></i>
                 <div class="text unselectable">
-                    <span class="primary">Ajouter une pièce</span>
+                    <span class="primary">Ajouter un équipement</span>
                 </div>
                 <div class="hover"></div>
             </a>
