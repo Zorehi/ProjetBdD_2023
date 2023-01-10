@@ -1,6 +1,6 @@
 .panelHouse {
 
-    #searchHousesButton {
+    .panel-section-button.panelHouse-button.search-button {
         height: 56px;
 
         & > .img {
@@ -66,16 +66,20 @@
             }
         }
     }
+
+    .panel-section-scroll {
+        padding: 0;
+        height: calc(100% - 48.09px);
+    }
     
 }
 
 .panelHouse .panel-section-scroll {
-    #containerSearchHouseButton { display: none; }
+    .search-button { display: none; }
 
     &[data-status="search"] {
-        #containerSearchHouseButton { display: block; }
+        .search-button { display: flex; }
         .panel-section-create { display: none; }
         .panel-section-separator { display: none; }
-        .panel-section-list > #pinHouses { display: none; }
     }
 }

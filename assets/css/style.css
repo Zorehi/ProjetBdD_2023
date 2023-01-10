@@ -2398,10 +2398,10 @@ button {
   z-index: 1;
 }
 
-.panelHouse #searchHousesButton {
+.panelHouse .panel-section-button.panelHouse-button.search-button {
   height: 56px;
 }
-.panelHouse #searchHousesButton > .img {
+.panelHouse .panel-section-button.panelHouse-button.search-button > .img {
   padding: 0;
   margin: 6px;
   background-color: var(--base-blue);
@@ -2412,17 +2412,17 @@ button {
   align-items: center;
   justify-content: center;
 }
-.panelHouse #searchHousesButton > .img > i {
+.panelHouse .panel-section-button.panelHouse-button.search-button > .img > i {
   -webkit-filter: var(--filter-always-white);
   filter: var(--filter-always-white);
 }
-.panelHouse #searchHousesButton > .text > :first-child {
+.panelHouse .panel-section-button.panelHouse-button.search-button > .text > :first-child {
   font-weight: 400;
   font-size: 15px;
   line-height: 20px;
   color: var(--blue-link);
 }
-.panelHouse #searchHousesButton > .text > :first-child > strong {
+.panelHouse .panel-section-button.panelHouse-button.search-button > .text > :first-child > strong {
   font-size: inherit;
   font-weight: 600;
   line-height: inherit;
@@ -2452,20 +2452,21 @@ button {
   font-size: 12px;
   font-weight: 400;
 }
+.panelHouse .panel-section-scroll {
+  padding: 0;
+  height: calc(100% - 48.09px);
+}
 
-.panelHouse .panel-section-scroll #containerSearchHouseButton {
+.panelHouse .panel-section-scroll .search-button {
   display: none;
 }
-.panelHouse .panel-section-scroll[data-status=search] #containerSearchHouseButton {
-  display: block;
+.panelHouse .panel-section-scroll[data-status=search] .search-button {
+  display: flex;
 }
 .panelHouse .panel-section-scroll[data-status=search] .panel-section-create {
   display: none;
 }
 .panelHouse .panel-section-scroll[data-status=search] .panel-section-separator {
-  display: none;
-}
-.panelHouse .panel-section-scroll[data-status=search] .panel-section-list > #pinHouses {
   display: none;
 }
 
@@ -2482,10 +2483,10 @@ button {
 .panel-section#panelDatabase .panel-section-list {
   height: calc(100% - 62px);
 }
-.panel-section#panelDatabase .panel-section-list #db-table {
+.panel-section#panelDatabase .panel-section-list .panel-section-list-wrapper {
   height: calc(100% - 0px);
 }
-.panel-section#panelDatabase .panel-section-list #db-table .scrollbar-container {
+.panel-section#panelDatabase .panel-section-list .panel-section-list-wrapper .scrollbar-container {
   height: calc(100% - 32px);
   padding-top: 0;
   margin-top: 10px;
