@@ -9,6 +9,7 @@ class DeviceModel extends Entity
     protected $device_name;
     protected $description_device;
     protected $description_place;
+    protected $id_room;
     protected $id_device_type;
 
 
@@ -19,10 +20,22 @@ class DeviceModel extends Entity
         $this->idName = "id_device";
     }
 
-    public function search($q) {
-        return $this->requete("SELECT *
-                               FROM {$this->table}
-                               WHERE device_name LIKE '%{$q}%'")->fetchAll();
+    public function countDeviceApart($idApart) {
+        return $this->requete("SELECT COUNT(*) as nbr_devices 
+                               FROM {$this->table} D NATURAL JOIN room R
+                               WHERE R.id_apartment = {$idApart}")->fetch()['nbr_devices'];
+    }
+
+    public function search($id, $q, $order_by, $id_room, $id_device_type) {
+        $where = '';
+        if ($id_room != 'false') $where .= "AND D.id_room = $id_room";
+        if ($id_device_type != 'false') $where .= "AND D.id_device_type = $id_device_type";
+        return $this->requete("SELECT D.id_device, D.device_name, D.description_device, D.description_place, DT.type_name
+                               FROM {$this->table} D LEFT OUTER JOIN room R ON(D.id_room = R.id_room) LEFT OUTER JOIN device_type DT ON(D.id_device_type = DT.id_device_type)
+                               WHERE D.device_name LIKE '%{$q}%'
+                                     {$where}
+                                     AND R.id_apartment = $id
+                               ORDER BY device_name {$order_by}")->fetchAll();
     }
 
     /**
@@ -103,7 +116,27 @@ class DeviceModel extends Entity
         $this->description_place = $description_place;
 
         return $this;
-    }   
+    }
+    
+    /**
+     * Get the value of id_room
+     */ 
+    public function getId_room()
+    {
+        return $this->id_room;
+    }
+
+    /**
+     * Set the value of id_room
+     *
+     * @return  self
+     */ 
+    public function setId_room($id_room)
+    {
+        $this->id_room = $id_room;
+
+        return $this;
+    }
 
     /**
      * Get the value of id_device_type
@@ -145,6 +178,12 @@ class DeviceModel extends Entity
             'elementHTML' => 'input',
             'inputType' => 'text',
             'is_disabled' => ''
+        ],
+        'id_room' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'room_name'
         ],
         'id_device_type' => [
             'elementHTML' => 'select',

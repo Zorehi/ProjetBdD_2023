@@ -58,6 +58,10 @@ button {
     right: 0;
     bottom: 0;
     z-index: -3;
+
+    &.main {
+        left: 300px;
+    }
 }
 
 .unselectable {

@@ -31,6 +31,9 @@ class ApartsController extends Controller
     
         $room = new RoomModel();
         $nbr_rooms = $room->countRoomApart($id);
+
+        $device = new DeviceModel();
+        $nbr_devices = $device->countDeviceApart($id);
     
         $apartment_type = new Apartment_typeModel();
         $apartment_type->hydrate($apartment_type->findById($apart->getId_apartment_type()));
@@ -47,13 +50,13 @@ class ApartsController extends Controller
     
         $pageName = "N°{$apart->getNum()} | {$house->getHouse_name()} | Projet BdD";
 
-        return compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type');
+        return compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices');
     }
 
     public function index($id) {
         extract($this->retrieveInfoForPanelManage($id));
 
-        $this->render('/aparts/index', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type'));
+        $this->render('/aparts/index', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices'));
     }
 
     public function edit($id) {
@@ -63,21 +66,22 @@ class ApartsController extends Controller
             $apart->hydrate($_POST);
             $apart->update();
         }
-        $this->render('/aparts/edit', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type'));
+        $this->render('/aparts/edit', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices'));
     }
 
     public function apart_rooms($id) {
         extract($this->retrieveInfoForPanelManage($id));
             
-        $this->render('/aparts/apart_rooms', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type'));
+        $this->render('/aparts/apart_rooms', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices'));
     }
 
-    public function apart_devices($id, $order_by = 'ASC', $id_room = false, $search = '') {
+    public function apart_devices($id, $order_by = 'ASC', $id_room = false, $id_device_type = false, $search = '') {
         extract($this->retrieveInfoForPanelManage($id));
 
         $init = [
             'order_by' => $order_by == 'ASC' ? 0 : 1,
-            'id_room' => $id_room ? $id_room : 0,
+            'id_room' => $id_room ? $id_room : 'false',
+            'id_device_type' => $id_device_type ? $id_device_type : 'false',
         ];
 
         $device = new DeviceModel();
@@ -93,6 +97,7 @@ class ApartsController extends Controller
             'house' => $house,
             'nbr_rooms' => $nbr_rooms,
             'apartment_type' => $apartment_type,
+            'nbr_devices' => $nbr_devices,
             'room' => $room,
             'device_type' => $device_type,
             'substance' => $substance,
@@ -108,7 +113,7 @@ class ApartsController extends Controller
     public function insights($id, $section) {
         extract($this->retrieveInfoForPanelManage($id));
             
-        $this->render('/aparts/insights/'.$section, compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type'), 'analytics');
+        $this->render('/aparts/insights/'.$section, compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices'), 'analytics');
     }
 
     public function create($id_house) {
@@ -141,10 +146,10 @@ class ApartsController extends Controller
         $this->render('/aparts/create', compact('pageName', 'security_degree', 'apartment_type', 'room_type'));
     }
 
-    public function retrieveDevice($id, $id_room = null, $id_substance = true, $id_resource = true, $search = '') {
+    public function retrieveDevices($id, $order_by = 'ASC',  $id_room = 'false', $id_device_type = 'false', $id_substance = true, $id_resource = true, $search = '') {
         $device = new DeviceModel();
 
-        $device_array = $device->search($search);
+        $device_array = $device->search($id, $search, $order_by, $id_room, $id_device_type);
 
         $this->renderData($device_array);
     }
