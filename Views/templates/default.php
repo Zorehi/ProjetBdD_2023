@@ -27,6 +27,9 @@
 
     <script src="assets/js/navLeft/navLeft.js"></script>
     <script src="assets/js/navLeft/panelHouse.js"></script>
+<?php if (count($apart_array) > 0) { ?>
+    <script src="assets/js/navLeft/panelApartment.js"></script>
+<?php } ?>
 <?php if ($_SESSION['user']['is_admin']) { ?>
     <script src="assets/js/navLeft/panelDatabase.js"></script>
 <?php } ?>

@@ -2,8 +2,11 @@
 namespace App\Controllers;
 
 use App\Models\Associations\OwnerModel;
+use App\Models\Associations\TenantModel;
+use App\Models\Entities\Apartment_typeModel;
 use App\Models\Entities\ApartmentModel;
 use App\Models\Entities\HouseModel;
+use App\Models\Entities\RoomModel;
 use App\Models\Entities\UsersModel;
 
 abstract class Controller
@@ -48,7 +51,9 @@ abstract class Controller
         $contenu = ob_get_clean();
 
         if ($template == 'default' || $template == 'analytics') {
-            $house_array = $this->retrieveInfoForNavLeft($_SESSION['user']['id']);
+            $temp = $this->retrieveInfoForNavLeft($_SESSION['user']['id']);
+            $house_array = $temp['house_array'];
+            $apart_array = $temp['apart_array'];
         }
         require_once ROOT.'/Views/templates/'.$template.'.php';
     }
@@ -120,6 +125,20 @@ abstract class Controller
             $house_array[] = $array;
         }
 
-        return $house_array;
+        $tenant = new TenantModel();
+        $tenant_array = $tenant->findByIdUsers($id);
+
+        $apart_array = [];
+        $room = new RoomModel();
+        $apartment_type = new Apartment_typeModel();
+        foreach ($tenant_array as $value) {
+            $array = $apartment->findById($value['id_apartment']);
+            $array['nbr_rooms'] = $room->countRoomApart($array['id_apartment']);
+            $array['apartment_type'] = $apartment_type->findById($array['id_apartment_type'])['description'];
+            $array['house_name'] = $house->findById($array['id_house'])['house_name'];
+            $apart_array[] = $array;
+        }
+
+        return ['house_array' => $house_array, 'apart_array' => $apart_array];
     }
 }

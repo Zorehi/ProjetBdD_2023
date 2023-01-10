@@ -32,7 +32,27 @@
             <div class="button-hover"></div>
         </div>
     </div>
-<?php if ($_SESSION['user']['is_admin']) { ?>
+<?php if (count($apart_array) > 0) { ?>
+    <div class="navLeft-section houses">
+        <div class="navLeft-section-separator"></div>
+    <?php foreach ($apart_array as $key => $value) { if ($key > 2) break; ?>
+        <a class="navLeft-button redirect" id="<?= $value['id_apartment'] . '-' . $value['num'] ?>" href="/aparts/<?= $value['id_apartment'] ?>">
+            <div class="show-selected"></div>
+            <img src="assets/image/apart-default-min-photo.png" alt="">
+            <span><?= $value['num'].' - '.$value['house_name'] ?></span>
+            <div class="button-hover"></div>
+        </a>
+    <?php } ?>
+        <div class="navLeft-button" id="Appartements" data-status="unselected">
+            <div class="show-selected"></div>
+            <div class="icon-container">
+                <i class="image" style="background-position-y: 0px;"></i>
+            </div>
+            <span>Appartements</span>
+            <div class="button-hover"></div>
+        </div>
+    </div>
+<?php } if ($_SESSION['user']['is_admin']) { ?>
     <div class="navLeft-section database">
         <div class="navLeft-section-separator"></div>
         <div class="navLeft-button" id="Database" data-status="unselected">
@@ -62,6 +82,9 @@
     <div class="navLeft-cloud"></div>
     <?php 
         include ROOT."/Views/navbar/navLeft/panelHouse.php";
+        if (count($apart_array) > 0) {
+            include ROOT."/Views/navbar/navLeft/panelApartment.php";
+        }
         if ($_SESSION['user']['is_admin']) {
             include ROOT."/Views/navbar/navLeft/panelDatabase.php";
         }

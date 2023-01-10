@@ -16,6 +16,14 @@ const outsidePanelHouseClickListener = event => {
             return;
         }
     }
+    if (btnAppartements != null) {
+        if (btnAppartements.contains(event.target) && isVisible(panel)) {
+            panelHouse.dataset.status = "hidden";
+    
+            document.removeEventListener("click", outsidePanelHouseClickListener);
+            return;
+        }
+    }
     if (!btnHouses.contains(event.target) && !panelHouse.contains(event.target) && isVisible(panel)) {
         panel.dataset.status = "hidden";
         panelHouse.dataset.status = "hidden";
@@ -30,7 +38,7 @@ const outsidePanelHouseClickListener = event => {
 }
 
 btnHouses.addEventListener("click", function(event) {
-    if (isVisible(panel) && !isVisible(databasePanel)) {
+    if (isVisible(panel) && (!isVisible(panelApartment) && !isVisible(databasePanel))) {
         document.dispatchEvent(new Event("click"));
         return;
     }
