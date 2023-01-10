@@ -5,7 +5,7 @@
         <div>
             <div class="panelTopFilter-head">
                 <div class="panelTopFilter-head-title">
-                    <span class="primary">Équipement de l'appartement<span class="secondary"> · Aucun résultat</span></span>
+                    <span class="primary">Équipement de l'appartement <span class="secondary" id="nbr_result"> · Aucun résultat</span></span>
                 </div>
             </div>
             <div class="panelTopFilter-searchBy">
@@ -36,7 +36,7 @@
                             <span class="text primary">Ordre alphabétique</span>
                             <div class="hover"></div>
                         </div>
-                        <div class="option button show-select" data-value="DSC">
+                        <div class="option button show-select" data-value="DESC">
                             <span class="text primary">Ordre alphabétique inversé</span>
                             <div class="hover"></div>
                         </div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="select-made-in-myself filter">
                     <div class="select button">
-                        <input data-for="select_value" id="ok" type="hidden" name="id_device_type">
+                        <input data-for="select_value" type="hidden" name="id_device_type">
                         <span class="text primary">Type d'équipement</span>
                         <i class="icon" style="background-image: url('http://projetbdd/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         <div class="hover"></div>
@@ -112,9 +112,7 @@
     <div class="apart_devices">
         <div class="scrollbar-container" id="scrollbar-apart-devices">
             <div class="card-wrapper scrollbar-content" data-transition="yes">
-                <div class="card card-device">
-
-                </div>
+                
             </div>
             <div class="scrollbar-track"></div>
             <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
@@ -125,6 +123,7 @@
 </div>
 
 <script src="assets/js/Select.js"></script>
+<script src="assets/js/card-device-html.js"></script>
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
     const scrollbar_manage_apart = new ScrollBar(document.getElementById('scrollbar-manage-apart'), { offsetContainer: -16, offsetContent: 0});
@@ -136,11 +135,15 @@
     const filter_array = document.querySelectorAll('.select-made-in-myself.filter');
     for (const filter of filter_array) {
         const select = new Select(filter, 'filter');
-        console.log(select.input.getAttribute('name'));
         switch (select.input.getAttribute('name')) {
             case 'id_room':
-                const value = <?= $init['id_room'] ?>;
-                if (value) select.setSelectedValue(value);
+                const value_id_room = <?= $init['id_room'] ?>;
+                if (value_id_room) select.setSelectedValue(value_id_room);
+                break;
+        
+            case 'id_device_type':
+                const value_id_device_type = <?= $init['id_device_type'] ?>;
+                if (value_id_device_type) select.setSelectedValue(value_id_device_type);
                 break;
         
             default:
@@ -148,12 +151,12 @@
         }
     }
 
-    const scrollbar_apart_edit = new ScrollBar(document.getElementById('scrollbar-apart-devices'), { offsetContainer: -16, offsetContent: 0});
-    scrollbar_apart_edit.init();
+    const scrollbar_apart_devices = new ScrollBar(document.getElementById('scrollbar-apart-devices'), { offsetContainer: -16, offsetContent: 0});
+    scrollbar_apart_devices.init();
     
-    const edit_apart = document.getElementById('apart_devices');
-    edit_apart.dataset.status = 'selected';
-    edit_apart.onclick = () => { return false };
+    const apart_devices = document.getElementById('apart_devices');
+    apart_devices.dataset.status = 'selected';
+    apart_devices.onclick = () => { return false };
 
     function onClickDropDown(element) {
         if (element.dataset.status == 'hidden') {
@@ -166,35 +169,78 @@
     
     const order_by = document.querySelector('input[name="order-by"]');
     const id_room = document.querySelector('input[name="id_room"]');
+    const id_device_type = document.querySelector('input[name="id_device_type"]');
     const search_device = document.getElementById('search_device');
+
+    let limit = 10;
+    let offset = 0;
+
+    const nbr_result = document.getElementById('nbr_result');
+    const displayDevices = (device_array, number,  revert) => {
+        if (revert) {
+            scrollbar_apart_devices.sbContent.innerHTML = ''
+        };
+        number = number['nbr_devices'];
+        nbr_result.textContent = ` · ${number > 0 ? number : 'Aucun'} résultat${number > 1 ? 's' : ''}`;
+        offset += device_array.length;
+        if (device_array.length > 0) {
+            for (const device of device_array) {
+                scrollbar_apart_devices.sbContent.innerHTML += card_device_html(device);
+            }
+            scrollbar_apart_devices.refresh();
+        }
+    }
+    
+    const requestDevices = (revert = true) => {
+        const url = `aparts/<?= $apart->getId_apartment() ?>/retrieveDevices/`;
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                'order_by': order_by.value,
+                'id_room': id_room.value,
+                'id_device_type': id_device_type.value,
+                'search': search_device.value,
+                'limit': limit,
+                'offset': offset,
+            },
+            timeout: 120000, //2 Minutes
+            dataType: 'json'
+        })
+        .done((response) => {
+            displayDevices(response.datas, response.search_length, revert);
+        })
+        .fail((error) => {
+            alert('Impossible de récuperer les équipements de cette appartement');
+        });
+    }
+    requestDevices();
 
     search_device.addEventListener('keyup', (event) => {
         if (event.key == 'Enter') {
-            history.replaceState(null, '', `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&search=${search_device.value}`);
+            const url = `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&search=${search_device.value}`;
+            history.replaceState(null, '', url);
 
-            var requete = $.ajax({
-                type: 'GET',
-                url: 'tables/?type='+type+'&tablename='+table,
-                timeout: 120000, //2 Minutes
-                contentType: false,
-                processData: false
-            });
-            requete.done((response) => {
-                row.remove();
-                scrollbar_2.refresh();
-            });
-            requete.fail(() => {
-                alert('Impossible de supprimer la ligne');
-            });
+            offset = 0;
+            requestDevices();
         }
     })
     
     const onFilterChange = () => {
-        history.replaceState(null, '', `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&search=<?= $search ?>`);
+        const url = `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&search=${search_device.value}`;
+        history.replaceState(null, '', url);
+        offset = 0;
+        requestDevices();
     }
     
     order_by.addEventListener('change', onFilterChange);
     id_room.addEventListener('change', onFilterChange);
+    id_device_type.addEventListener('change', onFilterChange);
+    
+    scrollbar_apart_devices.sbContent.addEventListener('80%', function() {
+        requestDevices(false);
+        console.log('coucou');
+    })
 
 
 </script>

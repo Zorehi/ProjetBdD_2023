@@ -13,17 +13,6 @@ INSERT INTO `gender` (`id_gender`, `description`) VALUES
 
 
 --  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table users
---  --------------------------------------------------------------------------------------
-
--- Mot de passe 'jeje' !
-INSERT INTO `users` (`id_users`, `username`, `email`, `password`, `tel`, `firstname`, `lastname`, `birthday`, `is_admin`, `is_active`, `id_gender`) VALUES
-(1, 'Zorehi', 'jeremy284@hotmail.com', '$argon2i$v=19$m=65536,t=4,p=1$YjNtV3F2aTRyWndhOUp5ZQ$Pjf2aDcV5EPwNeSdqDEBeeg+52jukZih7lUSCGuTO3Y', '0681104817', 'Jérémy', 'Legrix', '2000-07-22', 1, 1, 1),
-(4, 'Moi', 'riafudm@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$YjNtV3F2aTRyWndhOUp5ZQ$Pjf2aDcV5EPwNeSdqDEBeeg+52jukZih7lUSCGuTO3Y', '0633760167', 'Cyril', 'Jacques', '2001-08-29', 1, 1, 1),
-(2, 'Princess', 'amandinelegrix@hotmail.com', '$argon2i$v=19$m=65536,t=4,p=1$YjNtV3F2aTRyWndhOUp5ZQ$Pjf2aDcV5EPwNeSdqDEBeeg+52jukZih7lUSCGuTO3Y', '0610101010', 'Amandine', 'Legrix', '2002-04-01', 0, 1, 2);
-
-
---  --------------------------------------------------------------------------------------
 --  Ligne par défaut de la table region
 --  --------------------------------------------------------------------------------------
 

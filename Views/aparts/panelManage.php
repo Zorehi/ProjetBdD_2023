@@ -56,7 +56,7 @@
                         <i class="image" style="background-position-y: -110px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Équipements de l'appartement</span>
-                            <span class="secondary"><!-- <?= "$nbr_devices équipement".($nbr_devices > 1 ? "s" : "") ?> --></span>
+                            <span class="secondary"><?= "$nbr_devices équipement".($nbr_devices > 1 ? "s" : "") ?></span>
                         </div>
                         <div class="hover"></div>
                     </a>

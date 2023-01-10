@@ -17,6 +17,27 @@ abstract class Controller
             $pageName = "Projet BdD";
         }
 
+        //
+        if (!isset($_COOKIE['color-scheme'])) {
+            setcookie(
+                'color-scheme',
+                '__pj-light-mode',
+                [
+                    'expires'=> time() + 365*24*60*60,
+                    'path' => '/'
+                ]
+            );
+        } else {
+            setcookie(
+                'color-scheme',
+                $_COOKIE['color-scheme'],
+                [
+                    'expires'=> time() + 365*24*60*60,
+                    'path' => '/'
+                ]
+            );
+        }
+
         // On démarre le buffer de sortie
         ob_start();
         // A partir de ce point toute sortie est conservée en mémoire

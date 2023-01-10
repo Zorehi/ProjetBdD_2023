@@ -10,13 +10,14 @@ class ScrollBar
     constructor(scrollbarContainer, { offsetContainer = 0, offsetContent = 0 } = {}) {
         this.sbContainer = scrollbarContainer;
         this.sbContent = scrollbarContainer.querySelector('.scrollbar-content');
+        
         this.sbThumb = scrollbarContainer.querySelector('.scrollbar-thumb');
         this.mouseDown = false;
         this.offset = {
             content: typeof(offsetContent) == 'undefined' ? 0 : offsetContent,
             container: typeof(offsetContainer) == 'undefined' ? 0 : offsetContainer
         }
-        this.isBindFunction = true;
+        this.is_refresh = true;
     }
 
     /**
@@ -67,6 +68,8 @@ class ScrollBar
             this.#scrollThumb = 0;
         }
 
+        this.is_refresh = true;
+
         this.sbContent.style.transform =  `translateY(-${this.#scroll}px)`;
         this.sbThumb.style.transform =  `translateY(${this.#scrollThumb}px)`;
     }
@@ -82,6 +85,14 @@ class ScrollBar
             this.#scroll = 0;
         } else if (this.#scroll > this.sbContentHeight-this.sbContainerHeight) {
             this.#scroll = this.sbContentHeight-this.sbContainerHeight;
+        }
+
+        if (this.sbContentHeight > this.sbContainerHeight) {
+            const pourcentage = this.#scroll / (this.sbContentHeight-this.sbContainerHeight);
+            if (pourcentage > 0.8 && this.is_refresh) {
+                this.is_refresh = false;
+                this.sbContent.dispatchEvent(new Event('80%'));
+            }
         }
 
         this.#scrollThumb = (this.sbContainerHeight / this.sbContentHeight) * this.#scroll;
@@ -123,6 +134,14 @@ class ScrollBar
             this.#scrollThumb = 0;
         } else if (this.#scrollThumb > this.sbContainerHeight-this.sbThumbHeight) {
             this.#scrollThumb = this.sbContainerHeight-this.sbThumbHeight;
+        }
+
+        if (this.sbContentHeight > this.sbContainerHeight) {
+            const pourcentage = this.#scrollThumb / (this.sbContainerHeight-this.sbThumbHeight);
+            if (pourcentage > 0.8 && this.is_refresh) {
+                this.is_refresh = false;
+                this.sbContent.dispatchEvent(new Event('80%'));
+            }
         }
 
         this.#scroll = this.#scrollThumb / (this.sbContainerHeight/this.sbContentHeight);

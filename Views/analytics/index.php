@@ -1,12 +1,20 @@
-<div class="globalContainer">
+<div class="globalContainer main">
     <div class="scrollbar-container" id="scrollbar-analytics">
-        <div class="scrollbar-content" data-transition="yes">
-            <figure class="highcharts-figure">
-                <div id="pie-chart-container"></div>
-            </figure>
-            <figure class="highcharts-figure">
-                <div id="basic-column-container"></div>
-            </figure>
+        <div class="card-wrapper scrollbar-content" data-transition="yes">
+            <div class="card card-analytics">
+                <div class="card-content">
+                    <figure class="highcharts-figure">
+                        <div id="pie-chart-container"></div>
+                    </figure>
+                </div>
+            </div>
+            <div class="card card-analytics">
+                <div class="card-content">
+                    <figure class="highcharts-figure">
+                        <div id="basic-column-container"></div>
+                    </figure>
+                </div>
+            </div>
         </div>
         <div class="scrollbar-track"></div>
         <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">

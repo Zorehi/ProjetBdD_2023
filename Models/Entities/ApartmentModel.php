@@ -32,12 +32,13 @@ class ApartmentModel extends Entity
                                WHERE A.id_house = {$idHouse} AND T.id_users is null")->fetch()['nbr_free_aparts'];
     }
 
-    public function search($querry) {
+    public function search($querry, $limit = 100, $offset = 0) {
         return $this->requete("SELECT *
                                FROM {$this->table} A INNER JOIN House H ON(A.id_house = H.id_house) NATURAL JOIN Apartment_type
                                WHERE house_name LIKE '%{$querry}%' OR
                                      CONCAT('N°', num, ' - ', house_name) LIKE '%{$querry}%' OR
-                                     num LIKE '%{$querry}%'")->fetchAll();
+                                     num LIKE '%{$querry}%'
+                                     LIMIT $limit OFFSET $offset")->fetchAll();
     }
     
 

@@ -12,26 +12,6 @@ use App\Models\Entities\UsersModel;
             // On démarre la session
             session_start();
 
-            if (!isset($_COOKIE['color-scheme'])) {
-                setcookie(
-                    'color-scheme',
-                    '__pj-light-mode',
-                    [
-                        'expires'=> time() + 365*24*60*60,
-                        'path' => '/'
-                    ]
-                );
-            } else {
-                setcookie(
-                    'color-scheme',
-                    $_COOKIE['color-scheme'],
-                    [
-                        'expires'=> time() + 365*24*60*60,
-                        'path' => '/'
-                    ]
-                );
-            }
-
             if (isset($_SESSION['user'])) {
                 try {
                     $user = new UsersModel();
