@@ -214,9 +214,7 @@ INSERT INTO `device_type` (`id_device_type`, `type_name`, `id_video`) VALUES
 (1, 'Chauffage', 1),
 (2, 'Lampe', 2),
 (3, 'Electromenager', 3),
-(4, 'Multimedia', 4),
-(5, 'Chauffe eau', 5),
-(6, 'Machine à laver', 6);
+(4, 'Multimedia', 4);
 
 
 --  --------------------------------------------------------------------------------------
