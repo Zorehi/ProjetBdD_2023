@@ -23,7 +23,6 @@
     </div>
 </div>
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
 <script type="text/javascript">
     document.getElementById('Analytics').dataset.status = 'selected';
 

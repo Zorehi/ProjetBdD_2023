@@ -39,7 +39,7 @@
         <a class="navLeft-button redirect" id="<?= $value['id_apartment'] . '-' . $value['num'] ?>" href="/aparts/<?= $value['id_apartment'] ?>">
             <div class="show-selected"></div>
             <img src="assets/image/apart-default-min-photo.png" alt="">
-            <span><?= $value['num'].' - '.$value['house_name'] ?></span>
+            <span>N°<?= $value['num'].' - '.$value['house_name'] ?></span>
             <div class="button-hover"></div>
         </a>
     <?php } ?>

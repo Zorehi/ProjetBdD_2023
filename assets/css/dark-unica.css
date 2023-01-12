@@ -3,7 +3,7 @@
   text-transform: uppercase !important;
 }
 
-.highcharts-tooltip text {
+.highcharts-tooltip .text {
   fill: #F0F0F0 !important;
 }
 

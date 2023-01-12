@@ -21,7 +21,7 @@ function card_device_html(device) {
                     </div>
                     <div class="hover"></div>
                 </a>
-                <button class="btn btn-delete" type="button">
+                <button class="btn btn-delete" type="button" onclick="deleteDevice(this.parentElement.parentElement.parentElement, ${device['id_device']})">
                     <div class="icon-container">
                         <i class="icon" style="background-image: url('http://projetbdd/assets/image/bin.png');background-position: 0px 0px; background-size: 20px 20px;"></i>
                     </div>

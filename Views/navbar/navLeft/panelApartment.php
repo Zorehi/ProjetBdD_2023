@@ -42,7 +42,7 @@
                             <a class="panel-section-button panelHouse-button" href="/aparts/<?= $value['id_apartment'] ?>">
                                 <img class="image" src="assets/image/apart-default-min-photo.png" alt="">
                                 <div class="text">
-                                    <span class="primary"><?= $value['num'].' - '.$value['house_name'] ?></span>
+                                    <span class="primary">N°<?= $value['num'].' - '.$value['house_name'] ?></span>
                                     <span class="secondary"><?= "{$value['apartment_type']} · {$value['nbr_rooms']} pièce".($value['nbr_rooms'] > 1 ? "s" : "") ?></span>
                                 </div>
                                 <div class="hover"></div>

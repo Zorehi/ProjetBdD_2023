@@ -242,5 +242,26 @@
         console.log('coucou');
     })
 
+    function deleteDevice(element, id_device) {
+        // url à demandé à Cyril
+        const url = `aparts/<?= $apart->getId_apartment() ?>/apart_device/`;
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: {
+                'type': 'delete',
+                'id_device': id_device
+            },
+            timeout: 120000, //2 Minutes
+        })
+        .done((response) => {
+            element.remove();
+            scrollbar_apart_devices.refresh();
+        })
+        .fail((error) => {
+            alert('Impossible de supprimer cette équipement');
+        });
+    }
+
 
 </script>

@@ -9,7 +9,7 @@
         </div>
     <?php if (method_exists($tenant, 'getId_house') && $tenant->getId_users() != $_SESSION['user']['id']) { ?>
         <div class="panel-manage-btn-create-container">
-            <a href="/devices/create/?id=" class="panel-section-button">
+            <a class="panel-section-button">
                 <div class="text unselectable">
                     <span class="primary">Devenir locataire</span>
                 </div>
