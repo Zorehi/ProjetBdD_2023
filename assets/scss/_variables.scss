@@ -58,7 +58,7 @@ html {
         --scroll-thumb: #BCC0C4;
         --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
         --table-cloud-bg: rgba(255, 255, 255, .8);
-        --select-bg-url: url('http://projetbdd/assets/image/select-black.png');
+        --select-bg-url: url('/assets/image/select-black.png');
         --input-disabled-bg: rgba(239, 239, 239, 0.5);
         --input-disabled-border: rgba(118, 118, 118, 0.3);
         --input-disabled-color: rgb(84, 84, 84);
@@ -125,7 +125,7 @@ html {
         --scroll-thumb: rgba(255, 255, 255, 0.3);
         --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
         --table-cloud-bg: rgba(0, 0, 0, .8);
-        --select-bg-url: url('http://projetbdd/assets/image/select-white.png');
+        --select-bg-url: url('/assets/image/select-white.png');
         --input-disabled-bg: rgba(59, 59, 59, 0.3);
         --input-disabled-border: rgba(118, 118, 118, 0.3);
         --input-disabled-color: rgb(170, 170, 170);
@@ -194,7 +194,7 @@ html {
         --scroll-thumb: rgba(255, 255, 255, 0.3);
         --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
         --table-cloud-bg: rgba(0, 0, 0, .8);
-        --select-bg-url: url('http://projetbdd/assets/image/select-white.png');
+        --select-bg-url: url('/assets/image/select-white.png');
     }
 }
 
@@ -258,6 +258,6 @@ html {
         --scroll-thumb: #BCC0C4;
         --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
         --table-cloud-bg: rgba(255, 255, 255, .8);
-        --select-bg-url: url('http://projetbdd/assets/image/select-black.png');
+        --select-bg-url: url('/assets/image/select-black.png');
     }
 }

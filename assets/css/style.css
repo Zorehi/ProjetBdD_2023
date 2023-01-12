@@ -57,7 +57,7 @@ html.__pj-light-mode {
   --scroll-thumb: #BCC0C4;
   --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
   --table-cloud-bg: rgba(255, 255, 255, .8);
-  --select-bg-url: url("http://projetbdd/assets/image/select-black.png");
+  --select-bg-url: url("/assets/image/select-black.png");
   --input-disabled-bg: rgba(239, 239, 239, 0.5);
   --input-disabled-border: rgba(118, 118, 118, 0.3);
   --input-disabled-color: rgb(84, 84, 84);
@@ -123,7 +123,7 @@ html.__pj-dark-mode {
   --scroll-thumb: rgba(255, 255, 255, 0.3);
   --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
   --table-cloud-bg: rgba(0, 0, 0, .8);
-  --select-bg-url: url("http://projetbdd/assets/image/select-white.png");
+  --select-bg-url: url("/assets/image/select-white.png");
   --input-disabled-bg: rgba(59, 59, 59, 0.3);
   --input-disabled-border: rgba(118, 118, 118, 0.3);
   --input-disabled-color: rgb(170, 170, 170);
@@ -190,7 +190,7 @@ html.__pj-dark-mode {
     --scroll-thumb: rgba(255, 255, 255, 0.3);
     --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
     --table-cloud-bg: rgba(0, 0, 0, .8);
-    --select-bg-url: url("http://projetbdd/assets/image/select-white.png");
+    --select-bg-url: url("/assets/image/select-white.png");
   }
 }
 @media (prefers-color-scheme: light) {
@@ -253,7 +253,7 @@ html.__pj-dark-mode {
     --scroll-thumb: #BCC0C4;
     --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
     --table-cloud-bg: rgba(255, 255, 255, .8);
-    --select-bg-url: url("http://projetbdd/assets/image/select-black.png");
+    --select-bg-url: url("/assets/image/select-black.png");
   }
 }
 body {
@@ -1271,7 +1271,7 @@ button {
 }
 .select-made-in-myself .option.button.show-select[data-status=selected]::after {
   content: "";
-  background-image: url("http://projetbdd/assets/image/select-made-by-myself.png");
+  background-image: url("/assets/image/select-made-by-myself.png");
   background-position: 0 0;
   position: absolute;
   background-size: auto;
@@ -1523,7 +1523,7 @@ button {
 }
 .card-edit .card-edit-content .image-container .image {
   display: block;
-  background-image: url("http://projetbdd/assets/image/edit-icon.png");
+  background-image: url("/assets/image/edit-icon.png");
   background-position: 0 0;
   background-size: 24px 24px;
   width: 24px;
@@ -2346,7 +2346,7 @@ button {
 .navLeft .navLeft-button i {
   -webkit-filter: var(--filter-primary-icon);
   filter: var(--filter-primary-icon);
-  background-image: url("http://projetbdd/assets/image/navleft.png");
+  background-image: url("/assets/image/navleft.png");
   background-size: 16px 64px;
   background-position-x: 0;
   display: block;
@@ -2398,10 +2398,10 @@ button {
   z-index: 1;
 }
 
-.panelHouse #searchHousesButton {
+.panelHouse .panel-section-button.panelHouse-button.search-button {
   height: 56px;
 }
-.panelHouse #searchHousesButton > .img {
+.panelHouse .panel-section-button.panelHouse-button.search-button > .img {
   padding: 0;
   margin: 6px;
   background-color: var(--base-blue);
@@ -2412,17 +2412,17 @@ button {
   align-items: center;
   justify-content: center;
 }
-.panelHouse #searchHousesButton > .img > i {
+.panelHouse .panel-section-button.panelHouse-button.search-button > .img > i {
   -webkit-filter: var(--filter-always-white);
   filter: var(--filter-always-white);
 }
-.panelHouse #searchHousesButton > .text > :first-child {
+.panelHouse .panel-section-button.panelHouse-button.search-button > .text > :first-child {
   font-weight: 400;
   font-size: 15px;
   line-height: 20px;
   color: var(--blue-link);
 }
-.panelHouse #searchHousesButton > .text > :first-child > strong {
+.panelHouse .panel-section-button.panelHouse-button.search-button > .text > :first-child > strong {
   font-size: inherit;
   font-weight: 600;
   line-height: inherit;
@@ -2452,20 +2452,21 @@ button {
   font-size: 12px;
   font-weight: 400;
 }
+.panelHouse .panel-section-scroll {
+  padding: 0;
+  height: calc(100% - 48.09px);
+}
 
-.panelHouse .panel-section-scroll #containerSearchHouseButton {
+.panelHouse .panel-section-scroll .search-button {
   display: none;
 }
-.panelHouse .panel-section-scroll[data-status=search] #containerSearchHouseButton {
-  display: block;
+.panelHouse .panel-section-scroll[data-status=search] .search-button {
+  display: flex;
 }
 .panelHouse .panel-section-scroll[data-status=search] .panel-section-create {
   display: none;
 }
 .panelHouse .panel-section-scroll[data-status=search] .panel-section-separator {
-  display: none;
-}
-.panelHouse .panel-section-scroll[data-status=search] .panel-section-list > #pinHouses {
   display: none;
 }
 
@@ -2482,10 +2483,10 @@ button {
 .panel-section#panelDatabase .panel-section-list {
   height: calc(100% - 62px);
 }
-.panel-section#panelDatabase .panel-section-list #db-table {
+.panel-section#panelDatabase .panel-section-list .panel-section-list-wrapper {
   height: calc(100% - 0px);
 }
-.panel-section#panelDatabase .panel-section-list #db-table .scrollbar-container {
+.panel-section#panelDatabase .panel-section-list .panel-section-list-wrapper .scrollbar-container {
   height: calc(100% - 32px);
   padding-top: 0;
   margin-top: 10px;
@@ -2502,7 +2503,7 @@ button {
 }
 .panel-section::after {
   content: "";
-  background-image: url("http://projetbdd/assets/image/panel-shadow.png");
+  background-image: url("/assets/image/panel-shadow.png");
   width: 7px;
   right: -6px;
   background-size: 7px 1px;
@@ -2760,7 +2761,7 @@ button {
   justify-content: center;
 }
 .panelSearch .panel-section-button .icon-container .icon {
-  background-image: url("http://projetbdd/assets/image/page-search.png");
+  background-image: url("/assets/image/page-search.png");
   height: 20px;
   width: 20px;
   filter: var(--filter-primary-icon);
@@ -3074,7 +3075,7 @@ button {
   position: relative;
 }
 .panel-manage .panel-manage-wrapper div.panel-section-button .icon .image {
-  background-image: url("http://projetbdd/assets/image/fleche.png");
+  background-image: url("/assets/image/fleche.png");
   background-size: auto;
   height: 20px;
   width: 20px;
@@ -3109,7 +3110,7 @@ button {
   width: 22px;
   height: 22px;
   filter: var(--filter-primary-icon);
-  background-image: url("http://projetbdd/assets/image/page-manage.png");
+  background-image: url("/assets/image/page-manage.png");
   background-size: 44px 132px;
 }
 .panel-manage .panel-section-button .text {

@@ -7,12 +7,21 @@
                 <span class="secondary"><?= "{$apartment_type->getDescription()} · $nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
             </div>
         </div>
-    <?php if ($tenant->getId_users() == $_SESSION['user']['id'] || $_SESSION['user']['is_admin']) { ?>
+    <?php if (method_exists($tenant, 'getId_house') && $tenant->getId_users() != $_SESSION['user']['id']) { ?>
+        <div class="panel-manage-btn-create-container">
+            <a class="panel-section-button">
+                <div class="text unselectable">
+                    <span class="primary">Devenir locataire</span>
+                </div>
+                <div class="hover"></div>
+            </a>
+        </div>
+    <?php } else if ($tenant->getId_users() == $_SESSION['user']['id'] || $_SESSION['user']['is_admin']) { ?>
         <div class="panel-manage-btn-create-container">
             <a href="/devices/create/?id=" class="panel-section-button">
                 <img src="assets/image/plus.png" class="unselectable"></i>
                 <div class="text unselectable">
-                    <span class="primary">Ajouter une pièce</span>
+                    <span class="primary">Ajouter un équipement</span>
                 </div>
                 <div class="hover"></div>
             </a>
@@ -30,6 +39,14 @@
                         </div>
                         <div class="hover"></div>
                     </a>
+                    <a href="aparts/<?= $apart->getId_apartment() ?>/apart_rooms" id="apart_rooms" class="panel-section-button" data-status="unselected">
+                        <i class="image" style="background-position-y: -22px;"></i>
+                        <div class="text unselectable">
+                            <span class="primary">Pièces de l'appartement</span>
+                            <span class="secondary"><?= "$nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
+                        </div>
+                        <div class="hover"></div>
+                    </a>
                 </div>
             <?php if ($tenant->getId_users() == $_SESSION['user']['id'] || $_SESSION['user']['is_admin']) { ?>
                 <div class="panel-section-separator"></div>
@@ -44,14 +61,6 @@
                         </div>
                         <div class="hover"></div>
                     </div>
-                    <a href="aparts/<?= $apart->getId_apartment() ?>/apart_rooms" id="apart_rooms" class="panel-section-button" data-status="unselected">
-                        <i class="image" style="background-position-y: -22px;"></i>
-                        <div class="text unselectable">
-                            <span class="primary">Pièces de l'appartement</span>
-                            <span class="secondary"><?= "$nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
-                        </div>
-                        <div class="hover"></div>
-                    </a>
                     <a href="aparts/<?= $apart->getId_apartment() ?>/apart_devices" id="apart_devices" class="panel-section-button" data-status="unselected">
                         <i class="image" style="background-position-y: -110px;"></i>
                         <div class="text unselectable">

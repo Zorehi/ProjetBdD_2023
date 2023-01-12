@@ -4,7 +4,12 @@
  * @param {HTMLElement} elem Element HTML à tester
  * @returns Booleen
  */
- const isVisible = elem => elem.getAttribute("data-status") == "visible" ? true : false;
+ const isVisible = (elem) => {
+    if (elem) {
+        return elem.getAttribute("data-status") == "visible";
+    }
+    return false;
+}
 
  /**
  * 

@@ -45,6 +45,9 @@
         <div class="modify-card" id="modify-row" data-status="hidden">
             <form method="POST" id="formModify">
                 <input type="hidden" id="formType" name="type" value="update">
+            <?php if ($table->getType() == 'Associations') foreach ($table->getIdnames() as $key => $champ) { ?>
+                <input type="hidden" data-name="old_id" data-id="<?= $champ ?>" name="old_id[<?= $champ ?>]">
+            <?php } ?>
                 <div class="modify-wrapper">
                 <?php foreach ($table::$info_tables as $key => $champ) { ?>
                     <label class="modify-label" for="<?= $key.'_1' ?>">

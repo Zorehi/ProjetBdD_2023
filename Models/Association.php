@@ -91,7 +91,7 @@ class Association extends Database {
      * Mise à jour d'un enregistrement suivant un tableau de données
      * @return bool
      */
-    public function update()
+    public function update($id_valeurs)
     {
         $champs = [];
         $champsID = [];
@@ -106,9 +106,9 @@ class Association extends Database {
             }
         }
 
-        foreach ($this->idNames as $valeur) {
-            $champsID[] = "$valeur = ?";
-            $valeurs[] = $this->$valeur;
+        foreach ($id_valeurs as $champ => $valeur) {
+            $champsID[] = "$champ = ?";
+            $valeurs[] = $valeur;
         }
         
 
