@@ -68,11 +68,12 @@ class HousesController extends Controller
         $Departement = new DepartmentModel();
         // On appelle la méthode validate de la classe mère pour vérifier que les champs sont bien remplis 
        if (Form::validate($_POST, ["house_name", "isolation_degree", "eval_eco", "citizen_degree", "street", "house_number","city_name","postcode"])) {
-         {
-            $houseArray = $house->findBy(['house_name'=> $_POST['house_name'],'city_name'=>$_POST['house_name'],'street'=>$_POST['street'],'house_number'=>$_POST['house_number']]);
-            if($houseArray)
+         { 
+            //$houseArray = $house->findBy(['house_name'=> $_POST['house_name'],'street'=>$_POST['street'],'house_number'=>$_POST['house_number']]);
+            //var_dump($houseArray);
+            if(true)
             {
-                // On regarde si la ville existe déja
+                // On regarde si la ville existe déja 
                 $cityArray = $city->findBy(['city_name'=> $_POST['city_name']]);
                 if($cityArray) // Dans la table city on cherche tous les attributs city name égal à ceux du POST
                 {
