@@ -244,13 +244,12 @@
 
     function deleteDevice(element, id_device) {
         // url à demandé à Cyril
-        const url = `aparts/<?= $apart->getId_apartment() ?>/apart_device/`;
+        const url = `devices/delete/`;
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: url,
             data: {
-                'type': 'delete',
-                'id_device': id_device
+                'id': id_device
             },
             timeout: 120000, //2 Minutes
         })

@@ -6,7 +6,7 @@
         <form action="" id="form-add-devices" hidden></form>
         <form class="create-form" id="create-appart" action="" method="POST">
             <div class="create-label-wrapper" data-status="active">
-                <div class="create-label-list scrollbar-container" id="scrollbar-devices-create">
+                <div class="create-label-list scrollbar-container" id="scrollbar-10">
                     <div class="scrollbar-content" data-transition="yes">
                         <label for="num" class="form-label-input" data-status="empty">
                             <span>Numéro d'appartement</span>
@@ -88,12 +88,12 @@
 
 <script type="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
-    
-    const scrollbar_devic_create = new ScrollBar(document.getElementById('scrollbar-device-create'), { offsetContainer: -16, offsetContent: 0});
-    scrollbar_device_create.init();
-    //const scrollbarContainer11 = document.getElementById('scrollbar-11');
-    //const scrollbar_11 = new ScrollBar(scrollbarContainer11, { offsetContainer: -16, offsetContent: 0});
-    //scrollbar_11.init();
+    const scrollbarContainer10 = document.getElementById('scrollbar-10');
+    const scrollbar_10 = new ScrollBar(scrollbarContainer10, { offsetContainer: -16, offsetContent: 0});
+    scrollbar_10.init();
+    const scrollbarContainer11 = document.getElementById('scrollbar-11');
+    const scrollbar_11 = new ScrollBar(scrollbarContainer11, { offsetContainer: -16, offsetContent: 0});
+    scrollbar_11.init();
     
     const create_apart = document.getElementById('create-appart');
     const select_array = create_apart.querySelectorAll('select');

@@ -46,14 +46,16 @@ class DevicesController extends Controller
     
         $pageName = "N°{$apart->getNum()} | {$house->getHouse_name()} | Projet BdD";
 
-        return compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices');
+        return compact('pageName', 'apart', 'tenant', 'house', 'apartment_type', 'nbr_devices');
     }
 
     public function create($id) {
         $device = new DeviceModel();
         $pageName = "Ajouter un appareil | Projet BdD";
-        if(Form::validate($_POST, ["device_num", "description_device","description_place","id_device_type","id_room"])){
+        if(Form::validate($_POST, [ "device_name","description_device","description_place","id_device_type","id_room"])){
+        
             $device->hydrate($_POST);
+           
             $device->create();
         }
         $device_type = new Device_typeModel();
@@ -64,12 +66,23 @@ class DevicesController extends Controller
 
     
     public function edit($id) {
-    
+        $pageName = "Modifier un appareil | Projet BdD";
+        $device = new DeviceModel();
+        $deviceArray = $device -> findById($id);
+        $device->hydrate($deviceArray);
+        if(Form::validate($_POST, ["device_name","description_device","description_place"]))
+        {
+            $device->hydrate($_POST);
+            $device->update();
+        }
+        $device_type = new Device_typeModel();
+        $this->render('/devices/edit', compact('pageName','device'));
     }
 
     
     public function delete($id) {
-    
+        $device = new DeviceModel();
+        $device->delete($id);
     }
 }
 
