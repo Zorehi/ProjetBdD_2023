@@ -81,15 +81,16 @@ class HousesController extends Controller
                 }
                 else
                 {
-                    // aller chercher l'ID du département grace au departementCode 
-                    $nDepartement = $_POST['postcode'];
+                    // aller chercher l'ID du département grace au departementCode
+                    $city->hydrate($_POST);
+                    $nDepartement = $city->getPostcode();
                     $nDepartement = substr($nDepartement,0,2);
 
                     $IDdepartement = $Departement->findBy(['department_code' => $nDepartement])[0];
                     $city->setId_department($IDdepartement['id_department']);
                     $city->create();
                     // regarder si la maison existe déjà dans la base de données 
-                    $city->hydrate($city->findBy(['postcode'=>$city->getPostcode(),'city_name'=>$city->getCity_name(),'id_department'=>$city->getCity_name()])[0]);
+                    $city->hydrate($city->findBy(['postcode'=>$city->getPostcode(),'city_name'=>$city->getCity_name(),'id_department'=>$city->getId_department()])[0]);
                 }
                 $house->setId_city($city->getId_city());
                 $house->hydrate($_POST);
@@ -97,9 +98,6 @@ class HousesController extends Controller
             }
 
          }
-         
-         
-
         
        
        }

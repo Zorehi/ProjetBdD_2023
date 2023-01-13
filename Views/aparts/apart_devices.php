@@ -268,5 +268,21 @@
         });
     }
 
+    function turnOn(id_device) {
+        // url à demandé à Cyril
+        const url = `devices/turn_on/`;
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                'id': id_device
+            },
+            timeout: 120000, //2 Minutes
+        })
+        .fail((error) => {
+            alert('Impossible d\'allumer cette équipement');
+        });
+    }
+
 
 </script>

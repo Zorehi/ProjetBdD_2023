@@ -9,7 +9,7 @@ function card_device_html(device) {
                 </div>
             </div>
             <div class="btn-wrapper">
-                <button class="btn btn-turn-on" type="button">
+                <button class="btn btn-turn-on" type="button" onclick="turnOn(${device['id_device']})">
                     <div class="text">
                         <span class="primary">Allumer</span>
                     </div>
