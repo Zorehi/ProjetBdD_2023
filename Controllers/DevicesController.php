@@ -12,7 +12,7 @@ use App\Models\Entities\ApartmentModel;
 use App\Models\Associations\TenantModel;
 use App\Models\Entities\Device_typeModel;
 use App\Models\Entities\Apartment_typeModel;
-
+use App\Models\Entities\Turn_onModel;
 
 class DevicesController extends Controller
 {
@@ -83,6 +83,25 @@ class DevicesController extends Controller
     public function delete($id) {
         $device = new DeviceModel();
         $device->delete($id);
+    }
+
+    
+    public function turn_on($id){
+        $device = new DeviceModel();
+        $TurnOn = new Turn_onModel();
+        $verify = $device->TurnVerify($id);
+        if($verify){
+            $verify['to_date']= new \Datetime();
+            $TurnOn->hydrate($verify);
+            $TurnOn->update(['id_device' => $TurnOn->getId_device() ,'from_date' =>$TurnOn->getFrom_date()]);
+        }
+        else {
+            $TurnOn->setId_device($id);
+            $TurnOn->setFrom_date(new \Datetime());
+            $TurnOn->setTo_date('0000-00-00 00:00:00');
+            $TurnOn->create();
+        }
+        
     }
 }
 
