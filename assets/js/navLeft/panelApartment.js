@@ -64,7 +64,7 @@ btnAppartements.addEventListener("click", function(event) {
         button.style.display = "flex";
     }
 
-    search_apartments.addEventListener('input', animateSearchHouse)
+    search_apartments.addEventListener('input', animateSearchApart)
 
     scroll_panel_apart.refresh();
 });
@@ -80,14 +80,14 @@ let timeoutIDApart = [];
  * @param {Event} event 
  */
 const animateSearchApart = function(event) {
-    if (timeoutIDHouse.length > 0) { clearTimeout(timeoutIDHouse.shift()); }
-    timeoutIDHouse.push(setTimeout(() => {
-        timeoutIDHouse = [];
-        querry_house_display.textContent = this.value;
-        search_house_button.setAttribute("href", "/search/apartments/?q="+this.value);
+    if (timeoutIDApart.length > 0) { clearTimeout(timeoutIDApart.shift()); }
+    timeoutIDApart.push(setTimeout(() => {
+        timeoutIDApart = [];
+        querry_apart_display.textContent = this.value;
+        search_apart_button.setAttribute("href", "/search/apartments/?q="+this.value);
         if (this.value == "") {
             scroll_panel_apart.sbContainer.dataset.status = "show";
-            for (let button of house_list.children) {
+            for (let button of apartment_list.children) {
                 button.style.display = "flex";
             }
         } else {
@@ -104,7 +104,7 @@ const animateSearchApart = function(event) {
  * @param {String} value 
  */
 const searchApart = function(value) {
-    for (let button of house_list.children) {
+    for (let button of apartment_list.children) {
         if (!isMatch(button.querySelector('.primary').textContent, value)) {
             button.style.display = "none";
         } else {

@@ -1,4 +1,5 @@
 <div class="panel-section panel-manage" id="manage-apart">
+    <input type="hidden" id="id-to-select" value="<?= $apart->getId_apartment(). '-' . $apart->getNum() ?>">
     <div class="panel-manage-header">
         <div class="panel-manage-profil">
             <img src="assets/image/apart-default-min-photo.png" alt="">

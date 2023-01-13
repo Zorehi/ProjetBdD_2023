@@ -99,6 +99,12 @@
 
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
+    const id_to_select = document.getElementById(document.getElementById('id-to-select').value);
+    if (id_to_select) {
+        id_to_select.dataset.status = 'selected'
+        id_to_select.onclick = () => { return false };
+    }
+
     const scrollbar_manage_apart = new ScrollBar(document.getElementById('scrollbar-manage-apart'), { offsetContainer: -16, offsetContent: 0});
     scrollbar_manage_apart.init();
 

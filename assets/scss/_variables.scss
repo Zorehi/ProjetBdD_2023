@@ -64,6 +64,8 @@ html {
         --input-disabled-color: rgb(84, 84, 84);
         --table-input-border: #CCD0D5;
         --table-select-border: #CCD0D5;
+        --infobulle-background: rgba(0, 0, 0, 0.85);
+        --infobulle-text: #E4E6EB;
     }
 
     &.__pj-dark-mode {
@@ -131,6 +133,8 @@ html {
         --input-disabled-color: rgb(170, 170, 170);
         --table-input-border: #56585a;
         --table-select-border: #56585a;
+        --infobulle-background: rgba(255, 255, 255, 0.85);
+        --infobulle-text: #050505;
     }
 }
 
@@ -195,6 +199,8 @@ html {
         --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
         --table-cloud-bg: rgba(0, 0, 0, .8);
         --select-bg-url: url('/assets/image/select-white.png');
+        --infobulle-background: rgba(255, 255, 255, 0.85);
+        --infobulle-text: #050505;
     }
 }
 
@@ -259,5 +265,7 @@ html {
         --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
         --table-cloud-bg: rgba(255, 255, 255, .8);
         --select-bg-url: url('/assets/image/select-black.png');
+        --infobulle-background: rgba(0, 0, 0, 0.85);
+        --infobulle-text: #E4E6EB;
     }
 }

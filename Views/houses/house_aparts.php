@@ -6,15 +6,13 @@
             <div class="card">
                 <div class="card-head">
                     <div class="card-head-profil">
-                        <div class="image-container">
+                        <a href="#" class="image-container">
                             <img class="image" src="assets/image/user-default-photo.png" alt="">
                             <div class="hover"></div>
-                        </div>
+                        </a>
                         <div class="text">
-                            <span class="primary">Quelqu'un</span>
-                            <span class="secondary">
-                                <a data-infobulle="le Mercredi 28 décembre 2022">1 j</a>
-                            </span>
+                            <a href="" class="primary">Quelqu'un</a>
+                            <a class="secondary" data-infobulle="le Mercredi 28 décembre 2022">1 j</a>
                         </div>
                     </div>
                 </div>
