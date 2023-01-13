@@ -51,6 +51,10 @@ class DeviceModel extends Entity
                                ORDER BY device_name {$order_by}")->fetch();
     }
 
+    public function TurnVerify($id){
+        return $this->requete("SELECT * FROM Turn_on WHERE id_device = $id AND DATEDIFF(to_date , `0000-00-00 00:00:00`)=0")->fetchAll();
+    }
+
     /**
      * Get the value of id_device
      */ 
