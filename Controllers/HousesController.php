@@ -67,8 +67,8 @@ class HousesController extends Controller
         $city = new CityModel();
         $Departement = new DepartmentModel();
         // On appelle la méthode validate de la classe mère pour vérifier que les champs sont bien remplis 
-       if (Form::validate($_POST, ["house_name", "isolation_degree", "eval_eco", "citizen_degree", "street", "house_number","city_name","postcode"])) {
-         { 
+        if (Form::validate($_POST, ["house_name", "isolation_degree", "eval_eco", "citizen_degree", "street", "house_number","city_name","postcode"])) {
+        { 
             //$houseArray = $house->findBy(['house_name'=> $_POST['house_name'],'street'=>$_POST['street'],'house_number'=>$_POST['house_number']]);
             //var_dump($houseArray);
             if(true)
@@ -78,21 +78,21 @@ class HousesController extends Controller
                 if($cityArray) // Dans la table city on cherche tous les attributs city name égal à ceux du POST
                 {
                     // Si on connait deja la ville on a juste à l'hydrater 
-                    $city->hydrate($cityArray);
+                    $city->hydrate($cityArray[0]);
                 }
                 else
                 {
                     // aller chercher l'ID du département grace au departementCode 
-                    $city->hydrate($_POST);
-                    $nDepartement = $city->getPostcode();
-                    substr($nDepartement,0,3);
+                    $nDepartement = $_POST['postcode'];
+                    $nDepartement = substr($nDepartement,0,2);
+                    var_dump($nDepartement);
                     $IDdepartement = $Departement->findBy(['department_code' => $nDepartement])[0];
                     $city->setId_department($IDdepartement['id_department']);
                     $city->create();
                     // regarder si la maison existe déjà dans la base de données 
-                    $cityID = $city->findBy(['postcode'=>$city->getPostcode(),'city_name'=>$city->getCity_name(),'id_departement'=>$city->getCity_name()]);
+                    $city->hydrate($city->findBy(['postcode'=>$city->getPostcode(),'city_name'=>$city->getCity_name(),'id_department'=>$city->getCity_name()])[0]);
                 }
-                $house->setId_city($cityID->getIdcity());
+                $house->setId_city($city->getId_city());
                 $house->hydrate($_POST);
                 $house->create();
             }
