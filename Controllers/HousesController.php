@@ -69,9 +69,8 @@ class HousesController extends Controller
         // On appelle la méthode validate de la classe mère pour vérifier que les champs sont bien remplis 
         if (Form::validate($_POST, ["house_name", "isolation_degree", "eval_eco", "citizen_degree", "street", "house_number","city_name","postcode"])) {
         { 
-            //$houseArray = $house->findBy(['house_name'=> $_POST['house_name'],'street'=>$_POST['street'],'house_number'=>$_POST['house_number']]);
-            //var_dump($houseArray);
-            if(true)
+            $houseArray = $house->findBy(['house_name'=> $_POST['house_name'],'street'=>$_POST['street'],'house_number'=>$_POST['house_number']]);
+            if(count($houseArray) == 0)
             {
                 // On regarde si la ville existe déja 
                 $cityArray = $city->findBy(['city_name'=> $_POST['city_name']]);
@@ -85,7 +84,7 @@ class HousesController extends Controller
                     // aller chercher l'ID du département grace au departementCode 
                     $nDepartement = $_POST['postcode'];
                     $nDepartement = substr($nDepartement,0,2);
-                    var_dump($nDepartement);
+
                     $IDdepartement = $Departement->findBy(['department_code' => $nDepartement])[0];
                     $city->setId_department($IDdepartement['id_department']);
                     $city->create();
