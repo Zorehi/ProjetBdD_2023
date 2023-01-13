@@ -3,7 +3,7 @@
         <h1>Créer un appartement</h1>
     </div>
     <div class="panel-section-list">
-        <form action="" id="form-add-devices" hidden></form>
+        <form action="" id="form-add-room" hidden></form>
         <form class="create-form" id="create-appart" action="" method="POST">
             <div class="create-label-wrapper" data-status="active">
                 <div class="create-label-list scrollbar-container" id="scrollbar-10">
@@ -65,7 +65,7 @@
                 <div class="panel-section-separator"></div>
                 <fieldset class="list-container" id="list-room">
                     <legend>Pièces pour cette appartement</legend>
-                    <div class="scrollbar-container" id="scrollbar-11">
+                    <div class="scrollbar-container" id="scrollbar-create-rooms">
                         <div class="scrollbar-content" data-transition="yes">
                             <!-- Ne pas supprimer -->
                         </div>
@@ -127,18 +127,18 @@
 
     function deleteRow(element) {
         element.remove();
-        scrollbar_11.refresh();
+        scrollbar_create_rooms.refresh();
     }
 
     const btn_add_room = document.getElementById('btn-add-room');
     const form_add_room = document.getElementById('form-add-room');
     btn_add_room.addEventListener('click', (event) => {
-        input_room_name = scrollbar_11.sbContent.querySelectorAll('input[name="room_name[]"]');
+        input_room_name = scrollbar_create_rooms.sbContent.querySelectorAll('input[name="room_name[]"]');
         for (const input of input_room_name) {
             if (input.value == form_add_room[1].value) return;
         }
         if (form_add_room.reportValidity()) {
-            scrollbar_11.sbContent.innerHTML += `<div class="room-row">
+            scrollbar_create_rooms.sbContent.innerHTML += `<div class="room-row">
                 <input type="text" name="id_room_type[]" value="${form_add_room[0].value}" hidden>
                 <input type="text" name="room_name[]" value="${form_add_room[1].value}" hidden>
                 <span data-label="Type de pièce">${form_add_room[0][form_add_room[0].selectedIndex].textContent}</span>
@@ -147,7 +147,7 @@
                     <img src="assets/image/bin.png" height="16px" width="16px" alt="">
                 </button>
             </div>`;
-            scrollbar_11.refresh();
+            scrollbar_create_rooms.refresh();
         }
     });
 
