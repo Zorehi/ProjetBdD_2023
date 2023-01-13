@@ -34,6 +34,7 @@
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false,
+            styledMode: true,
             type: 'pie'
         },
         title: {
@@ -66,6 +67,10 @@
 
     Highcharts.chart('basic-column-container', {
         chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            styledMode: true,
             type: 'column'
         },
         title: {
@@ -90,12 +95,8 @@
             }
         },
         tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y}</b></td></tr>',
-            footerFormat: '</table>',
+            pointFormat: '{series.name}: <b>{point.y}</b>',
             shared: true,
-            useHTML: true
         },
         plotOptions: {
             column: {

@@ -10,10 +10,11 @@
     <title><?= $pageName ?></title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/dark-unica.css">
+    <link rel="stylesheet" href="assets/css/highcharts-theme.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="assets/js/ScrollBar.js"></script>
+    <script src="assets/js/highcharts.js"></script>
     <script src="assets/js/util.js"></script>
 </head>
 
