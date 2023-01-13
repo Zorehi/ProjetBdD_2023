@@ -30,8 +30,10 @@ class DeviceModel extends Entity
         $where = '';
         if ($id_room != 'false') $where .= " AND D.id_room = $id_room ";
         if ($id_device_type != 'false') $where .= " AND D.id_device_type = $id_device_type ";
-        return $this->requete("SELECT D.id_device, D.device_name, D.description_device, D.description_place, DT.type_name, R.room_name
-                               FROM {$this->table} D LEFT OUTER JOIN room R ON(D.id_room = R.id_room) LEFT OUTER JOIN device_type DT ON(D.id_device_type = DT.id_device_type)
+        return $this->requete("SELECT D.id_device, D.device_name, D.description_device, D.description_place, DT.type_name, R.room_name, T.from_date, T.to_date
+                               FROM {$this->table} D LEFT OUTER JOIN room R ON(D.id_room = R.id_room) 
+                                                     LEFT OUTER JOIN device_type DT ON(D.id_device_type = DT.id_device_type) 
+                                                     LEFT OUTER JOIN turn_on T ON(D.id_device = T.id_device)
                                WHERE D.device_name LIKE '%{$q}%'
                                      {$where}
                                      AND R.id_apartment = $id
