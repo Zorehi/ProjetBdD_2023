@@ -22,7 +22,7 @@ class RoomModel extends Entity
     }
 
     public function allRoom($idApart){
-        return $this->requete("SELECT R.id_room, R.room_name , RT.id_room_type , RT.image_url ,RT.description FROM {$this->table} R NATURAL JOIN room_type RT WHERE R.id_apartment = {$idApart}")->fetchAll();
+        return $this->requete("SELECT R.id_room, R.room_name , RT.id_room_type , RT.image_url FROM {$this->table} R NATURAL JOIN room_type RT WHERE R.id_apartment = {$idApart}")->fetchAll();
     }
     
 

@@ -12,16 +12,16 @@
                                 <div class="hover"></div>
                             </div>
                             <div class="text">
-                                <span class="primary">Quelqu'un</span>
+                                <span class="primary">Vous</span>
                                 <span class="secondary">
-                                    <a data-infobulle="le Mercredi 28 décembre 2022">1 j</a>
+                                    <a data-infobulle="<?= date('d-m-Y')?>">Aujourd'hui</a>
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div class="card-content">
                         <div class="card-content-text">
-                            <span class="primary">Ajout de <?= $value['room_name'] ?> pour cette appartement</span>
+                            <span class="primary">Ajout de la pièce <?= $value['room_name'] ?> pour cet appartement</span>
                         </div>
                         <div class="card-content-image">
                             <img src="assets/image/<?= $value['image_url'] ?>" alt="">
@@ -40,6 +40,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.min.js"></script>
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
+    const id_to_select = document.getElementById(document.getElementById('id-to-select').value);
+    if (id_to_select) {
+        id_to_select.dataset.status = 'selected'
+        id_to_select.onclick = () => { return false };
+    }
+    
     const scrollbar_manage_apart = new ScrollBar(document.getElementById('scrollbar-manage-apart'), {
         offsetContainer: -16,
         offsetContent: 0

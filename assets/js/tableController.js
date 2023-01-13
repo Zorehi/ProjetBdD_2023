@@ -92,6 +92,12 @@ const modify = (element, is_new = false) => {
         for (let index = 0; index < select_array.length; index++) {
             select_array[index].value = value_array[select_array[index].getAttribute('name')];
         }
+
+        const input_id_array = modify_row.querySelectorAll('input[data-name="old_id"]');
+        for (const input of input_id_array) {
+            input.value = value_array[input.getAttribute('data-id')]
+        }
+
     }
 }
 

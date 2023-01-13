@@ -28,8 +28,8 @@ class DeviceModel extends Entity
 
     public function search($id, $q, $order_by, $id_room, $id_device_type, $limit, $offset) {
         $where = '';
-        if ($id_room != 'false') $where .= "AND D.id_room = $id_room";
-        if ($id_device_type != 'false') $where .= "AND D.id_device_type = $id_device_type";
+        if ($id_room != 'false') $where .= " AND D.id_room = $id_room ";
+        if ($id_device_type != 'false') $where .= " AND D.id_device_type = $id_device_type ";
         return $this->requete("SELECT D.id_device, D.device_name, D.description_device, D.description_place, DT.type_name, R.room_name
                                FROM {$this->table} D LEFT OUTER JOIN room R ON(D.id_room = R.id_room) LEFT OUTER JOIN device_type DT ON(D.id_device_type = DT.id_device_type)
                                WHERE D.device_name LIKE '%{$q}%'
@@ -41,10 +41,10 @@ class DeviceModel extends Entity
 
     public function countSearch($id, $q, $order_by, $id_room, $id_device_type) {
         $where = '';
-        if ($id_room != 'false') $where .= "AND D.id_room = $id_room";
-        if ($id_device_type != 'false') $where .= "AND D.id_device_type = $id_device_type";
+        if ($id_room != 'false') $where .= " AND D.id_room = $id_room ";
+        if ($id_device_type != 'false') $where .= " AND D.id_device_type = $id_device_type ";
         return $this->requete("SELECT COUNT(D.id_device) as nbr_devices
-                               FROM {$this->table} D LEFT OUTER JOIN room R ON(D.id_room = R.id_room) LEFT OUTER JOIN device_type DT ON(D.id_device_type = DT.id_device_type)
+                               FROM {$this->table} D LEFT OUTER JOIN room R ON(D.id_room = R.id_room)
                                WHERE D.device_name LIKE '%{$q}%'
                                      {$where}
                                      AND R.id_apartment = $id

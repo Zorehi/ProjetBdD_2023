@@ -6,7 +6,7 @@
         <form action="" id="form-add-room" hidden></form>
         <form class="create-form" id="create-appart" action="" method="POST">
             <div class="create-label-wrapper" data-status="active">
-                <div class="create-label-list scrollbar-container" id="scrollbar-10">
+                <div class="create-label-list scrollbar-container" id="scrollbar-create-apartment">
                     <div class="scrollbar-content" data-transition="yes">
                         <label for="num" class="form-label-input" data-status="empty">
                             <span>Numéro d'appartement</span>
@@ -65,7 +65,7 @@
                 <div class="panel-section-separator"></div>
                 <fieldset class="list-container" id="list-room">
                     <legend>Pièces pour cette appartement</legend>
-                    <div class="scrollbar-container" id="scrollbar-11">
+                    <div class="scrollbar-container" id="scrollbar-create-rooms">
                         <div class="scrollbar-content" data-transition="yes">
                             <!-- Ne pas supprimer -->
                         </div>
@@ -89,12 +89,10 @@
 <script type="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
     
-    const scrollbarContainer10 = document.getElementById('scrollbar-10');
-    const scrollbar_10 = new ScrollBar(scrollbarContainer10, { offsetContainer: -16, offsetContent: 0});
-    scrollbar_10.init();
-    const scrollbarContainer11 = document.getElementById('scrollbar-11');
-    const scrollbar_11 = new ScrollBar(scrollbarContainer11, { offsetContainer: -16, offsetContent: 0});
-    scrollbar_11.init();
+    const scrollbar_create_apartment = new ScrollBar(document.getElementById('scrollbar-create-apartment'), { offsetContainer: -16, offsetContent: 0});
+    scrollbar_create_apartment.init();
+    const scrollbar_create_rooms = new ScrollBar(document.getElementById('scrollbar-create-rooms'), { offsetContainer: -16, offsetContent: 0});
+    scrollbar_create_rooms.init();
     
     const create_apart = document.getElementById('create-appart');
     const select_array = create_apart.querySelectorAll('select');
@@ -128,18 +126,18 @@
 
     function deleteRow(element) {
         element.remove();
-        scrollbar_11.refresh();
+        scrollbar_create_rooms.refresh();
     }
 
     const btn_add_room = document.getElementById('btn-add-room');
     const form_add_room = document.getElementById('form-add-room');
     btn_add_room.addEventListener('click', (event) => {
-        input_room_name = scrollbar_11.sbContent.querySelectorAll('input[name="room_name[]"]');
+        input_room_name = scrollbar_create_rooms.sbContent.querySelectorAll('input[name="room_name[]"]');
         for (const input of input_room_name) {
             if (input.value == form_add_room[1].value) return;
         }
         if (form_add_room.reportValidity()) {
-            scrollbar_11.sbContent.innerHTML += `<div class="room-row">
+            scrollbar_create_rooms.sbContent.innerHTML += `<div class="room-row">
                 <input type="text" name="id_room_type[]" value="${form_add_room[0].value}" hidden>
                 <input type="text" name="room_name[]" value="${form_add_room[1].value}" hidden>
                 <span data-label="Type de pièce">${form_add_room[0][form_add_room[0].selectedIndex].textContent}</span>
@@ -148,7 +146,7 @@
                     <img src="assets/image/bin.png" height="16px" width="16px" alt="">
                 </button>
             </div>`;
-            scrollbar_11.refresh();
+            scrollbar_create_rooms.refresh();
         }
     });
 

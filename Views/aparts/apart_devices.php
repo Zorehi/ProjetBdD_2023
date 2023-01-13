@@ -112,7 +112,7 @@
     <div class="apart_devices">
         <div class="scrollbar-container" id="scrollbar-apart-devices">
             <div class="card-wrapper scrollbar-content" data-transition="yes">
-                
+            
             </div>
             <div class="scrollbar-track"></div>
             <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
@@ -126,6 +126,12 @@
 <script src="assets/js/card-device-html.js"></script>
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
+    const id_to_select = document.getElementById(document.getElementById('id-to-select').value);
+    if (id_to_select) {
+        id_to_select.dataset.status = 'selected'
+        id_to_select.onclick = () => { return false };
+    }
+
     const scrollbar_manage_apart = new ScrollBar(document.getElementById('scrollbar-manage-apart'), { offsetContainer: -16, offsetContent: 0});
     scrollbar_manage_apart.init();
 
@@ -241,6 +247,27 @@
         requestDevices(false);
         console.log('coucou');
     })
+
+    function deleteDevice(element, id_device) {
+        // url à demandé à Cyril
+        const url = `aparts/<?= $apart->getId_apartment() ?>/apart_device/`;
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: {
+                'type': 'delete',
+                'id_device': id_device
+            },
+            timeout: 120000, //2 Minutes
+        })
+        .done((response) => {
+            element.remove();
+            scrollbar_apart_devices.refresh();
+        })
+        .fail((error) => {
+            alert('Impossible de supprimer cette équipement');
+        });
+    }
 
 
 </script>
