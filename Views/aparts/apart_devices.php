@@ -264,7 +264,7 @@
             scrollbar_apart_devices.refresh();
         })
         .fail((error) => {
-            alert('Impossible de supprimer cette équipement');
+            alert('Impossible de supprimer cet équipement');
         });
     }
 
@@ -279,8 +279,13 @@
             },
             timeout: 120000, //2 Minutes
         })
+        .done((response) => {
+            
+        })
+
+        
         .fail((error) => {
-            alert('Impossible d\'allumer cette équipement');
+            alert('Impossible d\'allumer cet équipement');
         });
     }
 

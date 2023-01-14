@@ -52,7 +52,7 @@ class DeviceModel extends Entity
     }
 
     public function TurnVerify($id){
-        return $this->requete("SELECT * FROM Turn_on WHERE id_device = $id AND DATEDIFF(to_date , `0000-00-00 00:00:00`)=0")->fetchAll();
+        return $this->requete("SELECT * FROM Turn_on WHERE id_device = $id AND to_date ='0000-00-00 00:00:00'")->fetch();
     }
 
     /**
