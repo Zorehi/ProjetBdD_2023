@@ -110,6 +110,10 @@
 
             .btn-turn-on {
                 background-color: var(--primary-button-background);
+                
+                &[data-type="Eteindre"] {
+                    background-color: var(--button-red);
+                }
 
                 .text .primary {
                     color: var(--primary-button-text);
