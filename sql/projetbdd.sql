@@ -341,3 +341,117 @@ CREATE TABLE consumption(
    FOREIGN KEY(`id_device`) REFERENCES device(`id_device`),
    FOREIGN KEY(`id_resource`) REFERENCES resource(`id_resource`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue turn_on_desc
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW turn_on_desc AS
+SELECT id_device, from_date, to_date
+FROM turn_on
+GROUP BY id_device
+ORDER BY id_device DESC;
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_device
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_device AS
+SELECT D.id_device,
+       DATE(T.from_date) AS date,
+       D.id_room,
+       SUM(TO_SECONDS(IF(T.to_date = '0000-00-00 00:00:00', SYSDATE(), T.to_date)) - TO_SECONDS(T.from_date)) AS uptime
+FROM device AS D LEFT OUTER JOIN turn_on AS T ON(D.id_device = T.id_device)
+WHERE DATEDIFF(T.from_date, SYSDATE()) < 30
+GROUP BY D.id_device, date;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_device_with_emission
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_device_with_emission AS
+SELECT UP.id_device,
+	    E.id_substance,
+       E.emission_per_hour,
+       UP.date,
+       UP.id_room,
+       UP.uptime
+FROM uptime_by_device AS UP LEFT OUTER JOIN emission AS E ON(UP.id_device = E.id_device)
+GROUP BY UP.id_device, E.id_substance, UP.date;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_device_with_consumption
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_device_with_consumption AS
+SELECT UP.id_device,
+	    C.id_resource,
+       C.consumption_per_hour,
+       UP.date,
+       UP.id_room,
+       UP.uptime
+FROM uptime_by_device AS UP LEFT OUTER JOIN consumption AS C ON(UP.id_device = C.id_device)
+GROUP BY UP.id_device, C.id_resource, UP.date;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_apartment_with_emission
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_apartment_with_emission AS
+SELECT R.id_apartment,
+       UP.id_substance,
+       UP.date,
+       A.id_house,
+       UP.emission_per_hour,
+       SUM(UP.uptime) AS uptime
+FROM uptime_by_device_with_emission AS UP LEFT OUTER JOIN room AS R ON (UP.id_room = R.id_room)
+							                     LEFT OUTER JOIN apartment AS A ON(R.id_apartment = A.id_apartment)
+GROUP BY R.id_apartment, UP.id_substance, UP.date;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_apartment_with_consumption
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_apartment_with_consumption AS
+SELECT R.id_apartment,
+       UP.id_resource,
+       UP.date,
+       A.id_house,
+       UP.consumption_per_hour,
+       SUM(UP.uptime) AS uptime
+FROM uptime_by_device_with_consumption AS UP LEFT OUTER JOIN room AS R ON (UP.id_room = R.id_room)
+							                        LEFT OUTER JOIN apartment AS A ON(R.id_apartment = A.id_apartment)
+GROUP BY R.id_apartment, UP.id_resource, UP.date;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_house_with_emission
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_house_with_emission AS
+SELECT H.id_house,
+       UP.id_substance,
+       UP.date,
+       UP.emission_per_hour,
+       SUM(UP.uptime)
+FROM uptime_by_apartment_with_emission AS UP LEFT OUTER JOIN house AS H ON(UP.id_house = H.id_house)
+GROUP BY H.id_house, UP.id_substance, UP.date
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_house_with_consumption
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_house_with_consumption AS
+SELECT H.id_house,
+       UP.id_resource,
+       UP.date,
+       UP.consumption_per_hour,
+       SUM(UP.uptime)
+FROM uptime_by_apartment_with_consumption AS UP LEFT OUTER JOIN house AS H ON(UP.id_house = H.id_house)
+GROUP BY H.id_house, UP.id_resource, UP.date

@@ -44,7 +44,7 @@
                         <i class="image" style="background-position-y: -22px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Pièces de l'appartement</span>
-                            <span class="secondary"><?= "$nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
+                            <span class="secondary" data-value="<?= $nbr_rooms ?>"><?= "$nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
                         </div>
                         <div class="hover"></div>
                     </a>
@@ -66,7 +66,7 @@
                         <i class="image" style="background-position-y: -110px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Équipements de l'appartement</span>
-                            <span class="secondary"><?= "$nbr_devices équipement".($nbr_devices > 1 ? "s" : "") ?></span>
+                            <span class="secondary" id="nbr_devices" data-value="<?= $nbr_devices ?>"><?= ($nbr_devices > 0 ? $nbr_devices : 'Aucun')." équipement".($nbr_devices > 1 ? "s" : "") ?></span>
                         </div>
                         <div class="hover"></div>
                     </a>

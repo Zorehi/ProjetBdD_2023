@@ -51,10 +51,7 @@ class LoginController extends Controller
                         $user->setBirthday($birthday)
                              ->setPassword($pass);
 
-                        $user->create();
-
-                        $userArray = $user->findBy(['email' => $user->getEmail()]);
-                        $user->setId_users($userArray['id_users']);
+                        $user->setId_users($user->create());
 
                         $user->setSession();
                         header("Location: /");
