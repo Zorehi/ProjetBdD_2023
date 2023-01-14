@@ -56,7 +56,7 @@ class DevicesController extends Controller
         
             $device->hydrate($_POST);
            
-            $device->create();
+            $device->setId_device($device->create());
         }
         $device_type = new Device_typeModel();
         $room = new roomModel();

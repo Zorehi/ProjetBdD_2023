@@ -88,13 +88,12 @@ class HousesController extends Controller
 
                     $IDdepartement = $Departement->findBy(['department_code' => $nDepartement])[0];
                     $city->setId_department($IDdepartement['id_department']);
-                    $city->create();
+                    $city->setId_city($city->create());
                     // regarder si la maison existe déjà dans la base de données 
-                    $city->hydrate($city->findBy(['postcode'=>$city->getPostcode(),'city_name'=>$city->getCity_name(),'id_department'=>$city->getId_department()])[0]);
                 }
                 $house->setId_city($city->getId_city());
                 $house->hydrate($_POST);
-                $house->create();
+                $house->setId_house($house->create());
             }
 
          }

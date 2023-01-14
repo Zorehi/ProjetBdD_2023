@@ -127,11 +127,10 @@ class ApartsController extends Controller
             if(count($apart->findby(["num" => $apart->getNum(), 'id_house' => $apart->getid_house()])) == 0){
                 $apart->hydrate($_POST);
                 $apart->setId_house($id_house);
-                $apart->create();
-                $taille =count($_POST["id_room_type"]);
+                $apart->setId_apartment($apart->create());
+                $taille = count($_POST["id_room_type"]);
                 $id_room = $_POST["id_room_type"];
                 $room_name = $_POST["room_name"];
-                $apart->hydrate($apart->findBy(["num"=>$apart->getNum(), 'id_house' =>$apart->getid_house()])[0]);
                 $piece = new RoomModel();
                 for ($i=0 ; $i < $taille ; $i++){
                     $piece->setId_room_type($id_room[$i]);
