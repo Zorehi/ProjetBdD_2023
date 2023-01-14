@@ -76,7 +76,8 @@ class DevicesController extends Controller
             $device->update();
         }
         $device_type = new Device_typeModel();
-        $this->render('/devices/edit', compact('pageName','device'));
+        $device_type_name = $device_type->findById($device->getId_device_type())['type_name'];
+        $this->render('/devices/edit', compact('pageName','device','device_type_name'));
     }
 
     
