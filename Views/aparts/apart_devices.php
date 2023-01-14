@@ -5,7 +5,7 @@
         <div>
             <div class="panelTopFilter-head">
                 <div class="panelTopFilter-head-title">
-                    <span class="primary">Équipement de l'appartement <span class="secondary" id="nbr_result"> · Aucun résultat</span></span>
+                    <span class="primary">Équipement de l'appartement <span class="secondary" id="nbr_result" data-value="0"> · Aucun résultat</span></span>
                 </div>
             </div>
             <div class="panelTopFilter-searchBy">
@@ -186,8 +186,9 @@
         if (revert) {
             scrollbar_apart_devices.sbContent.innerHTML = ''
         };
-        number = number['nbr_devices'];
-        nbr_result.textContent = ` · ${number > 0 ? number : 'Aucun'} résultat${number > 1 ? 's' : ''}`;
+        const global_number = parseInt(number['nbr_devices']);
+        nbr_result.dataset.value = global_number;
+        nbr_result.textContent = ` · ${global_number > 0 ? global_number : 'Aucun'} résultat${global_number > 1 ? 's' : ''}`;
         offset += device_array.length;
         if (device_array.length > 0) {
             for (const device of device_array) {
@@ -248,6 +249,7 @@
         console.log('coucou');
     })
 
+    const nbr_devices = document.getElementById('nbr_devices');
     function deleteDevice(element, id_device) {
         // url à demandé à Cyril
         const url = `devices/delete/`;
@@ -262,6 +264,12 @@
         .done((response) => {
             element.remove();
             scrollbar_apart_devices.refresh();
+            const global_number = parseInt(nbr_result.dataset.value) - 1;
+            nbr_result.dataset.value = global_number;
+            nbr_result.textContent = ` · ${global_number > 0 ? global_number : 'Aucun'} résultat${global_number > 1 ? 's' : ''}`;
+            const global_number_devices = parseInt(nbr_devices.dataset.value) - 1;
+            nbr_devices.dataset.value = global_number_devices;
+            nbr_devices.textContent = `${global_number_devices > 0 ? global_number_devices : 'Aucun'} équipement${global_number_devices > 1 ? 's' : ''}`;
         })
         .fail((error) => {
             alert('Impossible de supprimer cette équipement');
