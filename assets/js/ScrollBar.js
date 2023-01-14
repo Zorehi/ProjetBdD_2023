@@ -70,6 +70,12 @@ class ScrollBar
 
         this.is_refresh = true;
 
+        const pourcentage = this.sbThumbHeight/this.sbContainerHeight;
+        if (pourcentage > 0.8 && this.is_refresh) {
+            this.is_refresh = false;
+            this.sbContent.dispatchEvent(new Event('80%'));
+        }
+
         this.sbContent.style.transform =  `translateY(-${this.#scroll}px)`;
         this.sbThumb.style.transform =  `translateY(${this.#scrollThumb}px)`;
     }

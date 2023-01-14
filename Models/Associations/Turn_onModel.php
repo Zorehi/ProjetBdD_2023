@@ -17,6 +17,12 @@ class Turn_onModel extends Association
         $this->idNames = ['id_device', 'from_date'];
     }
 
+    public function uptime($id){
+        return $this->requete("SELECT id_device, DATE(from_date) as date, to_date, SUM(TO_SECONDS(IF(to_date = '0000-00-00 00:00:00', SYSDATE(), to_date)) - TO_SECONDS(from_date)) as uptime
+                               FROM turn_on
+                               GROUP BY id_device, date;")->fetchAll();
+    }
+
 
     /**
      * Get the value of to_date
@@ -33,6 +39,7 @@ class Turn_onModel extends Association
      */ 
     public function setTo_date($to_date)
     {
+        if ($to_date == null) $to_date = '0000-00-00 00:00:00';
         $this->to_date = $to_date;
 
         return $this;
