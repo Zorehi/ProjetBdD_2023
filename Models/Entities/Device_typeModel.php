@@ -17,11 +17,11 @@ class Device_typeModel extends Entity
     }
 
     public function get_name_ressource($id){
-        return $this->requete( " SELECT name FROM ressource NATURAL JOIN consume WHERE id_device_type = $id ")->fetch();
+        return $this->requete( " SELECT name,id_ressource FROM ressource NATURAL JOIN consume WHERE id_device_type = $id ")->fetch();
     }
 
     public function get_name_substance($id){
-        return $this->requete( " SELECT name FROM substance NATURAL JOIN emit WHERE id_device_type = $id ")->fetch();
+        return $this->requete( " SELECT name,id_substance FROM substance NATURAL JOIN emit WHERE id_device_type = $id ")->fetch();
     }
 
     /**
