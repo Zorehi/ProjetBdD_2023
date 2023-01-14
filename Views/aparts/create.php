@@ -88,10 +88,10 @@
 
 <script type="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
-    const scrollbar_10 = new ScrollBar(document.getElementById('scrollbar-create-aparts'), { offsetContainer: -16, offsetContent: 0});
-    scrollbar_10.init();
-    const scrollbar_11 = new ScrollBar(document.getElementById('scrollbar-create-rooms'), { offsetContainer: -16, offsetContent: 0});
-    scrollbar_11.init();
+    const scrollbar_create_aparts = new ScrollBar(document.getElementById('scrollbar-create-aparts'), { offsetContainer: -16, offsetContent: 0});
+    scrollbar_create_aparts.init();
+    const scrollbar_create_rooms = new ScrollBar(document.getElementById('scrollbar-create-rooms'), { offsetContainer: -16, offsetContent: 0});
+    scrollbar_create_rooms.init();
     
     const create_apart = document.getElementById('create-appart');
     const select_array = create_apart.querySelectorAll('select');
@@ -115,7 +115,7 @@
             if (create_btn_apart_text.textContent == 'Suivant') {
                 wrappers[0].dataset.status = 'before';
                 wrappers[1].dataset.status = 'active';
-                scrollbar_10.refresh();
+                scrollbar_create_aparts.refresh();
                 create_btn_apart_text.textContent = 'Créer'
             } else {
                 create_apart.submit();

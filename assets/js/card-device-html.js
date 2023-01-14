@@ -10,7 +10,7 @@ function card_device_html(device) {
                 </div>
             </div>
             <div class="btn-wrapper">
-                <button class="btn btn-turn-on" type="button" data-type="${type}" onclick="turnOn(${device['id_device']})">
+                <button class="btn btn-turn-on" type="button" data-type="${type}" onclick="turnOn(${device['id_device']}, this)">
                     <div class="text">
                         <span class="primary">${type}</span>
                     </div>

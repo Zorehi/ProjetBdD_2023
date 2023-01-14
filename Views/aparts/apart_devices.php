@@ -276,8 +276,7 @@
         });
     }
 
-    function turnOn(id_device) {
-        // url à demandé à Cyril
+    function turnOn(id_device, element) {
         const url = `devices/turn_on/`;
         $.ajax({
             type: 'GET',
@@ -288,7 +287,6 @@
             timeout: 120000, //2 Minutes
         })
         .done((response) => {
-            
         })
 
         
