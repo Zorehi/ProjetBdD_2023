@@ -3,8 +3,8 @@
         <div class="panel-manage-profil">
             <img src="assets/image/house-default-min-photo.png" alt="">
             <div class="text">
-                <span class="primary"><?= $house->getHouse_name() ?></span>
-                <span class="secondary"><?= "Type d'appareil : " ?></span>
+                <span class="primary"><?= $device->getDevice_name()?></span>
+                <span class="secondary"><?= "Type d'appareil : $device_type_name " ?></span>
             </div>
         </div>
         <div class="panel-manage-btn-create-container">
@@ -43,14 +43,14 @@
                         </div>
                         <div class="hover"></div>
                     </div>
-                    <a href="houses/<?= $house->getId_house() ?>/insights/?section=consume" id="house_consume" class="panel-section-button" data-status="unselected">
+                    <a href="devices/<?=  $device->getId_device() ?>/insights/?section=consume" id="device_consume" class="panel-section-button" data-status="unselected">
                         <i class="image" style="background-position-y: -66px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Consommation</span>
                         </div>
                         <div class="hover"></div>
                     </a>
-                    <a href="houses/<?= $house->getId_house() ?>/insights/?section=emit" id="house_emit" class="panel-section-button" data-status="unselected">
+                    <a href="devices/<?= $device->getId_device() ?>/insights/?section=emit" id="device_emit" class="panel-section-button" data-status="unselected">
                         <i class="image" style="background-position-y: -88px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Emission</span>
