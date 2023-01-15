@@ -17,6 +17,9 @@ class ConsumptionModel extends Association
         $this->idNames = ['id_device', 'id_resource'];
     }
 
+    public function getCons($id){
+        return $this->requete("SELECT * FROM consumption WHERE id_device =$id")->fetchAll();
+    }
     /**
      * Get the value of id_device
      */ 

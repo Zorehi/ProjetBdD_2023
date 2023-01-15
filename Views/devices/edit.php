@@ -85,6 +85,61 @@
                                     </div>
                                 </div>
                             </li>
+                            <div class="card-separator"></div>
+                            <?php foreach($array_cons as $value) {?>
+                            <li class="card-edit-row">
+                                <div class="card-edit-content" data-index="0">
+                                    <span class="card-edit-content-title">Consommation par heure de <?= $res->findbyID($value['id_resource'])["name"]?></span>
+                                    <div class="image-container" onclick="onClickModify(this.parentElement)">
+                                        <i class="image"></i>
+                                    </div>
+                                </div>
+                                <div class="card-edit-content" data-index="1">
+                                    <span class="card-edit-content-title">Consommation par heure de <?= $res->findbyID($value['id_resource'])["name"]?></span>
+                                    <div class="card-edit-list-input">
+                                        <label for="consumption" class="form-label-input" data-status="empty">
+                                            <span>Consommation</span>
+                                            <input type="text" id="consumption" name="consumption[<?= $value["id_resource"]?>]" onchange="onChangeEvent(this)" value="<?= $value["consumption_per_hour"] ?>">
+                                        </label>
+                                    </div>
+                                    <div class="card-edit-btn-container">
+                                        <button type="button" class="btn-cancel" onclick="onClickCancel(this.parentElement.parentElement)">Annuler</button>
+                                        <button class="btn-confirm">
+                                            <span>Confirmer</span>
+                                            <div class="hover"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-separator"></div>
+                            </li>
+                            <?php } ?>
+                            <?php foreach($array_emis as $value) {?>
+                            <li class="card-edit-row">
+                                <div class="card-edit-content" data-index="0">
+                                    <span class="card-edit-content-title">Emission par heure de <?= $sub->findbyID($value['id_substance'])["name"]?></span>
+                                    <div class="image-container" onclick="onClickModify(this.parentElement)">
+                                        <i class="image"></i>
+                                    </div>
+                                </div>
+                                <div class="card-edit-content" data-index="1">
+                                    <span class="card-edit-content-title">Emission par heure de <?= $sub->findbyID($value['id_substance'])["name"]?></span>
+                                    <div class="card-edit-list-input">
+                                        <label for="emission" class="form-label-input" data-status="empty">
+                                            <span>Emission</span>
+                                            <input type="text" id="emission" name="emission[<?= $value["id_substance"]?>]" onchange="onChangeEvent(this)" value="<?= $value["emission_per_hour"] ?>">
+                                        </label>
+                                    </div>
+                                    <div class="card-edit-btn-container">
+                                        <button type="button" class="btn-cancel" onclick="onClickCancel(this.parentElement.parentElement)">Annuler</button>
+                                        <button class="btn-confirm">
+                                            <span>Confirmer</span>
+                                            <div class="hover"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-separator"></div>
+                            </li>
+                            <?php } ?>
                         </ul>
                     </form>
                 </div>
@@ -133,10 +188,12 @@
 
     function onClickModify(element) {
         element.parentElement.dataset.status = 'modifying';
+        scrollbar_apart_edit.refresh();
     }
 
     function onClickCancel(element) {
         element.parentElement.dataset.status = '';
+        scrollbar_apart_edit.refresh();
     }
 
 </script>

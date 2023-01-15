@@ -17,7 +17,7 @@ class Device_typeModel extends Entity
     }
 
     public function get_name_resource($id){
-        return $this->requete( " SELECT name,id_ressource  FROM ressource NATURAL JOIN consume WHERE id_device_type = $id ")->fetchAll();
+        return $this->requete( " SELECT name,id_resource  FROM resource NATURAL JOIN consume WHERE id_device_type = $id ")->fetchAll();
     }
 
     public function get_name_substance($id){

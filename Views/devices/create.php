@@ -36,7 +36,7 @@
                             <?php } ?>
                             </select>
                         </label>
-                        <div class="form-resources-substances">
+                        <div id="form-resources-substances">
 
                         </div>
                     </div>
@@ -78,10 +78,10 @@
     }
 
     const id_device_type_select = document.getElementById('id_device_type');
-    id_device_type_select.addEventListener('onchange', (event) => {
+    id_device_type_select.addEventListener('change', (event) => {
         retrieveInfo(id_device_type_select.value);
     });
-    const form_resources_substances = scrollbar_devices_create.sbContent.querySelector('form-resources-substances');
+    const form_resources_substances = scrollbar_devices_create.sbContent.querySelector('#form-resources-substances');
 
     function retrieveInfo(id_device_type) {
         // url à demandé à Cyril
@@ -97,12 +97,13 @@
         })
         .done((response) => {
             form_resources_substances.innerHTML = '';
-            response.resources.foreach((value, index) => {
+            for(const value of response.resources){
                 form_resources_substances.innerHTML += display(value, 'id_resource');
-            });
-            response.substances.foreach((value, index) => {
+            }
+            for(const value of response.substances){
                 form_resources_substances.innerHTML += display(value, 'id_substance');
-            });
+            }
+            scrollbar_devices_create.refresh();
         })
         .fail((error) => {
             alert('Impossible d\'allumer cette équipement');
