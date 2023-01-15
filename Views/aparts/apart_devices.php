@@ -28,7 +28,7 @@
                     <div class="select button">
                         <input data-for="select_value" type="hidden" name="order-by">
                         <span class="text primary"></span>
-                        <i class="icon" style="background-image: url('http://projetbdd/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
+                        <i class="icon" style="background-image: url('/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         <div class="hover"></div>
                     </div>
                     <div class="pop-up-select" data-status="hidden">
