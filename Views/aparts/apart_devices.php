@@ -28,7 +28,7 @@
                     <div class="select button">
                         <input data-for="select_value" type="hidden" name="order-by">
                         <span class="text primary"></span>
-                        <i class="icon" style="background-image: url('http://projetbdd/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
+                        <i class="icon" style="background-image: url('/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         <div class="hover"></div>
                     </div>
                     <div class="pop-up-select" data-status="hidden">
@@ -272,12 +272,11 @@
             nbr_devices.textContent = `${global_number_devices > 0 ? global_number_devices : 'Aucun'} équipement${global_number_devices > 1 ? 's' : ''}`;
         })
         .fail((error) => {
-            alert('Impossible de supprimer cette équipement');
+            alert('Impossible de supprimer cet équipement');
         });
     }
 
-    function turnOn(id_device) {
-        // url à demandé à Cyril
+    function turnOn(id_device, element) {
         const url = `devices/turn_on/`;
         $.ajax({
             type: 'GET',
@@ -287,8 +286,12 @@
             },
             timeout: 120000, //2 Minutes
         })
+        .done((response) => {
+        })
+
+        
         .fail((error) => {
-            alert('Impossible d\'allumer cette équipement');
+            alert('Impossible d\'allumer cet équipement');
         });
     }
 

@@ -12,7 +12,7 @@ use App\Models\Entities\ApartmentModel;
 use App\Models\Associations\TenantModel;
 use App\Models\Entities\Device_typeModel;
 use App\Models\Entities\Apartment_typeModel;
-use App\Models\Entities\Turn_onModel;
+use App\Models\Associations\Turn_onModel;
 
 class DevicesController extends Controller
 {
@@ -50,6 +50,7 @@ class DevicesController extends Controller
     }
 
     public function create($id) {
+
         $device = new DeviceModel();
         $pageName = "Ajouter un appareil | Projet BdD";
         if(Form::validate($_POST, [ "device_name","description_device","description_place","id_device_type","id_room"])){
@@ -61,7 +62,7 @@ class DevicesController extends Controller
         $device_type = new Device_typeModel();
         $room = new roomModel();
         
-        $this->render('/devices/create', compact('pageName', 'room', 'device_type'));
+        $this->render('/devices/create', compact('pageName', 'room', 'device_type','id'));
     }
 
     
@@ -70,13 +71,15 @@ class DevicesController extends Controller
         $device = new DeviceModel();
         $deviceArray = $device -> findById($id);
         $device->hydrate($deviceArray);
+        
         if(Form::validate($_POST, ["device_name","description_device","description_place"]))
         {
             $device->hydrate($_POST);
             $device->update();
         }
         $device_type = new Device_typeModel();
-        $this->render('/devices/edit', compact('pageName','device'));
+        $device_type_name = $device_type->findById($device->getId_device_type())['type_name'];
+        $this->render('/devices/edit', compact('pageName','device','device_type_name'));
     }
 
     
@@ -90,18 +93,28 @@ class DevicesController extends Controller
         $device = new DeviceModel();
         $TurnOn = new Turn_onModel();
         $verify = $device->TurnVerify($id);
+        
         if($verify){
-            $verify['to_date']= new \Datetime();
+            $verify['to_date']= date("Y-m-d H:i:s"); ;
             $TurnOn->hydrate($verify);
             $TurnOn->update(['id_device' => $TurnOn->getId_device() ,'from_date' =>$TurnOn->getFrom_date()]);
         }
         else {
             $TurnOn->setId_device($id);
-            $TurnOn->setFrom_date(new \Datetime());
+            $TurnOn->setFrom_date(date("Y-m-d H:i:s"));
             $TurnOn->setTo_date('0000-00-00 00:00:00');
             $TurnOn->create();
         }
         
+    }
+    public function retrieveResSub($id_device_type) {
+        $device_type = new Device_TypeModel();
+        $substances = $device_type->get_name_substance($id_device_type);
+        $resources = $device_type->get_name_resource($id_device_type);
+        
+
+
+        $this->renderData(['resources' => $resources, 'substances' => $substances]);
     }
 }
 

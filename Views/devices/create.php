@@ -23,7 +23,7 @@
                         <label for="id_room" class="form-label-input select" data-status="empty">
                             <span>Piece où se trouve l'appareil</span>
                             <select id="id_room" name="id_room" onchange="onChangeEvent(this)" required>
-                            <?php foreach ($room->findAll() as $value) { ?>
+                            <?php foreach ($room->findBy(["id_apartment"=>$id_appart]) as $value) { ?>
                                 <option value="<?= $value['id_room'] ?>"><?= $value['room_name'] ?></option>
                             <?php } ?>
                             </select>

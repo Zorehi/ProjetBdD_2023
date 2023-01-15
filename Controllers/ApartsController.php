@@ -124,8 +124,10 @@ class ApartsController extends Controller
         $apart = new ApartmentModel();
 
         if(Form::validate($_POST, ["num", "citizen_degree","id_security_degree","id_apartment_type","id_room_type","room_name","hab"])){
+            $apart->hydrate($_POST);
+            $apart->setId_house($id_house);
             if(count($apart->findby(["num" => $apart->getNum(), 'id_house' => $apart->getid_house()])) == 0){
-                $apart->hydrate($_POST);
+               
                 $apart->setId_house($id_house);
                 $apart->setId_apartment($apart->create());
                 $taille = count($_POST["id_room_type"]);
@@ -138,6 +140,8 @@ class ApartsController extends Controller
                     $piece->setId_apartment($apart->getId_apartment());
                     $piece->create();
                 }
+                header('Location: /aparts/'.$apart->getId_apartment());
+                exit;
             }
         }
         
