@@ -1,9 +1,9 @@
 <div class="panel-section panel-manage" id="manage-device">
     <div class="panel-manage-header">
         <div class="panel-manage-profil">
-            <img src="assets/image/house-default-min-photo.png" alt="">
+            <img src="" alt="">
             <div class="text">
-                <span class="primary"><?= $house->getHouse_name() ?></span>
+                <span class="primary"><?= $device->getDevice_name() ?></span>
                 <span class="secondary"><?= "Type d'appareil : " ?></span>
             </div>
         </div>
@@ -31,6 +31,14 @@
                         </div>
                         <div class="hover"></div>
                     </div>
+                    <a href="devices/<?= $device->getId_device() ?> ?>/edit" id="edit_device" class="panel-section-button" data-status="unselected">
+                        <i class="image" style="background-position-y: -44px;"></i>
+                        <div class="text unselectable">
+                            <span class="primary">Paramètres de l'appareil</span>
+                            <span class="secondary">Gérez le nom et </span>
+                        </div>
+                        <div class="hover"></div>
+                    </a>
                 </div>
                 <div class="panel-manage-wrapper" data-status="shown">
                     <div class="panel-section-button" onclick="onClickDropDown(this.parentElement)" draggable="false" ondragstart="return false;">
@@ -43,14 +51,14 @@
                         </div>
                         <div class="hover"></div>
                     </div>
-                    <a href="houses/<?= $house->getId_house() ?>/insights/?section=consume" id="house_consume" class="panel-section-button" data-status="unselected">
+                    <a href="devices/<?= $device->getId_device() ?>/insights/?section=consume" id="device_consume" class="panel-section-button" data-status="unselected">
                         <i class="image" style="background-position-y: -66px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Consommation</span>
                         </div>
                         <div class="hover"></div>
                     </a>
-                    <a href="houses/<?= $house->getId_house() ?>/insights/?section=emit" id="house_emit" class="panel-section-button" data-status="unselected">
+                    <a href="devices/<?= $device->getId_device() ?>/insights/?section=emit" id="device_emit" class="panel-section-button" data-status="unselected">
                         <i class="image" style="background-position-y: -88px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Emission</span>

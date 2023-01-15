@@ -8,7 +8,7 @@
             <div class="create-label-wrapper" data-status="active">
                 <div class="create-label-list scrollbar-container" id="scrollbar-devices-create">
                     <div class="scrollbar-content" data-transition="yes">
-                    <label for="description_device" class="form-label-input" data-status="empty">
+                        <label for="description_device" class="form-label-input" data-status="empty">
                             <span>Nom de l'appareil</span>
                             <input type="text" id="device_name" name="device_name" onchange="onChangeEvent(this)" required>
                         </label>
@@ -36,6 +36,9 @@
                             <?php } ?>
                             </select>
                         </label>
+                        <div class="form-resources-substances">
+
+                        </div>
                     </div>
                     <div class="scrollbar-track"></div>
                     <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
@@ -74,5 +77,44 @@
         }
     }
 
+    const id_device_type_select = document.getElementById('id_device_type');
+    id_device_type_select.addEventListener('onchange', (event) => {
+        retrieveInfo(id_device_type_select.value);
+    });
+    const form_resources_substances = scrollbar_devices_create.sbContent.querySelector('form-resources-substances');
 
+    function retrieveInfo(id_device_type) {
+        // url à demandé à Cyril
+        const url = `devices/retrieveResSub/`;
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                'id_device_type': id_device_type
+            },
+            timeout: 120000, //2 Minutes
+            dataType: 'json'
+        })
+        .done((response) => {
+            form_resources_substances.innerHTML = '';
+            response.resources.foreach((value, index) => {
+                form_resources_substances.innerHTML += display(value, 'id_resource');
+            });
+            response.substances.foreach((value, index) => {
+                form_resources_substances.innerHTML += display(value, 'id_substance');
+            });
+        })
+        .fail((error) => {
+            alert('Impossible d\'allumer cette équipement');
+        });
+    }
+
+
+
+    function display(line, id_name) {
+        return `<label for="${line['name']}" class="form-label-input" data-status="empty">
+                    <span>Consommation par heure : ${line['name']}</span>
+                    <input type="text" id="${line['name']}" name="${id_name == 'id_resource' ? 'consumption_resources' : 'emission_substances'}[${line[id_name]}]" onchange="onChangeEvent(this)" required>
+                </label>`;
+    }
 </script>

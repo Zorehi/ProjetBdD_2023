@@ -347,6 +347,17 @@ CREATE TABLE consumption(
 --  Structure de la vue turn_on_desc
 --  --------------------------------------------------------------------------------------
 
+CREATE OR REPLACE VIEW search_device AS
+SELECT R.id_apartment, D.id_device, D.id_device_name, D.description_device, D.description_place, D.id_device_type, DT.type_name, D.id_room, R.room_name, T.from_date, T.to_date
+FROM device AS D LEFT OUTER JOIN room R ON(D.id_room = R.id_room)
+				     LEFT OUTER JOIN device_type AS DT ON(D.id_device_type = DT.id_device_type)
+                 LEFT OUTER JOIN turn_on_desc AS T ON(D.id_device = T.id_device);
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue turn_on_desc
+--  --------------------------------------------------------------------------------------
+
 CREATE OR REPLACE VIEW turn_on_desc AS
 SELECT id_device, from_date, to_date
 FROM turn_on
