@@ -23,7 +23,7 @@
                         <label for="id_room" class="form-label-input select" data-status="empty">
                             <span>Piece où se trouve l'appareil</span>
                             <select id="id_room" name="id_room" onchange="onChangeEvent(this)" required>
-                            <?php foreach ($room->findBy(["id_apartment"=>$id_appart]) as $value) { ?>
+                            <?php foreach ($room->findBy(["id_apartment"=>$id]) as $value) { ?>
                                 <option value="<?= $value['id_room'] ?>"><?= $value['room_name'] ?></option>
                             <?php } ?>
                             </select>
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="create-btn-container">
-                <button id="create-btn-divices" class="create-btn">
+                <button id="create-btn-devices" class="create-btn">
                     <span>Créer</span>
                     <div class="hover"></div>
                 </button>
@@ -62,8 +62,8 @@
     const scrollbar_devices_create = new ScrollBar(document.getElementById('scrollbar-devices-create'), { offsetContainer: -16, offsetContent: 0});
     scrollbar_devices_create.init();
     
-    const create_apart = document.getElementById('create-btn-devices');
-    const select_array = create_apart.querySelectorAll('select');
+    const create_device = document.getElementById('create-device');
+    const select_array = create_device.querySelectorAll('select');
     for (const select of select_array) {
         select.value = '';
 
