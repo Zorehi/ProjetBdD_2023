@@ -107,7 +107,7 @@ class DevicesController extends Controller
         }
         
     }
-    public function retrieveDevices($id_device_type) {
+    public function retrieveResSub($id_device_type) {
         $device_type = new Device_TypeModel();
         $substances = $device_type->get_name_substance($id_device_type);
         $resources = $device_type->get_name_resource($id_device_type);
