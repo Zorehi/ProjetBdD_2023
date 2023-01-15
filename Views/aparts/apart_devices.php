@@ -78,31 +78,20 @@
                 </div>
                 <div class="select-made-in-myself filter">
                     <div class="select button">
-                        <input data-for="select_value" type="hidden" name="substances_ressources">
-                        <span class="text primary">Substances ou Ressources</span>
+                        <input data-for="select_value" type="hidden" name="is_on">
+                        <span class="text primary">Allumé ou Eteint</span>
                         <i class="icon" style="background-image: url('http://projetbdd/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         <div class="hover"></div>
                     </div>
                     <div class="pop-up-select" data-status="hidden">
-                        <div class="option button show-select" data-value="substance">
-                            <span class="text primary">Substances</span>
+                        <div class="option button show-select" data-value="on">
+                            <span class="text primary">Allumé</span>
                             <div class="hover"></div>
                         </div>
-                        <div class="option button show-select" data-value="resource">
-                            <span class="text primary">Ressources</span>
+                        <div class="option button show-select" data-value="off">
+                            <span class="text primary">Eteint</span>
                             <div class="hover"></div>
                         </div>
-                    <?php foreach ($substance->findAll() as $value) { ?>
-                        <div class="option button show-select" data-value="<?= "substance-".$value['id_substance'] ?>">
-                            <span class="text primary"><?= $value['name'] ?></span>
-                            <div class="hover"></div>
-                        </div>
-                    <?php } foreach ($ressource->findAll() as $value) { ?>
-                        <div class="option button show-select" data-value="<?= "resource-".$value['id_resource'] ?>">
-                            <span class="text primary"><?= $value['name'] ?></span>
-                            <div class="hover"></div>
-                        </div>
-                    <?php } ?>
                     </div>
                 </div>
             </div>
@@ -151,6 +140,11 @@
                 const value_id_device_type = <?= $init['id_device_type'] ?>;
                 if (value_id_device_type) select.setSelectedValue(value_id_device_type);
                 break;
+
+            case 'is_on':
+                const value_is_on = <?= $init['id_device_type'] ?>;
+                if (value_is_on) select.setSelectedValue(value_is_on);
+                break;
         
             default:
                 break;
@@ -176,6 +170,7 @@
     const order_by = document.querySelector('input[name="order-by"]');
     const id_room = document.querySelector('input[name="id_room"]');
     const id_device_type = document.querySelector('input[name="id_device_type"]');
+    const is_on = document.querySelector('input[name="is_on"]');
     const search_device = document.getElementById('search_device');
 
     let limit = 10;
@@ -208,6 +203,7 @@
                 'id_room': id_room.value,
                 'id_device_type': id_device_type.value,
                 'search': search_device.value,
+                'is_on': is_on.value,
                 'limit': limit,
                 'offset': offset,
             },
@@ -225,7 +221,7 @@
 
     search_device.addEventListener('keyup', (event) => {
         if (event.key == 'Enter') {
-            const url = `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&search=${search_device.value}`;
+            const url = `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&is_on=${is_on.value}&search=${search_device.value}`;
             history.replaceState(null, '', url);
 
             offset = 0;
@@ -234,7 +230,7 @@
     })
     
     const onFilterChange = () => {
-        const url = `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&search=${search_device.value}`;
+        const url = `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&is_on=${is_on.value}&search=${search_device.value}`;
         history.replaceState(null, '', url);
         offset = 0;
         requestDevices();
@@ -243,10 +239,10 @@
     order_by.addEventListener('change', onFilterChange);
     id_room.addEventListener('change', onFilterChange);
     id_device_type.addEventListener('change', onFilterChange);
+    is_on.addEventListener('change', onFilterChange);
     
     scrollbar_apart_devices.sbContent.addEventListener('80%', function() {
         requestDevices(false);
-        console.log('coucou');
     })
 
     const nbr_devices = document.getElementById('nbr_devices');
@@ -286,10 +282,16 @@
             },
             timeout: 120000, //2 Minutes
         })
-        .done((response) => {
+        .done(() => {
+            const text = element.querySelector('.primary');
+            if (text.textContent == 'Allumer') {
+                text.textContent = 'Eteindre';
+                element.dataset.type = 'Eteindre';
+            } else {
+                text.textContent = 'Allumer';
+                element.dataset.type = 'Allumer';
+            }
         })
-
-        
         .fail((error) => {
             alert('Impossible d\'allumer cet équipement');
         });

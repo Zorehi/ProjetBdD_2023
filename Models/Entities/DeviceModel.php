@@ -26,10 +26,11 @@ class DeviceModel extends Entity
                                WHERE R.id_apartment = {$idApart}")->fetch()['nbr_devices'];
     }
 
-    public function search($id, $q, $order_by, $id_room, $id_device_type, $limit, $offset) {
+    public function search($id, $q, $order_by, $id_room, $id_device_type, $is_on, $limit, $offset) {
         $where = '';
         if ($id_room != 'false') $where .= " AND id_room = $id_room ";
         if ($id_device_type != 'false') $where .= " AND id_device_type = $id_device_type ";
+        if ($is_on != 'false') $is_on == 'on' ? $where .= " AND to_date = '0000-00-00' ": $where .= " AND to_date != '0000-00-00' ";
         return $this->requete("SELECT id_device, device_name, description_device, description_place, type_name, room_name, from_date, to_date
                                FROM search_device
                                WHERE device_name LIKE '%{$q}%'
@@ -39,15 +40,16 @@ class DeviceModel extends Entity
                                LIMIT $limit OFFSET $offset")->fetchAll();
     }
 
-    public function countSearch($id, $q, $order_by, $id_room, $id_device_type) {
+    public function countSearch($id, $q, $order_by, $id_room, $id_device_type, $is_on) {
         $where = '';
-        if ($id_room != 'false') $where .= " AND D.id_room = $id_room ";
-        if ($id_device_type != 'false') $where .= " AND D.id_device_type = $id_device_type ";
-        return $this->requete("SELECT COUNT(D.id_device) as nbr_devices
-                               FROM {$this->table} D LEFT OUTER JOIN room R ON(D.id_room = R.id_room)
-                               WHERE D.device_name LIKE '%{$q}%'
+        if ($id_room != 'false') $where .= " AND id_room = $id_room ";
+        if ($id_device_type != 'false') $where .= " AND id_device_type = $id_device_type ";
+        if ($is_on != 'false') $is_on == 'on' ? $where .= " AND to_date = '0000-00-00' ": $where .= " AND to_date != '0000-00-00' OR to_date is null ";
+        return $this->requete("SELECT COUNT(id_device) as nbr_devices
+                               FROM search_device
+                               WHERE device_name LIKE '%{$q}%'
                                      {$where}
-                                     AND R.id_apartment = $id
+                                     AND id_apartment = $id
                                ORDER BY device_name {$order_by}")->fetch();
     }
 
