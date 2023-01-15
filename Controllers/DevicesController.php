@@ -50,6 +50,7 @@ class DevicesController extends Controller
     }
 
     public function create($id) {
+
         $device = new DeviceModel();
         $pageName = "Ajouter un appareil | Projet BdD";
         if(Form::validate($_POST, [ "device_name","description_device","description_place","id_device_type","id_room"])){
@@ -61,7 +62,7 @@ class DevicesController extends Controller
         $device_type = new Device_typeModel();
         $room = new roomModel();
         
-        $this->render('/devices/create', compact('pageName', 'room', 'device_type'));
+        $this->render('/devices/create', compact('pageName', 'room', 'device_type','id'));
     }
 
     
@@ -70,6 +71,7 @@ class DevicesController extends Controller
         $device = new DeviceModel();
         $deviceArray = $device -> findById($id);
         $device->hydrate($deviceArray);
+        
         if(Form::validate($_POST, ["device_name","description_device","description_place"]))
         {
             $device->hydrate($_POST);
@@ -104,6 +106,15 @@ class DevicesController extends Controller
             $TurnOn->create();
         }
         
+    }
+    public function retrieveDevices($id_device_type) {
+        $device_type = new Device_TypeModel();
+        $substances = $device_type->get_name_substance($id_device_type);
+        $resources = $device_type->get_name_resource($id_device_type);
+        
+
+
+        $this->renderData(['resources' => $resources, 'substances' => $substances]);
     }
 }
 
