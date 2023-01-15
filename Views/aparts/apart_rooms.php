@@ -90,4 +90,25 @@
         }
     }
 
+    function make_tenant(id_apartment) {
+        const url = `aparts/make_tenant`;
+        const datas = new FormData();
+        datas.append('id_apartment', id_apartment);
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: datas,
+            timeout: 120000, //2 Minutes
+            contentType: false,
+            processData: false
+        })
+        .done(() => {
+            document.location.href = '/aparts/'+id_apartment;
+        })
+        .fail((error) => {
+            alert('Impossible de devenir locataire sur cette appartement');
+        });
+    }
+
 </script>

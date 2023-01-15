@@ -78,13 +78,14 @@ class ApartsController extends Controller
         $this->render('/aparts/apart_rooms', compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices','tableroom'));
     }
 
-    public function apart_devices($id, $order_by = 'ASC', $id_room = false, $id_device_type = false, $search = '') {
+    public function apart_devices($id, $order_by = 'ASC', $id_room = false, $id_device_type = false, $search = '', $is_on = false) {
         extract($this->retrieveInfoForPanelManage($id));
 
         $init = [
             'order_by' => $order_by == 'ASC' ? 0 : 1,
             'id_room' => $id_room ? $id_room : 'false',
             'id_device_type' => $id_device_type ? $id_device_type : 'false',
+            'is_on' => $is_on ? $is_on : 'false'
         ];
 
         $device = new DeviceModel();
@@ -152,12 +153,25 @@ class ApartsController extends Controller
         $this->render('/aparts/create', compact('pageName', 'security_degree', 'apartment_type', 'room_type'));
     }
 
-    public function retrieveDevices($id, $order_by = 'ASC',  $id_room = 'false', $id_device_type = 'false', $id_substance = true, $id_resource = true, $search = '', $limit = 10, $offset = 0) {
+    public function retrieveDevices($id, $order_by = 'ASC',  $id_room = 'false', $id_device_type = 'false', $is_on = 'false', $search = '', $limit = 10, $offset = 0) {
         $device = new DeviceModel();
 
-        $device_array = $device->search($id, $search, $order_by, $id_room, $id_device_type, $limit, $offset);
-        $device_number = $device->countSearch($id, $search, $order_by, $id_room, $id_device_type);
+        $device_array = $device->search($id, $search, $order_by, $id_room, $id_device_type, $is_on, $limit, $offset);
+        $device_number = $device->countSearch($id, $search, $order_by, $id_room, $id_device_type, $is_on);
 
         $this->renderData(['datas' => $device_array, 'search_length' => $device_number]);
+    }
+
+    public function make_tenant() {
+        if (Form::validate($_POST, ['id_apartment'])) {
+            $tenant = new TenantModel();
+            $tenant->setId_apartment($_POST['id_apartment']);
+            $tenant->setFrom_date(date('Y-m-d'));
+            $tenant->setTo_date(null);
+            $tenant->setId_users($_SESSION['user']['id']);
+            $tenant->create();
+            return http_response_code(200);
+        }
+        http_response_code(404);
     }
 }
