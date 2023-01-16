@@ -12,6 +12,8 @@ use App\Models\Entities\UsersModel;
             // On démarre la session
             session_start();
 
+            date_default_timezone_set("Europe/Paris");
+
             if (isset($_SESSION['user'])) {
                 try {
                     $user = new UsersModel();
