@@ -57,6 +57,14 @@ class DeviceModel extends Entity
         return $this->requete("SELECT * FROM Turn_on WHERE id_device = $id AND to_date ='0000-00-00 00:00:00'")->fetch();
     }
 
+    public function consume($id_device) {
+        return $this->requete("SELECT * FROM uptime_by_device_with_consumption WHERE id_device = {$id_device} ORDER BY date ASC")->fetchAll();
+    }
+
+    public function emit($id_device) {
+        return $this->requete("SELECT * FROM uptime_by_device_with_emission WHERE id_device = {$id_device} ORDER BY date ASC")->fetchAll();
+    }
+
     /**
      * Get the value of id_device
      */ 

@@ -40,6 +40,14 @@ class ApartmentModel extends Entity
                                      num LIKE '%{$querry}%'
                                      LIMIT $limit OFFSET $offset")->fetchAll();
     }
+
+    public function consume($id_apartment) {
+        return $this->requete("SELECT * FROM uptime_by_apartment_with_consumption WHERE id_apartment = {$id_apartment} ORDER BY date ASC")->fetchAll();
+    }
+
+    public function emit($id_apartment) {
+        return $this->requete("SELECT * FROM uptime_by_apartment_with_emission WHERE id_apartment = {$id_apartment} ORDER BY date ASC")->fetchAll();
+    }
     
 
     /**

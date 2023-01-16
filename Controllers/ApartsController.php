@@ -116,8 +116,72 @@ class ApartsController extends Controller
 
     public function insights($id, $section) {
         extract($this->retrieveInfoForPanelManage($id));
+
+        $datas = [];
+        $datas_reorganize = [];
+        $datas_date = [];
+
+        if ($section == 'consume') {
+            $consume_array = $apart->consume($id);
+            foreach($consume_array as $key => $value) {
+                if (!isset($datas[$value['id_resource']])) $datas[$value['id_resource']] = [];
+                $datas[$value['id_resource']][$value['date']] = $value['consumption'];
+            }
+
+            $resource = new ResourceModel();
+            $index = 0;
+            foreach($datas as $key => $value) {
+                $resource_array = $resource->findById(intval($key));
+                if ($resource_array) {
+                    $datas_reorganize[$index] = ['name' => $resource_array['name'], 'data' => []];
+                    
+                    for($i = 30; $i >= 0; $i--) {
+                        $date = date('Y-m-d', strtotime("-$i days"));
+                        if ($index == 0) {
+                            $datas_date[] = $date;
+                        }
+    
+                        if (isset($value[$date]) && $value[$date] != null) {
+                            $datas_reorganize[$index]['data'][] = floatval($value[$date]);
+                        } else {
+                            $datas_reorganize[$index]['data'][] = 0;
+                        }
+                    }
+                    $index++;
+                }
+            }
+        } else {
+            $emit_array = $apart->emit($id);
+            foreach($emit_array as $key => $value) {
+                if (!isset($datas[$value['id_substance']])) $datas[$value['id_substance']] = [];
+                $datas[$value['id_substance']][$value['date']] = $value['emission'];
+            }
+
+            $substance = new SubstanceModel();
+            $index = 0;
+            foreach($datas as $key => $value) {
+                $substance_array = $substance->findById(intval($key));
+                if ($substance_array) {
+                    $datas_reorganize[$index] = ['name' => $substance_array['name'], 'data' => []];
+                    
+                    for($i = 30; $i >= 0; $i--) {
+                        $date = date('Y-m-d', strtotime("-$i days"));
+                        if ($index == 0) {
+                            $datas_date[] = $date;
+                        }
+
+                        if (isset($value[$date]) && $value[$date] != null) {
+                            $datas_reorganize[$index]['data'][] = floatval($value[$date]);
+                        } else {
+                            $datas_reorganize[$index]['data'][] = 0;
+                        }
+                    }
+                    $index++;
+                }
+            }
+        }
             
-        $this->render('/aparts/insights/'.$section, compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices'), 'analytics');
+        $this->render('/aparts/insights/'.$section, compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices', 'datas_date', 'datas_reorganize'), 'analytics');
     }
 
     public function create($id_house) {
@@ -127,15 +191,14 @@ class ApartsController extends Controller
         if(Form::validate($_POST, ["num", "citizen_degree","id_security_degree","id_apartment_type","id_room_type","room_name","hab"])){
             $apart->hydrate($_POST);
             $apart->setId_house($id_house);
-            if(count($apart->findby(["num" => $apart->getNum(), 'id_house' => $apart->getid_house()])) == 0){
-               
+            if(count($apart->findby(["num" => $apart->getNum(), 'id_house' => $apart->getid_house()])) == 0) {
                 $apart->setId_house($id_house);
                 $apart->setId_apartment($apart->create());
                 $taille = count($_POST["id_room_type"]);
                 $id_room = $_POST["id_room_type"];
                 $room_name = $_POST["room_name"];
                 $piece = new RoomModel();
-                for ($i=0 ; $i < $taille ; $i++){
+                for ($i=0 ; $i < $taille ; $i++) {
                     $piece->setId_room_type($id_room[$i]);
                     $piece->setRoom_name($room_name[$i]);
                     $piece->setId_apartment($apart->getId_apartment());

@@ -372,7 +372,7 @@ CREATE OR REPLACE VIEW uptime_by_device AS
 SELECT D.id_device,
        DATE(T.from_date) AS date,
        D.id_room,
-       SUM(TO_SECONDS(IF(T.to_date = '0000-00-00 00:00:00', CURRENT_TIMESTAMP(), T.to_date)) - TO_SECONDS(T.from_date)) AS uptime
+       SUM(TIME_TO_SEC(TIMEDIFF(IF(T.to_date = '0000-00-00 00:00:00', SYSDATE(), T.to_date), T.from_date))) / 3600 AS uptime
 FROM device AS D LEFT OUTER JOIN turn_on AS T ON(D.id_device = T.id_device)
 WHERE DATEDIFF(T.from_date, SYSDATE()) < 30
 GROUP BY D.id_device, date;
@@ -385,10 +385,9 @@ GROUP BY D.id_device, date;
 CREATE OR REPLACE VIEW uptime_by_device_with_emission AS
 SELECT UP.id_device,
 	    E.id_substance,
-       E.emission_per_hour,
        UP.date,
        UP.id_room,
-       UP.uptime
+       UP.uptime * E.emission_per_hour AS emission
 FROM uptime_by_device AS UP LEFT OUTER JOIN emission AS E ON(UP.id_device = E.id_device)
 GROUP BY UP.id_device, E.id_substance, UP.date;
 
@@ -400,10 +399,9 @@ GROUP BY UP.id_device, E.id_substance, UP.date;
 CREATE OR REPLACE VIEW uptime_by_device_with_consumption AS
 SELECT UP.id_device,
 	    C.id_resource,
-       C.consumption_per_hour,
        UP.date,
        UP.id_room,
-       UP.uptime
+       UP.uptime * C.consumption_per_hour AS consumption
 FROM uptime_by_device AS UP LEFT OUTER JOIN consumption AS C ON(UP.id_device = C.id_device)
 GROUP BY UP.id_device, C.id_resource, UP.date;
 
@@ -417,8 +415,7 @@ SELECT R.id_apartment,
        UP.id_substance,
        UP.date,
        A.id_house,
-       UP.emission_per_hour,
-       SUM(UP.uptime) AS uptime
+       SUM(UP.emission) AS emission
 FROM uptime_by_device_with_emission AS UP LEFT OUTER JOIN room AS R ON (UP.id_room = R.id_room)
 							                     LEFT OUTER JOIN apartment AS A ON(R.id_apartment = A.id_apartment)
 GROUP BY R.id_apartment, UP.id_substance, UP.date;
@@ -433,8 +430,7 @@ SELECT R.id_apartment,
        UP.id_resource,
        UP.date,
        A.id_house,
-       UP.consumption_per_hour,
-       SUM(UP.uptime) AS uptime
+       SUM(UP.consumption) AS consumption
 FROM uptime_by_device_with_consumption AS UP LEFT OUTER JOIN room AS R ON (UP.id_room = R.id_room)
 							                        LEFT OUTER JOIN apartment AS A ON(R.id_apartment = A.id_apartment)
 GROUP BY R.id_apartment, UP.id_resource, UP.date;
@@ -448,10 +444,9 @@ CREATE OR REPLACE VIEW uptime_by_house_with_emission AS
 SELECT H.id_house,
        UP.id_substance,
        UP.date,
-       UP.emission_per_hour,
-       SUM(UP.uptime)
+       SUM(UP.emission) AS emission
 FROM uptime_by_apartment_with_emission AS UP LEFT OUTER JOIN house AS H ON(UP.id_house = H.id_house)
-GROUP BY H.id_house, UP.id_substance, UP.date
+GROUP BY H.id_house, UP.id_substance, UP.date;
 
 
 --  --------------------------------------------------------------------------------------
@@ -462,10 +457,9 @@ CREATE OR REPLACE VIEW uptime_by_house_with_consumption AS
 SELECT H.id_house,
        UP.id_resource,
        UP.date,
-       UP.consumption_per_hour,
-       SUM(UP.uptime)
+       SUM(UP.consumption) AS consumption
 FROM uptime_by_apartment_with_consumption AS UP LEFT OUTER JOIN house AS H ON(UP.id_house = H.id_house)
-GROUP BY H.id_house, UP.id_resource, UP.date
+GROUP BY H.id_house, UP.id_resource, UP.date;
 
 
 --  --------------------------------------------------------------------------------------

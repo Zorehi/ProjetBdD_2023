@@ -1515,6 +1515,9 @@ button {
 .card-edit .card-edit-row[data-status=modifying] .card-edit-content[data-index="1"] {
   display: flex;
 }
+.card-edit .card-edit-row:last-child .card-separator {
+  display: none;
+}
 .card-edit .card-edit-content {
   padding: 0 16px;
   position: relative;

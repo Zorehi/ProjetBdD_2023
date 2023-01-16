@@ -142,7 +142,7 @@
                 break;
 
             case 'is_on':
-                const value_is_on = <?= $init['id_device_type'] ?>;
+                const value_is_on = <?= $init['is_on'] ?>;
                 if (value_is_on) select.setSelectedValue(value_is_on);
                 break;
         

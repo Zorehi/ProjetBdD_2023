@@ -30,7 +30,7 @@ use App\Models\Entities\UsersModel;
             // On récupère l'URL
             $uri = $_SERVER['REQUEST_URI'];
 
-            // On vérifie que uri n'est pas vide et se termine pas un /
+            // On vérifie que uri n'est pas vide et se termine par un /
             if (!empty($uri) && $uri != '/' && $uri[-1] === '/') {
                 // On enlève le /
                 $uri = substr($uri, 0, -1);
