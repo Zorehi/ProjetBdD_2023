@@ -10,12 +10,12 @@
         </div>
     <?php if (method_exists($tenant, 'getId_house') && $tenant->getId_users() != $_SESSION['user']['id']) { ?>
         <div class="panel-manage-btn-create-container">
-            <a class="panel-section-button">
+            <div class="panel-section-button" onclick="make_tenant(<?= $apart->getId_apartment() ?>)">
                 <div class="text unselectable">
                     <span class="primary">Devenir locataire</span>
                 </div>
                 <div class="hover"></div>
-            </a>
+            </div>
         </div>
     <?php } else if ($tenant->getId_users() == $_SESSION['user']['id'] || $_SESSION['user']['is_admin']) { ?>
         <div class="panel-manage-btn-create-container">
@@ -33,7 +33,7 @@
         <div class="scrollbar-container" id="scrollbar-manage-apart">
             <div class="scrollbar-content" data-transition="yes">
                 <div class="panel-manage-main">
-                    <a href="aparts/<?= $apart->getId_apartment() ?>" class="panel-section-button" id="Home_apart" data-status="unselected">
+                    <a href="aparts/<?= $apart->getId_apartment() ?>" class="panel-section-button index" id="Home_apart" data-status="unselected">
                         <i class="image"></i>
                         <div class="text unselectable">
                             <span class="primary">Accueil de l'appartement</span>
@@ -44,7 +44,7 @@
                         <i class="image" style="background-position-y: -22px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Pièces de l'appartement</span>
-                            <span class="secondary"><?= "$nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
+                            <span class="secondary" data-value="<?= $nbr_rooms ?>"><?= "$nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
                         </div>
                         <div class="hover"></div>
                     </a>
@@ -66,7 +66,7 @@
                         <i class="image" style="background-position-y: -110px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Équipements de l'appartement</span>
-                            <span class="secondary"><?= "$nbr_devices équipement".($nbr_devices > 1 ? "s" : "") ?></span>
+                            <span class="secondary" id="nbr_devices" data-value="<?= $nbr_devices ?>"><?= ($nbr_devices > 0 ? $nbr_devices : 'Aucun')." équipement".($nbr_devices > 1 ? "s" : "") ?></span>
                         </div>
                         <div class="hover"></div>
                     </a>

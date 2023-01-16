@@ -5,7 +5,7 @@
         <div>
             <div class="panelTopFilter-head">
                 <div class="panelTopFilter-head-title">
-                    <span class="primary">Équipement de l'appartement <span class="secondary" id="nbr_result"> · Aucun résultat</span></span>
+                    <span class="primary">Équipement de l'appartement <span class="secondary" id="nbr_result" data-value="0"> · Aucun résultat</span></span>
                 </div>
             </div>
             <div class="panelTopFilter-searchBy">
@@ -28,7 +28,7 @@
                     <div class="select button">
                         <input data-for="select_value" type="hidden" name="order-by">
                         <span class="text primary"></span>
-                        <i class="icon" style="background-image: url('http://projetbdd/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
+                        <i class="icon" style="background-image: url('/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         <div class="hover"></div>
                     </div>
                     <div class="pop-up-select" data-status="hidden">
@@ -78,31 +78,20 @@
                 </div>
                 <div class="select-made-in-myself filter">
                     <div class="select button">
-                        <input data-for="select_value" type="hidden" name="substances_ressources">
-                        <span class="text primary">Substances ou Ressources</span>
+                        <input data-for="select_value" type="hidden" name="is_on">
+                        <span class="text primary">Allumé ou Eteint</span>
                         <i class="icon" style="background-image: url('http://projetbdd/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         <div class="hover"></div>
                     </div>
                     <div class="pop-up-select" data-status="hidden">
-                        <div class="option button show-select" data-value="substance">
-                            <span class="text primary">Substances</span>
+                        <div class="option button show-select" data-value="on">
+                            <span class="text primary">Allumé</span>
                             <div class="hover"></div>
                         </div>
-                        <div class="option button show-select" data-value="resource">
-                            <span class="text primary">Ressources</span>
+                        <div class="option button show-select" data-value="off">
+                            <span class="text primary">Eteint</span>
                             <div class="hover"></div>
                         </div>
-                    <?php foreach ($substance->findAll() as $value) { ?>
-                        <div class="option button show-select" data-value="<?= "substance-".$value['id_substance'] ?>">
-                            <span class="text primary"><?= $value['name'] ?></span>
-                            <div class="hover"></div>
-                        </div>
-                    <?php } foreach ($ressource->findAll() as $value) { ?>
-                        <div class="option button show-select" data-value="<?= "resource-".$value['id_resource'] ?>">
-                            <span class="text primary"><?= $value['name'] ?></span>
-                            <div class="hover"></div>
-                        </div>
-                    <?php } ?>
                     </div>
                 </div>
             </div>
@@ -151,6 +140,11 @@
                 const value_id_device_type = <?= $init['id_device_type'] ?>;
                 if (value_id_device_type) select.setSelectedValue(value_id_device_type);
                 break;
+
+            case 'is_on':
+                const value_is_on = <?= $init['is_on'] ?>;
+                if (value_is_on) select.setSelectedValue(value_is_on);
+                break;
         
             default:
                 break;
@@ -176,6 +170,7 @@
     const order_by = document.querySelector('input[name="order-by"]');
     const id_room = document.querySelector('input[name="id_room"]');
     const id_device_type = document.querySelector('input[name="id_device_type"]');
+    const is_on = document.querySelector('input[name="is_on"]');
     const search_device = document.getElementById('search_device');
 
     let limit = 10;
@@ -186,8 +181,9 @@
         if (revert) {
             scrollbar_apart_devices.sbContent.innerHTML = ''
         };
-        number = number['nbr_devices'];
-        nbr_result.textContent = ` · ${number > 0 ? number : 'Aucun'} résultat${number > 1 ? 's' : ''}`;
+        const global_number = parseInt(number['nbr_devices']);
+        nbr_result.dataset.value = global_number;
+        nbr_result.textContent = ` · ${global_number > 0 ? global_number : 'Aucun'} résultat${global_number > 1 ? 's' : ''}`;
         offset += device_array.length;
         if (device_array.length > 0) {
             for (const device of device_array) {
@@ -207,6 +203,7 @@
                 'id_room': id_room.value,
                 'id_device_type': id_device_type.value,
                 'search': search_device.value,
+                'is_on': is_on.value,
                 'limit': limit,
                 'offset': offset,
             },
@@ -224,7 +221,7 @@
 
     search_device.addEventListener('keyup', (event) => {
         if (event.key == 'Enter') {
-            const url = `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&search=${search_device.value}`;
+            const url = `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&is_on=${is_on.value}&search=${search_device.value}`;
             history.replaceState(null, '', url);
 
             offset = 0;
@@ -233,7 +230,7 @@
     })
     
     const onFilterChange = () => {
-        const url = `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&search=${search_device.value}`;
+        const url = `aparts/<?= $apart->getId_apartment() ?>/apart_devices/?order_by=${order_by.value}&id_room=${id_room.value}&id_device_type=${id_device_type.value}&is_on=${is_on.value}&search=${search_device.value}`;
         history.replaceState(null, '', url);
         offset = 0;
         requestDevices();
@@ -242,12 +239,13 @@
     order_by.addEventListener('change', onFilterChange);
     id_room.addEventListener('change', onFilterChange);
     id_device_type.addEventListener('change', onFilterChange);
+    is_on.addEventListener('change', onFilterChange);
     
     scrollbar_apart_devices.sbContent.addEventListener('80%', function() {
         requestDevices(false);
-        console.log('coucou');
     })
 
+    const nbr_devices = document.getElementById('nbr_devices');
     function deleteDevice(element, id_device) {
         // url à demandé à Cyril
         const url = `devices/delete/`;
@@ -262,9 +260,40 @@
         .done((response) => {
             element.remove();
             scrollbar_apart_devices.refresh();
+            const global_number = parseInt(nbr_result.dataset.value) - 1;
+            nbr_result.dataset.value = global_number;
+            nbr_result.textContent = ` · ${global_number > 0 ? global_number : 'Aucun'} résultat${global_number > 1 ? 's' : ''}`;
+            const global_number_devices = parseInt(nbr_devices.dataset.value) - 1;
+            nbr_devices.dataset.value = global_number_devices;
+            nbr_devices.textContent = `${global_number_devices > 0 ? global_number_devices : 'Aucun'} équipement${global_number_devices > 1 ? 's' : ''}`;
         })
         .fail((error) => {
-            alert('Impossible de supprimer cette équipement');
+            alert('Impossible de supprimer cet équipement');
+        });
+    }
+
+    function turnOn(id_device, element) {
+        const url = `devices/turn_on/`;
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                'id': id_device
+            },
+            timeout: 120000, //2 Minutes
+        })
+        .done(() => {
+            const text = element.querySelector('.primary');
+            if (text.textContent == 'Allumer') {
+                text.textContent = 'Eteindre';
+                element.dataset.type = 'Eteindre';
+            } else {
+                text.textContent = 'Allumer';
+                element.dataset.type = 'Allumer';
+            }
+        })
+        .fail((error) => {
+            alert('Impossible d\'allumer cet équipement');
         });
     }
 

@@ -26,29 +26,43 @@ class DeviceModel extends Entity
                                WHERE R.id_apartment = {$idApart}")->fetch()['nbr_devices'];
     }
 
-    public function search($id, $q, $order_by, $id_room, $id_device_type, $limit, $offset) {
+    public function search($id, $q, $order_by, $id_room, $id_device_type, $is_on, $limit, $offset) {
         $where = '';
-        if ($id_room != 'false') $where .= " AND D.id_room = $id_room ";
-        if ($id_device_type != 'false') $where .= " AND D.id_device_type = $id_device_type ";
-        return $this->requete("SELECT D.id_device, D.device_name, D.description_device, D.description_place, DT.type_name, R.room_name
-                               FROM {$this->table} D LEFT OUTER JOIN room R ON(D.id_room = R.id_room) LEFT OUTER JOIN device_type DT ON(D.id_device_type = DT.id_device_type)
-                               WHERE D.device_name LIKE '%{$q}%'
+        if ($id_room != 'false') $where .= " AND id_room = $id_room ";
+        if ($id_device_type != 'false') $where .= " AND id_device_type = $id_device_type ";
+        if ($is_on != 'false') $is_on == 'on' ? $where .= " AND to_date = '0000-00-00' ": $where .= " AND to_date != '0000-00-00' ";
+        return $this->requete("SELECT id_device, device_name, description_device, description_place, type_name, room_name, from_date, to_date
+                               FROM search_device
+                               WHERE device_name LIKE '%{$q}%'
                                      {$where}
-                                     AND R.id_apartment = $id
+                                     AND id_apartment = $id
                                ORDER BY device_name {$order_by}
                                LIMIT $limit OFFSET $offset")->fetchAll();
     }
 
-    public function countSearch($id, $q, $order_by, $id_room, $id_device_type) {
+    public function countSearch($id, $q, $order_by, $id_room, $id_device_type, $is_on) {
         $where = '';
-        if ($id_room != 'false') $where .= " AND D.id_room = $id_room ";
-        if ($id_device_type != 'false') $where .= " AND D.id_device_type = $id_device_type ";
-        return $this->requete("SELECT COUNT(D.id_device) as nbr_devices
-                               FROM {$this->table} D LEFT OUTER JOIN room R ON(D.id_room = R.id_room)
-                               WHERE D.device_name LIKE '%{$q}%'
+        if ($id_room != 'false') $where .= " AND id_room = $id_room ";
+        if ($id_device_type != 'false') $where .= " AND id_device_type = $id_device_type ";
+        if ($is_on != 'false') $is_on == 'on' ? $where .= " AND to_date = '0000-00-00' ": $where .= " AND to_date != '0000-00-00' OR to_date is null ";
+        return $this->requete("SELECT COUNT(id_device) as nbr_devices
+                               FROM search_device
+                               WHERE device_name LIKE '%{$q}%'
                                      {$where}
-                                     AND R.id_apartment = $id
+                                     AND id_apartment = $id
                                ORDER BY device_name {$order_by}")->fetch();
+    }
+
+    public function TurnVerify($id){
+        return $this->requete("SELECT * FROM Turn_on WHERE id_device = $id AND to_date ='0000-00-00 00:00:00'")->fetch();
+    }
+
+    public function consume($id_device) {
+        return $this->requete("SELECT * FROM uptime_by_device_with_consumption WHERE id_device = {$id_device} ORDER BY date ASC")->fetchAll();
+    }
+
+    public function emit($id_device) {
+        return $this->requete("SELECT * FROM uptime_by_device_with_emission WHERE id_device = {$id_device} ORDER BY date ASC")->fetchAll();
     }
 
     /**

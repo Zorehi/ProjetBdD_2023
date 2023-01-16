@@ -8,7 +8,7 @@
             <div class="create-label-wrapper" data-status="active">
                 <div class="create-label-list scrollbar-container" id="scrollbar-devices-create">
                     <div class="scrollbar-content" data-transition="yes">
-                    <label for="description_device" class="form-label-input" data-status="empty">
+                        <label for="description_device" class="form-label-input" data-status="empty">
                             <span>Nom de l'appareil</span>
                             <input type="text" id="device_name" name="device_name" onchange="onChangeEvent(this)" required>
                         </label>
@@ -23,7 +23,7 @@
                         <label for="id_room" class="form-label-input select" data-status="empty">
                             <span>Piece où se trouve l'appareil</span>
                             <select id="id_room" name="id_room" onchange="onChangeEvent(this)" required>
-                            <?php foreach ($room->findAll() as $value) { ?>
+                            <?php foreach ($room->findBy(["id_apartment"=>$id]) as $value) { ?>
                                 <option value="<?= $value['id_room'] ?>"><?= $value['room_name'] ?></option>
                             <?php } ?>
                             </select>
@@ -36,6 +36,9 @@
                             <?php } ?>
                             </select>
                         </label>
+                        <div id="form-resources-substances">
+
+                        </div>
                     </div>
                     <div class="scrollbar-track"></div>
                     <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
@@ -44,7 +47,7 @@
                 </div>
             </div>
             <div class="create-btn-container">
-                <button id="create-btn-divices" class="create-btn">
+                <button id="create-btn-devices" class="create-btn">
                     <span>Créer</span>
                     <div class="hover"></div>
                 </button>
@@ -59,8 +62,8 @@
     const scrollbar_devices_create = new ScrollBar(document.getElementById('scrollbar-devices-create'), { offsetContainer: -16, offsetContent: 0});
     scrollbar_devices_create.init();
     
-    const create_apart = document.getElementById('create-btn-devices');
-    const select_array = create_apart.querySelectorAll('select');
+    const create_device = document.getElementById('create-device');
+    const select_array = create_device.querySelectorAll('select');
     for (const select of select_array) {
         select.value = '';
 
@@ -74,5 +77,45 @@
         }
     }
 
+    const id_device_type_select = document.getElementById('id_device_type');
+    id_device_type_select.addEventListener('change', (event) => {
+        retrieveInfo(id_device_type_select.value);
+    });
+    const form_resources_substances = scrollbar_devices_create.sbContent.querySelector('#form-resources-substances');
 
+    function retrieveInfo(id_device_type) {
+        // url à demandé à Cyril
+        const url = `devices/retrieveResSub/`;
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                'id_device_type': id_device_type
+            },
+            timeout: 120000, //2 Minutes
+            dataType: 'json'
+        })
+        .done((response) => {
+            form_resources_substances.innerHTML = '';
+            for(const value of response.resources){
+                form_resources_substances.innerHTML += display(value, 'id_resource');
+            }
+            for(const value of response.substances){
+                form_resources_substances.innerHTML += display(value, 'id_substance');
+            }
+            scrollbar_devices_create.refresh();
+        })
+        .fail((error) => {
+            alert('Impossible d\'allumer cette équipement');
+        });
+    }
+
+
+
+    function display(line, id_name) {
+        return `<label for="${line['name']}" class="form-label-input" data-status="empty">
+                    <span>Consommation par heure : ${line['name']}</span>
+                    <input type="text" id="${line['name']}" name="${id_name == 'id_resource' ? 'consumption_resources' : 'emission_substances'}[${line[id_name]}]" onchange="onChangeEvent(this)" required>
+                </label>`;
+    }
 </script>

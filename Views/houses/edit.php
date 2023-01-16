@@ -70,7 +70,6 @@
                                         </button>
                                     </div>
                                 </div>
-                                <!-- <div class="card-separator"></div> -->
                             </li>
                             <li class="card-edit-row">
             
@@ -97,6 +96,9 @@
     
     const scrollbar_manage_house = new ScrollBar(document.getElementById('scrollbar-manage-house'), { offsetContainer: -16, offsetContent: 0});
     scrollbar_manage_house.init();
+    
+    const scrollbar_house_edit = new ScrollBar(document.getElementById('scrollbar-house-edit'), { offsetContainer: -16, offsetContent: 0});
+    scrollbar_house_edit.init();
     
     const edit_house = document.getElementById('edit_house');
     edit_house.dataset.status = 'selected';
@@ -126,10 +128,12 @@
 
     function onClickModify(element) {
         element.parentElement.dataset.status = 'modifying';
+        scrollbar_house_edit.refresh();
     }
 
     function onClickCancel(element) {
         element.parentElement.dataset.status = '';
+        scrollbar_house_edit.refresh();
     }
 
 </script>

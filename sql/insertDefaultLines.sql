@@ -100,7 +100,11 @@ INSERT INTO `video` (`id_video`, `web_adress`) VALUES
 (3, 'https://www.youtube.com/electroenager'),
 (4, 'https://www.youtube.com/multimedia'),
 (5, 'https://www.youtube.com/chauffe-eau'),
-(6, 'https://www.youtube.com/machine-a-laver');
+(6, 'https://www.youtube.com/machine-a-laver'),
+(7, 'https://www.youtube.com/multimedia'),
+(8, 'https://www.youtube.com/chauffe-eau'),
+(9, 'https://www.youtube.com/machine-a-laver'),
+(10, 'https://www.youtube.com/multimedia');
 
 
 --  --------------------------------------------------------------------------------------
@@ -211,10 +215,20 @@ INSERT INTO `department` (`id_department`, `department_code`, `department_name`,
 --  --------------------------------------------------------------------------------------
 
 INSERT INTO `device_type` (`id_device_type`, `type_name`, `id_video`) VALUES
-(1, 'Chauffage', 1),
+(1, 'Chauffe-eau électrique', 1),
 (2, 'Lampe', 2),
 (3, 'Electromenager', 3),
-(4, 'Multimedia', 4);
+(4, 'Multimedia', 4),
+(5, 'Electromenager - Lavage', 5),
+(6, 'Chauffage éléctrique', 6),
+(7, 'Chauffage au gaz', 7),
+(8, 'Plaque à gaz', 8),
+(9, 'Plaque électrique', 9),
+(10, 'Chauffe-eau au fioul', 1),
+(11, 'Chauffe-eau au gaz', 1);
+(12, 'Salle de Bain/WC', 2);
+
+
 
 
 --  --------------------------------------------------------------------------------------
@@ -275,6 +289,25 @@ INSERT INTO `room` (`id_room`, `room_name`, `id_room_type`, `id_apartment`) VALU
 (6, 'Salle de bain', 5, 2),
 (7, 'Moilettes', 6, 2);
 
+--  --------------------------------------------------------------------------------------
+--  Ligne par défaut de la table device_type
+--  --------------------------------------------------------------------------------------
+INSERT INTO `consume` (`id_device_type`, `id_resource`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(9, 1),
+(7, 2),
+(8, 2),
+(11, 2),
+(1, 3),
+(5, 3),
+(10, 3),
+(11, 3),
+(10, 4);
 
 
 COMMIT;

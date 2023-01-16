@@ -120,11 +120,13 @@ function deleteValue() {
 
 const form = document.getElementById('formModify');
 function submitForm() {
-    const array_input = form.querySelectorAll('[disabled]');
-    for (const input of array_input) {
-        if (input_form_type.value != 'create') {
-            input.disabled = false;
+    if (form.reportValidity()) {
+        const array_input = form.querySelectorAll('[disabled]');
+        for (const input of array_input) {
+            if (input_form_type.value != 'create') {
+                input.disabled = false;
+            }
         }
+        form.submit();
     }
-    form.submit();
 }

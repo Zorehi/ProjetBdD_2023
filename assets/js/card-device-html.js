@@ -1,4 +1,5 @@
 function card_device_html(device) {
+    const type = device['from_date'] == null ? 'Allumer' : device['to_date'] == "0000-00-00 00:00:00" ? 'Eteindre' : 'Allumer';
     return `<div class='card card-device'>
         <div class='card-head'>
             <div class="card-device-profil">
@@ -9,9 +10,9 @@ function card_device_html(device) {
                 </div>
             </div>
             <div class="btn-wrapper">
-                <button class="btn btn-turn-on" type="button">
+                <button class="btn btn-turn-on" type="button" data-type="${type}" onclick="turnOn(${device['id_device']}, this)">
                     <div class="text">
-                        <span class="primary">Allumer</span>
+                        <span class="primary">${type}</span>
                     </div>
                     <div class="hover"></div>
                 </button>

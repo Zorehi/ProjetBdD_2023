@@ -17,7 +17,9 @@ class EmissionModel extends Association
         $this->idNames = ['id_device', 'id_substance'];
     }
 
-
+    public function getEmis($id){
+        return $this->requete("SELECT * FROM emission WHERE id_device =$id")->fetchAll();
+    }
     /**
      * Get the value of emission_per_hour
      */ 

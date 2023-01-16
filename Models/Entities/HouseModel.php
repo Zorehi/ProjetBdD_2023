@@ -26,6 +26,14 @@ class HouseModel extends Entity
         return $this->requete("SELECT * FROM {$this->table} WHERE house_name LIKE '%{$querry}%' LIMIT $limit OFFSET $offset")->fetchAll();
     }
 
+    public function consume($id_house) {
+        return $this->requete("SELECT * FROM uptime_by_house_with_consumption WHERE id_house = {$id_house} ORDER BY date ASC")->fetchAll();
+    }
+
+    public function emit($id_house) {
+        return $this->requete("SELECT * FROM uptime_by_house_with_emission WHERE id_house = {$id_house} ORDER BY date ASC")->fetchAll();
+    }
+
     /**
      * Get the value of id_house
      */ 
