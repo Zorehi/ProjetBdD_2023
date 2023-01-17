@@ -94,13 +94,15 @@ class Turn_onModel extends Association
         ],
         'from_date' => [
             'elementHTML' => 'input',
-            'inputType' => 'date',
-            'is_disabled' => ''
+            'inputType' => 'text',
+            'is_disabled' => '',
+            'pattern' => '^(\d{4,})-(\d{2})-(\d{2})[ ](\d{2}):(\d{2}):(\d{2})?$'
         ],
         'to_date' => [
             'elementHTML' => 'input',
-            'inputType' => 'date',
-            'is_disabled' => ''
+            'inputType' => 'text',
+            'is_disabled' => '',
+            'pattern' => '^(\d{4,})-(\d{2})-(\d{2})[ ](\d{2}):(\d{2}):(\d{2})?$'
         ]
     ];
 }

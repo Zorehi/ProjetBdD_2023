@@ -4,7 +4,7 @@
             <img src="" alt="">
             <div class="text">
                 <span class="primary"><?= $device->getDevice_name() ?></span>
-                <span class="secondary"><?= "Type d'appareil : $device_type_name" ?></span>
+                <span class="secondary"><?= "Type d'appareil : {$device_type->getType_name()}" ?></span>
             </div>
         </div>
         <div class="panel-manage-btn-create-container">
@@ -31,7 +31,7 @@
                         </div>
                         <div class="hover"></div>
                     </div>
-                    <a href="devices/<?= $device->getId_device() ?> ?>/edit" id="edit_device" class="panel-section-button" data-status="unselected">
+                    <a href="devices/<?= $device->getId_device() ?>/edit" id="edit_device" class="panel-section-button" data-status="unselected">
                         <i class="image" style="background-position-y: -44px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Paramètres de l'appareil</span>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="hover"></div>
                     </div>
-                    <a href="devices/<?= $device->getId_device() ?>/insights/?section=consume" id="house_consume" class="panel-section-button" data-status="unselected">
+                    <a href="devices/<?= $device->getId_device() ?>/insights/?section=consume" id="device_consume" class="panel-section-button" data-status="unselected">
                         <i class="image" style="background-position-y: -66px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Consommation</span>

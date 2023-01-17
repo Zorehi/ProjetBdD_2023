@@ -8,7 +8,7 @@
             <div class="create-label-wrapper" data-status="active">
                 <div class="create-label-list scrollbar-container" id="scrollbar-devices-create">
                     <div class="scrollbar-content" data-transition="yes">
-                        <label for="description_device" class="form-label-input" data-status="empty">
+                        <label for="device_name" class="form-label-input" data-status="empty">
                             <span>Nom de l'appareil</span>
                             <input type="text" id="device_name" name="device_name" onchange="onChangeEvent(this)" required>
                         </label>
@@ -106,7 +106,7 @@
             scrollbar_devices_create.refresh();
         })
         .fail((error) => {
-            alert('Impossible d\'allumer cette équipement');
+            alert('Erreur lors de la récupératioini des ressources et substances du type d\'appareil');
         });
     }
 

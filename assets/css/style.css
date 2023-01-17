@@ -1515,6 +1515,9 @@ button {
 .card-edit .card-edit-row[data-status=modifying] .card-edit-content[data-index="1"] {
   display: flex;
 }
+.card-edit .card-edit-row:last-child .card-separator {
+  display: none;
+}
 .card-edit .card-edit-content {
   padding: 0 16px;
   position: relative;
@@ -2864,6 +2867,10 @@ button {
   position: relative;
 }
 .panel-create .create-form#create-appart {
+  flex-direction: column-reverse;
+  max-height: calc(100% - 0px);
+}
+.panel-create .create-form#create-device {
   flex-direction: column-reverse;
   max-height: calc(100% - 0px);
 }

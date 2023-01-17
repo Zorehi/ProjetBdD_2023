@@ -60,7 +60,14 @@ class DeviceModel extends Entity
     public function AllDevices($id){
         return $this->requete("SELECT * FROM Device NATURAL JOIN Device_Type
                                WHERE id_room IN 
-                             (SELECT id_room FROM room WHERE id_apartment = $id)")->fetchALL();  
+                             (SELECT id_room FROM room WHERE id_apartment = $id)")->fetchALL();
+    }  
+    public function consume($id_device) {
+        return $this->requete("SELECT * FROM uptime_by_device_with_consumption WHERE id_device = {$id_device} ORDER BY date ASC")->fetchAll();
+    }
+
+    public function emit($id_device) {
+        return $this->requete("SELECT * FROM uptime_by_device_with_emission WHERE id_device = {$id_device} ORDER BY date ASC")->fetchAll();
     }
 
     /**

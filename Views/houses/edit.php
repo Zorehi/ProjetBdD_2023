@@ -25,6 +25,27 @@
                                             <input type="text" id="house_name" name="house_name" onchange="onChangeEvent(this)" value="<?= $house->getHouse_name() ?>">
                                         </label>
                                     </div>
+                                    <span class = "card-edit-content-title">Degré d'isolation</span>
+                                    <div class ="card-edit-list-input">
+                                    <label for="house_name" class="form-label-input" data-status="empty">
+                                            <span>Degré d'isolation</span>
+                                            <input type="text" id="isolation_degree" name="isolation_degree" onchange="onChangeEvent(this)" value="<?= $house->getIsolation_degree() ?>">
+                                        </label>
+
+                                        <span class = "card-edit-content-title">Degré de citoyenneté</span>
+                                    <div class ="card-edit-list-input">
+                                    <label for="citizen_degree" class="form-label-input" data-status="empty">
+                                            <span>Degré de citoyenneté</span>
+                                            <input type="text" id="citizen_degree" name="citizen_degree" onchange="onChangeEvent(this)" value="<?= $house->getCitizen_degree() ?>">
+                                        </label>
+
+                                        <span class = "card-edit-content-title">Evaluation écologique</span>
+                                    <div class ="card-edit-list-input">
+                                    <label for="eval_eco" class="form-label-input" data-status="empty">
+                                            <span>Evaluation ecologique</span>
+                                        <input type="text" id="eval_eco" name="eval_eco" onchange="onChangeEvent(this)" value="<?= $house->getEval_eco  () ?>">
+                                        </label>
+
                                     <div class="card-edit-btn-container">
                                         <button type="button" class="btn-cancel" onclick="onClickCancel(this.parentElement.parentElement)">Annuler</button>
                                         <button class="btn-confirm">
@@ -37,40 +58,7 @@
                             </li>
                             <li class="card-edit-row">
                                 <div class="card-edit-content" data-index="0">
-                                    <span class="card-edit-content-title">Localisation</span>
-                                    <div class="image-container" onclick="onClickModify(this.parentElement)">
-                                        <i class="image"></i>
-                                    </div>
                                 </div>
-                                <div class="card-edit-content" data-index="1">
-                                    <span class="card-edit-content-title">Localisation</span>
-                                    <div class="card-edit-list-input">
-                                        <label for="house_number" class="form-label-input" data-status="empty">
-                                            <span>Numéro</span>
-                                            <input type="text" id="house_number" name="house_number" onchange="onChangeEvent(this)" value="<?= $house->getHouse_number() ?>">
-                                        </label>
-                                        <label for="street" class="form-label-input" data-status="empty">
-                                            <span>Rue</span>
-                                            <input type="text" id="street" name="street" onchange="onChangeEvent(this)" value="<?= $house->getStreet() ?>">
-                                        </label>
-                                        <label for="city_name" class="form-label-input" data-status="empty">
-                                            <span>Ville</span>
-                                            <input type="text" id="city" name="city" onchange="onChangeEvent(this)" value="<?= $city->getCity_name() ?>">
-                                        </label>
-                                        <label for="postcode" class="form-label-input" data-status="empty">
-                                            <span>Code postal</span>
-                                            <input type="text" id="postcode" name="postcode" onchange="onChangeEvent(this)" value="<?= $city->getPostcode() ?>">
-                                        </label>
-                                    </div>
-                                    <div class="card-edit-btn-container">
-                                        <button type="button" class="btn-cancel" onclick="onClickCancel(this.parentElement.parentElement)">Annuler</button>
-                                        <button class="btn-confirm">
-                                            <span>Confirmer</span>
-                                            <div class="hover"></div>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- <div class="card-separator"></div> -->
                             </li>
                             <li class="card-edit-row">
             
@@ -97,6 +85,9 @@
     
     const scrollbar_manage_house = new ScrollBar(document.getElementById('scrollbar-manage-house'), { offsetContainer: -16, offsetContent: 0});
     scrollbar_manage_house.init();
+    
+    const scrollbar_house_edit = new ScrollBar(document.getElementById('scrollbar-house-edit'), { offsetContainer: -16, offsetContent: 0});
+    scrollbar_house_edit.init();
     
     const edit_house = document.getElementById('edit_house');
     edit_house.dataset.status = 'selected';
@@ -126,10 +117,12 @@
 
     function onClickModify(element) {
         element.parentElement.dataset.status = 'modifying';
+        scrollbar_house_edit.refresh();
     }
 
     function onClickCancel(element) {
         element.parentElement.dataset.status = '';
+        scrollbar_house_edit.refresh();
     }
 
 </script>
