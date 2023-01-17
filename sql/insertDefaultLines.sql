@@ -214,19 +214,19 @@ INSERT INTO `department` (`id_department`, `department_code`, `department_name`,
 --  Ligne par défaut de la table device_type
 --  --------------------------------------------------------------------------------------
 
-INSERT INTO `device_type` (`id_device_type`, `type_name`, `id_video`) VALUES
-(1, 'Chauffe-eau électrique', 1),
-(2, 'Lampe', 2),
-(3, 'Electromenager', 3),
-(4, 'Multimedia', 4),
-(5, 'Electromenager - Lavage', 5),
-(6, 'Chauffage éléctrique', 6),
-(7, 'Chauffage au gaz', 7),
-(8, 'Plaque à gaz', 8),
-(9, 'Plaque électrique', 9),
-(10, 'Chauffe-eau au fioul', 1),
-(11, 'Chauffe-eau au gaz', 1);
-(12, 'Salle de Bain/WC', 2);
+INSERT INTO `device_type` (`id_device_type`, `type_name`,`image_url`, `id_video`) VALUES
+(1, 'Chauffe-eau électrique','device/Chauffeau.png', 1),
+(2, 'Lampe','device/Lampe.png', 2),
+(3, 'Electromenager','device/Electromenager.png', 3),
+(4, 'Multimedia','device/Multimédia.png', 4),
+(5, 'Electromenager - Lavage','device/Lavage.png', 5),
+(6, 'Chauffage éléctrique','device/Radiateur.png', 6),
+(7, 'Chauffage au gaz','device/Radiateur.png', 7),
+(8, 'Plaque à gaz','device/Plaque.png', 8),
+(9, 'Plaque électrique','device/Plaque.png', 9),
+(10, 'Chauffe-eau au fioul','device/chauffe-eau.png', 1),
+(11, 'Chauffe-eau au gaz','device/chauffe-eau.png', 1),
+(12, 'Salle de Bain/WC','device/WC.png', 2);
 
 
 
@@ -256,15 +256,6 @@ INSERT INTO `city` (`id_city`, `postcode`, `city_name`, `id_department`) VALUES
 INSERT INTO `house` (`id_house`, `house_name`, `isolation_degree`, `eval_eco`, `citizen_degree`, `street`, `house_number`, `id_city`) VALUES
 (1, 'Pharmatech', 1, 'ok', 1, 'Avenue Jean Portalis', 64, 1),
 (2, 'Moison', 1, 'cool', 1, 'rue Moi', 98, 1);
-
-
-
---  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table owner
---  --------------------------------------------------------------------------------------
-
-INSERT INTO `owner` (`id_house`, `from_date`, `to_date`, `id_users`) VALUES
-(1, '2023-01-01', '0000-00-00', 1);
 
 
 --  --------------------------------------------------------------------------------------
