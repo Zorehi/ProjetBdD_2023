@@ -71,7 +71,6 @@ class ApartsController extends Controller
 
     public function apart_rooms($id) {
         extract($this->retrieveInfoForPanelManage($id));
-
         $room = new RoomModel();
         $tableroom = $room->allRoom($id);
 
