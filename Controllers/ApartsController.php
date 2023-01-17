@@ -34,6 +34,7 @@ class ApartsController extends Controller
 
         $device = new DeviceModel();
         $nbr_devices = $device->countDeviceApart($id);
+        $tabledevices = $device->AllDevices($id);
     
         $apartment_type = new Apartment_typeModel();
         $apartment_type->hydrate($apartment_type->findById($apart->getId_apartment_type()));
@@ -50,7 +51,7 @@ class ApartsController extends Controller
     
         $pageName = "N°{$apart->getNum()} | {$house->getHouse_name()} | Projet BdD";
 
-        return compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices');
+        return compact('pageName', 'apart', 'tenant', 'house', 'nbr_rooms', 'apartment_type', 'nbr_devices','tabledevices');
     }
 
     public function index($id) {
@@ -95,6 +96,7 @@ class ApartsController extends Controller
         $room = new RoomModel();
 
         $donnees = [
+            'tabledevices'=>$tabledevices,
             'pageName' => $pageName,
             'apart' => $apart,
             'tenant' => $tenant,
