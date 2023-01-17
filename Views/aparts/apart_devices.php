@@ -48,7 +48,7 @@
                     <div class="select button">
                         <input data-for="select_value" type="hidden" name="id_room">
                         <span class="text primary">Pièce</span>
-                        <i class="icon" style="background-image: url('http://projetbdd/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
+                        <i class="icon" style="background-image: url('/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         <div class="hover"></div>
                     </div>
                     <div class="pop-up-select" data-status="hidden">
@@ -64,7 +64,7 @@
                     <div class="select button">
                         <input data-for="select_value" type="hidden" name="id_device_type">
                         <span class="text primary">Type d'équipement</span>
-                        <i class="icon" style="background-image: url('http://projetbdd/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
+                        <i class="icon" style="background-image: url('/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         <div class="hover"></div>
                     </div>
                     <div class="pop-up-select" data-status="hidden">
@@ -80,7 +80,7 @@
                     <div class="select button">
                         <input data-for="select_value" type="hidden" name="is_on">
                         <span class="text primary">Allumé ou Eteint</span>
-                        <i class="icon" style="background-image: url('http://projetbdd/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
+                        <i class="icon" style="background-image: url('/assets/image/select-made-by-myself.png'); background-position: -0px -20px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         <div class="hover"></div>
                     </div>
                     <div class="pop-up-select" data-status="hidden">
