@@ -5,7 +5,7 @@ function card_device_html(device) {
             <div class="card-device-profil">
                 <img src="/assets/image/${device['image_url']}" alt="" height="60px" width="60px">
                 <div class="text">
-                    <a href="/devices/${device['id_device']}" class="primary">${device['device_name']}</a>
+                    <a href="/devices/${device['id_device']}/edit" class="primary">${device['device_name']}</a>
                     <div class="secondary">Type d'équipement : ${device['type_name']}</div>
                 </div>
             </div>

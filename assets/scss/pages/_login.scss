@@ -108,6 +108,10 @@
         transition-duration: 200ms;
         transition-timing-function: cubic-bezier(.08,.52,.52,1);
 
+        &[role='button'] {
+            cursor: default;
+        }
+
         &:hover {
             background-color: #36A420;
         }
