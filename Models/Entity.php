@@ -66,7 +66,7 @@
 
             // On boucle pour éclater le tableau
             foreach($this as $champ => $valeur) {
-                // INSERT INTO annonces (titre, description, actif) VALUES (?, ?, ?)
+                // INSERT INTO users (email, firstname, lastname) VALUES (?, ?, ?)
                 if($valeur != null && !in_array($champ, ['db', 'table', 'idName', 'type'])) {
                     $champs[] = $champ;
                     $inter[] = "?";
@@ -94,7 +94,7 @@
 
             // On boucle pour éclater le tableau
             foreach($this as $champ => $valeur) {
-                // UPDATE annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
+                // UPDATE users SET email = ?, firstname = ?, lastname = ? WHERE id_users = ?
                 if($valeur != null && !in_array($champ, ['db', 'table', 'idName', 'type'])){
                     $champs[] = "$champ = ?";
                     $valeurs[] = $valeur;
@@ -120,6 +120,13 @@
             return $this->requete('DELETE FROM '.$this->table.' WHERE '. $this->idName .' = ?', [$id]);
         }
 
+        /**
+         * Execute une requete
+         * 
+         * @param string $sql la requète sql au format string
+         * @param array|null $attributs les valeurs à passer à la requète
+         * @return object
+         */
         public function requete(string $sql, array $attributs = null)
         {
             $this->db = Database::getInstance();
