@@ -114,7 +114,7 @@
 
     function display(line, id_name) {
         return `<label for="${line['name']}" class="form-label-input" data-status="empty">
-                    <span>Consommation par heure : ${line['name']}</span>
+                    <span>${id_name == 'id_resource' ? 'Consommation' : 'Emission'} par heure : ${line['name']}</span>
                     <input type="text" id="${line['name']}" name="${id_name == 'id_resource' ? 'consumption_resources' : 'emission_substances'}[${line[id_name]}]" onchange="onChangeEvent(this)" required>
                 </label>`;
     }

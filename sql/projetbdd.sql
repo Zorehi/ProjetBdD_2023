@@ -192,7 +192,6 @@ CREATE TABLE apartment(
    `num` INT NOT NULL,
    `hab` INT NOT NULL,
    `citizen_degree` INT NOT NULL,
-   `security_degree` INT,
    `id_security_degree` INT NOT NULL,
    `id_house` INT NOT NULL,
    `id_apartment_type` INT NOT NULL,
@@ -356,12 +355,13 @@ FROM turn_on
 GROUP BY id_device
 ORDER BY id_device DESC;
 
+
 --  --------------------------------------------------------------------------------------
---  Structure de la vue turn_on_desc
+--  Structure de la vue search_device
 --  --------------------------------------------------------------------------------------
 
 CREATE OR REPLACE VIEW search_device AS
-SELECT R.id_apartment, D.id_device, D.device_name, D.description_device, D.description_place, D.id_device_type, DT.type_name, D.id_room, R.room_name, T.from_date, T.to_date
+SELECT R.id_apartment, D.id_device, D.device_name, D.description_device, D.description_place, D.id_device_type, DT.type_name, D.id_room, R.room_name, T.from_date, T.to_date , DT.image_url
 FROM device AS D LEFT OUTER JOIN room R ON(D.id_room = R.id_room)
 				     LEFT OUTER JOIN device_type AS DT ON(D.id_device_type = DT.id_device_type)
                  LEFT OUTER JOIN turn_on_desc AS T ON(D.id_device = T.id_device);

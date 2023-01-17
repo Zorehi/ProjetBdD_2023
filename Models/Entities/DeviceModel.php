@@ -31,8 +31,8 @@ class DeviceModel extends Entity
         if ($id_room != 'false') $where .= " AND id_room = $id_room ";
         if ($id_device_type != 'false') $where .= " AND id_device_type = $id_device_type ";
         if ($is_on != 'false') $is_on == 'on' ? $where .= " AND to_date = '0000-00-00' ": $where .= " AND to_date != '0000-00-00' ";
-        return $this->requete("SELECT id_device, device_name, description_device, description_place, type_name, room_name, from_date, to_date
-                               FROM search_device
+        return $this->requete("SELECT id_device, device_name, description_device, description_place, type_name, room_name, from_date, to_date, image_url
+                               FROM search_device 
                                WHERE device_name LIKE '%{$q}%'
                                      {$where}
                                      AND id_apartment = $id
@@ -60,7 +60,7 @@ class DeviceModel extends Entity
     public function AllDevices($id){
         return $this->requete("SELECT * FROM device NATURAL JOIN device_type
                                WHERE id_room IN 
-                             (SELECT id_room FROM room WHERE id_apartment = $id)")->fetchALL();
+                             (SELECT id_room FROM room WHERE id_apartment = $id)")->fetchAll();
     }  
     public function consume($id_device) {
         return $this->requete("SELECT * FROM uptime_by_device_with_consumption WHERE id_device = {$id_device} ORDER BY date ASC")->fetchAll();

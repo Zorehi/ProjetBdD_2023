@@ -217,18 +217,18 @@ INSERT INTO `department` (`id_department`, `department_code`, `department_name`,
 --  --------------------------------------------------------------------------------------
 
 INSERT INTO `device_type` (`id_device_type`, `type_name`,`image_url`, `id_video`) VALUES
-(1, 'Chauffe-eau électrique', 'device/Chauffeau.png', 1),
-(2, 'Lampe', 'device/Lampe.png', 2),
-(3, 'Electromenager', 'device/Electromenager.png', 3),
-(4, 'Multimedia', 'device/Multimédia.png', 4),
-(5, 'Electromenager - Lavage', 'device/Lavage.png', 5),
-(6, 'Chauffage éléctrique', 'device/Radiateur.png', 6),
-(7, 'Chauffage au gaz', 'device/Radiateur.png', 7),
-(8, 'Plaque à gaz', 'device/Plaque.png', 8),
-(9, 'Plaque électrique', 'device/Plaque.png', 9),
-(10, 'Chauffe-eau au fioul', 'device/chauffe-eau.png', 1),
-(11, 'Chauffe-eau au gaz', 'device/chauffe-eau.png', 1),
-(12, 'Salle de Bain/WC', 'device/WC.png', 2);
+(1, 'Chauffe-eau électrique','device/Chauffeau.png', 1),
+(2, 'Lampe','device/Lampe.png', 2),
+(3, 'Electromenager','device/Electromenager.png', 3),
+(4, 'Multimedia','device/Multimédia.png', 4),
+(5, 'Electromenager - Lavage','device/Lavage.png', 5),
+(6, 'Chauffage éléctrique','device/Radiateur.png', 6),
+(7, 'Chauffage au gaz','device/Radiateur.png', 7),
+(8, 'Plaque à gaz','device/Plaque.png', 8),
+(9, 'Plaque électrique','device/Plaque.png', 9),
+(10, 'Chauffe-eau au fioul','device/chauffeau.png', 1),
+(11, 'Chauffe-eau au gaz','device/chauffeau.png', 1),
+(12, 'Salle de Bain/WC','device/WC.png', 2);
 
 
 --  --------------------------------------------------------------------------------------
