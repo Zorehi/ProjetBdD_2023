@@ -51,7 +51,7 @@
             text: 'Emission de l\'équipement'
         },
         legend: {
-            enabled: false
+            enabled: true
         },
         xAxis: {
             categories: <?= json_encode($datas_date) ?>,

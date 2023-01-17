@@ -2870,6 +2870,10 @@ button {
   flex-direction: column-reverse;
   max-height: calc(100% - 0px);
 }
+.panel-create .create-form#create-device {
+  flex-direction: column-reverse;
+  max-height: calc(100% - 0px);
+}
 .panel-create .create-form#create-house {
   flex-direction: column;
   max-height: calc(100% - 56px);
