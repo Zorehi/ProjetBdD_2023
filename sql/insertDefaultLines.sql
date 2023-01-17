@@ -261,5 +261,15 @@ INSERT INTO `consume` (`id_device_type`, `id_resource`) VALUES
 (10, 4);
 
 
+INSERT INTO `emit` (`id_device_type`, `id_substance`) VALUES
+(1, 1),
+(6, 1),
+(7, 1),
+(10, 1),
+(11, 1),
+(5, 3),
+(12, 3);
+
+
 COMMIT;
 
