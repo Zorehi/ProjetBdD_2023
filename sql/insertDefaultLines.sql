@@ -226,8 +226,8 @@ INSERT INTO `device_type` (`id_device_type`, `type_name`,`image_url`, `id_video`
 (7, 'Chauffage au gaz','device/Radiateur.png', 7),
 (8, 'Plaque à gaz','device/Plaque.png', 8),
 (9, 'Plaque électrique','device/Plaque.png', 9),
-(10, 'Chauffe-eau au fioul','device/chauffe-eau.png', 1),
-(11, 'Chauffe-eau au gaz','device/chauffe-eau.png', 1),
+(10, 'Chauffe-eau au fioul','device/chauffeau.png', 1),
+(11, 'Chauffe-eau au gaz','device/chauffeau.png', 1),
 (12, 'Salle de Bain/WC','device/WC.png', 2);
 
 
