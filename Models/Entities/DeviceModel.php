@@ -57,6 +57,12 @@ class DeviceModel extends Entity
         return $this->requete("SELECT * FROM Turn_on WHERE id_device = $id AND to_date ='0000-00-00 00:00:00'")->fetch();
     }
 
+    public function AllDevices($id){
+        return $this->requete("SELECT * FROM Device NATURAL JOIN Device_Type
+                               WHERE id_room IN 
+                             (SELECT id_room FROM room WHERE id_apartment = $id)")->fetchALL();  
+    }
+
     /**
      * Get the value of id_device
      */ 
