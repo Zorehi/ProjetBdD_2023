@@ -42,6 +42,11 @@ class Association extends Database {
         return $this->requete("SELECT * FROM {$this->table} WHERE $liste_champs", $valeurs)->fetchAll();
     }
 
+     /**
+     * Sélection d'un enregistrements suivant l'id (puisque association clé primaire composé de plusieurs clés étrangère)
+     * @param array $ids Clé primaire composé de plusieurs clés étrangère de l'enregistrement
+     * @return array Tableau des enregistrements trouvés
+     */
     public function findByIds(array $ids) {
         $champs = [];
         $valeurs = [];
@@ -89,9 +94,11 @@ class Association extends Database {
 
     /**
      * Mise à jour d'un enregistrement suivant un tableau de données
+     *
+     * @param array $id_valeurs Clé primaire composé de plusieurs clés étrangère de l'enregistrement
      * @return bool
      */
-    public function update($id_valeurs)
+    public function update(array $id_valeurs)
     {
         $champs = [];
         $champsID = [];
@@ -122,7 +129,7 @@ class Association extends Database {
 
     /**
      * Suppression d'un enregistrement
-     * @param array $id ids de l'enregistrement à supprimer
+     * @param array $ids Clé primaire composé de plusieurs clés étrangère de l'enregistrement
      * @return bool 
      */
     public function delete(array $ids) 
@@ -141,6 +148,13 @@ class Association extends Database {
         return $this->requete("DELETE FROM {$this->table} WHERE $liste_champs", $valeurs);
     }
 
+    /**
+     * Execute une requete
+     *
+     * @param string $sql la requète sql au format string
+     * @param array|null $attributs les valeurs à passer à la requète
+     * @return object
+     */
     public function requete(string $sql, array $attributs = null)
     {
         $this->db = Database::getInstance();

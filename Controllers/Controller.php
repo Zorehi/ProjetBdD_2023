@@ -11,6 +11,14 @@ use App\Models\Entities\UsersModel;
 
 abstract class Controller
 {
+    /**
+     * Fait le rendu d'une page web
+     *
+     * @param string $fichier La vue à afficher
+     * @param array $donnees Les données pour cette vue
+     * @param string $template Le template de la page web
+     * @return void
+     */
     protected function render(string $fichier, array $donnees = [], string $template = 'default')
     {
         // On extrait le contenu de $donnees
@@ -20,7 +28,7 @@ abstract class Controller
             $pageName = "Projet BdD";
         }
 
-        //
+        // gère le cookie par rapport au thème sombre ou clair
         if (!isset($_COOKIE['color-scheme'])) {
             setcookie(
                 'color-scheme',
@@ -55,6 +63,7 @@ abstract class Controller
             $house_array = $temp['house_array'];
             $apart_array = $temp['apart_array'];
         }
+
         require_once ROOT.'/Views/templates/'.$template.'.php';
     }
 
@@ -83,6 +92,12 @@ abstract class Controller
         }
     }
 
+    /**
+     * Permets d'envoyer des données au format JSON pour les requêtes faites coté client
+     * 
+     * @param array donnees Les données demandé 
+     * @param string erreur Un message d'erreur
+     */
     protected function renderData(array $donnees, string $erreur = null) {
         // Headers requis
         header("Access-Control-Allow-Origin: *");
@@ -106,10 +121,10 @@ abstract class Controller
     }
 
     /**
-     * Retrieve information of this user for navLeft
+     * Récupère les informations de l'utilisateur pour afficher correctement navLeft
      *
-     * @param Number $id
-     * @return void
+     * @param Number $id l'id de l'utilisateur
+     * @return Array 
      */
     private function retrieveInfoForNavLeft($id) {
         $owner = new OwnerModel();
