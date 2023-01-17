@@ -192,7 +192,6 @@ CREATE TABLE apartment(
    `num` INT NOT NULL,
    `hab` INT NOT NULL,
    `citizen_degree` INT NOT NULL,
-   `security_degree` INT,
    `id_security_degree` INT NOT NULL,
    `id_house` INT NOT NULL,
    `id_apartment_type` INT NOT NULL,

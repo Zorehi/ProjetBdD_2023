@@ -96,7 +96,6 @@ class ApartsController extends Controller
         $room = new RoomModel();
 
         $donnees = [
-            'tabledevices'=>$tabledevices,
             'pageName' => $pageName,
             'apart' => $apart,
             'tenant' => $tenant,
