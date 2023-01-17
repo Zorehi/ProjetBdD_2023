@@ -132,6 +132,7 @@ class HousesController extends Controller
         $house = new HouseModel();
         $city = new CityModel();
         $Departement = new DepartmentModel();
+        $owner = new OwnerModel();
         // On appelle la méthode validate de la classe mère pour vérifier que les champs sont bien remplis 
         if (Form::validate($_POST, ["house_name", "isolation_degree", "eval_eco", "citizen_degree", "street", "house_number","city_name","postcode"])) {
         { 
@@ -159,11 +160,22 @@ class HousesController extends Controller
                 }
                 $house->setId_city($city->getId_city());
                 $house->hydrate($_POST);
-                $house->setId_house($house->create());
+                $house->create();
+                
+                $houseArray = $house->findBy(['house_name'=> $_POST['house_name'],'street'=>$_POST['street'],'house_number'=>$_POST['house_number']])[0];
+                
+                $owner->setId_house($houseArray['id_house']);
+                $owner->setId_users($_SESSION['user']['id']);
+                $owner->setFrom_date(date('Y-m-d'));
+                $owner->setTo_date(null);
+                $owner->create();
+                
             }
 
          }
-        
+         
+
+
        
        }
 
