@@ -1,6 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS `projetbdd` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `projetbdd`;
 
+START TRANSACTION;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table apartment_type
@@ -465,3 +466,4 @@ SELECT H.id_house,
 FROM uptime_by_apartment_with_consumption AS UP LEFT OUTER JOIN house AS H ON(UP.id_house = H.id_house)
 GROUP BY H.id_house, UP.id_resource, UP.date;
 
+COMMIT;
