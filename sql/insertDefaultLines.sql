@@ -272,4 +272,3 @@ INSERT INTO `emit` (`id_device_type`, `id_substance`) VALUES
 
 
 COMMIT;
-

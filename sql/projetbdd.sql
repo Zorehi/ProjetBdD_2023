@@ -1,6 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS `projetbdd` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `projetbdd`;
 
+START TRANSACTION;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table apartment_type
@@ -355,18 +356,6 @@ FROM turn_on
 GROUP BY id_device
 ORDER BY id_device DESC;
 
-
---  --------------------------------------------------------------------------------------
---  Structure de la vue search_device
---  --------------------------------------------------------------------------------------
-
-CREATE OR REPLACE VIEW search_device AS
-SELECT R.id_apartment, D.id_device, D.id_device_name, D.description_device, D.description_place, D.id_device_type, DT.type_name, D.id_room, R.room_name, T.from_date, T.to_date
-FROM device AS D LEFT OUTER JOIN room R ON(D.id_room = R.id_room)
-				     LEFT OUTER JOIN device_type AS DT ON(D.id_device_type = DT.id_device_type)
-                 LEFT OUTER JOIN turn_on_desc AS T ON(D.id_device = T.id_device);
-
-
 --  --------------------------------------------------------------------------------------
 --  Structure de la vue turn_on_desc
 --  --------------------------------------------------------------------------------------
@@ -476,3 +465,4 @@ SELECT H.id_house,
 FROM uptime_by_apartment_with_consumption AS UP LEFT OUTER JOIN house AS H ON(UP.id_house = H.id_house)
 GROUP BY H.id_house, UP.id_resource, UP.date;
 
+COMMIT;
