@@ -218,7 +218,7 @@ INSERT INTO `department` (`id_department`, `department_code`, `department_name`,
 
 INSERT INTO `device_type` (`id_device_type`, `type_name`,`image_url`, `id_video`) VALUES
 (1, 'Chauffe-eau électrique','device/Chauffeau.png', 1),
-(2, 'Lampe','device/Lampe.png', 2),
+(2, 'Éclairage','device/Lampe.png', 2),
 (3, 'Electromenager','device/Electromenager.png', 3),
 (4, 'Multimedia','device/Multimédia.png', 4),
 (5, 'Electromenager - Lavage','device/Lavage.png', 5),
