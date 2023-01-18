@@ -476,6 +476,9 @@ button {
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1);
 }
+.login-button a[role=button] {
+  cursor: default;
+}
 .login-button a:hover {
   background-color: #36A420;
 }
