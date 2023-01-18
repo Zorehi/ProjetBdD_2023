@@ -101,11 +101,11 @@ class DevicesController extends Controller
             $device = new DeviceModel();
             $device->hydrate($_POST);
             $device->update();
-            foreach($_POST["consumption"] as $key => $value){
+            foreach($_POST["consumption"] as $key => $value) {
                 $cons->setConsumption_per_hour($value);
                 $cons->update(['id_resource'=> $key ,'id_device'=>$device->getId_device()]);
             }
-            foreach($_POST["emission"] as $key => $value){
+            foreach($_POST["emission"] as $key => $value) {
                 $emis->setEmission_per_hour($value);
                 $emis->update(['id_substance'=> $key ,'id_device'=>$device->getId_device()]);
             }

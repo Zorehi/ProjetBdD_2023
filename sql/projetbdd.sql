@@ -197,7 +197,7 @@ CREATE TABLE apartment(
    `id_apartment_type` INT NOT NULL,
    PRIMARY KEY(`id_apartment`),
    FOREIGN KEY(`id_security_degree`) REFERENCES security_degree(`id_security_degree`),
-   FOREIGN KEY(`id_house`) REFERENCES house(`id_house`),
+   FOREIGN KEY(`id_house`) REFERENCES house(`id_house`) ON DELETE CASCADE,
    FOREIGN KEY(`id_apartment_type`) REFERENCES apartment_type(`id_apartment_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -213,7 +213,7 @@ CREATE TABLE room(
    `id_apartment` INT NOT NULL,
    PRIMARY KEY(`id_room`),
    FOREIGN KEY(`id_room_type`) REFERENCES room_type(`id_room_type`),
-   FOREIGN KEY(`id_apartment`) REFERENCES apartment(`id_apartment`)
+   FOREIGN KEY(`id_apartment`) REFERENCES apartment(`id_apartment`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
@@ -229,7 +229,7 @@ CREATE TABLE device(
    `id_device_type` INT NOT NULL,
    `id_room` INT NOT NULL,
    PRIMARY KEY(`id_device`),
-   FOREIGN KEY(`id_room`) REFERENCES room(`id_room`),
+   FOREIGN KEY(`id_room`) REFERENCES room(`id_room`) ON DELETE CASCADE,
    FOREIGN KEY(`id_device_type`) REFERENCES device_type(`id_device_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -244,8 +244,8 @@ CREATE TABLE owner(
    `to_date` DATE NOT NULL DEFAULT '0000-00-00',
    `id_users` INT,
    PRIMARY KEY(`id_house`, `from_date`),
-   FOREIGN KEY(`id_house`) REFERENCES house(`id_house`),
-   FOREIGN KEY(`id_users`) REFERENCES users(`id_users`)
+   FOREIGN KEY(`id_house`) REFERENCES house(`id_house`) ON DELETE CASCADE,
+   FOREIGN KEY(`id_users`) REFERENCES users(`id_users`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
@@ -259,7 +259,7 @@ CREATE TABLE tenant(
    `to_date` DATE NOT NULL DEFAULT '0000-00-00',
    `id_users` INT,
    PRIMARY KEY(`id_apartment`, `from_date`),
-   FOREIGN KEY(`id_apartment`) REFERENCES apartment(`id_apartment`),
+   FOREIGN KEY(`id_apartment`) REFERENCES apartment(`id_apartment`) ON DELETE CASCADE,
    FOREIGN KEY(`id_users`) REFERENCES users(`id_users`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -312,7 +312,7 @@ CREATE TABLE turn_on(
    `from_date` DATETIME,
    `to_date` DATETIME,
    PRIMARY KEY(`id_device`, `from_date`),
-   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`)
+   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
@@ -325,7 +325,7 @@ CREATE TABLE emission(
    `id_substance` INT,
    `emission_per_hour` DOUBLE NOT NULL,
    PRIMARY KEY(`id_device`, `id_substance`),
-   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`),
+   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`) ON DELETE CASCADE,
    FOREIGN KEY(`id_substance`) REFERENCES substance(`id_substance`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -339,7 +339,7 @@ CREATE TABLE consumption(
    `id_resource` INT,
    `consumption_per_hour` DOUBLE NOT NULL,
    PRIMARY KEY(`id_device`, `id_resource`),
-   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`),
+   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`) ON DELETE CASCADE,
    FOREIGN KEY(`id_resource`) REFERENCES resource(`id_resource`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
