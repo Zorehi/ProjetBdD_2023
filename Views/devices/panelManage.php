@@ -35,7 +35,7 @@
                         <i class="image" style="background-position-y: -44px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Paramètres de l'appareil</span>
-                            <span class="secondary">Gérez le nom et </span>
+                            <span class="secondary">Gérer les paramètres de l'appareil </span>
                         </div>
                         <div class="hover"></div>
                     </a>

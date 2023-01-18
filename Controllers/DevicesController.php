@@ -93,10 +93,11 @@ class DevicesController extends Controller
         
         $cons = new ConsumptionModel();
         $emis = new EmissionModel();
-        if(Form::validate($_POST, ["device_name","description_device","description_place","consumption","emission"]))
+        if(Form::validate($_POST, ["device_name","description_device","description_place","consumption"]))
         {
             $device = new DeviceModel();
             $device->hydrate($_POST);
+            $device->setId_device($id);
             $device->update();
             foreach($_POST["consumption"] as $key => $value) {
                 $cons->setConsumption_per_hour($value);
