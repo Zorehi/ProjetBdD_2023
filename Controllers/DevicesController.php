@@ -5,17 +5,14 @@ namespace App\Controllers;
 use App\Core\Form;
 use App\Controllers\Controller;
 use App\Models\Entities\RoomModel;
-use App\Models\Entities\HouseModel;
 use App\Models\Entities\DeviceModel;
 use App\Models\Entities\ResourceModel;
 use App\Models\Associations\OwnerModel;
 use App\Models\Entities\ApartmentModel;
 use App\Models\Associations\TenantModel;
-use App\Models\Associations\ConsumeModel;
 use App\Models\Associations\Turn_onModel;
 use App\Models\Entities\Device_typeModel;
 use App\Models\Associations\EmissionModel;
-use App\Models\Entities\Apartment_typeModel;
 use App\Models\Associations\ConsumptionModel;
 use App\Models\Entities\SubstanceModel;
 
