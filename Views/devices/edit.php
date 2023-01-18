@@ -47,7 +47,7 @@
                                     <div class="card-edit-list-input">
                                         <label for="description_device" class="form-label-input" data-status="empty">
                                             <span>Description</span>
-                                            <input type="text" id="description_device" name="description_device" onchange="onChangeEvent(this)" value="<?= $device->getDescription_device() ?>">
+                                            <input type="text" id="description_device" name="description_device" maxlength="50" onchange="onChangeEvent(this)" value="<?= $device->getDescription_device() ?>">
                                         </label>
                                     </div>
                                     <div class="card-edit-btn-container">
@@ -72,7 +72,7 @@
                                     <div class="card-edit-list-input">
                                         <label for="num" class="form-label-input" data-status="empty">
                                             <span>Position de l'appareil</span>
-                                            <input type="text" id="description_place" name="description_place" onchange="onChangeEvent(this)" value="<?= $device->getDescription_place() ?>">
+                                            <input type="text" id="description_place" name="description_place" maxlength="30" onchange="onChangeEvent(this)" value="<?= $device->getDescription_place() ?>">
                                         </label>
                                     </div>
                                     <div class="card-edit-btn-container">
