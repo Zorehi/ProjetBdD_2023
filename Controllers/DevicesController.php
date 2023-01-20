@@ -80,7 +80,7 @@ class DevicesController extends Controller
                 }
             }
             
-            header("Location: devices/{$device->getId_device()}/edit");
+            header("Location: /devices/{$device->getId_device()}/edit");
             exit;
         }
         $device_type = new Device_typeModel();

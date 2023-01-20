@@ -48,7 +48,8 @@ INSERT INTO `region` (`id_region`, `region_name`) VALUES
 INSERT INTO `resource` (`id_resource`, `name`, `description`, `min_value`, `max_value`) VALUES
 (1, 'Electricite', 'Electricite', 0, 10000),
 (2, 'Gaz', 'Gaz', 0, 10000),
-(3, 'Eau', 'Eau', 0, 10000);
+(3, 'Eau', 'Eau', 0, 10000),
+(4, 'Fioul', 'Fioul', 0, 10000);
 
 
 --  --------------------------------------------------------------------------------------
@@ -57,7 +58,8 @@ INSERT INTO `resource` (`id_resource`, `name`, `description`, `min_value`, `max_
 
 INSERT INTO `substance` (`id_substance`, `name`, `description`, `min_value`, `max_value`, `critical_value`, `model_value`) VALUES
 (1, 'CO2', 'Dioxyde de Carbone', 0, 10000, 8000, 200),
-(2, 'NO3-', 'Oxyde d\'azote', 0, 10000, 8000, 200);
+(2, 'NO3-', 'Oxyde d\'azote', 0, 10000, 8000, 200),
+(3, 'Eau usée', 'Eau usée', 0, 10000, 8000, 200);
 
 
 --  --------------------------------------------------------------------------------------
@@ -214,21 +216,19 @@ INSERT INTO `department` (`id_department`, `department_code`, `department_name`,
 --  Ligne par défaut de la table device_type
 --  --------------------------------------------------------------------------------------
 
-INSERT INTO `device_type` (`id_device_type`, `type_name`, `id_video`) VALUES
-(1, 'Chauffe-eau électrique', 1),
-(2, 'Lampe', 2),
-(3, 'Electromenager', 3),
-(4, 'Multimedia', 4),
-(5, 'Electromenager - Lavage', 5),
-(6, 'Chauffage éléctrique', 6),
-(7, 'Chauffage au gaz', 7),
-(8, 'Plaque à gaz', 8),
-(9, 'Plaque électrique', 9),
-(10, 'Chauffe-eau au fioul', 1),
-(11, 'Chauffe-eau au gaz', 1);
-(12, 'Salle de Bain/WC', 2);
-
-
+INSERT INTO `device_type` (`id_device_type`, `type_name`,`image_url`, `id_video`) VALUES
+(1, 'Chauffe-eau électrique','device/Chauffeau.png', 1),
+(2, 'Lampe','device/Lampe.png', 2),
+(3, 'Electromenager','device/Electromenager.png', 3),
+(4, 'Multimedia','device/Multimédia.png', 4),
+(5, 'Electromenager - Lavage','device/Lavage.png', 5),
+(6, 'Chauffage éléctrique','device/Radiateur.png', 6),
+(7, 'Chauffage au gaz','device/Radiateur.png', 7),
+(8, 'Plaque à gaz','device/Plaque.png', 8),
+(9, 'Plaque électrique','device/Plaque.png', 9),
+(10, 'Chauffe-eau au fioul','device/chauffeau.png', 1),
+(11, 'Chauffe-eau au gaz','device/chauffeau.png', 1),
+(12, 'Salle de Bain/WC','device/WC.png', 2);
 
 
 --  --------------------------------------------------------------------------------------
@@ -239,55 +239,6 @@ INSERT INTO `security_degree` (`id_security_degree`, `description`) VALUES
 (1, 'Faible'),
 (2, 'Moyen'),
 (3, 'Fort');
-
-
---  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table city
---  --------------------------------------------------------------------------------------
-
-INSERT INTO `city` (`id_city`, `postcode`, `city_name`, `id_department`) VALUES
-(1, '37200', 'Tours-sud', 38);
-
-
---  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table house
---  --------------------------------------------------------------------------------------
-
-INSERT INTO `house` (`id_house`, `house_name`, `isolation_degree`, `eval_eco`, `citizen_degree`, `street`, `house_number`, `id_city`) VALUES
-(1, 'Pharmatech', 1, 'ok', 1, 'Avenue Jean Portalis', 64, 1),
-(2, 'Moison', 1, 'cool', 1, 'rue Moi', 98, 1);
-
-
-
---  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table owner
---  --------------------------------------------------------------------------------------
-
-INSERT INTO `owner` (`id_house`, `from_date`, `to_date`, `id_users`) VALUES
-(1, '2023-01-01', '0000-00-00', 1);
-
-
---  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table apartment
---  --------------------------------------------------------------------------------------
-
-INSERT INTO `apartment` (`id_apartment`, `num`, `hab`, `citizen_degree`, `security_degree`, `id_security_degree`, `id_house`, `id_apartment_type`) VALUES
-(1, 202, 4, 1, NULL, 1, 1, 1),
-(2, 4, 5, 2, NULL, 2, 2, 2);
-
-
---  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table room
---  --------------------------------------------------------------------------------------
-
-INSERT INTO `room` (`id_room`, `room_name`, `id_room_type`, `id_apartment`) VALUES
-(1, 'Cuisine', 1, 2),
-(2, 'Salle à manger', 2, 2),
-(3, 'Chambre 1', 4, 2),
-(4, 'Chambre 2', 4, 2),
-(5, 'Chambre 3', 4, 2),
-(6, 'Salle de bain', 5, 2),
-(7, 'Moilettes', 6, 2);
 
 --  --------------------------------------------------------------------------------------
 --  Ligne par défaut de la table device_type
@@ -307,8 +258,18 @@ INSERT INTO `consume` (`id_device_type`, `id_resource`) VALUES
 (5, 3),
 (10, 3),
 (11, 3),
-(10, 4);
+(10, 4),
+(12, 3);
+
+
+INSERT INTO `emit` (`id_device_type`, `id_substance`) VALUES
+(1, 1),
+(6, 1),
+(7, 1),
+(10, 1),
+(11, 1),
+(5, 3),
+(12, 3);
 
 
 COMMIT;
-

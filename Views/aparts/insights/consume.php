@@ -57,7 +57,7 @@
             text: 'Consommation de l\'appartement'
         },
         legend: {
-            enabled: false
+            enabled: true
         },
         xAxis: {
             categories: <?= json_encode($datas_date) ?>,

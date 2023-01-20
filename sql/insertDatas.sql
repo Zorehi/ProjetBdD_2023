@@ -10,14 +10,6 @@ INSERT INTO `users` (`id_users`, `username`, `email`, `password`, `tel`, `firstn
 
 
 --  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table city
---  --------------------------------------------------------------------------------------
-
-INSERT INTO `city` (`id_city`, `postcode`, `city_name`, `id_department`) VALUES
-(1, '37200', 'Tours-sud', 38);
-
-
---  --------------------------------------------------------------------------------------
 --  Ligne par défaut de la table house
 --  --------------------------------------------------------------------------------------
 
@@ -32,6 +24,7 @@ INSERT INTO `house` (`id_house`, `house_name`, `isolation_degree`, `eval_eco`, `
 
 INSERT INTO `owner` (`id_house`, `from_date`, `to_date`, `id_users`) VALUES
 (1, '2023-01-01', '0000-00-00', 1);
+(2, '2023-01-01', '0000-00-00', 4);
 
 
 --  --------------------------------------------------------------------------------------
@@ -39,7 +32,8 @@ INSERT INTO `owner` (`id_house`, `from_date`, `to_date`, `id_users`) VALUES
 --  --------------------------------------------------------------------------------------
 
 INSERT INTO `apartment` (`id_apartment`, `num`, `hab`, `citizen_degree`, `security_degree`, `id_security_degree`, `id_house`, `id_apartment_type`) VALUES
-(1, 202, 4, 1, NULL, 1, 1, 1);
+(1, 202, 4, 1, NULL, 1, 1, 1),
+(2, 4, 5, 2, NULL, 2, 2, 2);
 
 
 --  --------------------------------------------------------------------------------------
@@ -47,4 +41,10 @@ INSERT INTO `apartment` (`id_apartment`, `num`, `hab`, `citizen_degree`, `securi
 --  --------------------------------------------------------------------------------------
 
 INSERT INTO `room` (`id_room`, `room_name`, `id_room_type`, `id_apartment`) VALUES
-(1, 'Chambre 1', 4, 1);
+(1, 'Cuisine', 1, 2),
+(2, 'Salle à manger', 2, 2),
+(3, 'Chambre 1', 4, 2),
+(4, 'Chambre 2', 4, 2),
+(5, 'Chambre 3', 4, 2),
+(6, 'Salle de bain', 5, 2),
+(7, 'Moilettes', 6, 2);

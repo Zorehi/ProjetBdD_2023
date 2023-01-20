@@ -57,7 +57,7 @@
             text: 'Consommation de la maison'
         },
         legend: {
-            enabled: false
+            enabled: true
         },
         xAxis: {
             categories: <?= json_encode($datas_date) ?>,

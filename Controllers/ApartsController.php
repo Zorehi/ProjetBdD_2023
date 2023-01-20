@@ -34,6 +34,7 @@ class ApartsController extends Controller
 
         $device = new DeviceModel();
         $nbr_devices = $device->countDeviceApart($id);
+        
     
         $apartment_type = new Apartment_typeModel();
         $apartment_type->hydrate($apartment_type->findById($apart->getId_apartment_type()));

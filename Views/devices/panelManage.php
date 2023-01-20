@@ -1,7 +1,7 @@
 <div class="panel-section panel-manage" id="manage-device">
     <div class="panel-manage-header">
         <div class="panel-manage-profil">
-            <img src="" alt="">
+            <img src="/assets/image/<?= $device_type->getImage_url()?>" alt="">
             <div class="text">
                 <span class="primary"><?= $device->getDevice_name() ?></span>
                 <span class="secondary"><?= "Type d'appareil : {$device_type->getType_name()}" ?></span>
