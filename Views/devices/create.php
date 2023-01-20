@@ -14,11 +14,11 @@
                         </label>
                         <label for="description_device" class="form-label-input" data-status="empty">
                             <span>Description de l'appareil</span>
-                            <input type="text" id="description_device" name="description_device" onchange="onChangeEvent(this)" required>
+                            <input type="text" id="description_device" name="description_device" maxlength="50"  onchange="onChangeEvent(this)" required>
                         </label>
                         <label for="description_place" class="form-label-input" data-status="empty">
                             <span>Lieu où se trouve l'appareil</span>
-                            <input type="text" id="description_place" name="description_place" onchange="onChangeEvent(this)" required>
+                            <input type="text" id="description_place" name="description_place" maxlength="30" onchange="onChangeEvent(this)" required>
                         </label>
                         <label for="id_room" class="form-label-input select" data-status="empty">
                             <span>Piece où se trouve l'appareil</span>

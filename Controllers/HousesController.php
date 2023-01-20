@@ -171,7 +171,7 @@ class HousesController extends Controller
                     }
                     $house->setId_city($city->getId_city());
                     $house->hydrate($_POST);
-                    $house->create();
+                    $house->setId_house($house->create());
 
                     $houseArray = $house->findBy(['house_name' => $_POST['house_name'], 'street' => $_POST['street'], 'house_number' => $_POST['house_number']])[0];
 
