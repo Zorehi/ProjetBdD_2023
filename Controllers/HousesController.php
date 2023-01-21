@@ -46,10 +46,10 @@ class HousesController extends Controller
     public function house_aparts($id) {
 
         // Objectif retourner la liste des maisons
-        extract($this->retrieveInfoForPanelManage($idHouse));
+        extract($this->retrieveInfoForPanelManage($id));
         $apart = new ApartmentModel();
-        $apartAll = $apart->allApart($idHouse);
-        $this->render('/houses/house_aparts', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts', 'appartAll')); 
+        $apartAll = $apart->allApart($id);
+        $this->render('/houses/house_aparts', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts', 'apartAll')); 
     }
 
     public function edit($id)

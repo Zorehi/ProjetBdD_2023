@@ -51,7 +51,7 @@ class ApartmentModel extends Entity
 
     public function allApart($idHouse)
     {
-        return $this->requete("SELECT id_apartement FROM apartement WHERE id_house = id_house = {$idHouse}")->fetchAll();
+        return $this->requete("SELECT id_apartment FROM apartment WHERE id_house = id_house = {$idHouse}")->fetchAll();
     }
     
 
