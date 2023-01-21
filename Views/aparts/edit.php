@@ -22,7 +22,7 @@
                                     <div class="card-edit-list-input">
                                         <label for="num" class="form-label-input" data-status="empty">
                                             <span>Numéro</span>
-                                            <input type="text" id="num" name="num" onchange="onChangeEvent(this)" value="<?= $apart->getNum() ?>">
+                                            <input type="text" id="num" name="num" onchange="onChangeEvent(this)" maxlength="50" value="<?= $apart->getNum() ?>">
                                         </label>
                                     </div>
                                     <div class="card-edit-btn-container">
