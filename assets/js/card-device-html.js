@@ -40,22 +40,6 @@ function card_device_html(device) {
                     <span class="secondary">${device['description_place']}</span>
                 </div>
             </div>
-            <div class="device-info-row">
-                <div class="icon-container">
-                    <i class="icon"></i>
-                </div>
-                <div class="text">
-                    <span class="secondary">Consomation : 60 W/h</span>
-                </div>
-            </div>
-            <div class="device-info-row">
-                <div class="icon-container">
-                    <i class="icon"></i>
-                </div>
-                <div class="text">
-                    <span class="secondary">Emission : 10g CO2/h</span>
-                </div>
-            </div>
         </div>
     </div>`;
 }

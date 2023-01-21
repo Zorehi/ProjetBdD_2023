@@ -376,7 +376,7 @@ CREATE OR REPLACE VIEW uptime_by_device AS
 SELECT D.id_device,
        DATE(T.from_date) AS date,
        D.id_room,
-       SUM(TIME_TO_SEC(TIMEDIFF(IF(T.to_date = '0000-00-00 00:00:00', SYSDATE(), T.to_date), T.from_date))) / 3600 AS uptime
+       SUM(TIME_TO_SEC(TIMEDIFF(IF(T.to_date = '0000-00-00 00:00:00', SYSDATE(), T.to_date), T.from_date))) AS uptime
 FROM device AS D LEFT OUTER JOIN turn_on AS T ON(D.id_device = T.id_device)
 WHERE DATEDIFF(T.from_date, SYSDATE()) < 30
 GROUP BY D.id_device, date;

@@ -43,20 +43,29 @@ class HousesController extends Controller
         $this->render('/houses/index', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts'));
     }
 
-    public function house_aparts($id)
-    {
-        extract($this->retrieveInfoForPanelManage($id));
+    public function house_aparts($id) {
 
-        $this->render('/houses/house_aparts', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts'));
+        // Objectif retourner la liste des maisons
+        extract($this->retrieveInfoForPanelManage($idHouse));
+        $apart = new ApartmentModel();
+        $apartAll = $apart->allApart($idHouse);
+        $this->render('/houses/house_aparts', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts', 'appartAll')); 
     }
 
     public function edit($id)
     {
         extract($this->retrieveInfoForPanelManage($id));
-
         $city = new CityModel();
         $city->hydrate($city->findById($house->getId_city()));
-
+        if (Form::validate($_POST, ["house_name"], ['isolation_degree'],['citizen_degree'], ['eval_eco']))
+        {
+            $house->setHouse_name($_POST['house_name']);
+            $house->setIsolation_degree($_POST['isolation_degree']);
+            $house->setCitizen_degree($_POST['citizen_degree']);
+            $house->setEval_eco($_POST['eval_eco']);
+            $house->update();
+        }
+            
         $this->render('/houses/edit', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts', 'city'));
     }
 
@@ -162,7 +171,7 @@ class HousesController extends Controller
                     }
                     $house->setId_city($city->getId_city());
                     $house->hydrate($_POST);
-                    $house->create();
+                    $house->setId_house($house->create());
 
                     $houseArray = $house->findBy(['house_name' => $_POST['house_name'], 'street' => $_POST['street'], 'house_number' => $_POST['house_number']])[0];
 
