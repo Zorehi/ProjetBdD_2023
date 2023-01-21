@@ -70,19 +70,11 @@ class HousesController extends Controller
                 // La maison existe déja on verra la gestion plus tard 
             }*/
             $house_name = $_POST["house_name"];
-            $houseArray = $house->findById($house_name);
+            $houseArray = $house->findById($house_name['house_id']);
             $house->hydrate($house->findById($houseArray['house_id']));
             $house->create();
             
-        /* 
-            $isolation_degree = $_POST["isolation_degree"];
-            $eval_eco = $_POST["eval_eco"];
-            $citizen_degree = $_POST["citizen_degree"];
-            $street = $_POST["street"];
-            $house_number = $_POST["house_number"];
-            $id_city = $_POST["city_name"]; */
-
-
+        
        
        }
 
