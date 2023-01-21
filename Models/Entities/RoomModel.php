@@ -20,6 +20,10 @@ class RoomModel extends Entity
     public function countRoomApart($idApart) {
         return $this->requete("SELECT COUNT(*) as nbr_rooms FROM {$this->table} WHERE id_apartment = {$idApart}")->fetch()['nbr_rooms'];
     }
+
+    public function allRoom($idApart){
+        return $this->requete("SELECT R.id_room, R.room_name , RT.id_room_type , RT.image_url FROM {$this->table} R NATURAL JOIN room_type RT WHERE R.id_apartment = {$idApart}")->fetchAll();
+    }
     
 
     /**

@@ -6,7 +6,13 @@
         .card-edit-content[data-index="1"] {
             display: flex;
         }
+        
     }
+    
+    .card-edit-row:last-child .card-separator {
+        display: none;
+    }
+
 
     .card-edit-content {
         padding: 0 16px;
@@ -33,7 +39,7 @@
 
             .image {
                 display: block;
-                background-image: url('http://projetbdd/assets/image/edit-icon.png');
+                background-image: url('/assets/image/edit-icon.png');
                 background-position: 0 0;
                 background-size: 24px 24px;
                 width: 24px;

@@ -15,6 +15,8 @@ html.__pj-light-mode {
   --comment-background-hover: #E4E6E9;
   --comment-placeholder-focus: #65676B;
   --comment-placeholder: #65676B;
+  --primary-button-background: #1B74E4;
+  --primary-button-text: #ffffff;
   --secondary-button-background: #E4E6EB;
   --hover-overlay: rgba(0, 0, 0, .05);
   --press-overlay: rgba(0, 0, 0, .1);
@@ -55,12 +57,15 @@ html.__pj-light-mode {
   --scroll-thumb: #BCC0C4;
   --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
   --table-cloud-bg: rgba(255, 255, 255, .8);
-  --select-bg-url: url("http://projetbdd/assets/image/select-black.png");
+  --select-bg-url: url("/assets/image/select-black.png");
   --input-disabled-bg: rgba(239, 239, 239, 0.5);
   --input-disabled-border: rgba(118, 118, 118, 0.3);
   --input-disabled-color: rgb(84, 84, 84);
   --table-input-border: #CCD0D5;
   --table-select-border: #CCD0D5;
+  --infobulle-background: rgba(0, 0, 0, 0.85);
+  --infobulle-text: #E4E6EB;
+  --button-red: #EF3629;
 }
 html.__pj-dark-mode {
   --wash: #3E4042;
@@ -79,6 +84,8 @@ html.__pj-dark-mode {
   --comment-background-hover: #4E4F50;
   --comment-placeholder-focus: #8A8D91;
   --comment-placeholder: #b0b3b8;
+  --primary-button-background: #2374E1;
+  --primary-button-text: #ffffff;
   --secondary-button-background: rgba(255, 255, 255, .1);
   --hover-overlay: rgba(255, 255, 255, .1);
   --press-overlay: rgba(255, 255, 255, .1);
@@ -119,12 +126,15 @@ html.__pj-dark-mode {
   --scroll-thumb: rgba(255, 255, 255, 0.3);
   --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
   --table-cloud-bg: rgba(0, 0, 0, .8);
-  --select-bg-url: url("http://projetbdd/assets/image/select-white.png");
+  --select-bg-url: url("/assets/image/select-white.png");
   --input-disabled-bg: rgba(59, 59, 59, 0.3);
   --input-disabled-border: rgba(118, 118, 118, 0.3);
   --input-disabled-color: rgb(170, 170, 170);
   --table-input-border: #56585a;
   --table-select-border: #56585a;
+  --infobulle-background: rgba(255, 255, 255, 0.85);
+  --infobulle-text: #050505;
+  --button-red: #EF3629;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -144,6 +154,8 @@ html.__pj-dark-mode {
     --comment-background-hover: #4E4F50;
     --comment-placeholder-focus: #8A8D91;
     --comment-placeholder: #b0b3b8;
+    --primary-button-background: #2374E1;
+    --primary-button-text: #ffffff;
     --secondary-button-background: rgba(255, 255, 255, .1);
     --hover-overlay: rgba(255, 255, 255, .1);
     --press-overlay: rgba(255, 255, 255, .1);
@@ -184,7 +196,10 @@ html.__pj-dark-mode {
     --scroll-thumb: rgba(255, 255, 255, 0.3);
     --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
     --table-cloud-bg: rgba(0, 0, 0, .8);
-    --select-bg-url: url("http://projetbdd/assets/image/select-white.png");
+    --select-bg-url: url("/assets/image/select-white.png");
+    --infobulle-background: rgba(255, 255, 255, 0.85);
+    --infobulle-text: #050505;
+    --button-red: #EF3629;
   }
 }
 @media (prefers-color-scheme: light) {
@@ -205,6 +220,8 @@ html.__pj-dark-mode {
     --comment-background-hover: #E4E6E9;
     --comment-placeholder-focus: #65676B;
     --comment-placeholder: #65676B;
+    --primary-button-background: #1B74E4;
+    --primary-button-text: #ffffff;
     --secondary-button-background: #E4E6EB;
     --hover-overlay: rgba(0, 0, 0, .05);
     --press-overlay: rgba(0, 0, 0, .1);
@@ -245,7 +262,10 @@ html.__pj-dark-mode {
     --scroll-thumb: #BCC0C4;
     --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
     --table-cloud-bg: rgba(255, 255, 255, .8);
-    --select-bg-url: url("http://projetbdd/assets/image/select-black.png");
+    --select-bg-url: url("/assets/image/select-black.png");
+    --infobulle-background: rgba(0, 0, 0, 0.85);
+    --infobulle-text: #E4E6EB;
+    --button-red: #EF3629;
   }
 }
 body {
@@ -305,6 +325,9 @@ button {
   right: 0;
   bottom: 0;
   z-index: -3;
+}
+.globalContainer.main {
+  left: 300px;
 }
 
 .unselectable {
@@ -452,6 +475,9 @@ button {
   transition-property: background-color;
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1);
+}
+.login-button a[role=button] {
+  cursor: default;
 }
 .login-button a:hover {
   background-color: #36A420;
@@ -1260,7 +1286,7 @@ button {
 }
 .select-made-in-myself .option.button.show-select[data-status=selected]::after {
   content: "";
-  background-image: url("http://projetbdd/assets/image/select-made-by-myself.png");
+  background-image: url("/assets/image/select-made-by-myself.png");
   background-position: 0 0;
   position: absolute;
   background-size: auto;
@@ -1302,6 +1328,7 @@ button {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 .card.house_edit, .card.apart_edit {
   padding-bottom: 20px;
@@ -1358,33 +1385,37 @@ button {
   line-height: 20px;
   color: var(--primary-text);
 }
+.card .card-head .card-head-profil .text a.primary:hover {
+  text-decoration: underline;
+}
 .card .card-head .card-head-profil .text .secondary {
   font-size: 13px;
   font-weight: 400;
   line-height: 16px;
   color: var(--secondary-text);
 }
-.card .card-head .card-head-profil .text .secondary a {
+.card .card-head .card-head-profil .text a.secondary {
   position: relative;
   cursor: pointer;
+  width: fit-content;
 }
-.card .card-head .card-head-profil .text .secondary a:hover {
+.card .card-head .card-head-profil .text a.secondary:hover {
   text-decoration: underline;
 }
-.card .card-head .card-head-profil .text .secondary a:hover::after {
+.card .card-head .card-head-profil .text a.secondary:hover::after {
   display: block;
 }
-.card .card-head .card-head-profil .text .secondary a::after {
+.card .card-head .card-head-profil .text a.secondary::after {
   display: none;
   content: attr(data-infobulle);
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: var(--infobulle-background);
   white-space: nowrap;
   padding: 12px;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 400;
-  color: black;
+  color: var(--infobulle-text);
   transform-origin: 0 0;
   transform: translate(-45%, 2px);
   line-height: 14px;
@@ -1487,6 +1518,9 @@ button {
 .card-edit .card-edit-row[data-status=modifying] .card-edit-content[data-index="1"] {
   display: flex;
 }
+.card-edit .card-edit-row:last-child .card-separator {
+  display: none;
+}
 .card-edit .card-edit-content {
   padding: 0 16px;
   position: relative;
@@ -1511,7 +1545,7 @@ button {
 }
 .card-edit .card-edit-content .image-container .image {
   display: block;
-  background-image: url("http://projetbdd/assets/image/edit-icon.png");
+  background-image: url("/assets/image/edit-icon.png");
   background-position: 0 0;
   background-size: 24px 24px;
   width: 24px;
@@ -1676,6 +1710,154 @@ button {
 }
 .card-search .card-btn-container .button:active .hover {
   background-color: var(--hover-overlay);
+}
+
+.card-device {
+  max-width: 844px;
+}
+.card-device .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+}
+.card-device .text .primary {
+  color: var(--primary-text);
+  line-height: 20px;
+}
+.card-device .text .secondary {
+  color: var(--secondary-text);
+  line-height: 20px;
+  font-size: 15px;
+  font-weight: 400;
+}
+.card-device .card-head {
+  padding: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.card-device .card-head .card-device-profil {
+  padding: 0;
+  display: flex;
+  padding: 6px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  max-width: 100%;
+  min-width: 200px;
+  flex-basis: 0px;
+}
+.card-device .card-head .card-device-profil img {
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.card-device .card-head .card-device-profil .text {
+  margin-left: 12px;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.card-device .card-head .card-device-profil .text .primary {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  width: fit-content;
+}
+.card-device .card-head .card-device-profil .text a.primary:hover {
+  text-decoration: underline;
+}
+.card-device .card-head .card-device-profil .text .secondary {
+  font-size: 15px;
+}
+.card-device .card-head .btn-wrapper {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 6px;
+  max-width: 100%;
+  flex-basis: 0px;
+}
+.card-device .card-head .btn-wrapper .btn {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  transition: transform 50ms cubic-bezier(1, 0, 0, 1);
+  background-color: var(--secondary-button-background);
+  border-radius: 6px;
+  padding: 0 12px;
+  margin: 6px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  height: 36px;
+  cursor: pointer;
+}
+.card-device .card-head .btn-wrapper .btn .text .primary {
+  font-size: 15px;
+  font-weight: 600;
+}
+.card-device .card-head .btn-wrapper .btn .hover {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transition: background-color 100ms cubic-bezier(1, 0, 0, 1);
+}
+.card-device .card-head .btn-wrapper .btn:hover .hover {
+  background-color: var(--hover-overlay);
+}
+.card-device .card-head .btn-wrapper .btn:active {
+  transform: scale(0.96);
+}
+.card-device .card-head .btn-wrapper .btn:active .hover {
+  background-color: var(--press-overlay);
+}
+.card-device .card-head .btn-wrapper .btn-turn-on {
+  background-color: var(--primary-button-background);
+}
+.card-device .card-head .btn-wrapper .btn-turn-on[data-type=Eteindre] {
+  background-color: var(--button-red);
+}
+.card-device .card-head .btn-wrapper .btn-turn-on .text .primary {
+  color: var(--primary-button-text);
+}
+.card-device .card-head .btn-wrapper .btn-delete {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.card-device .card-head .btn-wrapper .btn-delete .icon {
+  display: block;
+  height: 20px;
+  width: 20px;
+  filter: var(--filter-red);
+}
+.card-device .card-content {
+  padding: 0 0 16px 78px;
+}
+.card-device .card-content .device-info-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 2px 0;
+}
+.card-device .card-content .device-info-row .icon-container {
+  padding: 6px;
+}
+.card-device .card-content .device-info-row .icon-container .icon {
+  height: 20px;
+  width: 20px;
+  display: block;
+  filter: var(--filter-secondary-icon);
+}
+.card-device .card-content .device-info-row .text {
+  align-self: center;
+  padding: 0 6px;
+}
+
+.card-analytics {
+  max-width: 844px;
+}
+.card-analytics .card-content {
+  padding: 8px;
 }
 
 .card-profil {
@@ -2199,7 +2381,7 @@ button {
 .navLeft .navLeft-button i {
   -webkit-filter: var(--filter-primary-icon);
   filter: var(--filter-primary-icon);
-  background-image: url("http://projetbdd/assets/image/navleft.png");
+  background-image: url("/assets/image/navleft.png");
   background-size: 16px 64px;
   background-position-x: 0;
   display: block;
@@ -2251,10 +2433,10 @@ button {
   z-index: 1;
 }
 
-.panelHouse #searchHousesButton {
+.panelHouse .panel-section-button.panelHouse-button.search-button {
   height: 56px;
 }
-.panelHouse #searchHousesButton > .img {
+.panelHouse .panel-section-button.panelHouse-button.search-button > .img {
   padding: 0;
   margin: 6px;
   background-color: var(--base-blue);
@@ -2265,17 +2447,17 @@ button {
   align-items: center;
   justify-content: center;
 }
-.panelHouse #searchHousesButton > .img > i {
+.panelHouse .panel-section-button.panelHouse-button.search-button > .img > i {
   -webkit-filter: var(--filter-always-white);
   filter: var(--filter-always-white);
 }
-.panelHouse #searchHousesButton > .text > :first-child {
+.panelHouse .panel-section-button.panelHouse-button.search-button > .text > :first-child {
   font-weight: 400;
   font-size: 15px;
   line-height: 20px;
   color: var(--blue-link);
 }
-.panelHouse #searchHousesButton > .text > :first-child > strong {
+.panelHouse .panel-section-button.panelHouse-button.search-button > .text > :first-child > strong {
   font-size: inherit;
   font-weight: 600;
   line-height: inherit;
@@ -2305,20 +2487,21 @@ button {
   font-size: 12px;
   font-weight: 400;
 }
+.panelHouse .panel-section-scroll {
+  padding: 0;
+  height: calc(100% - 48.09px);
+}
 
-.panelHouse .panel-section-scroll #containerSearchHouseButton {
+.panelHouse .panel-section-scroll .search-button {
   display: none;
 }
-.panelHouse .panel-section-scroll[data-status=search] #containerSearchHouseButton {
-  display: block;
+.panelHouse .panel-section-scroll[data-status=search] .search-button {
+  display: flex;
 }
 .panelHouse .panel-section-scroll[data-status=search] .panel-section-create {
   display: none;
 }
 .panelHouse .panel-section-scroll[data-status=search] .panel-section-separator {
-  display: none;
-}
-.panelHouse .panel-section-scroll[data-status=search] .panel-section-list > #pinHouses {
   display: none;
 }
 
@@ -2335,10 +2518,10 @@ button {
 .panel-section#panelDatabase .panel-section-list {
   height: calc(100% - 62px);
 }
-.panel-section#panelDatabase .panel-section-list #db-table {
+.panel-section#panelDatabase .panel-section-list .panel-section-list-wrapper {
   height: calc(100% - 0px);
 }
-.panel-section#panelDatabase .panel-section-list #db-table .scrollbar-container {
+.panel-section#panelDatabase .panel-section-list .panel-section-list-wrapper .scrollbar-container {
   height: calc(100% - 32px);
   padding-top: 0;
   margin-top: 10px;
@@ -2355,7 +2538,7 @@ button {
 }
 .panel-section::after {
   content: "";
-  background-image: url("http://projetbdd/assets/image/panel-shadow.png");
+  background-image: url("/assets/image/panel-shadow.png");
   width: 7px;
   right: -6px;
   background-size: 7px 1px;
@@ -2613,7 +2796,7 @@ button {
   justify-content: center;
 }
 .panelSearch .panel-section-button .icon-container .icon {
-  background-image: url("http://projetbdd/assets/image/page-search.png");
+  background-image: url("/assets/image/page-search.png");
   height: 20px;
   width: 20px;
   filter: var(--filter-primary-icon);
@@ -2687,6 +2870,10 @@ button {
   position: relative;
 }
 .panel-create .create-form#create-appart {
+  flex-direction: column-reverse;
+  max-height: calc(100% - 0px);
+}
+.panel-create .create-form#create-device {
   flex-direction: column-reverse;
   max-height: calc(100% - 0px);
 }
@@ -2883,10 +3070,10 @@ button {
 .panel-manage .panel-manage-main {
   padding: 0;
 }
-.panel-manage .panel-manage-main .panel-section-button {
+.panel-manage .panel-manage-main .panel-section-button.index {
   height: 44px;
 }
-.panel-manage .panel-manage-main .panel-section-button .primary {
+.panel-manage .panel-manage-main .panel-section-button.index .primary {
   font-weight: 500;
   font-size: 15px;
 }
@@ -2927,7 +3114,7 @@ button {
   position: relative;
 }
 .panel-manage .panel-manage-wrapper div.panel-section-button .icon .image {
-  background-image: url("http://projetbdd/assets/image/fleche.png");
+  background-image: url("/assets/image/fleche.png");
   background-size: auto;
   height: 20px;
   width: 20px;
@@ -2962,7 +3149,7 @@ button {
   width: 22px;
   height: 22px;
   filter: var(--filter-primary-icon);
-  background-image: url("http://projetbdd/assets/image/page-manage.png");
+  background-image: url("/assets/image/page-manage.png");
   background-size: 44px 132px;
 }
 .panel-manage .panel-section-button .text {

@@ -18,7 +18,7 @@ class GenderModel extends Entity
 
     public function countEachGender() {
         return $this->requete("SELECT G.description as name, COUNT(*) as y
-                               FROM Gender G RIGHT OUTER JOIN Users U ON(G.id_gender = U.id_gender)
+                               FROM gender G RIGHT OUTER JOIN users U ON(G.id_gender = U.id_gender)
                                GROUP BY G.id_gender")->fetchAll();
     }
     

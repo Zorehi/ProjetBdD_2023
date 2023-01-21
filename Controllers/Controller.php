@@ -2,12 +2,23 @@
 namespace App\Controllers;
 
 use App\Models\Associations\OwnerModel;
+use App\Models\Associations\TenantModel;
+use App\Models\Entities\Apartment_typeModel;
 use App\Models\Entities\ApartmentModel;
 use App\Models\Entities\HouseModel;
+use App\Models\Entities\RoomModel;
 use App\Models\Entities\UsersModel;
 
 abstract class Controller
 {
+    /**
+     * Fait le rendu d'une page web
+     *
+     * @param string $fichier La vue à afficher
+     * @param array $donnees Les données pour cette vue
+     * @param string $template Le template de la page web
+     * @return void
+     */
     protected function render(string $fichier, array $donnees = [], string $template = 'default')
     {
         // On extrait le contenu de $donnees
@@ -17,18 +28,42 @@ abstract class Controller
             $pageName = "Projet BdD";
         }
 
+        // gère le cookie par rapport au thème sombre ou clair
+        if (!isset($_COOKIE['color-scheme'])) {
+            setcookie(
+                'color-scheme',
+                '__pj-light-mode',
+                [
+                    'expires'=> time() + 365*24*60*60,
+                    'path' => '/'
+                ]
+            );
+        } else {
+            setcookie(
+                'color-scheme',
+                $_COOKIE['color-scheme'],
+                [
+                    'expires'=> time() + 365*24*60*60,
+                    'path' => '/'
+                ]
+            );
+        }
+        
         // On démarre le buffer de sortie
         ob_start();
         // A partir de ce point toute sortie est conservée en mémoire
-
+        
         // On crée le chemin vers la vue
         require_once ROOT.'/Views'.$fichier.'.php';
 
         $contenu = ob_get_clean();
 
         if ($template == 'default' || $template == 'analytics') {
-            $house_array = $this->retrieveInfoForNavLeft($_SESSION['user']['id']);
+            $temp = $this->retrieveInfoForNavLeft($_SESSION['user']['id']);
+            $house_array = $temp['house_array'];
+            $apart_array = $temp['apart_array'];
         }
+
         require_once ROOT.'/Views/templates/'.$template.'.php';
     }
 
@@ -57,6 +92,12 @@ abstract class Controller
         }
     }
 
+    /**
+     * Permets d'envoyer des données au format JSON pour les requêtes faites coté client
+     * 
+     * @param array donnees Les données demandé 
+     * @param string erreur Un message d'erreur
+     */
     protected function renderData(array $donnees, string $erreur = null) {
         // Headers requis
         header("Access-Control-Allow-Origin: *");
@@ -80,10 +121,10 @@ abstract class Controller
     }
 
     /**
-     * Retrieve information of this user for navLeft
+     * Récupère les informations de l'utilisateur pour afficher correctement navLeft
      *
-     * @param Number $id
-     * @return void
+     * @param Number $id l'id de l'utilisateur
+     * @return Array 
      */
     private function retrieveInfoForNavLeft($id) {
         $owner = new OwnerModel();
@@ -99,6 +140,20 @@ abstract class Controller
             $house_array[] = $array;
         }
 
-        return $house_array;
+        $tenant = new TenantModel();
+        $tenant_array = $tenant->findByIdUsers($id);
+
+        $apart_array = [];
+        $room = new RoomModel();
+        $apartment_type = new Apartment_typeModel();
+        foreach ($tenant_array as $value) {
+            $array = $apartment->findById($value['id_apartment']);
+            $array['nbr_rooms'] = $room->countRoomApart($array['id_apartment']);
+            $array['apartment_type'] = $apartment_type->findById($array['id_apartment_type'])['description'];
+            $array['house_name'] = $house->findById($array['id_house'])['house_name'];
+            $apart_array[] = $array;
+        }
+
+        return ['house_array' => $house_array, 'apart_array' => $apart_array];
     }
 }

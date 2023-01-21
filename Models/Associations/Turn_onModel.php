@@ -1,9 +1,9 @@
 <?php
-namespace App\Models\Entities;
+namespace App\Models\Associations;
 
-use App\Models\Entity;
+use App\Models\Association;
 
-class Turn_onModel extends Entity
+class Turn_onModel extends Association
 {
     protected $id_device;
     protected $from_date;
@@ -14,7 +14,13 @@ class Turn_onModel extends Entity
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
-        $this->idName = "";
+        $this->idNames = ['id_device', 'from_date'];
+    }
+
+    public function uptime($id){
+        return $this->requete("SELECT id_device, DATE(from_date) as date, to_date, SUM(TO_SECONDS(IF(to_date = '0000-00-00 00:00:00', SYSDATE(), to_date)) - TO_SECONDS(from_date)) as uptime
+                               FROM turn_on
+                               GROUP BY id_device, date;")->fetchAll();
     }
 
 
@@ -33,6 +39,7 @@ class Turn_onModel extends Entity
      */ 
     public function setTo_date($to_date)
     {
+        if ($to_date == null) $to_date = '0000-00-00 00:00:00';
         $this->to_date = $to_date;
 
         return $this;
@@ -87,13 +94,15 @@ class Turn_onModel extends Entity
         ],
         'from_date' => [
             'elementHTML' => 'input',
-            'inputType' => 'date',
-            'is_disabled' => ''
+            'inputType' => 'text',
+            'is_disabled' => '',
+            'pattern' => '^(\d{4,})-(\d{2})-(\d{2})[ ](\d{2}):(\d{2}):(\d{2})?$'
         ],
         'to_date' => [
             'elementHTML' => 'input',
-            'inputType' => 'date',
-            'is_disabled' => ''
+            'inputType' => 'text',
+            'is_disabled' => '',
+            'pattern' => '^(\d{4,})-(\d{2})-(\d{2})[ ](\d{2}):(\d{2}):(\d{2})?$'
         ]
     ];
 }

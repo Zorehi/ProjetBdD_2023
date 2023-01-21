@@ -19,13 +19,13 @@ class SearchController extends Controller
         $pageName = str_replace('%', ' ', $querry)." : résultat de la recherche | Projet BdD";
 
         $users = new UsersModel();
-        $users_array = $users->search($querry);
+        $users_array = $users->search($querry, 3);
 
         $house = new HouseModel();
         $apartment = new ApartmentModel();
-        $house_array = $house->search($querry);
+        $house_array = $house->search($querry, 3);
 
-        $apartment_array = $apartment->search($querry);
+        $apartment_array = $apartment->search($querry, 3);
         $room = new RoomModel();
 
         $this->render('/search/all', compact('pageName', 'querry', 'house_array', 'apartment', 'users_array', 'apartment_array', 'room'));

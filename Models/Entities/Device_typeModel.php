@@ -8,6 +8,7 @@ class Device_typeModel extends Entity
     protected $id_device_type;
     protected $type_name;
     protected $id_video;
+    protected $image_url;
     
     public function __construct()
     {
@@ -16,6 +17,17 @@ class Device_typeModel extends Entity
         $this->idName = "id_device_type";
     }
 
+    public function get_name_resource($id){
+        return $this->requete( " SELECT name,id_resource  FROM resource NATURAL JOIN consume WHERE id_device_type = $id ")->fetchAll();
+    }
+
+    public function get_name_substance($id){
+        return $this->requete( " SELECT name,id_substance FROM substance NATURAL JOIN emit WHERE id_device_type = $id ")->fetchAll();
+    }
+
+    public function alldevices($id){
+        return $this->requete("SELECT * FROM {$this->table} NATURAL JOIN device WHERE id_device = {$id}")->fetchAll();
+    }
     /**
      * Get the value of id_device_type
      */ 
@@ -94,4 +106,24 @@ class Device_typeModel extends Entity
             'name' => 'web_adress'
         ]
     ];
+
+    /**
+     * Get the value of image_url
+     */ 
+    public function getImage_url()
+    {
+        return $this->image_url;
+    }
+
+    /**
+     * Set the value of image_url
+     *
+     * @return  self
+     */ 
+    public function setImage_url($image_url)
+    {
+        $this->image_url = $image_url;
+
+        return $this;
+    }
 }

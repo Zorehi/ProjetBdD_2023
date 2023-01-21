@@ -1,21 +1,40 @@
-<div class="globalContainer">
-    <figure class="highcharts-figure">
-        <div id="pie-chart-container"></div>
-    </figure>
-    <figure class="highcharts-figure">
-        <div id="basic-column-container"></div>
-    </figure>
+<div class="globalContainer main">
+    <div class="scrollbar-container" id="scrollbar-analytics">
+        <div class="card-wrapper scrollbar-content" data-transition="yes">
+            <div class="card card-analytics">
+                <div class="card-content">
+                    <figure class="highcharts-figure">
+                        <div id="pie-chart-container"></div>
+                    </figure>
+                </div>
+            </div>
+            <div class="card card-analytics">
+                <div class="card-content">
+                    <figure class="highcharts-figure">
+                        <div id="basic-column-container"></div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="scrollbar-track"></div>
+        <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
+            <div></div>
+        </div>
+    </div>
 </div>
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
 <script type="text/javascript">
     document.getElementById('Analytics').dataset.status = 'selected';
+
+    const scrollbar_analytics = new ScrollBar(document.getElementById('scrollbar-analytics'), { offsetContainer: -16, offsetContent: 0});
+    scrollbar_analytics.init();
 
     Highcharts.chart('pie-chart-container', {
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false,
+            styledMode: true,
             type: 'pie'
         },
         title: {
@@ -48,6 +67,10 @@
 
     Highcharts.chart('basic-column-container', {
         chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            styledMode: true,
             type: 'column'
         },
         title: {
@@ -72,12 +95,8 @@
             }
         },
         tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y}</b></td></tr>',
-            footerFormat: '</table>',
+            pointFormat: '{series.name}: <b>{point.y}</b>',
             shared: true,
-            useHTML: true
         },
         plotOptions: {
             column: {
@@ -90,4 +109,6 @@
             data: <?= json_encode($dataRangeF) ?>
         }]
     });
+
+    scrollbar_analytics.refresh();
 </script>

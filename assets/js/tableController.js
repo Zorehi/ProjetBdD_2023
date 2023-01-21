@@ -23,7 +23,7 @@ function deleteRow(type, table, id, row) {
     
     var requete = $.ajax({
         type: 'POST',
-        url: 'tables/?type='+type+'&name='+table,
+        url: 'tables/?type='+type+'&tablename='+table,
         data: datas,
         timeout: 120000, //2 Minutes
         contentType: false,
@@ -92,6 +92,12 @@ const modify = (element, is_new = false) => {
         for (let index = 0; index < select_array.length; index++) {
             select_array[index].value = value_array[select_array[index].getAttribute('name')];
         }
+
+        const input_id_array = modify_row.querySelectorAll('input[data-name="old_id"]');
+        for (const input of input_id_array) {
+            input.value = value_array[input.getAttribute('data-id')]
+        }
+
     }
 }
 
@@ -114,11 +120,13 @@ function deleteValue() {
 
 const form = document.getElementById('formModify');
 function submitForm() {
-    const array_input = form.querySelectorAll('[disabled]');
-    for (const input of array_input) {
-        if (input_form_type.value != 'create') {
-            input.disabled = false;
+    if (form.reportValidity()) {
+        const array_input = form.querySelectorAll('[disabled]');
+        for (const input of array_input) {
+            if (input_form_type.value != 'create') {
+                input.disabled = false;
+            }
         }
+        form.submit();
     }
-    form.submit();
 }

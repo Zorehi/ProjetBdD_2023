@@ -1,4 +1,5 @@
 <div class="panel-section panel-manage" id="manage-apart">
+    <input type="hidden" id="id-to-select" value="<?= $apart->getId_apartment(). '-' . $apart->getNum() ?>">
     <div class="panel-manage-header">
         <div class="panel-manage-profil">
             <img src="assets/image/apart-default-min-photo.png" alt="">
@@ -7,12 +8,21 @@
                 <span class="secondary"><?= "{$apartment_type->getDescription()} · $nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
             </div>
         </div>
-    <?php if ($tenant->getId_users() == $_SESSION['user']['id'] || $_SESSION['user']['is_admin']) { ?>
+    <?php if (method_exists($tenant, 'getId_house') && $tenant->getId_users() != $_SESSION['user']['id']) { ?>
         <div class="panel-manage-btn-create-container">
-            <a class="panel-section-button">
+            <div class="panel-section-button" onclick="make_tenant(<?= $apart->getId_apartment() ?>)">
+                <div class="text unselectable">
+                    <span class="primary">Devenir locataire</span>
+                </div>
+                <div class="hover"></div>
+            </div>
+        </div>
+    <?php } else if ($tenant->getId_users() == $_SESSION['user']['id'] || $_SESSION['user']['is_admin']) { ?>
+        <div class="panel-manage-btn-create-container">
+            <a href="/devices/create/?id=<?= $apart->getId_apartment()?>" class="panel-section-button">
                 <img src="assets/image/plus.png" class="unselectable"></i>
                 <div class="text unselectable">
-                    <span class="primary">Ajouter une pièce</span>
+                    <span class="primary">Ajouter un équipement</span>
                 </div>
                 <div class="hover"></div>
             </a>
@@ -23,10 +33,18 @@
         <div class="scrollbar-container" id="scrollbar-manage-apart">
             <div class="scrollbar-content" data-transition="yes">
                 <div class="panel-manage-main">
-                    <a href="aparts/<?= $apart->getId_apartment() ?>" class="panel-section-button" id="Home_apart" data-status="unselected">
+                    <a href="aparts/<?= $apart->getId_apartment() ?>" class="panel-section-button index" id="Home_apart" data-status="unselected">
                         <i class="image"></i>
                         <div class="text unselectable">
                             <span class="primary">Accueil de l'appartement</span>
+                        </div>
+                        <div class="hover"></div>
+                    </a>
+                    <a href="aparts/<?= $apart->getId_apartment() ?>/apart_rooms" id="apart_rooms" class="panel-section-button" data-status="unselected">
+                        <i class="image" style="background-position-y: -22px;"></i>
+                        <div class="text unselectable">
+                            <span class="primary">Pièces de l'appartement</span>
+                            <span class="secondary" data-value="<?= $nbr_rooms ?>"><?= "$nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
                         </div>
                         <div class="hover"></div>
                     </a>
@@ -44,19 +62,11 @@
                         </div>
                         <div class="hover"></div>
                     </div>
-                    <a href="aparts/<?= $apart->getId_apartment() ?>/apart_rooms" id="apart_rooms" class="panel-section-button" data-status="unselected">
-                        <i class="image" style="background-position-y: -22px;"></i>
-                        <div class="text unselectable">
-                            <span class="primary">Pièces de l'appartement</span>
-                            <span class="secondary"><?= "$nbr_rooms pièce".($nbr_rooms > 1 ? "s" : "") ?></span>
-                        </div>
-                        <div class="hover"></div>
-                    </a>
                     <a href="aparts/<?= $apart->getId_apartment() ?>/apart_devices" id="apart_devices" class="panel-section-button" data-status="unselected">
                         <i class="image" style="background-position-y: -110px;"></i>
                         <div class="text unselectable">
                             <span class="primary">Équipements de l'appartement</span>
-                            <span class="secondary"><!-- <?= "$nbr_devices équipement".($nbr_devices > 1 ? "s" : "") ?> --></span>
+                            <span class="secondary" id="nbr_devices" data-value="<?= $nbr_devices ?>"><?= ($nbr_devices > 0 ? $nbr_devices : 'Aucun')." équipement".($nbr_devices > 1 ? "s" : "") ?></span>
                         </div>
                         <div class="hover"></div>
                     </a>

@@ -9,6 +9,7 @@ class DeviceModel extends Entity
     protected $device_name;
     protected $description_device;
     protected $description_place;
+    protected $id_room;
     protected $id_device_type;
 
 
@@ -19,10 +20,54 @@ class DeviceModel extends Entity
         $this->idName = "id_device";
     }
 
-    public function search() {
-        return $this->requete("SELECT 
-                               FROM {$this->table} D LEFT OUTER JOIN Room
-                               WHERE ")->fetchAll();
+    public function countDeviceApart($idApart) {
+        return $this->requete("SELECT COUNT(*) as nbr_devices 
+                               FROM {$this->table} D NATURAL JOIN room R
+                               WHERE R.id_apartment = {$idApart}")->fetch()['nbr_devices'];
+    }
+
+    public function search($id, $q, $order_by, $id_room, $id_device_type, $is_on, $limit, $offset) {
+        $where = '';
+        if ($id_room != 'false') $where .= " AND id_room = $id_room ";
+        if ($id_device_type != 'false') $where .= " AND id_device_type = $id_device_type ";
+        if ($is_on != 'false') $is_on == 'on' ? $where .= " AND to_date = '0000-00-00' ": $where .= " AND to_date != '0000-00-00' ";
+        return $this->requete("SELECT id_device, device_name, description_device, description_place, type_name, room_name, from_date, to_date, image_url
+                               FROM search_device 
+                               WHERE device_name LIKE '%{$q}%'
+                                     {$where}
+                                     AND id_apartment = $id
+                               ORDER BY device_name {$order_by}
+                               LIMIT $limit OFFSET $offset")->fetchAll();
+    }
+
+    public function countSearch($id, $q, $order_by, $id_room, $id_device_type, $is_on) {
+        $where = '';
+        if ($id_room != 'false') $where .= " AND id_room = $id_room ";
+        if ($id_device_type != 'false') $where .= " AND id_device_type = $id_device_type ";
+        if ($is_on != 'false') $is_on == 'on' ? $where .= " AND to_date = '0000-00-00' ": $where .= " AND to_date != '0000-00-00' OR to_date is null ";
+        return $this->requete("SELECT COUNT(id_device) as nbr_devices
+                               FROM search_device
+                               WHERE device_name LIKE '%{$q}%'
+                                     {$where}
+                                     AND id_apartment = $id
+                               ORDER BY device_name {$order_by}")->fetch();
+    }
+
+    public function TurnVerify($id){
+        return $this->requete("SELECT * FROM turn_on WHERE id_device = $id AND to_date ='0000-00-00 00:00:00'")->fetch();
+    }
+
+    public function AllDevices($id){
+        return $this->requete("SELECT * FROM device NATURAL JOIN device_type
+                               WHERE id_room IN 
+                             (SELECT id_room FROM room WHERE id_apartment = $id)")->fetchAll();
+    }  
+    public function consume($id_device) {
+        return $this->requete("SELECT * FROM uptime_by_device_with_consumption WHERE id_device = {$id_device} ORDER BY date ASC")->fetchAll();
+    }
+
+    public function emit($id_device) {
+        return $this->requete("SELECT * FROM uptime_by_device_with_emission WHERE id_device = {$id_device} ORDER BY date ASC")->fetchAll();
     }
 
     /**
@@ -103,7 +148,27 @@ class DeviceModel extends Entity
         $this->description_place = $description_place;
 
         return $this;
-    }   
+    }
+    
+    /**
+     * Get the value of id_room
+     */ 
+    public function getId_room()
+    {
+        return $this->id_room;
+    }
+
+    /**
+     * Set the value of id_room
+     *
+     * @return  self
+     */ 
+    public function setId_room($id_room)
+    {
+        $this->id_room = $id_room;
+
+        return $this;
+    }
 
     /**
      * Get the value of id_device_type
@@ -145,6 +210,12 @@ class DeviceModel extends Entity
             'elementHTML' => 'input',
             'inputType' => 'text',
             'is_disabled' => ''
+        ],
+        'id_room' => [
+            'elementHTML' => 'select',
+            'inputType' => null,
+            'is_disabled' => '',
+            'name' => 'room_name'
         ],
         'id_device_type' => [
             'elementHTML' => 'select',

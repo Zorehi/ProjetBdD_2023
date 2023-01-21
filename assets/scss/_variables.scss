@@ -16,6 +16,8 @@ html {
         --comment-background-hover: #E4E6E9;
         --comment-placeholder-focus : #65676B;
         --comment-placeholder: #65676B;
+        --primary-button-background: #1B74E4;
+        --primary-button-text: #ffffff;
         --secondary-button-background: #E4E6EB;
         --hover-overlay: rgba(0, 0, 0, .05);
         --press-overlay: rgba(0, 0, 0, .1);
@@ -56,12 +58,15 @@ html {
         --scroll-thumb: #BCC0C4;
         --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
         --table-cloud-bg: rgba(255, 255, 255, .8);
-        --select-bg-url: url('http://projetbdd/assets/image/select-black.png');
+        --select-bg-url: url('/assets/image/select-black.png');
         --input-disabled-bg: rgba(239, 239, 239, 0.5);
         --input-disabled-border: rgba(118, 118, 118, 0.3);
         --input-disabled-color: rgb(84, 84, 84);
         --table-input-border: #CCD0D5;
         --table-select-border: #CCD0D5;
+        --infobulle-background: rgba(0, 0, 0, 0.85);
+        --infobulle-text: #E4E6EB;
+        --button-red: #EF3629;
     }
 
     &.__pj-dark-mode {
@@ -81,6 +86,8 @@ html {
         --comment-background-hover: #4E4F50;
         --comment-placeholder-focus : #8A8D91;
         --comment-placeholder: #b0b3b8;
+        --primary-button-background: #2374E1;
+        --primary-button-text: #ffffff;
         --secondary-button-background: rgba(255, 255, 255, .1);
         --hover-overlay: rgba(255, 255, 255, .1);
         --press-overlay: rgba(255, 255, 255, .1);
@@ -121,12 +128,15 @@ html {
         --scroll-thumb: rgba(255, 255, 255, 0.3);
         --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
         --table-cloud-bg: rgba(0, 0, 0, .8);
-        --select-bg-url: url('http://projetbdd/assets/image/select-white.png');
+        --select-bg-url: url('/assets/image/select-white.png');
         --input-disabled-bg: rgba(59, 59, 59, 0.3);
         --input-disabled-border: rgba(118, 118, 118, 0.3);
         --input-disabled-color: rgb(170, 170, 170);
         --table-input-border: #56585a;
         --table-select-border: #56585a;
+        --infobulle-background: rgba(255, 255, 255, 0.85);
+        --infobulle-text: #050505;
+        --button-red: #EF3629;
     }
 }
 
@@ -148,6 +158,8 @@ html {
         --comment-background-hover: #4E4F50;
         --comment-placeholder-focus : #8A8D91;
         --comment-placeholder: #b0b3b8;
+        --primary-button-background: #2374E1;
+        --primary-button-text: #ffffff;
         --secondary-button-background: rgba(255, 255, 255, .1);
         --hover-overlay: rgba(255, 255, 255, .1);
         --press-overlay: rgba(255, 255, 255, .1);
@@ -188,7 +200,10 @@ html {
         --scroll-thumb: rgba(255, 255, 255, 0.3);
         --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
         --table-cloud-bg: rgba(0, 0, 0, .8);
-        --select-bg-url: url('http://projetbdd/assets/image/select-white.png');
+        --select-bg-url: url('/assets/image/select-white.png');
+        --infobulle-background: rgba(255, 255, 255, 0.85);
+        --infobulle-text: #050505;
+        --button-red: #EF3629;
     }
 }
 
@@ -210,6 +225,8 @@ html {
         --comment-background-hover: #E4E6E9;
         --comment-placeholder-focus : #65676B;
         --comment-placeholder: #65676B;
+        --primary-button-background: #1B74E4;
+        --primary-button-text: #ffffff;
         --secondary-button-background: #E4E6EB;
         --hover-overlay: rgba(0, 0, 0, .05);
         --press-overlay: rgba(0, 0, 0, .1);
@@ -250,6 +267,9 @@ html {
         --scroll-thumb: #BCC0C4;
         --filter-red: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) brightness(97%) contrast(96%) hue-rotate(-14deg) saturate(138%);
         --table-cloud-bg: rgba(255, 255, 255, .8);
-        --select-bg-url: url('http://projetbdd/assets/image/select-black.png');
+        --select-bg-url: url('/assets/image/select-black.png');
+        --infobulle-background: rgba(0, 0, 0, 0.85);
+        --infobulle-text: #E4E6EB;
+        --button-red: #EF3629;
     }
 }

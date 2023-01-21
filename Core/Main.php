@@ -12,25 +12,7 @@ use App\Models\Entities\UsersModel;
             // On démarre la session
             session_start();
 
-            if (!isset($_COOKIE['color-scheme'])) {
-                setcookie(
-                    'color-scheme',
-                    '__pj-light-mode',
-                    [
-                        'expires'=> time() + 365*24*60*60,
-                        'path' => '/'
-                    ]
-                );
-            } else {
-                setcookie(
-                    'color-scheme',
-                    $_COOKIE['color-scheme'],
-                    [
-                        'expires'=> time() + 365*24*60*60,
-                        'path' => '/'
-                    ]
-                );
-            }
+            date_default_timezone_set("Europe/Paris");
 
             if (isset($_SESSION['user'])) {
                 try {
@@ -48,7 +30,7 @@ use App\Models\Entities\UsersModel;
             // On récupère l'URL
             $uri = $_SERVER['REQUEST_URI'];
 
-            // On vérifie que uri n'est pas vide et se termine pas un /
+            // On vérifie que uri n'est pas vide et se termine par un /
             if (!empty($uri) && $uri != '/' && $uri[-1] === '/') {
                 // On enlève le /
                 $uri = substr($uri, 0, -1);

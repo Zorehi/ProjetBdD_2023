@@ -2,38 +2,38 @@
     <div class="panel-section-title">
         <h1>Maisons</h1>
     </div>
-    <div>
-        <div class="panel-section-search">
-            <label for="search_houses">
-                <div>
-                    <svg fill="currentColor" viewBox="0 0 16 16" width="1em" height="1em">
-                        <g fill-rule="evenodd" transform="translate(-448 -544)">
-                            <g fill-rule="nonzero">
-                                <path d="M10.743 2.257a6 6 0 1 1-8.485 8.486 6 6 0 0 1 8.485-8.486zm-1.06 1.06a4.5 4.5 0 1 0-6.365 6.364 4.5 4.5 0 0 0 6.364-6.363z" transform="translate(448 544)"></path>
-                                <path d="M10.39 8.75a2.94 2.94 0 0 0-.199.432c-.155.417-.23.849-.172 1.284.055.415.232.794.54 1.103a.75.75 0 0 0 1.112-1.004l-.051-.057a.39.39 0 0 1-.114-.24c-.021-.155.014-.356.09-.563.031-.081.06-.145.08-.182l.012-.022a.75.75 0 1 0-1.299-.752z" transform="translate(448 544)"></path>
-                                <path d="M9.557 11.659c.038-.018.09-.04.15-.064.207-.077.408-.112.562-.092.08.01.143.034.198.077l.041.036a.75.75 0 0 0 1.06-1.06 1.881 1.881 0 0 0-1.103-.54c-.435-.058-.867.018-1.284.175-.189.07-.336.143-.433.2a.75.75 0 0 0 .624 1.356l.066-.027.12-.061z" transform="translate(448 544)"></path>
-                                <path d="m13.463 15.142-.04-.044-3.574-4.192c-.599-.703.355-1.656 1.058-1.057l4.191 3.574.044.04c.058.059.122.137.182.24.249.425.249.96-.154 1.41l-.057.057c-.45.403-.986.403-1.411.154a1.182 1.182 0 0 1-.24-.182zm.617-.616.444-.444a.31.31 0 0 0-.063-.052c-.093-.055-.263-.055-.35.024l.208.232.207-.206.006.007-.22.257-.026-.024.033-.034.025.027-.257.22-.007-.007zm-.027-.415c-.078.088-.078.257-.023.35a.31.31 0 0 0 .051.063l.205-.204-.233-.209z" transform="translate(448 544)"></path>
-                            </g>
+    <div class="panel-section-search">
+        <label for="search_houses">
+            <div>
+                <svg fill="currentColor" viewBox="0 0 16 16" width="1em" height="1em">
+                    <g fill-rule="evenodd" transform="translate(-448 -544)">
+                        <g fill-rule="nonzero">
+                            <path d="M10.743 2.257a6 6 0 1 1-8.485 8.486 6 6 0 0 1 8.485-8.486zm-1.06 1.06a4.5 4.5 0 1 0-6.365 6.364 4.5 4.5 0 0 0 6.364-6.363z" transform="translate(448 544)"></path>
+                            <path d="M10.39 8.75a2.94 2.94 0 0 0-.199.432c-.155.417-.23.849-.172 1.284.055.415.232.794.54 1.103a.75.75 0 0 0 1.112-1.004l-.051-.057a.39.39 0 0 1-.114-.24c-.021-.155.014-.356.09-.563.031-.081.06-.145.08-.182l.012-.022a.75.75 0 1 0-1.299-.752z" transform="translate(448 544)"></path>
+                            <path d="M9.557 11.659c.038-.018.09-.04.15-.064.207-.077.408-.112.562-.092.08.01.143.034.198.077l.041.036a.75.75 0 0 0 1.06-1.06 1.881 1.881 0 0 0-1.103-.54c-.435-.058-.867.018-1.284.175-.189.07-.336.143-.433.2a.75.75 0 0 0 .624 1.356l.066-.027.12-.061z" transform="translate(448 544)"></path>
+                            <path d="m13.463 15.142-.04-.044-3.574-4.192c-.599-.703.355-1.656 1.058-1.057l4.191 3.574.044.04c.058.059.122.137.182.24.249.425.249.96-.154 1.41l-.057.057c-.45.403-.986.403-1.411.154a1.182 1.182 0 0 1-.24-.182zm.617-.616.444-.444a.31.31 0 0 0-.063-.052c-.093-.055-.263-.055-.35.024l.208.232.207-.206.006.007-.22.257-.026-.024.033-.034.025.027-.257.22-.007-.007zm-.027-.415c-.078.088-.078.257-.023.35a.31.31 0 0 0 .051.063l.205-.204-.233-.209z" transform="translate(448 544)"></path>
                         </g>
-                    </svg>
-                </div>
-                <input type="text" id="search_houses" placeholder="Rechercher des Maisons">
-            </label>
-        </div>
-        <div class="panel-section-scroll" id="panelHouse-scroll" data-status="show">
-            <div style="padding: 0 8px;" id="containerSearchHouseButton">
-                <a class="panel-section-button panelHouse-button" href="#" id="searchHousesButton">
+                    </g>
+                </svg>
+            </div>
+            <input type="text" id="search_houses" placeholder="Rechercher des Maisons">
+        </label>
+    </div>
+    <div class="panel-section-scroll scrollbar-container" id="scrollbar-panel-house">
+        <div class="scrollbar-content" data-transition="yes">
+            <div class="search-button-container" style="padding: 0 8px;">
+                <a class="panel-section-button panelHouse-button search-button" href="#" id="search-house-button">
                     <div class="img">
                         <i style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/QouyfNuGrAZ.png&quot;); background-position: -170px -187px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                     </div>
                     <div class="text">
-                        <span>Rechercher <strong></strong> dans les maisons</span>
+                        <span>Rechercher <strong id="querry-house-display"></strong> dans les maisons</span>
                     </div>
                     <div class="hover"></div>
                 </a>
             </div>
             <div class="panel-section-create">
-                <a href="/houses/create" id="btnCreateHouse" ondragstart="return false;" class="unselectable">
+                <a href="/houses/create" ondragstart="return false;" class="unselectable">
                     <span>
                         <i style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yT/r/i14dpO3gzZZ.png&quot;); background-position: 0px -1659px; background-size: auto; width: 16px; height: 16px; background-repeat: no-repeat; display: inline-block;"></i>
                         <span>Créer une nouvelle maison</span>
@@ -43,9 +43,9 @@
             </div>
             <div class="panel-section-separator"></div>
             <div class="panel-section-list">
-                <div id="myHouses" class="panel-section-list-wrapper">
+                <div class="panel-section-list-wrapper">
                     <span class="panel-section-list-title">Maisons dont vous êtes propriétaire</span>
-                    <div class="panel-section-list-container">
+                    <div class="panel-section-list-container" id="house-list">
                     <?php foreach ($house_array as $key => $value) { ?>
                         <a class="panel-section-button panelHouse-button" href="/houses/<?= $value['id_house'] ?>">
                             <img class="image" src="assets/image/house-default-min-photo.png" alt="">
@@ -58,6 +58,10 @@
                     <?php } ?>
                     </div>
                 </div>
+            </div>
+            <div class="scrollbar-track"></div>
+            <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">
+                <div></div>
             </div>
         </div>
     </div>

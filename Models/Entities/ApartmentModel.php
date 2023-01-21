@@ -22,22 +22,36 @@ class ApartmentModel extends Entity
     }
 
     public function countApartFromHouse($idHouse) {
-        return $this->requete("SELECT COUNT(*) as nbr_aparts FROM Apartment WHERE id_house = {$idHouse}")->fetch()['nbr_aparts'];
+        return $this->requete("SELECT COUNT(*) as nbr_aparts FROM apartment WHERE id_house = {$idHouse}")->fetch()['nbr_aparts'];
     }
 
     public function countFreeApartFromHouse($idHouse) {
         $today = date("Y-m-d");
         return $this->requete("SELECT COUNT(*) as nbr_free_aparts 
-                               FROM Apartment A LEFT OUTER JOIN Tenant T ON(A.id_apartment = T.id_apartment AND T.from_date <= '{$today}' AND (T.to_date > '{$today}' OR T.to_date = '0000-00-00')) 
+                               FROM apartment A LEFT OUTER JOIN tenant T ON(A.id_apartment = T.id_apartment AND T.from_date <= '{$today}' AND (T.to_date > '{$today}' OR T.to_date = '0000-00-00')) 
                                WHERE A.id_house = {$idHouse} AND T.id_users is null")->fetch()['nbr_free_aparts'];
     }
 
-    public function search($querry) {
+    public function search($querry, $limit = 100, $offset = 0) {
         return $this->requete("SELECT *
-                               FROM {$this->table} A INNER JOIN House H ON(A.id_house = H.id_house) NATURAL JOIN Apartment_type
+                               FROM {$this->table} A INNER JOIN house H ON(A.id_house = H.id_house) NATURAL JOIN apartment_type
                                WHERE house_name LIKE '%{$querry}%' OR
                                      CONCAT('N°', num, ' - ', house_name) LIKE '%{$querry}%' OR
-                                     num LIKE '%{$querry}%'")->fetchAll();
+                                     num LIKE '%{$querry}%'
+                                     LIMIT $limit OFFSET $offset")->fetchAll();
+    }
+
+    public function consume($id_apartment) {
+        return $this->requete("SELECT * FROM uptime_by_apartment_with_consumption WHERE id_apartment = {$id_apartment} ORDER BY date ASC")->fetchAll();
+    }
+
+    public function emit($id_apartment) {
+        return $this->requete("SELECT * FROM uptime_by_apartment_with_emission WHERE id_apartment = {$id_apartment} ORDER BY date ASC")->fetchAll();
+    }
+
+    public function allApart($idHouse)
+    {
+        return $this->requete("SELECT id_apartment FROM apartment WHERE id_house = id_house = {$idHouse}")->fetchAll();
     }
     
 

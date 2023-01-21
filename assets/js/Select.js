@@ -18,15 +18,15 @@ class Select
         switch (this.type) {
             case 'select':
                 this.value = this.options[this.selectedIndex].dataset.value;
-                this.input.value = this.value;
                 this.options[this.selectedIndex].dataset.status = 'selected';
                 this.select_text.textContent = this.options[this.selectedIndex].querySelector('.text.primary').textContent;
                 break;
             case 'filter':
                 this.select_defaultText = this.select_text.textContent;
                 break;
-
         }
+        
+        this.input.value = this.value;
 
         this.select.addEventListener('click', this.clickOnSelectBind);
         this.options.forEach(element => {

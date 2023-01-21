@@ -10,10 +10,11 @@
     <title><?= $pageName ?></title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/dark-unica.css">
+    <link rel="stylesheet" href="assets/css/highcharts-theme.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/364f5f0809.js" crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="assets/js/ScrollBar.js"></script>
+    <script src="assets/js/highcharts.js"></script>
     <script src="assets/js/util.js"></script>
 </head>
 
@@ -28,9 +29,11 @@
 
     <script src="assets/js/navLeft/navLeft.js"></script>
     <script src="assets/js/navLeft/panelHouse.js"></script>
-    <?php if ($_SESSION['user']['is_admin']) { ?>
+<?php if (count($apart_array) > 0) { ?>
+    <script src="assets/js/navLeft/panelApartment.js"></script>
+<?php } if ($_SESSION['user']['is_admin']) { ?>
     <script src="assets/js/navLeft/panelDatabase.js"></script>
-    <?php } ?>
+<?php } ?>
     <script src="assets/js/navTop/navTop.js"></script>
 </body>
 

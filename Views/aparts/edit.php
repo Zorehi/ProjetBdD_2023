@@ -11,7 +11,6 @@
                     <form action="" method="POST" class="card-edit">
                         <ul>
                             <li class="card-edit-row">
-                                input
                                 <div class="card-edit-content" data-index="0">
                                     <span class="card-edit-content-title">Numéro de l'appartement</span>
                                     <div class="image-container" onclick="onClickModify(this.parentElement)">
@@ -23,7 +22,7 @@
                                     <div class="card-edit-list-input">
                                         <label for="num" class="form-label-input" data-status="empty">
                                             <span>Numéro</span>
-                                            <input type="text" id="num" name="num" onchange="onChangeEvent(this)" value="<?= $apart->getNum() ?>">
+                                            <input type="text" id="num" name="num" onchange="onChangeEvent(this)" maxlength="50" value="<?= $apart->getNum() ?>">
                                         </label>
                                     </div>
                                     <div class="card-edit-btn-container">
@@ -74,7 +73,7 @@
                                     <div class="card-edit-list-input">
                                         <label for="num" class="form-label-input" data-status="empty">
                                             <span>Degré de sécurité</span>
-                                            <input type="text" id="num" name="num" onchange="onChangeEvent(this)" value="<?= $apart->getId_security_degree() ?>">
+                                            <input type="text" id="id_security_degree" name="id_security_degree" onchange="onChangeEvent(this)" value="<?= $apart->getId_security_degree() ?>">
                                         </label>
                                     </div>
                                     <div class="card-edit-btn-container">
@@ -100,6 +99,12 @@
 
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
+    const id_to_select = document.getElementById(document.getElementById('id-to-select').value);
+    if (id_to_select) {
+        id_to_select.dataset.status = 'selected'
+        id_to_select.onclick = () => { return false };
+    }
+
     const scrollbar_manage_apart = new ScrollBar(document.getElementById('scrollbar-manage-apart'), { offsetContainer: -16, offsetContent: 0});
     scrollbar_manage_apart.init();
 

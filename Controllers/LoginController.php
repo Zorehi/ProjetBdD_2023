@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Form;
 use App\Models\Entities\UsersModel;
+use DateTime;
 
 class LoginController extends Controller
 {
@@ -46,15 +47,18 @@ class LoginController extends Controller
                         // format the date to 'year-month-day'
 			            $birthday = date("Y-m-d", mktime(0, 0, 0, $month, $day, $year));
 
+                        $birthday_datetime = new DateTime($birthday);
+                        $today = new DateTime(date('Y-m-d'));
+                        $diff = $today->diff($birthday_datetime);
+                        if ($diff->y < 18) return;
+
+
                         $user->hydrate($_POST);
 
                         $user->setBirthday($birthday)
                              ->setPassword($pass);
 
-                        $user->create();
-
-                        $userArray = $user->findBy(['email' => $user->getEmail()]);
-                        $user->setId_users($userArray['id_users']);
+                        $user->setId_users($user->create());
 
                         $user->setSession();
                         header("Location: /");

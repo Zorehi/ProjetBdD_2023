@@ -1,6 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS `projetbdd` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `projetbdd`;
 
+START TRANSACTION;
 
 --  --------------------------------------------------------------------------------------
 --  Structure de la table apartment_type
@@ -21,6 +22,7 @@ DROP TABLE IF EXISTS `room_type`;
 CREATE TABLE room_type(
    `id_room_type` INT AUTO_INCREMENT,
    `description` VARCHAR(50)  NOT NULL,
+   `image_url` VARCHAR(50)  NOT NULL,
    PRIMARY KEY(`id_room_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -142,6 +144,7 @@ DROP TABLE IF EXISTS `device_type`;
 CREATE TABLE device_type(
    `id_device_type` INT AUTO_INCREMENT,
    `type_name` VARCHAR(50)  NOT NULL,
+   `image_url` VARCHAR(50)  NOT NULL,
    `id_video` INT NOT NULL,
    PRIMARY KEY(`id_device_type`),
    FOREIGN KEY(`id_video`) REFERENCES video(`id_video`)
@@ -189,13 +192,12 @@ CREATE TABLE apartment(
    `num` INT NOT NULL,
    `hab` INT NOT NULL,
    `citizen_degree` INT NOT NULL,
-   `security_degree` INT,
    `id_security_degree` INT NOT NULL,
    `id_house` INT NOT NULL,
    `id_apartment_type` INT NOT NULL,
    PRIMARY KEY(`id_apartment`),
    FOREIGN KEY(`id_security_degree`) REFERENCES security_degree(`id_security_degree`),
-   FOREIGN KEY(`id_house`) REFERENCES house(`id_house`),
+   FOREIGN KEY(`id_house`) REFERENCES house(`id_house`) ON DELETE CASCADE,
    FOREIGN KEY(`id_apartment_type`) REFERENCES apartment_type(`id_apartment_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -211,7 +213,7 @@ CREATE TABLE room(
    `id_apartment` INT NOT NULL,
    PRIMARY KEY(`id_room`),
    FOREIGN KEY(`id_room_type`) REFERENCES room_type(`id_room_type`),
-   FOREIGN KEY(`id_apartment`) REFERENCES apartment(`id_apartment`)
+   FOREIGN KEY(`id_apartment`) REFERENCES apartment(`id_apartment`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
@@ -225,7 +227,9 @@ CREATE TABLE device(
    `description_device` VARCHAR(50)  NOT NULL,
    `description_place` VARCHAR(30) ,
    `id_device_type` INT NOT NULL,
+   `id_room` INT NOT NULL,
    PRIMARY KEY(`id_device`),
+   FOREIGN KEY(`id_room`) REFERENCES room(`id_room`) ON DELETE CASCADE,
    FOREIGN KEY(`id_device_type`) REFERENCES device_type(`id_device_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -240,8 +244,8 @@ CREATE TABLE owner(
    `to_date` DATE NOT NULL DEFAULT '0000-00-00',
    `id_users` INT,
    PRIMARY KEY(`id_house`, `from_date`),
-   FOREIGN KEY(`id_house`) REFERENCES house(`id_house`),
-   FOREIGN KEY(`id_users`) REFERENCES users(`id_users`)
+   FOREIGN KEY(`id_house`) REFERENCES house(`id_house`) ON DELETE CASCADE,
+   FOREIGN KEY(`id_users`) REFERENCES users(`id_users`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
@@ -255,7 +259,7 @@ CREATE TABLE tenant(
    `to_date` DATE NOT NULL DEFAULT '0000-00-00',
    `id_users` INT,
    PRIMARY KEY(`id_apartment`, `from_date`),
-   FOREIGN KEY(`id_apartment`) REFERENCES apartment(`id_apartment`),
+   FOREIGN KEY(`id_apartment`) REFERENCES apartment(`id_apartment`) ON DELETE CASCADE,
    FOREIGN KEY(`id_users`) REFERENCES users(`id_users`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -299,19 +303,6 @@ CREATE TABLE consume(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
---  Structure de la table has_device
---  --------------------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `has_device`;
-CREATE TABLE has_device(
-   `id_room` INT,
-   `id_device` INT,
-   PRIMARY KEY(`id_room`, `id_device`),
-   FOREIGN KEY(`id_room`) REFERENCES room(`id_room`),
-   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---  --------------------------------------------------------------------------------------
 --  Structure de la table turn_on
 --  --------------------------------------------------------------------------------------
 
@@ -321,7 +312,7 @@ CREATE TABLE turn_on(
    `from_date` DATETIME,
    `to_date` DATETIME,
    PRIMARY KEY(`id_device`, `from_date`),
-   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`)
+   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --  --------------------------------------------------------------------------------------
@@ -334,7 +325,7 @@ CREATE TABLE emission(
    `id_substance` INT,
    `emission_per_hour` DOUBLE NOT NULL,
    PRIMARY KEY(`id_device`, `id_substance`),
-   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`),
+   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`) ON DELETE CASCADE,
    FOREIGN KEY(`id_substance`) REFERENCES substance(`id_substance`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -348,6 +339,130 @@ CREATE TABLE consumption(
    `id_resource` INT,
    `consumption_per_hour` DOUBLE NOT NULL,
    PRIMARY KEY(`id_device`, `id_resource`),
-   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`),
+   FOREIGN KEY(`id_device`) REFERENCES device(`id_device`) ON DELETE CASCADE,
    FOREIGN KEY(`id_resource`) REFERENCES resource(`id_resource`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue turn_on_desc
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW turn_on_desc AS
+SELECT id_device, from_date, to_date
+FROM turn_on
+GROUP BY id_device
+ORDER BY id_device DESC;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue search_device
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW search_device AS
+SELECT R.id_apartment, D.id_device, D.device_name, D.description_device, D.description_place, D.id_device_type, DT.type_name, D.id_room, R.room_name, T.from_date, T.to_date , DT.image_url
+FROM device AS D LEFT OUTER JOIN room R ON(D.id_room = R.id_room)
+				     LEFT OUTER JOIN device_type AS DT ON(D.id_device_type = DT.id_device_type)
+                 LEFT OUTER JOIN turn_on_desc AS T ON(D.id_device = T.id_device);
+
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_device
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_device AS
+SELECT D.id_device,
+       DATE(T.from_date) AS date,
+       D.id_room,
+       SUM(TIME_TO_SEC(TIMEDIFF(IF(T.to_date = '0000-00-00 00:00:00', SYSDATE(), T.to_date), T.from_date))) AS uptime
+FROM device AS D LEFT OUTER JOIN turn_on AS T ON(D.id_device = T.id_device)
+WHERE DATEDIFF(T.from_date, SYSDATE()) < 30
+GROUP BY D.id_device, date;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_device_with_emission
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_device_with_emission AS
+SELECT UP.id_device,
+	    E.id_substance,
+       UP.date,
+       UP.id_room,
+       UP.uptime * E.emission_per_hour AS emission
+FROM uptime_by_device AS UP LEFT OUTER JOIN emission AS E ON(UP.id_device = E.id_device)
+GROUP BY UP.id_device, E.id_substance, UP.date;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_device_with_consumption
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_device_with_consumption AS
+SELECT UP.id_device,
+	    C.id_resource,
+       UP.date,
+       UP.id_room,
+       UP.uptime * C.consumption_per_hour AS consumption
+FROM uptime_by_device AS UP LEFT OUTER JOIN consumption AS C ON(UP.id_device = C.id_device)
+GROUP BY UP.id_device, C.id_resource, UP.date;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_apartment_with_emission
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_apartment_with_emission AS
+SELECT R.id_apartment,
+       UP.id_substance,
+       UP.date,
+       A.id_house,
+       SUM(UP.emission) AS emission
+FROM uptime_by_device_with_emission AS UP LEFT OUTER JOIN room AS R ON (UP.id_room = R.id_room)
+							                     LEFT OUTER JOIN apartment AS A ON(R.id_apartment = A.id_apartment)
+GROUP BY R.id_apartment, UP.id_substance, UP.date;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_apartment_with_consumption
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_apartment_with_consumption AS
+SELECT R.id_apartment,
+       UP.id_resource,
+       UP.date,
+       A.id_house,
+       SUM(UP.consumption) AS consumption
+FROM uptime_by_device_with_consumption AS UP LEFT OUTER JOIN room AS R ON (UP.id_room = R.id_room)
+							                        LEFT OUTER JOIN apartment AS A ON(R.id_apartment = A.id_apartment)
+GROUP BY R.id_apartment, UP.id_resource, UP.date;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_house_with_emission
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_house_with_emission AS
+SELECT H.id_house,
+       UP.id_substance,
+       UP.date,
+       SUM(UP.emission) AS emission
+FROM uptime_by_apartment_with_emission AS UP LEFT OUTER JOIN house AS H ON(UP.id_house = H.id_house)
+GROUP BY H.id_house, UP.id_substance, UP.date;
+
+
+--  --------------------------------------------------------------------------------------
+--  Structure de la vue uptime_by_house_with_consumption
+--  --------------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW uptime_by_house_with_consumption AS
+SELECT H.id_house,
+       UP.id_resource,
+       UP.date,
+       SUM(UP.consumption) AS consumption
+FROM uptime_by_apartment_with_consumption AS UP LEFT OUTER JOIN house AS H ON(UP.id_house = H.id_house)
+GROUP BY H.id_house, UP.id_resource, UP.date;
+
+COMMIT;

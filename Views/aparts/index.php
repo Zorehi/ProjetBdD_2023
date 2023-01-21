@@ -14,6 +14,12 @@
 
 <script text="text/javascript">
     document.getElementById('navLeft').dataset.always = 'small';
+    const id_to_select = document.getElementById(document.getElementById('id-to-select').value);
+    if (id_to_select) {
+        id_to_select.dataset.status = 'selected'
+        id_to_select.onclick = () => { return false };
+    }
+    
     const scrollbar_manage_apart = new ScrollBar(document.getElementById('scrollbar-manage-apart'), { offsetContainer: -16, offsetContent: 0});
     scrollbar_manage_apart.init();
 
@@ -31,5 +37,26 @@
             element.dataset.status = 'hidden';
         }
         scrollbar_manage_apart.refresh();
+    }
+
+    function make_tenant(id_apartment) {
+        const url = `aparts/make_tenant`;
+        const datas = new FormData();
+        datas.append('id_apartment', id_apartment);
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: datas,
+            timeout: 120000, //2 Minutes
+            contentType: false,
+            processData: false
+        })
+        .done(() => {
+            document.location.href = '/aparts/'+id_apartment;
+        })
+        .fail((error) => {
+            alert('Impossible de devenir locataire sur cette appartement');
+        });
     }
 </script>

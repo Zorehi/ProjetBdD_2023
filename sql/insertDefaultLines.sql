@@ -13,17 +13,6 @@ INSERT INTO `gender` (`id_gender`, `description`) VALUES
 
 
 --  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table users
---  --------------------------------------------------------------------------------------
-
--- Mot de passe 'jeje' !
-INSERT INTO `users` (`id_users`, `username`, `email`, `password`, `tel`, `firstname`, `lastname`, `birthday`, `is_admin`, `is_active`, `id_gender`) VALUES
-(1, 'Zorehi', 'jeremy284@hotmail.com', '$argon2i$v=19$m=65536,t=4,p=1$YjNtV3F2aTRyWndhOUp5ZQ$Pjf2aDcV5EPwNeSdqDEBeeg+52jukZih7lUSCGuTO3Y', '0681104817', 'Jérémy', 'Legrix', '2000-07-22', 1, 1, 1),
-(4, 'Moi', 'riafudm@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$YjNtV3F2aTRyWndhOUp5ZQ$Pjf2aDcV5EPwNeSdqDEBeeg+52jukZih7lUSCGuTO3Y', '0633760167', 'Cyril', 'Jacques', '2001-08-29', 1, 1, 1),
-(2, 'Princess', 'amandinelegrix@hotmail.com', '$argon2i$v=19$m=65536,t=4,p=1$YjNtV3F2aTRyWndhOUp5ZQ$Pjf2aDcV5EPwNeSdqDEBeeg+52jukZih7lUSCGuTO3Y', '0610101010', 'Amandine', 'Legrix', '2002-04-01', 0, 1, 2);
-
-
---  --------------------------------------------------------------------------------------
 --  Ligne par défaut de la table region
 --  --------------------------------------------------------------------------------------
 
@@ -59,7 +48,8 @@ INSERT INTO `region` (`id_region`, `region_name`) VALUES
 INSERT INTO `resource` (`id_resource`, `name`, `description`, `min_value`, `max_value`) VALUES
 (1, 'Electricite', 'Electricite', 0, 10000),
 (2, 'Gaz', 'Gaz', 0, 10000),
-(3, 'Eau', 'Eau', 0, 10000);
+(3, 'Eau', 'Eau', 0, 10000),
+(4, 'Fioul', 'Fioul', 0, 10000);
 
 
 --  --------------------------------------------------------------------------------------
@@ -68,7 +58,8 @@ INSERT INTO `resource` (`id_resource`, `name`, `description`, `min_value`, `max_
 
 INSERT INTO `substance` (`id_substance`, `name`, `description`, `min_value`, `max_value`, `critical_value`, `model_value`) VALUES
 (1, 'CO2', 'Dioxyde de Carbone', 0, 10000, 8000, 200),
-(2, 'NO3-', 'Oxyde d\'azote', 0, 10000, 8000, 200);
+(2, 'NO3-', 'Oxyde d\'azote', 0, 10000, 8000, 200),
+(3, 'Eau usée', 'Eau usée', 0, 10000, 8000, 200);
 
 
 --  --------------------------------------------------------------------------------------
@@ -92,13 +83,13 @@ INSERT INTO `apartment_type` (`id_apartment_type`, `description`) VALUES
 --  Ligne par défaut de la table room_type
 --  --------------------------------------------------------------------------------------
 
-INSERT INTO `room_type` (`id_room_type`, `description`) VALUES
-(1, 'Cuisine'),
-(2, 'Salle a Manger'),
-(3, 'Salon'),
-(4, 'Chambre'),
-(5, 'Salle de bain'),
-(6, 'Toilettes');
+INSERT INTO `room_type` (`id_room_type`, `description`, `image_url`) VALUES
+(1, 'Cuisine', 'room/cuisine.png'),
+(2, 'Salle a Manger', 'room/salle-a-manger.png'),
+(3, 'Salon', 'room/salon.png'),
+(4, 'Chambre', 'room/chambre.png'),
+(5, 'Salle de bain', 'room/salle-de-bain.png'),
+(6, 'Toilettes', 'room/toilettes.png');
 
 
 --  --------------------------------------------------------------------------------------
@@ -111,7 +102,11 @@ INSERT INTO `video` (`id_video`, `web_adress`) VALUES
 (3, 'https://www.youtube.com/electroenager'),
 (4, 'https://www.youtube.com/multimedia'),
 (5, 'https://www.youtube.com/chauffe-eau'),
-(6, 'https://www.youtube.com/machine-a-laver');
+(6, 'https://www.youtube.com/machine-a-laver'),
+(7, 'https://www.youtube.com/multimedia'),
+(8, 'https://www.youtube.com/chauffe-eau'),
+(9, 'https://www.youtube.com/machine-a-laver'),
+(10, 'https://www.youtube.com/multimedia');
 
 
 --  --------------------------------------------------------------------------------------
@@ -221,13 +216,19 @@ INSERT INTO `department` (`id_department`, `department_code`, `department_name`,
 --  Ligne par défaut de la table device_type
 --  --------------------------------------------------------------------------------------
 
-INSERT INTO `device_type` (`id_device_type`, `type_name`, `id_video`) VALUES
-(1, 'Chauffage', 1),
-(2, 'Lampe', 2),
-(3, 'Electromenager', 3),
-(4, 'Multimedia', 4),
-(5, 'Chauffe eau', 5),
-(6, 'Machine à laver', 6);
+INSERT INTO `device_type` (`id_device_type`, `type_name`,`image_url`, `id_video`) VALUES
+(1, 'Chauffe-eau électrique','device/Chauffeau.png', 1),
+(2, 'Éclairage','device/Lampe.png', 2),
+(3, 'Electromenager','device/Electromenager.png', 3),
+(4, 'Multimedia','device/Multimédia.png', 4),
+(5, 'Electromenager - Lavage','device/Lavage.png', 5),
+(6, 'Chauffage éléctrique','device/Radiateur.png', 6),
+(7, 'Chauffage au gaz','device/Radiateur.png', 7),
+(8, 'Plaque à gaz','device/Plaque.png', 8),
+(9, 'Plaque électrique','device/Plaque.png', 9),
+(10, 'Chauffe-eau au fioul','device/chauffeau.png', 1),
+(11, 'Chauffe-eau au gaz','device/chauffeau.png', 1),
+(12, 'Salle de Bain/WC','device/WC.png', 2);
 
 
 --  --------------------------------------------------------------------------------------
@@ -239,37 +240,185 @@ INSERT INTO `security_degree` (`id_security_degree`, `description`) VALUES
 (2, 'Moyen'),
 (3, 'Fort');
 
+--  --------------------------------------------------------------------------------------
+--  Ligne par défaut de la table consume
+--  --------------------------------------------------------------------------------------
+
+INSERT INTO `consume` (`id_device_type`, `id_resource`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(9, 1),
+(7, 2),
+(8, 2),
+(11, 2),
+(1, 3),
+(5, 3),
+(10, 3),
+(11, 3),
+(10, 4),
+(12, 3);
 
 --  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table city
+--  Ligne par défaut de la table emit
 --  --------------------------------------------------------------------------------------
+
+INSERT INTO `emit` (`id_device_type`, `id_substance`) VALUES
+(1, 1),
+(6, 1),
+(7, 1),
+(10, 1),
+(11, 1),
+(5, 3),
+(12, 3);
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id_users`, `username`, `email`, `password`, `tel`, `firstname`, `lastname`, `birthday`, `is_admin`, `is_active`, `create_time`, `id_gender`) VALUES
+(1, 'Admin', 'Admin@Admin.fr', '$argon2i$v=19$m=65536,t=4,p=1$REYudFZiWUZVWUVkekVlRA$uiNr8SJs8FuFXB6XDHajZvZsyiD+t5zma6QpZKXE6sE', '0000000000', 'Admin', 'Admin', '1989-09-15', 1, 1, '2023-01-18 11:11:03', 3),
+(2, 'Pierre', 'Pierre@Palmade.fr', '$argon2i$v=19$m=65536,t=4,p=1$cnZZUVE1dTZvaktGcWFTQQ$x+7Y3Uo8UJfBUVgR82dS67aN5VVFzjBGsYQhKn8kdBQ', '1111111111', 'Pierre', 'Palmade', '1975-11-17', 0, 1, '2023-01-18 11:12:35', 1),
+(3, 'Seb_la_délire', 'Sebastien@Patoche.fr', '$argon2i$v=19$m=65536,t=4,p=1$Z2ovWHhtQWhZVWlocjZVNQ$LSgnQscBUyD0NNNO3BVUjgbEWTPXTyeJWfykLvgc7tY', '4554545454', 'Sebastien', 'Patoche', '2001-08-17', 0, 1, '2023-01-18 11:47:46', 1),
+(4, 'Amandine', 'amandine@hotmail.com', '$argon2i$v=19$m=65536,t=4,p=1$bXl5UTg3QXVKOVV1NjNrNA$yTQ9ViDUB73qVyL1Nu89Dn7GZbELoVwxpnG5FXg6/0U', '0606060606', 'Amandine', 'Lacloche', '2002-04-01', 0, 1, '2023-01-18 11:50:43', 2);
+
+--
+-- Déchargement des données de la table `city`
+--
 
 INSERT INTO `city` (`id_city`, `postcode`, `city_name`, `id_department`) VALUES
-(1, '37200', 'Tours-sud', 38);
+(1, '37000', 'Tours', 38);
 
-
---  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table house
---  --------------------------------------------------------------------------------------
+--
+-- Déchargement des données de la table `house`
+--
 
 INSERT INTO `house` (`id_house`, `house_name`, `isolation_degree`, `eval_eco`, `citizen_degree`, `street`, `house_number`, `id_city`) VALUES
-(1, 'Pharmatech', 1, 'ok', 1, 'Avenue Jean Portalis', 64, 1),
-(1, 'Moison', 1, 'cool', 1, 'rue Moi', 98, 1);
+(1, 'PierreMaison', 5, 'Ok', 4, 'Rue Pierre Palmade', 18, 1);
 
-
---  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table owner
---  --------------------------------------------------------------------------------------
+--
+-- Déchargement des données de la table `owner`
+--
 
 INSERT INTO `owner` (`id_house`, `from_date`, `to_date`, `id_users`) VALUES
-(1, '2023-01-01', '0000-00-00', 1);
+(1, '2023-01-18', '0000-00-00', 2);
 
+--
+-- Déchargement des données de la table `apartment`
+--
 
---  --------------------------------------------------------------------------------------
---  Ligne par défaut de la table apartment
---  --------------------------------------------------------------------------------------
+INSERT INTO `apartment` (`id_apartment`, `num`, `hab`, `citizen_degree`, `id_security_degree`, `id_house`, `id_apartment_type`) VALUES
+(1, 9, 5, 1, 3, 1, 4),
+(2, 6, 3, 7, 3, 1, 4);
 
-INSERT INTO `apartment` (`id_apartment`, `num`, `hab`, `citizen_degree`, `security_degree`, `id_security_degree`, `id_house`, `id_apartment_type`) VALUES
-(1, 202, 4, 1, NULL, 1, 1, 1);
+--
+-- Déchargement des données de la table `tenant`
+--
+
+INSERT INTO `tenant` (`id_apartment`, `from_date`, `to_date`, `id_users`) VALUES
+(1, '2023-01-18', '0000-00-00', 3);
+
+--
+-- Déchargement des données de la table `room`
+--
+
+INSERT INTO `room` (`id_room`, `room_name`, `id_room_type`, `id_apartment`) VALUES
+(1, 'Cuisine de Pierre', 1, 1),
+(2, 'Salle à Manger de Pierre', 2, 1),
+(3, 'Salon de Pierre', 3, 1),
+(4, 'Chambre de Pierre', 4, 1),
+(5, 'Chambre de Pierre 2', 4, 1),
+(6, 'Chambre de Pierre 3', 4, 1),
+(7, 'Salle de Bain de Pierre', 5, 1),
+(8, 'Toilettes de Pierre', 6, 1),
+(9, 'Cuisine', 1, 2),
+(10, 'salle à manger', 2, 2),
+(11, 'Salon', 3, 2),
+(12, 'Chambre', 4, 2),
+(13, 'Salle de Bain', 5, 2),
+(14, 'Toilettes', 6, 2);
+
+--
+-- Déchargement des données de la table `device`
+--
+
+INSERT INTO `device` (`id_device`, `device_name`, `description_device`, `description_place`, `id_device_type`, `id_room`) VALUES
+(1, 'Lampe', 'Lampe de Salon', 'Au mur', 2, 3),
+(2, 'Frigo', 'Un frigo', 'Au sol', 3, 1),
+(3, 'Lampe', 'Une lampe', 'Sur un mobilier', 2, 4),
+(4, 'Lampe', 'Une lampe', 'Sur un mobilier', 2, 5),
+(5, 'Lampe', 'Une lampe', 'Sur un mobilier', 2, 6),
+(6, 'Chauffe-eau', 'Chauffe-eau', 'Au sol', 11, 1),
+(7, 'Plaque électrique', 'Plaque électrique', 'Sur un meuble', 9, 1),
+(8, 'Douche', 'Une douche', 'Au sol', 12, 7),
+(9, 'Machine à laver', 'Machine à Laver', 'Au sol', 5, 7),
+(10, 'Télé', 'Télé', 'Attaché au mur', 4, 3),
+(11, 'Toilettes', 'Toilettes', 'Au sol', 12, 8),
+(12, 'Machine à laver', 'Machine à Laver', 'Au sol', 5, 9),
+(13, 'Douche', 'Douche', 'Au sol', 12, 13),
+(14, 'Chauffe-eau', 'Chauffe-eau', 'Au sol', 10, 9),
+(15, 'Télé', 'Tele', 'Au sol', 4, 9),
+(16, 'Tele', 'Tele', 'Au sol', 4, 11);
+
+--
+-- Déchargement des données de la table `turn_on`
+--
+
+INSERT INTO `turn_on` (`id_device`, `from_date`, `to_date`) VALUES
+(3, '2023-01-18 11:32:00', '2023-01-18 11:32:01'),
+(6, '2023-01-18 11:32:10', '2023-01-18 11:32:12'),
+(6, '2023-01-18 11:43:49', '2023-01-18 11:43:51'),
+(8, '2023-01-18 11:32:13', '2023-01-18 11:32:14'),
+(9, '2023-01-18 11:32:06', '2023-01-18 11:32:06'),
+(10, '2023-01-18 11:32:26', '2023-01-18 11:32:30'),
+(11, '2023-01-18 11:32:24', '2023-01-18 11:32:24'),
+(12, '2023-01-18 11:38:50', '2023-01-18 11:38:51'),
+(13, '2023-01-18 11:38:43', '2023-01-18 11:38:45'),
+(14, '2023-01-18 11:38:40', '2023-01-18 11:38:44'),
+(15, '2023-01-18 11:38:46', '2023-01-18 11:38:49'),
+(16, '2023-01-18 11:38:47', '2023-01-18 11:38:48');
+
+--
+-- Déchargement des données de la table `emission`
+--
+
+INSERT INTO `emission` (`id_device`, `id_substance`, `emission_per_hour`) VALUES
+(6, 1, 120),
+(8, 3, 50),
+(9, 3, 50),
+(11, 3, 51),
+(12, 3, 60),
+(13, 3, 50),
+(14, 1, 15);
+
+--
+-- Déchargement des données de la table `consumption`
+--
+
+INSERT INTO `consumption` (`id_device`, `id_resource`, `consumption_per_hour`) VALUES
+(1, 1, 5),
+(2, 1, 50),
+(3, 1, 50),
+(4, 1, 50),
+(5, 1, 50),
+(6, 2, 10),
+(6, 3, 15),
+(7, 1, 150),
+(8, 3, 50),
+(9, 1, 120),
+(9, 3, 50),
+(10, 1, 150),
+(11, 3, 50),
+(12, 1, 150),
+(12, 3, 60),
+(13, 3, 50),
+(14, 3, 150),
+(14, 4, 25),
+(15, 1, 150),
+(16, 1, 150);
+
 
 COMMIT;

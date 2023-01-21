@@ -34,13 +34,14 @@ class UsersModel extends Entity
         return $this->requete("SELECT * FROM {$this->table} WHERE email = ? OR username = ?", [$email, $username])->fetch();
     }
 
-    public function search($querry) {
+    public function search($querry, $limit = 100, $offset = 0) {
         return $this->requete("SELECT * FROM {$this->table} 
                                WHERE username LIKE '%{$querry}%' OR
                                      firstname LIKE '%{$querry}%' OR
                                      lastname LIKE '%{$querry}%' OR
                                      CONCAT(firstname, ' ', lastname) LIKE '%{$querry}%' OR
-                                     tel LIKE '%{$querry}%'")->fetchAll();
+                                     tel LIKE '%{$querry}%'
+                                     LIMIT $limit OFFSET $offset")->fetchAll();
     }
 
     public function countByAgeRange() {
