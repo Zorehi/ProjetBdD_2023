@@ -6,6 +6,22 @@ Pour ajouter le virtualhost il faut ajouter le chemin racine du repository
 
     C:\wamp64\www\ProjetBdD_2023
 
+
+### Quelques informations utiles
+
+Identifiant utilisateur admin : 
+mail :Admin@Admin.fr
+MdP : Admin
+
+Identifiant utilisateur proprietaire maison:
+mail : Pierre@Palmade.fr
+Mdp : projbdd
+
+Identifiant utilisateur locataire d'un appartement : 
+mail : Sebastien@Patoche.fr
+Mdp : Sebastien
+
+
 ## Utilisation de la fonction mail PHP
 
 Pour que vous puissiez envoyer des mails si vous êtes en local, il faut télécharger [fake sendmail](https://github.com/sendmail-tls1-2/main/blob/master/Sendmail_v33_TLS1_2.zip) et le mettre dans un dossier `sendmail` dans le répertoire de WAMP.
