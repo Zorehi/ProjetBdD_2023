@@ -3,6 +3,14 @@
 <div class="globalContainer">
     <div class="scrollbar-container" id="scrollbar-house-aparts">
         <div class="card-wrapper scrollbar-content" data-transition="yes">
+        <?php foreach($apartAll as $value) { 
+            $tenantArray = $tenant->findByIdApartment($value['id_apartment']);
+            if ($tenantArray) {
+                $usersArray = $users->findById($tenantArray['id_users']);
+            } else {
+                $usersArray = null;
+            }
+        ?>
             <div class="card">
                 <div class="card-head">
                     <div class="card-head-profil">
@@ -11,20 +19,36 @@
                             <div class="hover"></div>
                         </a>
                         <div class="text">
-                            <a href="" class="primary">Quelqu'un</a>
-                            <a class="secondary" data-infobulle="le Mercredi 28 décembre 2022">1 j</a>
+                            <a href="" class="primary"><?= $usersArray ? $usersArray['firstname'].' '.$usersArray['lastname'] : 'Personne' ?></a>
+                        <?php if ($tenantArray) {
+                            $fmt = IntlDateFormatter::create(
+                                Locale::getDefault(),
+                                IntlDateFormatter::FULL,
+                                IntlDateFormatter::FULL,
+                                date_default_timezone_get(),
+                                IntlDateFormatter::GREGORIAN,
+                                'eeee d MMMM y');
+                            $date = new DateTime($tenantArray['from_date']);
+                        ?>
+                            <a class="secondary" data-infobulle="<?= 'Le '.$fmt->format($date) ?>"><?php
+                                $fin = new DateTime('now');
+                                $interval = $date->diff($fin);
+                                echo $interval->format("%d j");
+                                  ?></a>
+                        <?php } ?>
                         </div>
                     </div>
                 </div>
                 <div class="card-content">
                     <div class="card-content-text">
-                        <span class="primary">Bonjour ! Je suis le nouveau locataire de l'appartement n°{} de la maison {}</span>
+                        <span class="primary"><?= $usersArray ? "Bonjour ! Je suis le nouveau locataire de l'appartement n°{$value['num']} de la maison {$house->getHouse_name()}" : "L'appartement n°{$value['num']} de la maison {$house->getHouse_name()} est libre"?></span>
                     </div>
-                    <div class="card-content-image">
+                    <a href="/aparts/<?= $value['id_apartment'] ?>" class="card-content-image">
                         <img src="assets/image/apart-default-photo.png" alt="">
-                    </div>
+                    </a>
                 </div>
             </div>
+        <?php } ?>
         </div>
         <div class="scrollbar-track"></div>
         <div class="scrollbar-thumb" data-transition="yes" draggable="false" ondragstart="return false;">

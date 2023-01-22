@@ -7,9 +7,11 @@ use App\Models\Entities\CityModel;
 use App\Models\Entities\HouseModel;
 use App\Models\Entities\ResourceModel;
 use App\Models\Associations\OwnerModel;
+use App\Models\Associations\TenantModel;
 use App\Models\Entities\ApartmentModel;
 use App\Models\Entities\SubstanceModel;
 use App\Models\Entities\DepartmentModel;
+use App\Models\Entities\UsersModel;
 
 class HousesController extends Controller
 {
@@ -48,8 +50,10 @@ class HousesController extends Controller
         // Objectif retourner la liste des maisons
         extract($this->retrieveInfoForPanelManage($id));
         $apart = new ApartmentModel();
-        $apartAll = $apart->allApart($id);
-        $this->render('/houses/house_aparts', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts', 'apartAll')); 
+        $tenant = new TenantModel();
+        $users = new UsersModel();
+        $apartAll = $apart->findBy(['id_house' => $id]);
+        $this->render('/houses/house_aparts', compact('pageName', 'house', 'owner', 'tenant', 'users', 'nbr_aparts', 'nbr_free_aparts', 'apartAll')); 
     }
 
     public function edit($id)
