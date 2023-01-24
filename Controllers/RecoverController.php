@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Form;
+use App\Core\Mail;
 use App\Models\Entities\UsersModel;
 
 class RecoverController extends Controller
@@ -22,13 +23,14 @@ class RecoverController extends Controller
                     "id" => $user->getId_users(),
                     "code" => $code
                 ];
+
+                $mail = new Mail();
+                $mail->addAddress($user->getEmail(), $user->getFirstname().' '.$user->getLastname());
+                $mail->isHTML(false);
+                $mail->Subject = $code." est votre code de récupération de compte Projet BdD";
+                $mail->Body = "Nous avons reçu une demande de réinitialisation de votre mot de passe Projet BdD.\nEntrez le code de réinitialisation du mot de passe suivant : ".$code;
     
-                $message = "Nous avons reçu une demande de réinitialisation de votre mot de passe Projet BdD.\nEntrez le code de réinitialisation du mot de passe suivant : ".$code;
-                $sujet = $code." est votre code de récupération de compte Projet BdD";
-                $headers = "Content-Type: text/plain; charset=utf-8\r\n";
-                $headers .= "From: Projet BdD <projetbdd@hotmail.com>\r\n";
-    
-                if (mail($user->getEmail(), $sujet, $message, $headers)) {
+                if ($mail->send()) {
                     header("Location: /recover/code");
                 }
             } else {
