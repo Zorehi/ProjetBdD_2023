@@ -5,17 +5,14 @@ namespace App\Controllers;
 use App\Core\Form;
 use App\Controllers\Controller;
 use App\Models\Entities\RoomModel;
-use App\Models\Entities\HouseModel;
 use App\Models\Entities\DeviceModel;
 use App\Models\Entities\ResourceModel;
 use App\Models\Associations\OwnerModel;
 use App\Models\Entities\ApartmentModel;
 use App\Models\Associations\TenantModel;
-use App\Models\Associations\ConsumeModel;
 use App\Models\Associations\Turn_onModel;
 use App\Models\Entities\Device_typeModel;
 use App\Models\Associations\EmissionModel;
-use App\Models\Entities\Apartment_typeModel;
 use App\Models\Associations\ConsumptionModel;
 use App\Models\Entities\SubstanceModel;
 
@@ -96,16 +93,17 @@ class DevicesController extends Controller
         
         $cons = new ConsumptionModel();
         $emis = new EmissionModel();
-        if(Form::validate($_POST, ["device_name","description_device","description_place","consumption","emission"]))
+        if(Form::validate($_POST, ["device_name","description_device","description_place","consumption"]))
         {
             $device = new DeviceModel();
             $device->hydrate($_POST);
+            $device->setId_device($id);
             $device->update();
-            foreach($_POST["consumption"] as $key => $value){
+            foreach($_POST["consumption"] as $key => $value) {
                 $cons->setConsumption_per_hour($value);
                 $cons->update(['id_resource'=> $key ,'id_device'=>$device->getId_device()]);
             }
-            foreach($_POST["emission"] as $key => $value){
+            foreach($_POST["emission"] as $key => $value) {
                 $emis->setEmission_per_hour($value);
                 $emis->update(['id_substance'=> $key ,'id_device'=>$device->getId_device()]);
             }

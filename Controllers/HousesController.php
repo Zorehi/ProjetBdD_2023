@@ -7,9 +7,11 @@ use App\Models\Entities\CityModel;
 use App\Models\Entities\HouseModel;
 use App\Models\Entities\ResourceModel;
 use App\Models\Associations\OwnerModel;
+use App\Models\Associations\TenantModel;
 use App\Models\Entities\ApartmentModel;
 use App\Models\Entities\SubstanceModel;
 use App\Models\Entities\DepartmentModel;
+use App\Models\Entities\UsersModel;
 
 class HousesController extends Controller
 {
@@ -43,20 +45,31 @@ class HousesController extends Controller
         $this->render('/houses/index', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts'));
     }
 
-    public function house_aparts($id)
-    {
-        extract($this->retrieveInfoForPanelManage($id));
+    public function house_aparts($id) {
 
-        $this->render('/houses/house_aparts', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts'));
+        // Objectif retourner la liste des maisons
+        extract($this->retrieveInfoForPanelManage($id));
+        $apart = new ApartmentModel();
+        $tenant = new TenantModel();
+        $users = new UsersModel();
+        $apartAll = $apart->findBy(['id_house' => $id]);
+        $this->render('/houses/house_aparts', compact('pageName', 'house', 'owner', 'tenant', 'users', 'nbr_aparts', 'nbr_free_aparts', 'apartAll')); 
     }
 
     public function edit($id)
     {
         extract($this->retrieveInfoForPanelManage($id));
-
         $city = new CityModel();
         $city->hydrate($city->findById($house->getId_city()));
-
+        if (Form::validate($_POST, ["house_name"], ['isolation_degree'],['citizen_degree'], ['eval_eco']))
+        {
+            $house->setHouse_name($_POST['house_name']);
+            $house->setIsolation_degree($_POST['isolation_degree']);
+            $house->setCitizen_degree($_POST['citizen_degree']);
+            $house->setEval_eco($_POST['eval_eco']);
+            $house->update();
+        }
+            
         $this->render('/houses/edit', compact('pageName', 'house', 'owner', 'nbr_aparts', 'nbr_free_aparts', 'city'));
     }
 
@@ -140,6 +153,19 @@ class HousesController extends Controller
         $Departement = new DepartmentModel();
         $owner = new OwnerModel();
         // On appelle la méthode validate de la classe mère pour vérifier que les champs sont bien remplis 
+       if (Form::validate($_POST, ["house_name", "isolation_degree", "eval_eco", "citizen_degree", "street", "house_number","city_name","postcode"])) {
+            /*if ($houseArray)
+            {
+                // La maison existe déja on verra la gestion plus tard 
+            }*/
+            $house_name = $_POST["house_name"];
+            $houseArray = $house->findById($house_name['house_id']);
+            $house->hydrate($house->findById($houseArray['house_id']));
+            $house->create();
+            
+        
+       
+       }
         if (Form::validate($_POST, ["house_name", "isolation_degree", "eval_eco", "citizen_degree", "street", "house_number", "city_name", "postcode"])) { {
                 $houseArray = $house->findBy(['house_name' => $_POST['house_name'], 'street' => $_POST['street'], 'house_number' => $_POST['house_number']]);
                 if (count($houseArray) == 0) {
@@ -162,7 +188,7 @@ class HousesController extends Controller
                     }
                     $house->setId_city($city->getId_city());
                     $house->hydrate($_POST);
-                    $house->create();
+                    $house->setId_house($house->create());
 
                     $houseArray = $house->findBy(['house_name' => $_POST['house_name'], 'street' => $_POST['street'], 'house_number' => $_POST['house_number']])[0];
 

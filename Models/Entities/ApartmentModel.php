@@ -48,11 +48,6 @@ class ApartmentModel extends Entity
     public function emit($id_apartment) {
         return $this->requete("SELECT * FROM uptime_by_apartment_with_emission WHERE id_apartment = {$id_apartment} ORDER BY date ASC")->fetchAll();
     }
-
-    public function allApart($idHouse)
-    {
-        return $this->requete("SELECT id_apartement FROM apartement WHERE id_house = id_house = {$idHouse}")->fetchAll();
-    }
     
 
     /**
