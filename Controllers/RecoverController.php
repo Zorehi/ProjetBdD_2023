@@ -30,6 +30,7 @@ class RecoverController extends Controller
     
                 if (mail($user->getEmail(), $sujet, $message, $headers)) {
                     header("Location: /recover/code");
+                    exit;
                 }
             } else {
                 /*
@@ -60,6 +61,7 @@ class RecoverController extends Controller
         if (Form::validate($_POST, ["code"])) {
             if ($_POST["code"] === $_SESSION["recover"]["code"]) {
                 header("Location: /recover/password/?code=".$_SESSION["recover"]["code"]);
+                exit;
             }
         }
         
@@ -68,7 +70,7 @@ class RecoverController extends Controller
 
     public function password($code) {
         if ($code != $_SESSION["recover"]["code"]) {
-            http_response_code(404);
+            header('Location: /recover/code');
             exit;
         }
 
@@ -87,6 +89,7 @@ class RecoverController extends Controller
                 $user->setSession();
 
                 header("Location: /");
+                exit;
             }
         }
 
