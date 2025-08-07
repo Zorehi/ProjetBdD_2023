@@ -304,7 +304,7 @@ INSERT INTO `house` (`id_house`, `house_name`, `isolation_degree`, `eval_eco`, `
 --
 
 INSERT INTO `owner` (`id_house`, `from_date`, `to_date`, `id_users`) VALUES
-(1, '2023-01-18', '0000-00-00', 2);
+(1, '2023-01-18', NULL, 2);
 
 --
 -- Déchargement des données de la table `apartment`
@@ -319,7 +319,7 @@ INSERT INTO `apartment` (`id_apartment`, `num`, `hab`, `citizen_degree`, `id_sec
 --
 
 INSERT INTO `tenant` (`id_apartment`, `from_date`, `to_date`, `id_users`) VALUES
-(1, '2023-01-18', '0000-00-00', 3);
+(1, '2023-01-18', NULL, 3);
 
 --
 -- Déchargement des données de la table `room`

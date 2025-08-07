@@ -241,7 +241,7 @@ DROP TABLE IF EXISTS `owner`;
 CREATE TABLE owner(
    `id_house` INT,
    `from_date` DATE,
-   `to_date` DATE NOT NULL DEFAULT '0000-00-00',
+   `to_date` DATE DEFAULT NULL,
    `id_users` INT,
    PRIMARY KEY(`id_house`, `from_date`),
    FOREIGN KEY(`id_house`) REFERENCES house(`id_house`) ON DELETE CASCADE,
@@ -256,7 +256,7 @@ DROP TABLE IF EXISTS `tenant`;
 CREATE TABLE tenant(
    `id_apartment` INT,
    `from_date` DATE,
-   `to_date` DATE NOT NULL DEFAULT '0000-00-00',
+   `to_date` DATE DEFAULT NULL,
    `id_users` INT,
    PRIMARY KEY(`id_apartment`, `from_date`),
    FOREIGN KEY(`id_apartment`) REFERENCES apartment(`id_apartment`) ON DELETE CASCADE,
@@ -376,7 +376,7 @@ CREATE OR REPLACE VIEW uptime_by_device AS
 SELECT D.id_device,
        DATE(T.from_date) AS date,
        D.id_room,
-       SUM(TIME_TO_SEC(TIMEDIFF(IF(T.to_date = '0000-00-00 00:00:00', SYSDATE(), T.to_date), T.from_date))) AS uptime
+       SUM(TIME_TO_SEC(TIMEDIFF(IF(T.to_date = NULL, SYSDATE(), T.to_date), T.from_date))) AS uptime
 FROM device AS D LEFT OUTER JOIN turn_on AS T ON(D.id_device = T.id_device)
 WHERE DATEDIFF(T.from_date, SYSDATE()) < 30
 GROUP BY D.id_device, date;

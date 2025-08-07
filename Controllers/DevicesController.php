@@ -215,7 +215,7 @@ class DevicesController extends Controller
         else {
             $TurnOn->setId_device($id);
             $TurnOn->setFrom_date(date("Y-m-d H:i:s"));
-            $TurnOn->setTo_date('0000-00-00 00:00:00');
+            $TurnOn->setTo_date(NULL);
             $TurnOn->create();
         }
         

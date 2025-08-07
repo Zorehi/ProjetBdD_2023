@@ -1,5 +1,5 @@
 function card_device_html(device) {
-    const type = device['from_date'] == null ? 'Allumer' : device['to_date'] == "0000-00-00 00:00:00" ? 'Eteindre' : 'Allumer';
+    const type = device['from_date'] == null ? 'Allumer' : device['to_date'] == 'NULL' ? 'Eteindre' : 'Allumer';
     return `<div class='card card-device'>
         <div class='card-head'>
             <div class="card-device-profil">

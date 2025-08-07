@@ -20,12 +20,12 @@ class TenantModel extends Association
 
     public function findByIdApartment($id_apartment) {
         $today = date("Y-m-d");
-        return $this->requete("SELECT * FROM {$this->table} WHERE id_apartment = ? AND from_date <= ? AND (to_date > ? OR to_date = '0000-00-00')", [$id_apartment, $today, $today])->fetch();
+        return $this->requete("SELECT * FROM {$this->table} WHERE id_apartment = ? AND from_date <= ? AND (to_date > ? OR to_date is NULL)", [$id_apartment, $today, $today])->fetch();
     }
 
     public function findByIdUsers($id_users) {
         $today = date("Y-m-d");
-        return $this->requete("SELECT * FROM {$this->table} WHERE id_users = ? AND from_date <= ? AND (to_date > ? OR to_date = '0000-00-00')", [$id_users, $today, $today])->fetchAll();
+        return $this->requete("SELECT * FROM {$this->table} WHERE id_users = ? AND from_date <= ? AND (to_date > ? OR to_date is NULL)", [$id_users, $today, $today])->fetchAll();
     }
     
 
@@ -84,7 +84,7 @@ class TenantModel extends Association
      */ 
     public function setTo_date($to_date)
     {
-        if ($to_date === null) $to_date = '0000-00-00';
+        if ($to_date === null) $to_date = NULL;
         $this->to_date = $to_date;
 
         return $this;

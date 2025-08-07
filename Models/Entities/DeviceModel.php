@@ -30,7 +30,7 @@ class DeviceModel extends Entity
         $where = '';
         if ($id_room != 'false') $where .= " AND id_room = $id_room ";
         if ($id_device_type != 'false') $where .= " AND id_device_type = $id_device_type ";
-        if ($is_on != 'false') $is_on == 'on' ? $where .= " AND to_date = '0000-00-00' ": $where .= " AND to_date != '0000-00-00' ";
+        if ($is_on != 'false') $is_on == 'on' ? $where .= " AND to_date is NULL ": $where .= " AND to_date is not NULL ";
         return $this->requete("SELECT id_device, device_name, description_device, description_place, type_name, room_name, from_date, to_date, image_url
                                FROM search_device 
                                WHERE device_name LIKE '%{$q}%'
@@ -44,7 +44,7 @@ class DeviceModel extends Entity
         $where = '';
         if ($id_room != 'false') $where .= " AND id_room = $id_room ";
         if ($id_device_type != 'false') $where .= " AND id_device_type = $id_device_type ";
-        if ($is_on != 'false') $is_on == 'on' ? $where .= " AND to_date = '0000-00-00' ": $where .= " AND to_date != '0000-00-00' OR to_date is null ";
+        if ($is_on != 'false') $is_on == 'on' ? $where .= " AND to_date is NULL ": $where .= " AND to_date is not NULL OR to_date is null ";
         return $this->requete("SELECT COUNT(id_device) as nbr_devices
                                FROM search_device
                                WHERE device_name LIKE '%{$q}%'
@@ -54,7 +54,7 @@ class DeviceModel extends Entity
     }
 
     public function TurnVerify($id){
-        return $this->requete("SELECT * FROM turn_on WHERE id_device = $id AND to_date ='0000-00-00 00:00:00'")->fetch();
+        return $this->requete("SELECT * FROM turn_on WHERE id_device = $id AND to_date is NULL")->fetch();
     }
 
     public function AllDevices($id){

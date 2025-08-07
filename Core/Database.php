@@ -13,7 +13,7 @@ class Database extends PDO {
     private const DBHOST = "localhost";
     private const DBNAME = "projetbdd";
     private const DBUSER = "root";
-    private const DBPASS = "";
+    private const DBPASS = "admin";
 
     private function __construct() {
         // DSN de connexion
